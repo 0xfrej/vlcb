@@ -1,18 +1,19 @@
 #pragma once
 
 #include <inttypes.h>
+
 #include "../../vlcb_defs.h"
 
 #define VLCB_PACKET_MAX_PAYLOAD 7
 
 /**
  * VLCB payload buffer
- * 
- * The type is supposed to function as a helper, so that 
- * clients don't have to write the whole expression and 
+ *
+ * The type is supposed to function as a helper, so that
+ * clients don't have to write the whole expression and
  * ensure it's correct.
  */
-typedef uint8_t VlcbPacketPayloadBuf[VLCB_PACKET_MAX_PAYLOAD];
+typedef uint8_t VlcbPacketPayload[VLCB_PACKET_MAX_PAYLOAD];
 
 /**
  * VLCB sub-protocol
@@ -29,15 +30,15 @@ typedef enum {
 VlcbProtocol vlcb_pkt_DetectProtocol(VlcbOpCode opc);
 
 /**
-  * VLCB node address (11 bit wide)
-  */
+ * VLCB node address (11 bit wide)
+ */
 typedef uint16_t VlcbNodeAddr;
 
 typedef struct {
   VlcbProtocol proto;
   VlcbOpCode opc;
   uint8_t payload_len;
-  VlcbPacketPayloadBuf payload;
+  VlcbPacketPayload payload;
 } VlcbPacket;
 
 typedef enum {
@@ -64,5 +65,9 @@ typedef enum {
 
 const char* vlcb_pkt_VlcbPacketConstructErrToStr(VlcbPacketConstructErr err);
 
-VlcbPacketConstructErr vlcb_pkt_NewPacketUnchecked(VlcbProtocol proto, VlcbOpCode opc, uint8_t payload_len, VlcbPacketPayloadBuf payload);
-VlcbPacketConstructErr vlcb_pkt_NewPacket(VlcbOpCode opc, uint8_t payload_len, VlcbPacketPayloadBuf payload);
+VlcbPacketConstructErr vlcb_pkt_NewPacketUnchecked(
+    VlcbProtocol proto, VlcbOpCode opc, uint8_t payload_len,
+    const VlcbPacketPayload* const payload, VlcbPacket* const packet);
+VlcbPacketConstructErr vlcb_pkt_NewPacket(
+    VlcbOpCode opc, uint8_t payload_len, const VlcbPacketPayload* const payload,
+    VlcbPacket* const packet);

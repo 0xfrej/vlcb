@@ -28,6 +28,7 @@ lsp_helper: clean
 .PHONY: gen_defs
 gen_defs: update_defs
 	$(MAKE) -C vendor/vlcb-defs/codegen generate_c
+	cp vendor/vlcb-defs/codegen/lang/c/output/vlcb_defs.h src/defs/vlcb_defs.h
 
 .PHONY: update_defs
 update_defs:

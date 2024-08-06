@@ -1,23 +1,26 @@
-#include <stddef.h>
-#include <stdbool.h>
 #include "iface.h"
+
+#include <stdbool.h>
+#include <stddef.h>
+
 #include "iface_can.h"
 
 VlcbNetIface vlcb_iface_New(VlcbNetDevHwAddr hw_addr, VlcbNodeAddr node_addr) {
   VlcbNetIface iface = {
-    .hw_addr = hw_addr, 
-    .node_addr = node_addr,
-    .dev = NULL,
+      .hw_addr = hw_addr,
+      .node_addr = node_addr,
+      .dev = NULL,
   };
-  
+
   return iface;
 }
 
-void vlcb_iface_Bind(VlcbNetIface* const iface, VlcbNetDev* const dev) {
+void vlcb_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev) {
   iface->dev = dev;
 }
 
-bool IngressPackets(VlcbNetIface* const iface, VlcbNetSocketList* const sockets) {
+bool IngressPackets(VlcbNetIface *const iface,
+                    VlcbNetSocketList *const sockets) {
   bool processed_any = false;
 
   const VlcbNetDev *dev = iface->dev;
@@ -29,19 +32,20 @@ bool IngressPackets(VlcbNetIface* const iface, VlcbNetSocketList* const sockets)
     if (err == VLCB_NET_DEV_ERR_OK) {
       switch (caps->medium) {
         case VLCB_MEDIUM_CAN:
-          ProcessCanPacket(iface, sockets, phy_packet);          
+          ProcessCanPacket(iface, sockets, phy_packet);
         default:
           return false;
-        //TODO: throw in debug? this would be a bug
+          // TODO: throw in debug? this would be a bug
       }
     }
     // TODO: how to handle errors?
-  } while(1);
+  } while (1);
 
   return processed_any;
 }
 
-bool EgressPackets(VlcbNetIface* const iface, VlcbNetSocketList* const sockets) {
+bool EgressPackets(VlcbNetIface *const iface,
+                   VlcbNetSocketList *const sockets) {
   bool emitted_any = false;
 
   const VlcbNetDev *dev = iface->dev;
@@ -49,10 +53,12 @@ bool EgressPackets(VlcbNetIface* const iface, VlcbNetSocketList* const sockets) 
   return emitted_any;
 }
 
-bool vlcb_iface_Poll(VlcbNetIface* const iface, VlcbNetSocketList* const sockets) {
+bool vlcb_iface_Poll(VlcbNetIface *const iface,
+                     VlcbNetSocketList *const sockets) {
   bool readiness_may_have_changed = false;
 
-  // TODO: (probably return just an error?) create panic of sorts? when the passed in device is not matching caps of this
+  // TODO: (probably return just an error?) create panic of sorts? when the
+  // passed in device is not matching caps of this
 
   do {
     bool did_something = false;
@@ -69,4 +75,3 @@ bool vlcb_iface_Poll(VlcbNetIface* const iface, VlcbNetSocketList* const sockets
 
   return readiness_may_have_changed;
 }
-
