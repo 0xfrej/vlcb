@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cstdint>
 #include <inttypes.h>
 #include "../../vlcb_defs.h"
 
@@ -27,7 +26,7 @@ typedef enum {
   VLCB_PROTO_STREAM,
 } VlcbProtocol;
 
-VlcbProtocol vlcb_detect_protocol(VlcbOpCode opc);
+VlcbProtocol vlcb_pkt_DetectProtocol(VlcbOpCode opc);
 
 /**
   * VLCB node address (11 bit wide)
@@ -63,7 +62,7 @@ typedef enum {
   VLCB_PKT_CONSTRUCT_ERR_COUNT,
 } VlcbPacketConstructErr;
 
-const char* vlcb_packet_construct_err_to_str(VlcbPacketConstructErr err);
+const char* vlcb_pkt_VlcbPacketConstructErrToStr(VlcbPacketConstructErr err);
 
-VlcbPacketConstructErr vlcb_new_packet_unchecked(VlcbProtocol proto, VlcbOpCode opc, uint8_t payload_len, VlcbPacketPayloadBuf payload);
-VlcbPacketConstructErr vlcb_new_packet(VlcbOpCode opc, uint8_t payload_len, VlcbPacketPayloadBuf payload);
+VlcbPacketConstructErr vlcb_pkt_NewPacketUnchecked(VlcbProtocol proto, VlcbOpCode opc, uint8_t payload_len, VlcbPacketPayloadBuf payload);
+VlcbPacketConstructErr vlcb_pkt_NewPacket(VlcbOpCode opc, uint8_t payload_len, VlcbPacketPayloadBuf payload);

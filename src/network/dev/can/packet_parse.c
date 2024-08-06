@@ -4,7 +4,7 @@
 #include <string.h>
 
 VlcbNetDevErr
-vlcb_net_dev_can_parse_data(CanId id, bool is_rtr, uint8_t payload_len,
+vlcb_dev_can_ParseRawData(CanId id, bool is_rtr, uint8_t payload_len,
                             const VlcbNetDevPacketPayload *payload,
                             VlcbNetDevPacket *packet) {
   if (payload_len > VLCB_NET_DEV_PACKET_MAX_PAYLOAD) {

@@ -74,7 +74,7 @@ typedef enum {
   VLCB_NET_DEV_ERR_COUNT,
 } VlcbNetDevErr;
 
-const char *vlcb_net_dev_err_to_str(VlcbNetDevErr err);
+const char * vlcb_dev_VlcbNetDevErrToStr(VlcbNetDevErr err);
 
 typedef struct {
   /**
@@ -83,17 +83,17 @@ typedef struct {
    * Returns `VLCB_NET_DEV_ERR_WOULD_BLOCK` when there is nothing
    * in the receive buffer.
    */
-  VlcbNetDevErr (*const receive)(void *self, VlcbNetDevPacket *packet);
+  VlcbNetDevErr (*const Receive)(void * const self, VlcbNetDevPacket * const packet);
 
   /**
    * Transfer a VLCB packet using this device
    */
-  VlcbNetDevErr (*const send)(void *self, VlcbNetDevPacket packet);
+  VlcbNetDevErr (*const Send)(void * const self, const VlcbNetDevPacket * const packet);
 
   /**
    * Get the device capabilities
    */
-  const VlcbNetDevCaps *(*const caps)(void *self);
+  const VlcbNetDevCaps *(*const Caps)(const void * const self);
 } VlcbNetDevTrait;
 
 typedef struct {
@@ -103,16 +103,16 @@ typedef struct {
 
 #define vlcb_impl_net_dev(T, Name, send_f, receive_f, caps_f)                  \
   VlcbNetDev Name##_downcast(T *x) {                                           \
-    VlcbNetDevErr (*const send_)(T *, VlcbNetDevPacket) = (send_f);            \
+    VlcbNetDevErr (*const send_)(T * const, const VlcbNetDevPacket * const) = (send_f);            \
     (void)send_;                                                               \
-    VlcbNetDevErr (*const receive_)(T *, VlcbNetDevPacket *) = (receive_f);    \
+    VlcbNetDevErr (*const receive_)(T * const, VlcbNetDevPacket * const) = (receive_f);    \
     (void)receive_;                                                            \
-    const VlcbNetDevErr *(*const caps)(T *) = (caps_f);                        \
+    const VlcbNetDevErr *(*const caps)(const T *const) = (caps_f);                        \
     (void)caps_;                                                               \
     static VlcbNetDevTrait const tc = {                                        \
-        .receive =                                                             \
-            (VlcbNetDevErr(*const)(void *, VlcbNetDevPacket *))(receive_f),    \
-        .send = (VlcbNetDevErr(*const)(void *, VlcbNetDevPacket))(send_f),     \
-        .caps = (const VlcbNetDevCaps *(*const)(void *))(caps_f)};             \
+        .Receive =                                                             \
+            (VlcbNetDevErr(*const)(void * const, VlcbNetDevPacket * const))(receive_f),    \
+        .Send = (VlcbNetDevErr(*const)(void * const, const VlcbNetDevPacket * const))(send_f),     \
+        .Caps = (const VlcbNetDevCaps *(*const)(void *))(caps_f)};             \
     return (VlcbNetDev){.tc = &tc, .self = x};                                 \
   }
