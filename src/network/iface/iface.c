@@ -1,5 +1,6 @@
 #include "iface.h"
 
+#include <assert.h>
 #include <stdbool.h>
 #include <stddef.h>
 
@@ -15,8 +16,11 @@ VlcbNetIface vlcb_iface_New(VlcbNetDevHwAddr hw_addr, VlcbNodeAddr node_addr) {
   return iface;
 }
 
-void vlcb_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev) {
+int vlcb_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev) {
+  assert(iface != NULL && dev != NULL);
+  // TODO: check if the device is valid
   iface->dev = dev;
+  return 0;
 }
 
 bool IngressPackets(VlcbNetIface *const iface,
@@ -55,6 +59,8 @@ bool EgressPackets(VlcbNetIface *const iface,
 
 bool vlcb_iface_Poll(VlcbNetIface *const iface,
                      VlcbNetSocketList *const sockets) {
+  assert(iface != NULL && sockets != NULL && iface->dev != NULL);
+
   bool readiness_may_have_changed = false;
 
   // TODO: (probably return just an error?) create panic of sorts? when the
