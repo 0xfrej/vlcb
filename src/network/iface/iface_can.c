@@ -1,6 +1,8 @@
 #include "iface_can.h"
 
-#include "../dev/can/packet_parse.h"
+#include <stdbool.h>
+#include <stddef.h>
+
 #include "../dev/dev.h"
 #include "../packet/vlcb.h"
 #include "../socket/socket.h"
@@ -10,7 +12,13 @@
 void ProcessCanPacket(VlcbNetIface* const iface,
                       VlcbNetSocketList* const sockets,
                       VlcbNetDevPacket* packet) {
-  // TODO: handle can service stuff
+  if (iface->interceptors.net_dev != NULL) {
+    bool should_continue = iface->interceptors.net_dev(iface, packet);
+
+    if (should_continue == false) {
+      return;
+    }
+  }
 
   VlcbNetDevPacketPayload* payload = &packet->payload;
   VlcbOpCode opc;

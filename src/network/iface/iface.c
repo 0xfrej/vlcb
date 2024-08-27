@@ -11,6 +11,7 @@ VlcbNetIface vlcb_iface_New(VlcbNetDevHwAddr hw_addr, VlcbNodeAddr node_addr) {
       .hw_addr = hw_addr,
       .node_addr = node_addr,
       .dev = NULL,
+      .interceptors = {.net_dev = NULL},
   };
 
   return iface;
@@ -23,7 +24,7 @@ int vlcb_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev) {
   return 0;
 }
 
-bool IngressPackets(VlcbNetIface *const iface,
+VlcbPollResult IngressPackets(VlcbNetIface *const iface,
                     VlcbNetSocketList *const sockets) {
   bool processed_any = false;
 
@@ -48,7 +49,7 @@ bool IngressPackets(VlcbNetIface *const iface,
   return processed_any;
 }
 
-bool EgressPackets(VlcbNetIface *const iface,
+VlcbPollResult EgressPackets(VlcbNetIface *const iface,
                    VlcbNetSocketList *const sockets) {
   bool emitted_any = false;
 
@@ -57,20 +58,18 @@ bool EgressPackets(VlcbNetIface *const iface,
   return emitted_any;
 }
 
-bool vlcb_iface_Poll(VlcbNetIface *const iface,
+VlcbPollResult vlcb_iface_Poll(VlcbNetIface *const iface,
                      VlcbNetSocketList *const sockets) {
   assert(iface != NULL && sockets != NULL && iface->dev != NULL);
 
   bool readiness_may_have_changed = false;
 
-  // TODO: (probably return just an error?) create panic of sorts? when the
-  // passed in device is not matching caps of this
-
   do {
     bool did_something = false;
+    VlcbPollResult res;
 
-    did_something |= IngressPackets(iface, sockets);
-    did_something |= EgressPackets(iface, sockets);
+    res = IngressPackets(iface, sockets);
+    res = EgressPackets(iface, sockets);
 
     if (did_something) {
       readiness_may_have_changed = true;
@@ -79,5 +78,15 @@ bool vlcb_iface_Poll(VlcbNetIface *const iface,
     }
   } while (1);
 
-  return readiness_may_have_changed;
+  return (VlcbPollResult){
+    .readiness_may_have_changed = readiness_may_have_changed,
+    .err = NilError,
+  };
+}
+
+void vlcb_iface_RegisterNetDevListener(VlcbNetIface *const iface,
+                                       VlcbIfaceNetDevInterceptor listener) {
+  assert(iface != NULL && listener != NULL);
+
+  iface->interceptors.net_dev = listener;
 }
