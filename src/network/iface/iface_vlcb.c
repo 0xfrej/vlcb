@@ -11,9 +11,12 @@ void ProcessVlcbPacket(VlcbNetIface *const iface,
   for (uint8_t i = 0; i < sockets->len; i++) {
     VlcbNetSocket *const sock = &sockets->list[i];
 
-    // TODO: check first if the socket handles this VlcbProtocol
-    VlcbNetSocketErr err = sock->ingress(packet);
-    if (err != ok) {
+    if (!sock->tc->SupportsProtocol(proto)) {
+      continue;
+    }
+
+    VlcbNetSocketErr err = sock->tc->ProcessPacket(sock->self, packet);
+    if (err != VLCB_NET_SOCK_ERR_OK) {
       // TODO: handle error
     }
   }

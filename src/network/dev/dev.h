@@ -76,7 +76,7 @@ typedef enum {
 
 const char *vlcb_dev_VlcbNetDevErrToStr(VlcbNetDevErr err);
 
-typedef struct {
+typedef struct Dev {
   /**
    * Receive a VLCB packet using this device
    *
@@ -103,8 +103,10 @@ typedef struct {
   VlcbNetDevTrait const *tc;
 } VlcbNetDev;
 
+// TODO: change this to more of style I wrote socket stuff -> have reusable
+// trait implementation to save bytes
 #define vlcb_impl_net_dev(T, Name, send_f, receive_f, caps_f)               \
-  VlcbNetDev Name##_downcast(T *x) {                                        \
+  VlcbNetDev Name##_upcast(T *x) {                                          \
     VlcbNetDevErr (*const send_)(T *const, const VlcbNetDevPacket *const) = \
         (send_f);                                                           \
     (void)send_;                                                            \

@@ -1,8 +1,10 @@
 #include "iface.h"
 
 #include <assert.h>
-#include <stdbool.h>
 #include <stddef.h>
+#include <stdint.h>
+
+#include <filesystem>
 
 #include "iface_can.h"
 
@@ -18,13 +20,14 @@ VlcbNetIface vlcb_iface_New(VlcbNetDevHwAddr hw_addr, VlcbNodeAddr node_addr) {
 }
 
 int vlcb_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev) {
-  assert(iface != NULL && dev != NULL);
+  assert(iface != NULL &&
+         dev != NULL /* iface and device need to be valid pointers */);
   // TODO: check if the device is valid
   iface->dev = dev;
   return 0;
 }
 
-VlcbPollResult IngressPackets(VlcbNetIface *const iface,
+bool IngressPackets(VlcbNetIface *const iface,
                     VlcbNetSocketList *const sockets) {
   bool processed_any = false;
 
@@ -33,43 +36,58 @@ VlcbPollResult IngressPackets(VlcbNetIface *const iface,
 
   do {
     VlcbNetDevPacket *phy_packet;
-    VlcbNetDevErr err = dev->tc->Receive(dev->self, phy_packet);
-    if (err == VLCB_NET_DEV_ERR_OK) {
-      switch (caps->medium) {
-        case VLCB_MEDIUM_CAN:
-          ProcessCanPacket(iface, sockets, phy_packet);
-        default:
-          return false;
-          // TODO: throw in debug? this would be a bug
-      }
+    VlcbNetDevErr dev_err = dev->tc->Receive(dev->self, phy_packet);
+
+    // device has nothing in buffer and would block execution while waiting
+    // for new packets
+    if (dev_err == VLCB_NET_DEV_ERR_WOULD_BLOCK) {
+      break;
     }
-    // TODO: how to handle errors?
+
+    if (dev_err != VLCB_NET_DEV_ERR_OK) {
+      // TODO: log error
+    }
+
+    switch (caps->medium) {
+      case VLCB_MEDIUM_CAN:
+        ProcessCanPacket(iface, sockets, phy_packet);
+      default:
+        assert(false /* unsupported medium */);
+    }
+
+    processed_any = true;
   } while (1);
 
   return processed_any;
 }
 
-VlcbPollResult EgressPackets(VlcbNetIface *const iface,
+bool EgressPackets(VlcbNetIface *const iface,
                    VlcbNetSocketList *const sockets) {
   bool emitted_any = false;
 
   const VlcbNetDev *dev = iface->dev;
 
+  for (uint8_t i = 0; i < sockets->len; i++) {
+    VlcbNetSocket *sock = &sockets->list[i];
+
+    sock->tc->DispatchPacket(sock->self);
+  }
+
   return emitted_any;
 }
 
-VlcbPollResult vlcb_iface_Poll(VlcbNetIface *const iface,
-                     VlcbNetSocketList *const sockets) {
-  assert(iface != NULL && sockets != NULL && iface->dev != NULL);
+VlcbNetIfacePollResult vlcb_iface_Poll(VlcbNetIface *const iface,
+                                       VlcbNetSocketList *const sockets) {
+  assert(iface != NULL && sockets != NULL && iface->dev != NULL /* iface, sockets need to be valid pointers and device needs to be initialized */);
+  // TODO: probably assert validity of socket list not just it's pointer too
 
   bool readiness_may_have_changed = false;
 
   do {
     bool did_something = false;
-    VlcbPollResult res;
 
-    res = IngressPackets(iface, sockets);
-    res = EgressPackets(iface, sockets);
+    did_something = IngressPackets(iface, sockets);
+    did_something = EgressPackets(iface, sockets);
 
     if (did_something) {
       readiness_may_have_changed = true;
@@ -78,15 +96,15 @@ VlcbPollResult vlcb_iface_Poll(VlcbNetIface *const iface,
     }
   } while (1);
 
-  return (VlcbPollResult){
-    .readiness_may_have_changed = readiness_may_have_changed,
-    .err = NilError,
+  return (VlcbNetIfacePollResult){
+      .readiness_may_have_changed = readiness_may_have_changed,
   };
 }
 
 void vlcb_iface_RegisterNetDevListener(VlcbNetIface *const iface,
                                        VlcbIfaceNetDevInterceptor listener) {
-  assert(iface != NULL && listener != NULL);
+  assert(iface != NULL &&
+         listener != NULL /* iface and listener need to be valid poitners */);
 
   iface->interceptors.net_dev = listener;
 }

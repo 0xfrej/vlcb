@@ -5,7 +5,6 @@
 #include "../dev/dev.h"
 #include "../packet/vlcb.h"
 #include "../socket/socket.h"
-#include "../../shared/error.h"
 
 typedef struct VlcbNetIface VlcbNetIface;
 typedef struct VlcbNetInterceptors VlcbNetInterceptors;
@@ -29,11 +28,10 @@ int vlcb_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev);
 
 typedef struct {
   bool readiness_may_have_changed;
-  ErrorTrace err;
-} VlcbPollResult;
+} VlcbNetIfacePollResult;
 
-VlcbPollResult vlcb_iface_Poll(VlcbNetIface *const iface,
-                     VlcbNetSocketList *const sockets);
+VlcbNetIfacePollResult vlcb_iface_Poll(VlcbNetIface *const iface,
+                                       VlcbNetSocketList *const sockets);
 VlcbMedium vlcb_iface_Medium(const VlcbNetIface *const iface);
 void vlcb_iface_RegisterNetDevListener(VlcbNetIface *const iface,
                                        VlcbIfaceNetDevInterceptor listener);
