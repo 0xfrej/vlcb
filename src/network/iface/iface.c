@@ -4,8 +4,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include <filesystem>
-
 #include "iface_can.h"
 
 VlcbNetIface vlcb_iface_New(VlcbNetDevHwAddr hw_addr, VlcbNodeAddr node_addr) {
@@ -66,11 +64,12 @@ bool EgressPackets(VlcbNetIface *const iface,
   bool emitted_any = false;
 
   const VlcbNetDev *dev = iface->dev;
+  VlcbNetSocketListIter iter = vlcb_net_sock_list_GetIterator(sockets);
 
-  for (uint8_t i = 0; i < sockets->len; i++) {
-    VlcbNetSocket *sock = &sockets->list[i];
-
-    sock->tc->DispatchPacket(sock->self);
+  while (vlcb_net_sock_list_iter_HasNext(&iter)) {
+    VlcbNetSocketHandle sock = vlcb_net_sock_list_iter_Next(&iter);
+    sock->tc->DispatchPacket(sock->self);  // TODO: rewrite this to include info
+                                           // if the method emitted any
   }
 
   return emitted_any;

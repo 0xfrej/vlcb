@@ -3,6 +3,7 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
+#include "../../shared/interface.h"
 #include "can/packet.h"
 
 typedef union {
@@ -103,23 +104,22 @@ typedef struct {
   VlcbNetDevTrait const *tc;
 } VlcbNetDev;
 
-// TODO: change this to more of style I wrote socket stuff -> have reusable
-// trait implementation to save bytes
-#define vlcb_impl_net_dev(T, Name, send_f, receive_f, caps_f)               \
-  VlcbNetDev Name##_upcast(T *x) {                                          \
-    VlcbNetDevErr (*const send_)(T *const, const VlcbNetDevPacket *const) = \
-        (send_f);                                                           \
-    (void)send_;                                                            \
-    VlcbNetDevErr (*const receive_)(T *const, VlcbNetDevPacket *const) =    \
-        (receive_f);                                                        \
-    (void)receive_;                                                         \
-    const VlcbNetDevErr *(*const caps)(const T *const) = (caps_f);          \
-    (void)caps_;                                                            \
-    static VlcbNetDevTrait const tc = {                                     \
-        .Receive = (VlcbNetDevErr(*const)(                                  \
-            void *const, VlcbNetDevPacket *const))(receive_f),              \
-        .Send = (VlcbNetDevErr(*const)(                                     \
-            void *const, const VlcbNetDevPacket *const))(send_f),           \
-        .Caps = (const VlcbNetDevCaps *(*const)(void *))(caps_f)};          \
-    return (VlcbNetDev){.tc = &tc, .self = x};                              \
+#define vlcb_impl_net_dev(T, Name, send_f, receive_f, caps_f)                  \
+  VlcbNetDev Name##_Upcast(T *x) {                                             \
+    _TYPE_UPCAST_METHOD_PTR_SIG(send_f, VlcbNetDevErr, T *const,               \
+                                const VlcbNetDevPacket *const)                 \
+    _TYPE_UPCAST_METHOD_PTR_SIG(receive_f, VlcbNetDevErr, T *const,            \
+                                VlcbNetDevPacket *const)                       \
+    _TYPE_UPCAST_METHOD_PTR_SIG(caps_f, const VlcbNetDevCaps *,                \
+                                const T *const)                                \
+    _TYPE_UPCAST_VTABLE_DEF(tc, VlcbNetDevTrait,                               \
+                            _TYPE_UPCAST_VTABLE_METHOD_ENTRY(                  \
+                                Receive, receive_f, VlcbNetDevErr,             \
+                                void *const, VlcbNetDevPacket *const),         \
+                            _TYPE_UPCAST_VTABLE_METHOD_ENTRY(                  \
+                                Send, send_f, VlcbNetDevErr, void *const,      \
+                                const VlcbNetDevPacket *const),                \
+                            _TYPE_UPCAST_VTABLE_METHOD_ENTRY(                  \
+                                Caps, caps_f, const VlcbNetDevCaps *, void *)) \
+    return (VlcbNetDev){.tc = &tc, .self = x};                                 \
   }

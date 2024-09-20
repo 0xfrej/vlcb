@@ -8,9 +8,9 @@ void ProcessVlcbPacket(VlcbNetIface *const iface,
                        VlcbPacket *const packet) {
   VlcbProtocol proto = vlcb_pkt_DetectProtocol(packet->opc);
 
-  for (uint8_t i = 0; i < sockets->len; i++) {
-    VlcbNetSocket *const sock = &sockets->list[i];
-
+  VlcbNetSocketListIter iter = vlcb_net_sock_list_GetIterator(sockets);
+  while (vlcb_net_sock_list_iter_HasNext(&iter)) {
+    VlcbNetSocketHandle sock = vlcb_net_sock_list_iter_Next(&iter);
     if (!sock->tc->SupportsProtocol(proto)) {
       continue;
     }

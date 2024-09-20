@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
 
 #include "../packet/vlcb.h"
@@ -24,19 +25,27 @@ typedef struct {
   VlcbNetSocketTrait const *tc;
 } VlcbNetSocket;
 
-typedef struct VlcbNetSocketList VlcbNetSocketList;
 typedef VlcbNetSocket *VlcbNetSocketHandle;
+typedef struct {
+  const size_t size;
+  VlcbNetSocketHandle *const ptr;
+  size_t len;
+} VlcbNetSocketList;
 
-VlcbNetSocketList vlcb_net_sock_list_New();
-void vlcb_net_sock_list_Insert(VlcbNetSocketList *list,
+VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *list,
+                                         size_t size);
+void vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,
                                VlcbNetSocketHandle sock);
-void vlcb_net_sock_list_Remove(VlcbNetSocketList *list,
-                               VlcbNetSocketHandle sock);
 
-typedef struct VlcbNetSocketListIter VlcbNetSocketListIter;
+typedef struct {
+  size_t pointer;
+  VlcbNetSocketList *const list;
+} VlcbNetSocketListIter;
 
-VlcbNetSocketListIter vlcb_net_sock_list_GetIterator(VlcbNetSocketList *list);
+VlcbNetSocketListIter vlcb_net_sock_list_GetIterator(
+    VlcbNetSocketList *const list);
 
-void vlcb_net_sock_list_iter_Reset(VlcbNetSocketListIter *iter);
-bool vlcb_net_sock_list_iter_HasNext(VlcbNetSocketListIter *iter);
-VlcbNetSocketHandle vlcb_net_sock_list_iter_Next(VlcbNetSocketListIter *iter);
+void vlcb_net_sock_list_iter_Reset(VlcbNetSocketListIter *const iter);
+bool vlcb_net_sock_list_iter_HasNext(VlcbNetSocketListIter *const iter);
+VlcbNetSocketHandle vlcb_net_sock_list_iter_Next(
+    VlcbNetSocketListIter *const iter);

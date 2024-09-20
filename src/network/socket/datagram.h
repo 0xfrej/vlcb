@@ -14,6 +14,7 @@ typedef struct {
   VlcbPacketBuf const *tx_buf;
 } VlcbNetDatagramSocket;
 
-VlcbNetSocket vlcb_net_sock_UpcastDatagram(VlcbNetDatagramSocket *);
+VlcbNetSocket vlcb_net_sock_datagram_Upcast(VlcbNetDatagramSocket *);
+
 VlcbNetDatagramSocket vlcb_net_sock_NewDatagramSocket(
     VlcbPacketBuf const *rx_buf, VlcbPacketBuf const *tx_buf);
