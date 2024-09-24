@@ -5,6 +5,7 @@
 #include <stdint.h>
 
 #include "iface_can.h"
+#include "iface_vlcb.h"
 
 VlcbNetIface vlcb_net_iface_New(VlcbNetDevHwAddr hw_addr,
                                 VlcbNodeAddr node_addr) {
@@ -19,15 +20,18 @@ VlcbNetIface vlcb_net_iface_New(VlcbNetDevHwAddr hw_addr,
 }
 
 int vlcb_net_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev) {
-  assert(iface != NULL &&
-         dev != NULL /* iface and device need to be valid pointers */);
-  // TODO: check if the device is valid
+  assert(iface != NULL && dev != NULL && dev->self &&
+         dev->tc /* iface and device need to be valid pointers */);
+
+  assert(iface->dev != NULL /* disallow rebinding */);
+
   iface->dev = dev;
+  iface->interceptors.net_dev = NULL;
   return 0;
 }
 
 bool IngressPackets(VlcbNetIface *const iface,
-                    VlcbNetSocketList *const sockets) {
+                    const VlcbNetSocketList *const sockets) {
   bool processed_any = false;
 
   const VlcbNetDev *dev = iface->dev;
@@ -43,9 +47,9 @@ bool IngressPackets(VlcbNetIface *const iface,
       break;
     }
 
-    if (dev_err != VLCB_NET_DEV_ERR_OK) {
-      // TODO: log error
-    }
+    // if (dev_err != VLCB_NET_DEV_ERR_OK) {
+    // TODO: log error
+    // }
 
     switch (caps.medium) {
       case VLCB_MEDIUM_CAN:
@@ -61,25 +65,31 @@ bool IngressPackets(VlcbNetIface *const iface,
 }
 
 bool EgressPackets(VlcbNetIface *const iface,
-                   VlcbNetSocketList *const sockets) {
+                   const VlcbNetSocketList *const sockets) {
   bool emitted_any = false;
 
-  const VlcbNetDev *dev = iface->dev;
+  const VlcbNetDevCaps caps = iface->dev->tc->Caps(iface->dev->self);
   VlcbNetSocketListIter iter = vlcb_net_sock_list_GetIterator(sockets);
 
   while (vlcb_net_sock_list_iter_HasNext(&iter)) {
     VlcbNetSocketHandle sock = vlcb_net_sock_list_iter_Next(&iter);
-    sock->tc->DispatchPacket(sock->self);  // TODO: rewrite this to include info
-                                           // if the method emitted any
+
+    VlcbPacket packet;  // TODO: ensure clean packet
+
+    bool emitted_packet = sock->tc->DispatchPacket(sock->self, &packet);
+    // TODO: reject invalid packets -> for example when the packet wasn't filled
+    emitted_any |= emitted_packet;
+    if (emitted_packet) {
+      DispatchVlcbPacket(iface, caps, &packet);
+    }
   }
 
   return emitted_any;
 }
 
-VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface,
-                                           VlcbNetSocketList *const sockets) {
+VlcbNetIfacePollResult vlcb_net_iface_Poll(
+    VlcbNetIface *const iface, const VlcbNetSocketList *const sockets) {
   assert(iface != NULL && sockets != NULL && iface->dev != NULL /* iface, sockets need to be valid pointers and device needs to be initialized */);
-  // TODO: probably assert validity of socket list not just it's pointer too
 
   bool readiness_may_have_changed = false;
 

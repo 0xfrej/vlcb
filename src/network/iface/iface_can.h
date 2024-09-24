@@ -5,5 +5,8 @@
 #include "iface.h"
 
 void ProcessCanPacket(VlcbNetIface* const iface,
-                      VlcbNetSocketList* const sockets,
+                      const VlcbNetSocketList* const sockets,
                       VlcbNetDevPacket* packet);
+
+VlcbNetDevErr DispatchCanPacket(VlcbNetIface* const iface,
+                                const VlcbPacket* const packet);

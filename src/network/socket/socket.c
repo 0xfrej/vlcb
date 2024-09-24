@@ -21,7 +21,8 @@ void vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,
   list->ptr[list->len++] = sock;
 }
 
-VlcbNetSocketListIter vlcb_net_sock_list_GetIterator(VlcbNetSocketList *list) {
+VlcbNetSocketListIter vlcb_net_sock_list_GetIterator(
+    const VlcbNetSocketList *const list) {
   assert(list);
   return (VlcbNetSocketListIter){
       .list = list,

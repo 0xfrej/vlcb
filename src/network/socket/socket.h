@@ -16,8 +16,9 @@ typedef enum {
 
 typedef struct {
   bool (*SupportsProtocol)(VlcbProtocol protocol);
-  VlcbNetSocketErr (*ProcessPacket)(void *, const VlcbPacket *const);
-  VlcbNetSocketErr (*DispatchPacket)(void *);
+  VlcbNetSocketErr (*ProcessPacket)(void *const self,
+                                    const VlcbPacket *const packet);
+  bool (*DispatchPacket)(void *const self, VlcbPacket *const packet);
 } VlcbNetSocketTrait;
 
 typedef struct {
@@ -44,11 +45,11 @@ void vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,
 
 typedef struct {
   size_t pointer;
-  VlcbNetSocketList *const list;
+  const VlcbNetSocketList *const list;
 } VlcbNetSocketListIter;
 
 VlcbNetSocketListIter vlcb_net_sock_list_GetIterator(
-    VlcbNetSocketList *const list);
+    const VlcbNetSocketList *const list);
 
 void vlcb_net_sock_list_iter_Reset(VlcbNetSocketListIter *const iter);
 bool vlcb_net_sock_list_iter_HasNext(VlcbNetSocketListIter *const iter);

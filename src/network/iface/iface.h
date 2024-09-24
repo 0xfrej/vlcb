@@ -31,8 +31,8 @@ typedef struct {
   bool readiness_may_have_changed;
 } VlcbNetIfacePollResult;
 
-VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface,
-                                           VlcbNetSocketList *const sockets);
+VlcbNetIfacePollResult vlcb_net_iface_Poll(
+    VlcbNetIface *const iface, const VlcbNetSocketList *const sockets);
 VlcbMedium vlcb_net_iface_Medium(const VlcbNetIface *const iface);
 void vlcb_net_iface_RegisterNetDevListener(VlcbNetIface *const iface,
                                            VlcbIfaceNetDevInterceptor listener);
