@@ -1,6 +1,13 @@
 #pragma once
 
+#include <inttypes.h>
+
 #include "vlcb_defs.h"
+
+typedef uint16_t CanId;
+
+CanId vlcb_defs_NewCanId(uint16_t id);
+CanId vlcb_defs_NewCanIdFromBytes(uint8_t hi, uint8_t lo);
 
 typedef enum {
   VLCB_CAN_PRIO_SELF_ENUM = 0b0000,

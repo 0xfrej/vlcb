@@ -34,6 +34,11 @@ typedef struct {
 
 VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *list,
                                          size_t size);
+
+#define VLCB_NET_SOCK_LIST(name, size)   \
+  VlcbNetSocketHandle data_##name[size]; \
+  VlcbNetSocketList name = vlcb_net_sock_list_New(data_##name, size);
+
 void vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,
                                VlcbNetSocketHandle sock);
 

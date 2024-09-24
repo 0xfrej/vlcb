@@ -4,14 +4,6 @@
 #include <stdbool.h>
 #include <string.h>
 
-struct VlcbPacketBuf {
-  void *const buffer;
-  size_t head;
-  size_t tail;
-  const size_t maxlen;
-  const size_t bucket_size;
-};
-
 VlcbPacketBuf vlcb_net_packetbuf_New(void *const buf, size_t maxlen,
                                      size_t bucket_size) {
   assert(buf && maxlen);
@@ -23,20 +15,20 @@ VlcbPacketBuf vlcb_net_packetbuf_New(void *const buf, size_t maxlen,
                          .maxlen = maxlen};
 }
 
-void vlcb_net_packetbuf_Reset(VlcbPacketBuf *c) {
+void vlcb_net_packetbuf_Reset(VlcbPacketBuf *const c) {
   assert(c);
 
   c->head = 0;
   c->tail = 0;
 }
 
-bool vlcb_net_packetbuf_IsEmpty(VlcbPacketBuf *c) {
+bool vlcb_net_packetbuf_IsEmpty(VlcbPacketBuf *const c) {
   assert(c);
 
   return c->head == c->tail;
 }
 
-bool vlcb_net_packetbuf_IsFull(VlcbPacketBuf *c) {
+bool vlcb_net_packetbuf_IsFull(VlcbPacketBuf *const c) {
   assert(c);
 
   size_t head = c->head + 1;
@@ -47,7 +39,7 @@ bool vlcb_net_packetbuf_IsFull(VlcbPacketBuf *c) {
   return head == c->tail;
 }
 
-size_t vlcb_net_packetbuf_Capacity(VlcbPacketBuf *c) {
+size_t vlcb_net_packetbuf_Capacity(VlcbPacketBuf *const c) {
   assert(c);
 
   size_t size = c->maxlen;
@@ -63,13 +55,13 @@ size_t vlcb_net_packetbuf_Capacity(VlcbPacketBuf *c) {
   return size;
 }
 
-size_t vlcb_net_packetbuf_BucketSize(VlcbPacketBuf *c) {
+size_t vlcb_net_packetbuf_BucketSize(VlcbPacketBuf *const c) {
   assert(c);
 
   return c->bucket_size;
 }
 
-int vlcb_net_packetbuf_Push(VlcbPacketBuf *c, void *data) {
+int vlcb_net_packetbuf_Push(VlcbPacketBuf *const c, const void *data) {
   assert(c && c->buffer && data);
 
   int next;
@@ -89,7 +81,7 @@ int vlcb_net_packetbuf_Push(VlcbPacketBuf *c, void *data) {
   return 0;
 }
 
-int vlcb_net_packetbuf_Pop(VlcbPacketBuf *c, void *data) {
+int vlcb_net_packetbuf_Pop(VlcbPacketBuf *const c, void *data) {
   assert(c && c->buffer && data);
   int next;
 

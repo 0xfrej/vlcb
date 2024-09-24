@@ -23,15 +23,16 @@ struct VlcbNetIface {
   VlcbNetInterceptors interceptors;
 };
 
-VlcbNetIface vlcb_iface_New(VlcbNetDevHwAddr hw_addr, VlcbNodeAddr node_addr);
-int vlcb_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev);
+VlcbNetIface vlcb_net_iface_New(VlcbNetDevHwAddr hw_addr,
+                                VlcbNodeAddr node_addr);
+int vlcb_net_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev);
 
 typedef struct {
   bool readiness_may_have_changed;
 } VlcbNetIfacePollResult;
 
-VlcbNetIfacePollResult vlcb_iface_Poll(VlcbNetIface *const iface,
-                                       VlcbNetSocketList *const sockets);
-VlcbMedium vlcb_iface_Medium(const VlcbNetIface *const iface);
-void vlcb_iface_RegisterNetDevListener(VlcbNetIface *const iface,
-                                       VlcbIfaceNetDevInterceptor listener);
+VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface,
+                                           VlcbNetSocketList *const sockets);
+VlcbMedium vlcb_net_iface_Medium(const VlcbNetIface *const iface);
+void vlcb_net_iface_RegisterNetDevListener(VlcbNetIface *const iface,
+                                           VlcbIfaceNetDevInterceptor listener);

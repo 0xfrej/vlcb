@@ -6,7 +6,8 @@
 
 #include "iface_can.h"
 
-VlcbNetIface vlcb_iface_New(VlcbNetDevHwAddr hw_addr, VlcbNodeAddr node_addr) {
+VlcbNetIface vlcb_net_iface_New(VlcbNetDevHwAddr hw_addr,
+                                VlcbNodeAddr node_addr) {
   VlcbNetIface iface = {
       .hw_addr = hw_addr,
       .node_addr = node_addr,
@@ -17,7 +18,7 @@ VlcbNetIface vlcb_iface_New(VlcbNetDevHwAddr hw_addr, VlcbNodeAddr node_addr) {
   return iface;
 }
 
-int vlcb_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev) {
+int vlcb_net_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev) {
   assert(iface != NULL &&
          dev != NULL /* iface and device need to be valid pointers */);
   // TODO: check if the device is valid
@@ -30,7 +31,7 @@ bool IngressPackets(VlcbNetIface *const iface,
   bool processed_any = false;
 
   const VlcbNetDev *dev = iface->dev;
-  const VlcbNetDevCaps *caps = dev->tc->Caps(dev->self);
+  const VlcbNetDevCaps caps = dev->tc->Caps(dev->self);
 
   do {
     VlcbNetDevPacket *phy_packet;
@@ -46,7 +47,7 @@ bool IngressPackets(VlcbNetIface *const iface,
       // TODO: log error
     }
 
-    switch (caps->medium) {
+    switch (caps.medium) {
       case VLCB_MEDIUM_CAN:
         ProcessCanPacket(iface, sockets, phy_packet);
       default:
@@ -75,8 +76,8 @@ bool EgressPackets(VlcbNetIface *const iface,
   return emitted_any;
 }
 
-VlcbNetIfacePollResult vlcb_iface_Poll(VlcbNetIface *const iface,
-                                       VlcbNetSocketList *const sockets) {
+VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface,
+                                           VlcbNetSocketList *const sockets) {
   assert(iface != NULL && sockets != NULL && iface->dev != NULL /* iface, sockets need to be valid pointers and device needs to be initialized */);
   // TODO: probably assert validity of socket list not just it's pointer too
 
@@ -100,8 +101,8 @@ VlcbNetIfacePollResult vlcb_iface_Poll(VlcbNetIface *const iface,
   };
 }
 
-void vlcb_iface_RegisterNetDevListener(VlcbNetIface *const iface,
-                                       VlcbIfaceNetDevInterceptor listener) {
+void vlcb_net_iface_RegisterNetDevListener(
+    VlcbNetIface *const iface, VlcbIfaceNetDevInterceptor listener) {
   assert(iface != NULL &&
          listener != NULL /* iface and listener need to be valid poitners */);
 

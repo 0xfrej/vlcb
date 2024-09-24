@@ -29,11 +29,6 @@ typedef enum {
 
 VlcbProtocol vlcb_pkt_DetectProtocol(VlcbOpCode opc);
 
-/**
- * VLCB node address (11 bit wide)
- */
-typedef uint16_t VlcbNodeAddr;
-
 typedef struct {
   VlcbProtocol proto;
   VlcbOpCode opc;
