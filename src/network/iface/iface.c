@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "../../shared/log.h"
 #include "iface_can.h"
 #include "iface_vlcb.h"
 
@@ -47,9 +48,9 @@ bool IngressPackets(VlcbNetIface *const iface,
       break;
     }
 
-    // if (dev_err != VLCB_NET_DEV_ERR_OK) {
-    // TODO: log error
-    // }
+    if (dev_err != VLCB_NET_DEV_ERR_OK) {
+      VLCBLOG_ERROR(vlcb_dev_VlcbNetDevErrToStr(dev_err));
+    }
 
     switch (caps.medium) {
       case VLCB_MEDIUM_CAN:
