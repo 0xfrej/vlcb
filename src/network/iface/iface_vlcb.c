@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "../../shared/log.h"
 #include "iface_can.h"
 
 void ProcessVlcbPacket(VlcbNetIface *const iface,
@@ -20,7 +21,7 @@ void ProcessVlcbPacket(VlcbNetIface *const iface,
 
     VlcbNetSocketErr err = sock->tc->ProcessPacket(sock->self, packet);
     if (err != VLCB_NET_SOCK_ERR_OK) {
-      // TODO: handle error
+      VLCBLOG_ERROR(vlcb_net_sock_VlcbNetSocketErrToStr(err));
     }
   }
 }

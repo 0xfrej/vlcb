@@ -5,7 +5,16 @@
 
 #include "../../defs/can.h"
 #include "../../shared/interface.h"
+
+#define VLCB_NET_DEV_PACKET_MAX_PAYLOAD 8
+
+typedef uint8_t VlcbNetDevPacketPayload[VLCB_NET_DEV_PACKET_MAX_PAYLOAD];
+
 #include "can/packet.h"
+
+typedef enum {
+  VLCB_MEDIUM_CAN,
+} VlcbMedium;
 
 typedef union {
   VlcbNetDevPacketCanMeta can;
@@ -15,15 +24,7 @@ typedef union {
   CanId can_id;
 } VlcbNetDevHwAddr;
 
-VlcbNetDevHwAddr vlcb_net_dev_hw_addr_NewCanId(CanId id);
-
-#define VLCB_NET_DEV_PACKET_MAX_PAYLOAD 8
-
-typedef uint8_t VlcbNetDevPacketPayload[VLCB_NET_DEV_PACKET_MAX_PAYLOAD];
-
-typedef enum {
-  VLCB_MEDIUM_CAN,
-} VlcbMedium;
+VlcbNetDevHwAddr vlcb_net_dev_NewCanIdHwAddr(CanId id);
 
 /**
  * Abstract physical device packet
@@ -71,6 +72,8 @@ typedef enum {
    */
   VLCB_NET_DEV_ERR_PAYLOAD_TOO_LARGE,
 
+  VLCB_NET_DEV_ERR_INVALID_CANID,
+
   /**
    * Not an actual error, can be used to ensure the returned codes are within
    * valid range.
@@ -78,7 +81,7 @@ typedef enum {
   VLCB_NET_DEV_ERR_COUNT,
 } VlcbNetDevErr;
 
-const char *vlcb_dev_VlcbNetDevErrToStr(VlcbNetDevErr err);
+vlcb_error vlcb_dev_VlcbNetDevErrToStr(VlcbNetDevErr err);
 
 typedef struct Dev {
   /**

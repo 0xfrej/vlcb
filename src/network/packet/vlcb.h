@@ -58,7 +58,7 @@ typedef enum {
   VLCB_PKT_CONSTRUCT_ERR_COUNT,
 } VlcbPacketConstructErr;
 
-const char* vlcb_pkt_VlcbPacketConstructErrToStr(VlcbPacketConstructErr err);
+vlcb_error vlcb_pkt_VlcbPacketConstructErrToStr(VlcbPacketConstructErr err);
 
 VlcbPacketConstructErr vlcb_pkt_NewPacketUnchecked(
     VlcbProtocol proto, VlcbOpCode opc, uint8_t payload_len,

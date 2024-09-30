@@ -81,7 +81,10 @@ bool EgressPackets(VlcbNetIface *const iface,
     // TODO: reject invalid packets -> for example when the packet wasn't filled
     emitted_any |= emitted_packet;
     if (emitted_packet) {
-      DispatchVlcbPacket(iface, caps, &packet);
+      VlcbNetDevErr err = DispatchVlcbPacket(iface, caps, &packet);
+      if (err != VLCB_NET_DEV_ERR_OK) {
+        VLCBLOG_ERROR(vlcb_dev_VlcbNetDevErrToStr(err));
+      }
     }
   }
 

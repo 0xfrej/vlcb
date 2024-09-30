@@ -1,5 +1,7 @@
 #pragma once
 
+#include "error.h"
+
 #ifndef VLCB_NOLOGGING
 
 typedef enum {
@@ -12,13 +14,13 @@ typedef enum {
 
 typedef struct {
   VlcbLogMessageType type;
-  const char* const message;
+  vlcb_error message;
 } VlcbLogMessage;
 
-void VlcbLogInfo(const char* const message);
-void VlcbLogError(const char* const message);
+void VlcbLogInfo(vlcb_error message);
+void VlcbLogError(vlcb_error message);
 #ifdef DEBUG
-void VlcbLogDebug(const char* const message);
+void VlcbLogDebug(vlcb_error message);
 #endif  // DEBUG
 
 typedef void VlcbLogMessageHandler(VlcbLogMessage msg);

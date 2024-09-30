@@ -14,6 +14,8 @@ typedef enum {
   VLCB_NET_SOCK_ERR_COUNT,
 } VlcbNetSocketErr;
 
+vlcb_error vlcb_net_sock_VlcbNetSocketErrToStr(VlcbNetSocketErr err);
+
 typedef struct {
   bool (*SupportsProtocol)(VlcbProtocol protocol);
   VlcbNetSocketErr (*ProcessPacket)(void *const self,

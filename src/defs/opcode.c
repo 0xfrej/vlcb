@@ -1,8 +1,13 @@
 #include "opcode.h"
 
-VlcbOpcErr vlcb_defs_VlcbOpcFromRaw(uint8_t val, VlcbOpCode* const opc) {
+#include <assert.h>
+#include <stddef.h>
+
+VlcbEnumConstructErr vlcb_defs_VlcbOpcFromRaw(uint8_t val,
+                                              VlcbOpCode* const opc) {
+  assert(opc != NULL);
   // TODO: add checks
 
   *opc = (VlcbOpCode)val;
-  return VLCB_OPC_ERR_OK;
+  return VLCB_ENUM_ERR_OK;
 }

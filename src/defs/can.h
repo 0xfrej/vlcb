@@ -2,12 +2,12 @@
 
 #include <inttypes.h>
 
+#include "../shared/error.h"
 #include "vlcb_defs.h"
 
-typedef uint16_t CanId;
+typedef uint8_t CanId;
 
-CanId vlcb_defs_NewCanId(uint16_t id);
-CanId vlcb_defs_NewCanIdFromBytes(uint8_t hi, uint8_t lo);
+vlcb_error vlcb_defs_NewCanId(uint8_t value, CanId *const id);
 
 typedef enum {
   VLCB_CAN_PRIO_SELF_ENUM = 0b0000,
@@ -17,5 +17,7 @@ typedef enum {
   VLCB_CAN_PRIO_LOW = 0b0111,
   VLCB_CAN_PRIO_LOWEST = 0b1111,
 } VlcbCanPriority;
+
+#define VLCB_CAN_PRIO_DEFAULT VLCB_CAN_PRIO_NORMAL
 
 VlcbCanPriority vlcb_defs_VlcbCanPriorityForOpcode(VlcbOpCode opc);

@@ -12,16 +12,16 @@ void LogMessage(const VlcbLogMessage message) {
   }
 }
 
-void VlcbLogInfo(const char *const message) {
+void VlcbLogInfo(vlcb_error message) {
   LogMessage((VlcbLogMessage){.type = VLCB_LOG_INFO, .message = message});
 }
 
-void VlcbLogError(const char *const message) {
+void VlcbLogError(vlcb_error message) {
   LogMessage((VlcbLogMessage){.type = VLCB_LOG_ERROR, .message = message});
 }
 
 #ifdef DEBUG
-void VlcbLogDebug(const char *const message) {
+void VlcbLogDebug(vlcb_error message) {
   LogMessage((VlcbLogMessage){.type = VLCB_LOG_DEBUG, .message = message});
 }
 #endif /* ifdef DEBUG */

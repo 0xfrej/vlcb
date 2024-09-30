@@ -1,5 +1,7 @@
 #include "dev.h"
 
-VlcbNetDevHwAddr vlcb_net_dev_hw_addr_NewCanId(CanId id) {
+#include "../../defs/can.h"
+
+VlcbNetDevHwAddr vlcb_net_dev_NewCanIdHwAddr(CanId id) {
   return (VlcbNetDevHwAddr){.can_id = id};
 }

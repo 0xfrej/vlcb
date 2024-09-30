@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <string.h>
 
+#include "../../shared/log.h"
 #include "../dev/dev.h"
 #include "../packet/vlcb.h"
 #include "../socket/socket.h"
@@ -24,10 +25,11 @@ void ProcessCanPacket(VlcbNetIface* const iface,
   VlcbNetDevPacketPayload* payload = &packet->payload;
   VlcbOpCode opc;
   {
-    VlcbOpcErr err = vlcb_defs_VlcbOpcFromRaw(*payload[0], &opc);
+    VlcbEnumConstructErr err = vlcb_defs_VlcbOpcFromRaw(*payload[0], &opc);
 
-    if (err != VLCB_OPC_ERR_OK) {
-      // TODO: handle err
+    if (err != VLCB_ENUM_ERR_OK) {
+      VLCBLOG_ERROR(vlcb_error_VlcbEnumErrToStr(err));
+      return;
     }
   }
 
@@ -37,7 +39,8 @@ void ProcessCanPacket(VlcbNetIface* const iface,
     err = vlcb_pkt_NewPacket(opc, packet->payload_len,
                              (VlcbPacketPayload*)(payload + 1), &vlcb_packet);
     if (err != VLCB_PKT_CONSTRUCT_ERR_OK) {
-      // TODO: handle err
+      VLCBLOG_ERROR(vlcb_pkt_VlcbPacketConstructErrToStr(err));
+      return;
     }
   }
 
