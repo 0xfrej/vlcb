@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <stdbool.h>
 
-VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *list,
+VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *const list,
                                          size_t size) {
   assert(list && size);
 

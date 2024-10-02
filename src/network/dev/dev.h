@@ -24,6 +24,8 @@ typedef union {
   CanId can_id;
 } VlcbNetDevHwAddr;
 
+bool vlcb_net_dev_IsHwAddrValid(VlcbMedium medium, VlcbNetDevHwAddr addr);
+
 VlcbNetDevHwAddr vlcb_net_dev_NewCanIdHwAddr(CanId id);
 
 /**
@@ -106,9 +108,12 @@ typedef struct Dev {
 } VlcbNetDevTrait;
 
 typedef struct {
-  void *self;
-  VlcbNetDevTrait const *tc;
+  void *const self;
+  const VlcbNetDevTrait *const tc;
+  const void *owner;
 } VlcbNetDev;
+
+int vlcb_net_dev_Bind(VlcbNetDev *const dev, const void *const owner);
 
 #define vlcb_impl_net_dev(T, Name, send_f, receive_f, caps_f)               \
   VlcbNetDev Name##_Upcast(T *x) {                                          \
@@ -127,5 +132,5 @@ typedef struct {
                                          const VlcbNetDevPacket *const),    \
         _TYPE_UPCAST_VTABLE_METHOD_ENTRY(Caps, caps_f, VlcbNetDevCaps,      \
                                          const void *const))                \
-    return (VlcbNetDev){.tc = &tc, .self = x};                              \
+    return (VlcbNetDev){.tc = &tc, .self = x, .owner = NULL};               \
   }

@@ -1,8 +1,29 @@
 #include "dev.h"
 
 #include <assert.h>
+#include <stddef.h>
 
 #include "../../defs/can.h"
+
+int vlcb_net_dev_Bind(VlcbNetDev *const dev, const void *const owner) {
+  assert(dev != NULL && owner != NULL);
+
+  if (dev->owner != NULL) {
+    return 1;  // device is already bound to something
+  }
+
+  dev->owner = owner;
+  return 0;
+}
+
+bool vlcb_net_dev_IsHwAddrValid(VlcbMedium medium, VlcbNetDevHwAddr addr) {
+  switch (medium) {
+    case VLCB_MEDIUM_CAN:
+      return vlcb_defs_IsCanIdValid(addr.can_id);
+    default:
+      assert(false /* unimplemented case guard */);
+  }
+}
 
 VlcbNetDevHwAddr vlcb_net_dev_NewCanIdHwAddr(CanId id) {
   return (VlcbNetDevHwAddr){.can_id = id};

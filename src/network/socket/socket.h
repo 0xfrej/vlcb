@@ -24,8 +24,8 @@ typedef struct {
 } VlcbNetSocketTrait;
 
 typedef struct {
-  void *self;
-  VlcbNetSocketTrait const *tc;
+  void *const self;
+  const VlcbNetSocketTrait *const tc;
 } VlcbNetSocket;
 
 typedef VlcbNetSocket *VlcbNetSocketHandle;
@@ -35,7 +35,7 @@ typedef struct {
   size_t len;
 } VlcbNetSocketList;
 
-VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *list,
+VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *const list,
                                          size_t size);
 
 #define VLCB_NET_SOCK_LIST(name, size)   \

@@ -1,0 +1,13 @@
+## TODO
+- figure out how to pass addresses when communicating (we need to care only about the hw addr, regardless of the type)
+    - one idea is to have it on sockets with pointers to the actual addresses
+    - another idea is to let the hw addr be specified on the packet itself, wasting storage
+        - this has issues because when an address changes and function of the module resumes, it will broadcast wrong values
+            - this is an issue with node address in payload as well and queued packets should be flushed after NN change (not on CAN id change unless the addr is stored in the packet itself)
+    - we can't pass the addr to a poll as that will prohibit multiple modules using one interface
+- figure how to handle lower level comms (like can control)
+- implement duplicate address detection and auto reset (it should also flush any queued socket packets)
+- managed buffers on heap / both set size and dynamic
+- setup tests using unity
+- setup doxygen
+- setup github pipeline for testing

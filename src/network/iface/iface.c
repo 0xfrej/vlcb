@@ -8,10 +8,9 @@
 #include "iface_can.h"
 #include "iface_vlcb.h"
 
-VlcbNetIface vlcb_net_iface_New(VlcbNetDevHwAddr hw_addr,
-                                VlcbNodeAddr node_addr) {
+VlcbNetIface vlcb_net_iface_New() {
   VlcbNetIface iface = {
-      .hw_addr = hw_addr, .node_addr = node_addr, .dev = NULL,
+      .dev = NULL,
       // .interceptors = {.net_dev = NULL},
   };
 
@@ -19,10 +18,17 @@ VlcbNetIface vlcb_net_iface_New(VlcbNetDevHwAddr hw_addr,
 }
 
 int vlcb_net_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev) {
-  assert(iface != NULL && dev != NULL && dev->self &&
-         dev->tc /* iface and device need to be valid pointers */);
+  assert(iface != NULL && dev != NULL && dev->self != NULL &&
+         dev->tc != NULL /* iface and device need to be valid pointers */);
 
-  assert(iface->dev != NULL /* disallow rebinding */);
+  if (iface->dev != NULL) {
+    return 1;  // interface already has a bound device
+  }
+
+  int r = vlcb_net_dev_Bind(dev, iface);
+  if (r != 0) {
+    return 2;  // device is already bound to another interface
+  }
 
   iface->dev = dev;
   // iface->interceptors.net_dev = NULL;
@@ -90,7 +96,8 @@ bool EgressPackets(VlcbNetIface *const iface,
 }
 
 VlcbNetIfacePollResult vlcb_net_iface_Poll(
-    VlcbNetIface *const iface, const VlcbNetSocketList *const sockets) {
+    VlcbNetIface *const iface, const VlcbNetSocketList *const sockets,
+    const VlcbNetDevHwAddr hw_addr) {
   assert(iface != NULL && sockets != NULL && iface->dev != NULL /* iface, sockets need to be valid pointers and device needs to be initialized */);
 
   bool readiness_may_have_changed = false;
