@@ -47,3 +47,12 @@ VlcbNetSocketHandle vlcb_net_sock_list_iter_Next(
 
   return iter->list->ptr[iter->pointer++];
 }
+
+vlcb_error vlcb_net_sock_VlcbNetSocketErrToStr(VlcbNetSocketErr err) {
+  assert(err > VLCB_NET_SOCK_ERR_OK && err < VLCB_NET_SOCK_ERR_COUNT);
+
+  switch (err) {
+    case VLCB_NET_SOCK_ERR_RX_BUF_FULL:
+      return "socket rx buffer is full, dropping the packet";
+  }
+}

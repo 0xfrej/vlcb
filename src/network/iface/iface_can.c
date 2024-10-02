@@ -14,13 +14,13 @@
 void ProcessCanPacket(VlcbNetIface* const iface,
                       const VlcbNetSocketList* const sockets,
                       VlcbNetDevPacket* packet) {
-  if (iface->interceptors.net_dev != NULL) {
-    bool should_continue = iface->interceptors.net_dev(iface, packet);
-
-    if (should_continue == false) {
-      return;
-    }
-  }
+  // if (iface->interceptors.net_dev != NULL) {
+  //   bool should_continue = iface->interceptors.net_dev(iface, packet);
+  //
+  //   if (should_continue == false) {
+  //     return;
+  //   }
+  // }
 
   VlcbNetDevPacketPayload* payload = &packet->payload;
   VlcbOpCode opc;

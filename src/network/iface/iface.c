@@ -11,10 +11,8 @@
 VlcbNetIface vlcb_net_iface_New(VlcbNetDevHwAddr hw_addr,
                                 VlcbNodeAddr node_addr) {
   VlcbNetIface iface = {
-      .hw_addr = hw_addr,
-      .node_addr = node_addr,
-      .dev = NULL,
-      .interceptors = {.net_dev = NULL},
+      .hw_addr = hw_addr, .node_addr = node_addr, .dev = NULL,
+      // .interceptors = {.net_dev = NULL},
   };
 
   return iface;
@@ -27,7 +25,7 @@ int vlcb_net_iface_Bind(VlcbNetIface *const iface, VlcbNetDev *const dev) {
   assert(iface->dev != NULL /* disallow rebinding */);
 
   iface->dev = dev;
-  iface->interceptors.net_dev = NULL;
+  // iface->interceptors.net_dev = NULL;
   return 0;
 }
 
@@ -49,7 +47,7 @@ bool IngressPackets(VlcbNetIface *const iface,
     }
 
     if (dev_err != VLCB_NET_DEV_ERR_OK) {
-      VLCBLOG_ERROR(vlcb_dev_VlcbNetDevErrToStr(dev_err));
+      VLCBLOG_ERROR(vlcb_net_dev_VlcbNetDevErrToStr(dev_err));
     }
 
     switch (caps.medium) {
@@ -83,7 +81,7 @@ bool EgressPackets(VlcbNetIface *const iface,
     if (emitted_packet) {
       VlcbNetDevErr err = DispatchVlcbPacket(iface, caps, &packet);
       if (err != VLCB_NET_DEV_ERR_OK) {
-        VLCBLOG_ERROR(vlcb_dev_VlcbNetDevErrToStr(err));
+        VLCBLOG_ERROR(vlcb_net_dev_VlcbNetDevErrToStr(err));
       }
     }
   }
@@ -115,10 +113,11 @@ VlcbNetIfacePollResult vlcb_net_iface_Poll(
   };
 }
 
-void vlcb_net_iface_RegisterNetDevListener(
-    VlcbNetIface *const iface, VlcbIfaceNetDevInterceptor listener) {
-  assert(iface != NULL &&
-         listener != NULL /* iface and listener need to be valid poitners */);
-
-  iface->interceptors.net_dev = listener;
-}
+// void vlcb_net_iface_RegisterNetDevListener(
+//     VlcbNetIface *const iface, VlcbIfaceNetDevInterceptor listener) {
+//   assert(iface != NULL &&
+//          listener != NULL /* iface and listener need to be valid poitners
+//          */);
+//
+//   iface->interceptors.net_dev = listener;
+// }

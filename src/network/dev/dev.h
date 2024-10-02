@@ -81,7 +81,7 @@ typedef enum {
   VLCB_NET_DEV_ERR_COUNT,
 } VlcbNetDevErr;
 
-vlcb_error vlcb_dev_VlcbNetDevErrToStr(VlcbNetDevErr err);
+vlcb_error vlcb_net_dev_VlcbNetDevErrToStr(VlcbNetDevErr err);
 
 typedef struct Dev {
   /**

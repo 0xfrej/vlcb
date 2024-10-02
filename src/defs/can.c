@@ -6,27 +6,52 @@
 
 #include "vlcb_defs.h"
 
-vlcb_error err_invalid_val = "can id value is invalid";
+bool vlcb_defs_IsCanIdValid(CanId id) { return id > 0 && id < 128; }
 
-bool IsCanIdValid(CanId id) { return id > 0 && id < 128; }
-
-vlcb_error vlcb_defs_NewCanId(uint8_t value, CanId *const id) {
+bool vlcb_defs_NewCanId(uint8_t value, CanId *const id) {
   assert(id);
 
   CanId _id = (CanId)value;
 
-  if (IsCanIdValid(_id)) {
+  if (vlcb_defs_IsCanIdValid(_id)) {
     *id = _id;
-    return NULL;
+    return true;
   }
 
-  return err_invalid_val;
+  return false;
 }
 
-VlcbCanPriority vlcb_defs_VlcbCanPriorityForOpcode(VlcbOpCode opc) {
+VlcbCanPriority vlcb_defs_VlcbCanPriorityFromOpcode(VlcbOpCode opc) {
   // TODO: copy the logic from rust project
   switch (opc) {
     default:
-      return VLCB_CAN_PRIO_NORMAL;
+      return VLCB_CAN_PRIO_DEFAULT;
   }
+}
+
+bool vlcb_defs_IsVlcbCanPriorityValid(VlcbCanPriority prio) {
+  switch (prio) {
+    case VLCB_CAN_PRIO_SELF_ENUM:
+    case VLCB_CAN_PRIO_HIGH:
+    case VLCB_CAN_PRIO_ABOVE:
+    case VLCB_CAN_PRIO_NORMAL:
+    case VLCB_CAN_PRIO_LOW:
+    case VLCB_CAN_PRIO_LOWEST:
+      return true;
+    default:
+      return false;
+  }
+}
+
+VlcbEnumConstructErr vlcb_defs_VlcbCanPriorityFromByte(
+    uint8_t val, VlcbCanPriority *const prio) {
+  assert(prio);
+
+  val = 0xf & val;
+  if (vlcb_defs_IsVlcbCanPriorityValid(val)) {
+    *prio = val;
+    return VLCB_ENUM_ERR_OK;
+  }
+
+  return VLCB_ENUM_ERR_INVALID_VALUE;
 }

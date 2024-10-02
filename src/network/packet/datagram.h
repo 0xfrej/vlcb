@@ -4,7 +4,7 @@
 
 #include "../../vlcb_defs.h"
 
-#define VLCB_PACKET_MAX_PAYLOAD 7
+#define VLCB_DATAGRAM_PACKET_MAX_PAYLOAD 7
 
 /**
  * Datagram payload buffer
@@ -13,7 +13,7 @@
  * clients don't have to write the whole expression and
  * ensure it's correct.
  */
-typedef uint8_t VlcbDatagramPacketPayload[VLCB_PACKET_MAX_PAYLOAD];
+typedef uint8_t VlcbDatagramPacketPayload[VLCB_DATAGRAM_PACKET_MAX_PAYLOAD];
 
 typedef struct {
   VlcbOpCode opc;

@@ -7,20 +7,20 @@
 #include "../socket/socket.h"
 
 typedef struct VlcbNetIface VlcbNetIface;
-typedef struct VlcbNetInterceptors VlcbNetInterceptors;
+// typedef struct VlcbNetInterceptors VlcbNetInterceptors;
 
-typedef bool (*VlcbIfaceNetDevInterceptor)(VlcbNetIface *const,
-                                           VlcbNetDevPacket *const);
+// typedef bool (*VlcbIfaceNetDevInterceptor)(VlcbNetIface *const,
+// VlcbNetDevPacket *const);
 
-struct VlcbNetInterceptors {
-  VlcbIfaceNetDevInterceptor net_dev;
-};
+// struct VlcbNetInterceptors {
+// VlcbIfaceNetDevInterceptor net_dev;
+// };
 
 struct VlcbNetIface {
   VlcbNetDev *dev;
   VlcbNetDevHwAddr hw_addr;
   VlcbNodeAddr node_addr;
-  VlcbNetInterceptors interceptors;
+  // VlcbNetInterceptors interceptors;
 };
 
 VlcbNetIface vlcb_net_iface_New(VlcbNetDevHwAddr hw_addr,
@@ -34,5 +34,5 @@ typedef struct {
 VlcbNetIfacePollResult vlcb_net_iface_Poll(
     VlcbNetIface *const iface, const VlcbNetSocketList *const sockets);
 VlcbMedium vlcb_net_iface_Medium(const VlcbNetIface *const iface);
-void vlcb_net_iface_RegisterNetDevListener(VlcbNetIface *const iface,
-                                           VlcbIfaceNetDevInterceptor listener);
+// void vlcb_net_iface_RegisterNetDevListener(VlcbNetIface *const iface,
+// VlcbIfaceNetDevInterceptor listener);

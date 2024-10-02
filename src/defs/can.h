@@ -1,13 +1,15 @@
 #pragma once
 
 #include <inttypes.h>
+#include <stdbool.h>
 
 #include "../shared/error.h"
 #include "vlcb_defs.h"
 
 typedef uint8_t CanId;
 
-vlcb_error vlcb_defs_NewCanId(uint8_t value, CanId *const id);
+bool vlcb_defs_NewCanId(uint8_t value, CanId *const id);
+bool vlcb_defs_IsCanIdValid(CanId id);
 
 typedef enum {
   VLCB_CAN_PRIO_SELF_ENUM = 0b0000,
@@ -20,4 +22,7 @@ typedef enum {
 
 #define VLCB_CAN_PRIO_DEFAULT VLCB_CAN_PRIO_NORMAL
 
-VlcbCanPriority vlcb_defs_VlcbCanPriorityForOpcode(VlcbOpCode opc);
+bool vlcb_defs_IsVlcbCanPriorityValid(VlcbCanPriority prio);
+VlcbCanPriority vlcb_defs_VlcbCanPriorityFromOpcode(VlcbOpCode opc);
+VlcbEnumConstructErr vlcb_defs_VlcbCanPriorityFromByte(
+    uint8_t val, VlcbCanPriority *const prio);
