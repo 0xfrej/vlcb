@@ -7,7 +7,7 @@
 #include "../../../../../shared/log.h"
 
 VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
-    VlcbCanFrameId id, bool is_rtr, uint8_t payload_len,
+    const VlcbCanFrameId id, const bool is_rtr, const uint8_t payload_len,
     const VlcbNetAdptPayload *const payload, VlcbNetAdptPkt *const packet) {
   assert(payload != NULL && packet != NULL);
   assert(is_rtr == false ||
@@ -17,13 +17,16 @@ VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
     return VLCB_NET_ADPT_ERR_PAYLOAD_TOO_LARGE;
   }
 
-  memcpy(&packet->payload, payload, payload_len);
+  if (payload_len > 0) {
+    memcpy(&packet->payload, payload, payload_len);
+  }
+
   packet->payload_len = payload_len;
   packet->medium = VLCB_MEDIUM_CAN;
 
   {
     CanId can_id;
-    bool valid = vlcb_defs_NewCanId(((uint8_t)id) & 0x7f, &can_id);
+    const bool valid = vlcb_defs_NewCanId(((uint8_t)id) & 0x7f, &can_id);
     if (valid == false) {
       return VLCB_NET_ADPT_ERR_INVALID_CANID;
     }
@@ -31,7 +34,7 @@ VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
   }
 
   VlcbCanPriority prio;
-  int err = vlcb_defs_CanPriorityFromByte(id >> 7, &prio);
+  const int err = vlcb_defs_CanPriorityFromByte(id >> 7, &prio);
   if (err != 0) {
     VLCBLOG_DEBUG("invalid priority received. aliasing to default");
     prio = VLCB_CAN_PRIO_DEFAULT;

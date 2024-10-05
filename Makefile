@@ -1,35 +1,30 @@
-CC = gcc
-OFILES = $(SRCS:.c=.o)
-CFLAGS = -Wall -Wextra -Werror
-NAME = libvlcb.a
+.PHONY: init
+init: pull_dependencies lsp_helper
 
-.PHONY: all clean fclean re
-all: $(NAME) clean
-
-$(NAME): $(OFILES)
-	ar rcs $(NAME) $(OFILES)
-
+.PHONY: clean
 clean:
-	rm -f $(OFILES)
-
-fclean:
-	clean rm -f $(NAME)
-
-re: fclean $(NAME)
+	rm -rf build
+	mkdir build
 
 .PHONY: test
-test:
-	#TODO: add tests
+test: clean
+	cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DTARGET_GROUP=test -Bbuild -S.
+	ninja -v -Cbuild
+	ctest --verbose --test-dir build
+
+.PHONY:  examples
+examples: clean
+	cmake -DCMAKE_BUILD_TYPE=Debug -DTARGET_GROUP=example -Bbuild -S.
 
 .PHONY: lsp_helper
-lsp_helper: clean
+lsp_helper:
 	bear -- make
 
 .PHONY: gen_defs
-gen_defs: update_defs
+gen_defs: pull_dependencies
 	$(MAKE) -C vendor/vlcb-defs/codegen generate_c
 	cp vendor/vlcb-defs/codegen/lang/c/output/vlcb_defs.h vlcb/include/defs/vlcb_defs.h
 
-.PHONY: update_defs
-update_defs:
+.PHONY: pull_dependencies
+pull_dependencies:
 	git submodule update --rebase --remote

@@ -9,6 +9,8 @@
 
 - figure how to handle lower level comms (like can control)
 
+- optimise structures and it's layout without relying on packed strucutres
+- setup some static analysis
 - implement duplicate address detection and auto reset (it should also flush any queued socket packets)
 - managed buffers on heap / both set size and dynamic
 - setup tests using unity

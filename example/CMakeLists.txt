@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.29)
-
 # Find all example applications (each .c file in this directory is a separate app)
 file(GLOB_RECURSE EXAMPLES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.c")
 

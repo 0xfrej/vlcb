@@ -1,3 +1,6 @@
 [submodule "vendor/vlcb-defs"]
 	path = vendor/vlcb-defs
 	url = git@github.com:0xfrej/vlcb-defs.git
+[submodule "vendor/Unity"]
+	path = vendor/Unity
+	url = git@github.com:ThrowTheSwitch/Unity.git

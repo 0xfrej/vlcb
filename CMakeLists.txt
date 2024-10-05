@@ -3,17 +3,22 @@ project(vlcb LANGUAGES C VERSION 1.0.0)
 
 set(CMAKE_C_STANDARD 99)
 
-include_directories(${CMAKE_SOURCE_DIR}/lib)
+if(TARGET_GROUP STREQUAL production)
+    add_subdirectory(lib)
+elseif(TARGET_GROUP STREQUAL test)
+    include(CTest)
 
-file(GLOB_RECURSE SOURCES "lib/src/*.c")
-file(GLOB_RECURSE SHARED_SOURCES "shared/*.c")
+    add_subdirectory(lib)
+    add_subdirectory(vendor)
+    add_subdirectory(test)
+elseif(TARGET GROUP STREQUAL example)
+    add_subdirectory(lib)
+    add_subdirectory(example)
+else()
+    include(CTest)
 
-add_library(${PROJECT_NAME} STATIC lib/vlcb.h ${SOURCES} ${SHARED_SOURCES})
-set_target_properties(${PROJECT_NAME} PROPERTIES
-        VERSION ${PROJECT_VERSION}
-        SOVERSION ${PROJECT_VERSION_MAJOR}
-        LINKER_LANGUAGE C
-        PUBLIC_HEADER lib/vlcb.h
-)
-
-add_subdirectory(example)
+    add_subdirectory(lib)
+    add_subdirectory(vendor)
+    add_subdirectory(test)
+    add_subdirectory(example)
+endif()

@@ -44,10 +44,9 @@ bool vlcb_defs_IsCanPriorityValid(const VlcbCanPriority prio) {
 }
 
 int vlcb_defs_CanPriorityFromByte(
-    uint8_t val, VlcbCanPriority *const prio) {
+    const uint8_t val, VlcbCanPriority *const prio) {
   assert(prio != NULL);
 
-  val = 0xf & val;
   if (vlcb_defs_IsCanPriorityValid(val)) {
     *prio = val;
     return 0;

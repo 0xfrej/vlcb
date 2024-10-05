@@ -1,5 +1,19 @@
 cmake-build*/
+build/
 .idea/
+Testing/
+.cmake/
+test/CMakeFiles
+**/CMakeFiles
+**/cmake_install.cmake
+**/CTestTestfile.cmake
+.ninja_deps
+CMakeCache.txt
+cmake_install.cmake
+build.ninja
+.ninja_log
+CTestTestfile.cmake
+DartConfiguration.tcl
 
 ### C template
 # Prerequisites
