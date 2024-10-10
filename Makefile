@@ -1,3 +1,5 @@
+default: pull_dependencies gen_defs build
+
 .PHONY: init
 init: pull_dependencies lsp_helper
 
@@ -5,6 +7,10 @@ init: pull_dependencies lsp_helper
 clean:
 	rm -rf build
 	mkdir build
+
+.PHONY: build
+build:
+	cmake -DCMAKE_BUILD_TYPE=Release -DTARGET_GROUP=production -Bbuild -S.
 
 .PHONY: test
 test: clean
