@@ -1,9 +1,7 @@
-set(
-        SOURCES
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/can.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/node.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/opcode.c
-)
+set(SOURCES)
+add_subdirectory(src/can)
+add_subdirectory(src/node)
+add_subdirectory(src/opcode)
 
 add_library(vlcb_common ${CMAKE_CURRENT_SOURCE_DIR})
 target_sources(vlcb_common PRIVATE ${SOURCES})

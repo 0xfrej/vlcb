@@ -1,0 +1,10 @@
+set(
+        SOURCES
+        ${SOURCES}
+        ${CMAKE_CURRENT_SOURCE_DIR}/can_id_is_valid.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/can_id_new.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/can_is_prio_valid.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/can_prio_from_byte.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/can_prio_from_opc.c
+        PARENT_SCOPE
+)

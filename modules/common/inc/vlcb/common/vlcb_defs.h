@@ -1,3 +1,1430 @@
+#pragma once
+
+/**
+ * Processor manufacturer codes
+ */
+
+typedef enum {
+
+  VLCB_PM_MICROCHIP = 1,
+
+  VLCB_PM_ATMEL = 2,
+
+  VLCB_PM_ARM = 3,
+
+} VlcbProcessorManufacturer;
+/**
+ * ARM Processor type codes (used by FCU to identify correct bootloader
+ * compatibility)
+ */
+
+typedef enum {
+
+  VLCB_PM_ARM_ARM1176JZFS = 1,
+
+  VLCB_PM_ARM_CORTEXA7 = 2,
+
+  VLCB_PM_ARM_CORTEXA53 = 3,
+
+} VlcbArmProcessor;
+/**
+ * Microchip Processor type codes (used by FCU to identify correct bootloader
+ * compatibility)
+ */
+
+typedef enum {
+
+  VLCB_PM_MICROCHIP_P18F2480 = 1,
+
+  VLCB_PM_MICROCHIP_P18F4480 = 2,
+
+  VLCB_PM_MICROCHIP_P18F2580 = 3,
+
+  VLCB_PM_MICROCHIP_P18F4580 = 4,
+
+  VLCB_PM_MICROCHIP_P18F2585 = 5,
+
+  VLCB_PM_MICROCHIP_P18F4585 = 6,
+
+  VLCB_PM_MICROCHIP_P18F2680 = 7,
+
+  VLCB_PM_MICROCHIP_P18F4680 = 8,
+
+  VLCB_PM_MICROCHIP_P18F2682 = 9,
+
+  VLCB_PM_MICROCHIP_P18F4682 = 10,
+
+  VLCB_PM_MICROCHIP_P18F2685 = 11,
+
+  VLCB_PM_MICROCHIP_P18F4685 = 12,
+
+  VLCB_PM_MICROCHIP_P18F25K80 = 13,
+
+  VLCB_PM_MICROCHIP_P18F45K80 = 14,
+
+  VLCB_PM_MICROCHIP_P18F26K80 = 15,
+
+  VLCB_PM_MICROCHIP_P18F46K80 = 16,
+
+  VLCB_PM_MICROCHIP_P18F65K80 = 17,
+
+  VLCB_PM_MICROCHIP_P18F66K80 = 18,
+
+  VLCB_PM_MICROCHIP_P18F25K83 = 19,
+
+  VLCB_PM_MICROCHIP_P18F26K83 = 20,
+
+  VLCB_PM_MICROCHIP_P18F27Q84 = 21,
+
+  VLCB_PM_MICROCHIP_P18F47Q84 = 22,
+
+  VLCB_PM_MICROCHIP_P18F27Q83 = 23,
+
+  VLCB_PM_MICROCHIP_P18F14K22 = 25,
+
+  VLCB_PM_MICROCHIP_P32MX534F064 = 30,
+
+  VLCB_PM_MICROCHIP_P32MX564F064 = 31,
+
+  VLCB_PM_MICROCHIP_P32MX564F128 = 32,
+
+  VLCB_PM_MICROCHIP_P32MX575F256 = 33,
+
+  VLCB_PM_MICROCHIP_P32MX575F512 = 34,
+
+  VLCB_PM_MICROCHIP_P32MX764F128 = 35,
+
+  VLCB_PM_MICROCHIP_P32MX775F256 = 36,
+
+  VLCB_PM_MICROCHIP_P32MX775F512 = 37,
+
+  VLCB_PM_MICROCHIP_P32MX795F512 = 38,
+
+} VlcbMicrochipProcessor;
+/**
+ * BUS type that module is connected to
+ */
+
+typedef enum {
+
+  VLCB_BUS_CAN = 1,
+
+  VLCB_BUS_ETHERNET = 2,
+
+  VLCB_BUS_MIWI = 3,
+
+  VLCB_BUS_USB = 4,
+
+} VlcbBusType;
+/**
+ * Defines the meaning of the remaining 3 bytes of the CABDAT message
+ */
+
+typedef enum {
+
+  /**
+   * CABSIG
+   * Transmitted by a layout control system to send
+   * signal aspects to be displayed on a cab handset as cab
+   * signalling.
+   */
+
+  VLCB_DCC_CAB_CAB_SIGNALLING = 1,
+
+} VlcbDccCabDataCode;
+/**
+ * Error codes for CMDERR message
+ */
+
+typedef enum {
+
+  /**
+   * Invalid command
+   */
+
+  VLCB_CMDERRINVALID_COMMAND = 1,
+
+  /**
+   * The mode is not currently in learn mode
+   */
+
+  VLCB_CMDERRNOT_IN_LEARN_MODE = 2,
+
+  /**
+   * The mode is not currently in setup mode
+   */
+
+  VLCB_CMDERRNOT_IN_SETUP_MODE = 3,
+
+  /**
+   * Too many events provisioned in module
+   *
+   * The event storage is exhausted
+   */
+
+  VLCB_CMDERRTOO_MANY_EVENTS = 4,
+
+  /**
+   * No Event-Variable
+   */
+
+  VLCB_CMDERRNO_EV = 5,
+
+  /**
+   * Invalid EV index
+   */
+
+  VLCB_CMDERRINVALID_EV_INDEX = 6,
+
+  /**
+   * Invalid event
+   */
+
+  VLCB_CMDERRINVALID_EVENT = 7,
+
+  /**
+   * Invalid event index
+   */
+
+  VLCB_CMDERRINVALID_EVENT_INDEX = 8,
+
+  /**
+   * Invalid param index
+   */
+
+  VLCB_CMDERRINVALID_PARAM_INDEX = 9,
+
+  /**
+   * Invalid NV index
+   */
+
+  VLCB_CMDERRINVALID_NV_INDEX = 10,
+
+  /**
+   * Invalid EV value
+   */
+
+  VLCB_CMDERRINVALID_EV_VALUE = 11,
+
+  /**
+   * Invalid NV value
+   */
+
+  VLCB_CMDERRINVALID_NV_VALUE = 12,
+
+  /**
+   * Another module is already in learn mode
+   *
+   * Sent when module in learn mode sees NNLRN for different module (also exits
+   * learn mode)
+   */
+
+  VLCB_CMDERRANOTHER_MODULE_IS_IN_LEARN_MODE = 13,
+
+} VlcbCommandError;
+/**
+ * Error codes for ERR message
+ */
+
+typedef enum {
+
+  VLCB_DCC_ERRLOCO_STACK_IS_FULL = 1,
+
+  VLCB_DCC_ERRLOCO_ADDRESS_IS_TAKEN = 2,
+
+  VLCB_DCC_ERRSESSION_IS_NOT_PRESENT = 3,
+
+  VLCB_DCC_ERREMPTY_CONSIST = 4,
+
+  VLCB_DCC_ERRLOCO_WAS_NOT_FOUND = 5,
+
+  VLCB_DCC_ERRRX_BUFFER_OVERFLOW = 6,
+
+  VLCB_DCC_ERRINVALID_REQUEST = 7,
+
+  VLCB_DCC_ERRSESSION_WAS_CANCELLED = 8,
+
+} VlcbDccError;
+/**
+ * Manufacturer definitions
+ *
+ * Here are definitions for all known MERG registered manufacturers.
+ */
+
+typedef enum {
+
+  /**
+   * Develoment mode manufacturer
+   *
+   * For manufacturers who don't have a manufacturer id yet or
+   * for lib developers during testing.
+   *
+   * Do not use in production!
+   */
+
+  VLCB_MANU_DEVELOPMENT = 13,
+
+  /**
+   * https://www.merg.co.uk
+   */
+
+  VLCB_MANU_MERG = 165,
+
+  /**
+   * https://www.sprog-dcc.co.uk/
+   */
+
+  VLCB_MANU_SPROG = 44,
+
+  /**
+   * http://www.rocrail.net
+   */
+
+  VLCB_MANU_ROCRAIL = 70,
+
+  /**
+   * http://animatedmodeler.com  (Spectrum Engineering)
+   */
+
+  VLCB_MANU_SPECTRUM = 80,
+
+  /**
+   * range of MERG VLCB modules
+   */
+
+  VLCB_MANU_MERG_VLCB = 250,
+
+  /**
+   * Konrad Orlowski
+   */
+
+  VLCB_MANU_SYSPIXIE = 249,
+
+  /**
+   * http://rmeuk.com  (Railway Modelling Experts Limited)
+   */
+
+  VLCB_MANU_RME = 248,
+
+} VlcbManufacturer;
+/**
+ * MERG Module types
+ */
+
+typedef enum {
+
+  /**
+   * default for SLiM nodes
+   */
+
+  VLCB_MERG_MODULE_SLIM = 0,
+
+  /**
+   * Solenoid point driver
+   */
+
+  VLCB_MERG_MODULE_CANACC4 = 1,
+
+  /**
+   * Motorised point driver
+   */
+
+  VLCB_MERG_MODULE_CANACC5 = 2,
+
+  /**
+   * 8 digital outputs
+   */
+
+  VLCB_MERG_MODULE_CANACC8 = 3,
+
+  /**
+   * Control panel switch/button encoder
+   */
+
+  VLCB_MERG_MODULE_CANACE3 = 4,
+
+  /**
+   * 8 digital inputs
+   */
+
+  VLCB_MERG_MODULE_CANACE8C = 5,
+
+  /**
+   * 64 led driver
+   */
+
+  VLCB_MERG_MODULE_CANLED = 6,
+
+  /**
+   * 64 led driver (multi leds per event)
+   */
+
+  VLCB_MERG_MODULE_CANLED64 = 7,
+
+  /**
+   * 12v version of CANACC4
+   */
+
+  VLCB_MERG_MODULE_CANACC4_2 = 8,
+
+  /**
+   * CANCAB hand throttle
+   */
+
+  VLCB_MERG_MODULE_CANCAB = 9,
+
+  /**
+   * CANCMD command station
+   */
+
+  VLCB_MERG_MODULE_CANCMD = 10,
+
+  /**
+   * 8 servo driver (on canacc8 or similar hardware)
+   */
+
+  VLCB_MERG_MODULE_CANSERVO = 11,
+
+  /**
+   * BC1a command station
+   */
+
+  VLCB_MERG_MODULE_CANBC = 12,
+
+  /**
+   * RPI and RFID interface
+   */
+
+  VLCB_MERG_MODULE_CANRPI = 13,
+
+  /**
+   * Turntable controller (turntable end)
+   */
+
+  VLCB_MERG_MODULE_CANTTCA = 14,
+
+  /**
+   * Turntable controller (control panel end)
+   */
+
+  VLCB_MERG_MODULE_CANTTCB = 15,
+
+  /**
+   * Handset controller for old BC1a type handsets
+   */
+
+  VLCB_MERG_MODULE_CANHS = 16,
+
+  /**
+   * Track occupancy detector
+   */
+
+  VLCB_MERG_MODULE_CANTOTI = 17,
+
+  /**
+   * 8 inputs 8 outputs
+   */
+
+  VLCB_MERG_MODULE_CAN8I8O = 18,
+
+  /**
+   * Canservo with servo position feedback
+   */
+
+  VLCB_MERG_MODULE_CANSERVO8C = 19,
+
+  /**
+   * RFID input
+   */
+
+  VLCB_MERG_MODULE_CANRFID = 20,
+
+  VLCB_MERG_MODULE_CANTC4 = 21,
+
+  /**
+   * 16 inputs
+   */
+
+  VLCB_MERG_MODULE_CANACE16C = 22,
+
+  /**
+   * 8 way I/O
+   */
+
+  VLCB_MERG_MODULE_CANIO8 = 23,
+
+  VLCB_MERG_MODULE_CANSNDX = 24,
+
+  /**
+   * Ethernet interface
+   */
+
+  VLCB_MERG_MODULE_CANETHER = 25,
+
+  /**
+   * Multiple aspect signalling for CANLED module
+   */
+
+  VLCB_MERG_MODULE_CANSIG64 = 26,
+
+  /**
+   * Multiple aspect signalling for CANACC8 module
+   */
+
+  VLCB_MERG_MODULE_CANSIG8 = 27,
+
+  /**
+   * Conditional event generation
+   */
+
+  VLCB_MERG_MODULE_CANCOND8C = 28,
+
+  /**
+   * Control panel 32/32
+   */
+
+  VLCB_MERG_MODULE_CANPAN = 29,
+
+  /**
+   * Newer version of CANACE3 firmware
+   */
+
+  VLCB_MERG_MODULE_CANACE3C = 30,
+
+  /**
+   * Control panel 64/64
+   */
+
+  VLCB_MERG_MODULE_CANPANEL = 31,
+
+  /**
+   * Multiple I/O – Universal CANMIO firmware
+   */
+
+  VLCB_MERG_MODULE_CANMIO = 32,
+
+  /**
+   * Multiple IO module 16 inputs emulating CANACE8C on CANMIO hardware
+   */
+
+  VLCB_MERG_MODULE_CANACE8MIO = 33,
+
+  /**
+   * Solenoid driver module
+   */
+
+  VLCB_MERG_MODULE_CANSOL = 34,
+
+  /**
+   * Universal CANBIP firmware - Bipolar IO module with additional 8 I/O pins
+   * (CANMIO family)
+   */
+
+  VLCB_MERG_MODULE_CANBIP = 35,
+
+  /**
+   * Solenoid driver module with additional 6 I/O pins (CANMIO family)
+   */
+
+  VLCB_MERG_MODULE_CANCDU = 36,
+
+  /**
+   * CANACC4 firmware ported to CANCDU
+   */
+
+  VLCB_MERG_MODULE_CANACC4CDU = 37,
+
+  /**
+   * CAN to MiWi base station
+   */
+
+  VLCB_MERG_MODULE_CANWI_BASE = 38,
+
+  /**
+   * Wireless cab using MiWi protocol
+   */
+
+  VLCB_MERG_MODULE_WI_CAB = 39,
+
+  /**
+   * CAN to WiFi connection with Withrottle to CBUS protocol conversion
+   */
+
+  VLCB_MERG_MODULE_CANWI_FI = 40,
+
+  /**
+   * Turntable controller configured using FLiM
+   */
+
+  VLCB_MERG_MODULE_CANFTT = 41,
+
+  /**
+   * Handset (alternative to CANCAB)
+   */
+
+  VLCB_MERG_MODULE_CANHNDST = 42,
+
+  /**
+   * Touchscreen handset
+   */
+
+  VLCB_MERG_MODULE_CANTCHNDST = 43,
+
+  /**
+   * multi-channel RFID reader
+   */
+
+  VLCB_MERG_MODULE_CANRFID8 = 44,
+
+  /**
+   * either a 2ch or 8ch RFID reader
+   */
+
+  VLCB_MERG_MODULE_CANMCH_RFID = 45,
+
+  /**
+   * a Raspberry Pi based module for WiFi
+   */
+
+  VLCB_MERG_MODULE_CANPI_WI = 46,
+
+  /**
+   * DC train controller
+   */
+
+  VLCB_MERG_MODULE_CAN4DC = 47,
+
+  /**
+   * Nelevator controller
+   */
+
+  VLCB_MERG_MODULE_CANELEV = 48,
+
+  /**
+   * 128 switch inputs
+   */
+
+  VLCB_MERG_MODULE_CANSCAN = 49,
+
+  /**
+   * 16MHz 25k80 version of CANSERVO8c on CANMIO hardware
+   */
+
+  VLCB_MERG_MODULE_CANMIO_SVO = 50,
+
+  /**
+   * 16MHz 25k80 version of CANACE8MIO on CANMIO hardware
+   */
+
+  VLCB_MERG_MODULE_CANMIO_INP = 51,
+
+  /**
+   * 16MHz 25k80 version of CANACC8 on CANMIO hardware
+   */
+
+  VLCB_MERG_MODULE_CANMIO_OUT = 52,
+
+  /**
+   * 16MHz 25k80 version of CANACC5 on CANBIP hardware
+   */
+
+  VLCB_MERG_MODULE_CANBIP_OUT = 53,
+
+  /**
+   * DCC stop generator
+   */
+
+  VLCB_MERG_MODULE_CANASTOP = 54,
+
+  /**
+   * CANCMD with on board 3A booster
+   */
+
+  VLCB_MERG_MODULE_CANCSB = 55,
+
+  /**
+   * Magnet on Track detector
+   */
+
+  VLCB_MERG_MODULE_CANMAG = 56,
+
+  /**
+   * 16 input equivaent to CANACE8C
+   */
+
+  VLCB_MERG_MODULE_CANACE16CMIO = 57,
+
+  /**
+   * CBUS module based on Raspberry Pi
+   */
+
+  VLCB_MERG_MODULE_CANPI_NODE = 58,
+
+  /**
+   * 25K80 version of CANLED64 (IHart and MB)
+   */
+
+  VLCB_MERG_MODULE_CANDISP = 59,
+
+  /**
+   * Compute Event processing engine
+   */
+
+  VLCB_MERG_MODULE_CANCOMPUTE = 60,
+
+  /**
+   * Read/Write from/to RC522 RFID tags
+   */
+
+  VLCB_MERG_MODULE_CANRC522 = 61,
+
+  /**
+   * 8 inputs module (2g version of CANACE8c) (Pete Brownlow)
+   */
+
+  VLCB_MERG_MODULE_CANINP = 62,
+
+  /**
+   * 8 outputs module (2g version of CANACC8) (Pete Brownlow)
+   */
+
+  VLCB_MERG_MODULE_CANOUT = 63,
+
+  /**
+   * Extended CANMIO (24 I/O ports) (Pete Brownlow)
+   */
+
+  VLCB_MERG_MODULE_CANXIO = 64,
+
+  /**
+   * DC cab
+   */
+
+  VLCB_MERG_MODULE_CANCABDC = 65,
+
+  /**
+   * DC Railcom detector/reader
+   */
+
+  VLCB_MERG_MODULE_CANRCOM = 66,
+
+  /**
+   * MP3 sound player in response to events (eg: station announcements) (Duncan
+   * Greenwood)
+   */
+
+  VLCB_MERG_MODULE_CANMP3 = 67,
+
+  /**
+   * Addressed RGB LED driver (Duncan Greenwood)
+   */
+
+  VLCB_MERG_MODULE_CANXMAS = 68,
+
+  /**
+   * Servo setting box (Duncan Greenwood)
+   */
+
+  VLCB_MERG_MODULE_CANSVOSET = 69,
+
+  /**
+   * DC Command station
+   */
+
+  VLCB_MERG_MODULE_CANCMDDC = 70,
+
+  /**
+   * Text message display
+   */
+
+  VLCB_MERG_MODULE_CANTEXT = 71,
+
+  /**
+   * Signal controller
+   */
+
+  VLCB_MERG_MODULE_CANASIGNAL = 72,
+
+  /**
+   * DCC cab with slider control (Dave Radcliffe)
+   */
+
+  VLCB_MERG_MODULE_CANSLIDER = 73,
+
+  /**
+   * DC ATC module (Dave Harris)
+   */
+
+  VLCB_MERG_MODULE_CANDCATC = 74,
+
+  /**
+   * Logic module using and/or gates (Phil Silver)
+   */
+
+  VLCB_MERG_MODULE_CANGATE = 75,
+
+  /**
+   * Q series PIC input module (Ian Hart)
+   */
+
+  VLCB_MERG_MODULE_CANSINP = 76,
+
+  /**
+   * Q series PIC input module (Ian Hart)
+   */
+
+  VLCB_MERG_MODULE_CANSOUT = 77,
+
+  /**
+   * Q series PIC input module (Ian Hart)
+   */
+
+  VLCB_MERG_MODULE_CANSBIP = 78,
+
+  /**
+   * Message buffer (Phil Silver)
+   */
+
+  VLCB_MERG_MODULE_CANBUFFER = 79,
+
+  /**
+   * Lever frame module (Tim Coombs)
+   */
+
+  VLCB_MERG_MODULE_CANLEVER = 80,
+
+  /**
+   * Kit 110 Arduino shield test firmware
+   */
+
+  VLCB_MERG_MODULE_CANSHIELD = 81,
+
+  /**
+   * 4 inputs 4 outputs (Arduino module)
+   */
+
+  VLCB_MERG_MODULE_CAN4IN4OUT = 82,
+
+  /**
+   * CANCMD with built in booster (Simon West)
+   */
+
+  VLCB_MERG_MODULE_CANCMDB = 83,
+
+  /**
+   * neopixel driver (Jon Denham)
+   */
+
+  VLCB_MERG_MODULE_CANPIXEL = 84,
+
+  /**
+   * Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
+   */
+
+  VLCB_MERG_MODULE_CANCABPE = 85,
+
+  /**
+   * Smart train detector (Michael Smith)
+   */
+
+  VLCB_MERG_MODULE_CANSMARTTD = 86,
+
+  /**
+   * All VLCB modules have the same ID
+   */
+
+  VLCB_MERG_MODULE_VLCB = 252,
+
+  /**
+   * Software nodes
+   */
+
+  VLCB_MERG_MODULE_CAN_SW = 255,
+
+  /**
+   * Empty module, bootloader only
+   */
+
+  VLCB_MERG_MODULE_EMPTY = 254,
+
+  /**
+   * USB interface
+   */
+
+  VLCB_MERG_MODULE_CANUSB = 253,
+
+} VlcbMergModuleType;
+/**
+ * Flags in node parameter FLAGS
+ */
+
+typedef enum {
+
+  /**
+   * Module doesn't support events
+   */
+
+  VLCB_MODULE_FLAG_EVENTS_UNSUPPORTED = 0x0,
+
+  /**
+   * Module is a consumer of events
+   */
+
+  VLCB_MODULE_FLAG_EVENT_CONSUMER = 0x1,
+
+  /**
+   * Module is a producer of events
+   */
+
+  VLCB_MODULE_FLAG_EVENT_PRODUCER = 0x2,
+
+  /**
+   * Module is both a consumer and producer of events
+   */
+
+  VLCB_MODULE_FLAG_EVENT_COMBI = 0x3,
+
+  /**
+   * Module is in FLiM (CBUS)
+   */
+
+  VLCB_MODULE_FLAG_FLI_M = 0x4,
+
+  /**
+   * Module is in Normal mode (VLCB)
+   */
+
+  VLCB_MODULE_FLAG_NORMAL_MODE = 0x4,
+
+  /**
+   * Module supports the FCU bootloader protocol
+   */
+
+  VLCB_MODULE_FLAG_BOOTLOADER = 0x8,
+
+  /**
+   * Module can consume its own events
+   */
+
+  VLCB_MODULE_FLAG_CONSUME_OWN_EVENTS = 0x10,
+
+  /**
+   * Module is in learn mode
+   */
+
+  VLCB_MODULE_FLAG_LEARN_MODE = 0x20,
+
+  /**
+   * Module is VLCB compatible
+   */
+
+  VLCB_MODULE_FLAG_VLCB = 0x40,
+
+  /**
+   * Module supports Service Discovery (Deprecated in favour of PF_VLCB.)
+   */
+
+  VLCB_MODULE_FLAG_SERVICE_DISCOVERY = 0x40,
+
+} ModuleFlags;
+/**
+ * Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)
+ * Index numbers count from 1, subtract 1 for offset into parameter block
+ * Note that RQNPN with index 0 returns the parameter count
+ */
+
+typedef enum {
+
+  /**
+   * Number of parameters
+   */
+
+  VLCB_MODULE_PARAM_MODULE_PARAMETER_COUNT = 0,
+
+  /**
+   * Manufacturer id
+   */
+
+  VLCB_MODULE_PARAM_MODULE_MANUFACTURER = 1,
+
+  /**
+   * Minor version (single alphabetic character)
+   */
+
+  VLCB_MODULE_PARAM_MINOR_VERSION = 2,
+
+  /**
+   * Module type code
+   */
+
+  VLCB_MODULE_PARAM_MODULE_TYPE = 3,
+
+  /**
+   * Number of events supported
+   */
+
+  VLCB_MODULE_PARAM_MAX_EVENT_COUNT = 4,
+
+  /**
+   * Event variables per event
+   */
+
+  VLCB_MODULE_PARAM_EVENT_VARIABLE_COUNT = 5,
+
+  /**
+   * Number of Node variables
+   */
+
+  VLCB_MODULE_PARAM_NODE_VARIABLE_COUNT = 6,
+
+  /**
+   * Major version (numeric)
+   */
+
+  VLCB_MODULE_PARAM_MAJOR_VERSION = 7,
+
+  /**
+   * Node flags
+   */
+
+  VLCB_MODULE_PARAM_NODE_FLAGS = 8,
+
+  /**
+   * Processor type
+   */
+
+  VLCB_MODULE_PARAM_CPU_ID = 9,
+
+  /**
+   * Bus type
+   */
+
+  VLCB_MODULE_PARAM_BUS_TYPE = 10,
+
+  /**
+   * load address, 4 bytes
+   */
+
+  VLCB_MODULE_PARAM_LOAD_ADDRESS = 11,
+
+  /**
+   * CPU manufacturer's id as read from the chip config space, 4 bytes (note -
+   * read from cpu at runtime, so not included in checksum)
+   */
+
+  VLCB_MODULE_PARAM_CPU_MANUFACTURER_ID = 15,
+
+  /**
+   * CPU manufacturer code
+   */
+
+  VLCB_MODULE_PARAM_CPU_MANUFACTURER = 19,
+
+  /**
+   * Beta revision (numeric), or 0 if release
+   */
+
+  VLCB_MODULE_PARAM_BETA_VERSION = 20,
+
+} VlcbModuleParam;
+/**
+ * Rocrail Module types
+ */
+
+typedef enum {
+
+  /**
+   * RS232 PC interface
+   */
+
+  VLCB_ROCRAIL_MODULE_CANGC1 = 1,
+
+  /**
+   * 16 I/O
+   */
+
+  VLCB_ROCRAIL_MODULE_CANGC2 = 2,
+
+  /**
+   * Command station (derived from cancmd)
+   */
+
+  VLCB_ROCRAIL_MODULE_CANGC3 = 3,
+
+  /**
+   * 8 channel RFID reader
+   */
+
+  VLCB_ROCRAIL_MODULE_CANGC4 = 4,
+
+  /**
+   * Cab for fixed panels (derived from cancab)
+   */
+
+  VLCB_ROCRAIL_MODULE_CANGC5 = 5,
+
+  /**
+   * 4 channel servo controller
+   */
+
+  VLCB_ROCRAIL_MODULE_CANGC6 = 6,
+
+  /**
+   * Fast clock module
+   */
+
+  VLCB_ROCRAIL_MODULE_CANGC7 = 7,
+
+  /**
+   * CAN<->Ethernet interface
+   */
+
+  VLCB_ROCRAIL_MODULE_CANGC1E = 11,
+
+} VlcbRocRailModuleType;
+/**
+ * Spectrum Engineering Animated Modeller module types
+ */
+
+typedef enum {
+
+  /**
+   * Animation controller (firmware derived from cancmd)
+   */
+
+  VLCB_SPECTRUM_MODULE_AMCTRLR = 1,
+
+  /**
+   * Dual cab based on cancab
+   */
+
+  VLCB_SPECTRUM_MODULE_DUALCAB = 2,
+
+} VlcbSpectrumModuleType;
+/**
+ * Sprog Module types
+ */
+
+typedef enum {
+
+  /**
+   * Pi-SPROG 3 programmer/command station
+   */
+
+  VLCB_SPROG_MODULE_CANPI_SPRG3 = 1,
+
+  /**
+   * SPROG 3 Plus programmer/command station
+   */
+
+  VLCB_SPROG_MODULE_CANSPROG3P = 2,
+
+  /**
+   * CAN SPROG programmer/command station
+   */
+
+  VLCB_SPROG_MODULE_CANSPROG = 3,
+
+  /**
+   * System Booster
+   */
+
+  VLCB_SPROG_MODULE_CANSBOOST = 4,
+
+  /**
+   * Pi-SPROG 3 Plus programmer/command station
+   */
+
+  VLCB_SPROG_MODULE_CANPI_SPRGP = 5,
+
+  /**
+   * 8-channel (4-pairs) Solenoid I/O module
+   */
+
+  VLCB_SPROG_MODULE_CANSOLNOID = 8,
+
+  /**
+   * 8-channel Servo I/O module
+   */
+
+  VLCB_SPROG_MODULE_CANSERVOIO = 50,
+
+  /**
+   * CAN ISB Isolated CAN USB Interface
+   */
+
+  VLCB_SPROG_MODULE_CANISB = 100,
+
+  /**
+   * 8-channel (4-pairs) Solenoid I/O module
+   */
+
+  VLCB_SPROG_MODULE_CANSOLIO = 101,
+
+} VlcbSprogModuleType;
+/**
+ * Status codes for SSTAT message
+ */
+
+typedef enum {
+
+  VLCB_DCC_SVC_MODE_STAT_NO_ACK = 1,
+
+  VLCB_DCC_SVC_MODE_STAT_OVLD = 2,
+
+  VLCB_DCC_SVC_MODE_STAT_WRITE_ACK = 3,
+
+  VLCB_DCC_SVC_MODE_STAT_BUSY = 4,
+
+  VLCB_DCC_SVC_MODE_STAT_CV_ERROR = 5,
+
+} VlcbDccServiceModeStatus;
+/**
+ * Modes for STMOD
+ */
+
+typedef enum {
+
+  /**
+   * 128-step speed mode
+   */
+
+  VLCB_DCC_THROTTLE_MODE_STEP128 = 0,
+
+  /**
+   * 14-step speed mode
+   */
+
+  VLCB_DCC_THROTTLE_MODE_STEP14 = 1,
+
+  /**
+   * interleaved 28-step speed mode
+   */
+
+  VLCB_DCC_THROTTLE_MODE_STEP28INTERLEAVED = 2,
+
+  /**
+   * 28-step speed mode
+   */
+
+  VLCB_DCC_THROTTLE_MODE_STEP28 = 3,
+
+} VlcbDccThrottleMode;
+/**
+ * SysPixie Module types (Konrad Orlowski)
+ */
+
+typedef enum {
+
+  /**
+   * Motorised point motor driver with current sense
+   */
+
+  VLCB_SYSPIXIE_MODULE_CANPMSENSE = 1,
+
+} VlcbSysPixieModuleType;
+/**
+ * GRSP codes
+ */
+
+typedef enum {
+
+  /**
+   * Success
+   */
+
+  VLCB_GENERIC_RESPONSE_STAT_OK = 0,
+
+  /**
+   * Unknown non volatile memory type
+   */
+
+  VLCB_GENERIC_RESPONSE_STAT_UNKNOWN_PERSISTENT_MEMORY_TYPE = 254,
+
+  /**
+   * Invalid diagnostic
+   */
+
+  VLCB_GENERIC_RESPONSE_STAT_INVALID_DIAGNOSTIC = 253,
+
+  /**
+   * Invalid service
+   */
+
+  VLCB_GENERIC_RESPONSE_STAT_INVALID_SERVICE = 252,
+
+  /**
+   * Invalid parameter in command
+   */
+
+  VLCB_GENERIC_RESPONSE_STAT_INVALID_COMMAND_PARAMETER = 251,
+
+  /**
+   * Invalid Mode
+   */
+
+  VLCB_GENERIC_RESPONSE_STAT_INVALID_MODE = 250,
+
+} VlcbGenericResponseStatus;
+/**
+ * Parameters to the MODE op-code
+ *
+ * Exclusive modes
+ */
+
+typedef enum {
+
+  /**
+   * Uninitialized / factory settings
+   */
+
+  VLCB_MODULE_MODE_UNINITIALIZED = 255,
+
+  /**
+   * Set up mode
+   */
+
+  VLCB_MODULE_MODE_IN_SETUP = 0,
+
+  /**
+   * Normal operation mode
+   */
+
+  VLCB_MODULE_MODE_NORMAL = 1,
+
+  /**
+   * Turn on learn mode
+   */
+
+  VLCB_MODULE_MODE_ENABLE_LEARN_MODE = 8,
+
+  /**
+   * Turn off learn mode
+   */
+
+  VLCB_MODULE_MODE_DISABLE_LEARN_MODE = 9,
+
+  /**
+   * Turn on event acknowledgements
+   */
+
+  VLCB_MODULE_MODE_ENABLE_EVENT_ACK = 10,
+
+  /**
+   * Turn off event acknowledgements
+   */
+
+  VLCB_MODULE_MODE_DISABLE_EVENT_ACK = 11,
+
+  /**
+   * Turn on heartbeat
+   */
+
+  VLCB_MODULE_MODE_ENABLE_HEARTBEAT = 12,
+
+  /**
+   * Turn off heartbeat
+   */
+
+  VLCB_MODULE_MODE_DISABLE_HEARTBEAT = 13,
+
+  /**
+   * PIC Boot loader mode
+   */
+
+  VLCB_MODULE_MODE_BOOTLOADER = 14,
+
+} VlcbModuleMode;
+/**
+ * VLCB Service Types
+ */
+
+typedef enum {
+
+  /**
+   * Internal service.
+   *
+   * Can be used for implementing certain behaviors while
+   * using the service pattern for the implementation.
+   *
+   * Will not be shown in list of services requested by RQSD.
+   */
+
+  VLCB_SVC_TYPE_INTERNAL = 0,
+
+  /**
+   * The minimum node service.
+   *
+   * All modules must implement this.
+   */
+
+  VLCB_SVC_TYPE_MINIMUM_NODE_SERVICE = 1,
+
+  /**
+   * The NV service.
+   */
+
+  VLCB_SVC_TYPE_NODE_VARIABLE = 2,
+
+  /**
+   * CAN service.
+   *
+   * Deals with CANID enumeration.
+   */
+
+  VLCB_SVC_TYPE_CAN_BUS = 3,
+
+  /**
+   * Old (CBUS) event teaching service.
+   */
+
+  VLCB_SVC_TYPE_LEGACY_EVENT_TEACHING = 4,
+
+  /**
+   * Event producer service.
+   */
+
+  VLCB_SVC_TYPE_EVENT_PRODUCER = 5,
+
+  /**
+   * Event comsumer service.
+   */
+
+  VLCB_SVC_TYPE_EVENT_CONSUMER = 6,
+
+  /**
+   * New event teaching service.
+   */
+
+  VLCB_SVC_TYPE_EVENT_TEACHING = 7,
+
+  /**
+   * Consume own events service.
+   */
+
+  VLCB_SVC_TYPE_CONSUME_OWN_EVENTS = 8,
+
+  /**
+   * Event acknowledge service.
+   *
+   * Useful for debugging event configuration.
+   */
+
+  VLCB_SVC_TYPE_EVENT_ACKNOWLEDGE = 9,
+
+  /**
+   * FCU/PIC bootloader service.
+   */
+
+  VLCB_SVC_TYPE_BOOTLOADER = 10,
+
+  /**
+   * Streaming (Long Messages) service.
+   */
+
+  VLCB_SVC_TYPE_STREAMING = 17,
+
+} VlcbServiceType;
 /**
  * VLCB opcodes
  */
@@ -1382,1431 +2809,3 @@ typedef enum {
   VLCB_OPC_EXT_OP_CODE6 = 255,
 
 } VlcbOpCode;
-/**
- * VLCB Service Types
- */
-
-typedef enum {
-
-  /**
-   * Internal service.
-   *
-   * Can be used for implementing certain behaviors while
-   * using the service pattern for the implementation.
-   *
-   * Will not be shown in list of services requested by RQSD.
-   */
-
-  VLCB_SVC_TYPE_INTERNAL = 0,
-
-  /**
-   * The minimum node service.
-   *
-   * All modules must implement this.
-   */
-
-  VLCB_SVC_TYPE_MINIMUM_NODE_SERVICE = 1,
-
-  /**
-   * The NV service.
-   */
-
-  VLCB_SVC_TYPE_NODE_VARIABLE = 2,
-
-  /**
-   * CAN service.
-   *
-   * Deals with CANID enumeration.
-   */
-
-  VLCB_SVC_TYPE_CAN_BUS = 3,
-
-  /**
-   * Old (CBUS) event teaching service.
-   */
-
-  VLCB_SVC_TYPE_LEGACY_EVENT_TEACHING = 4,
-
-  /**
-   * Event producer service.
-   */
-
-  VLCB_SVC_TYPE_EVENT_PRODUCER = 5,
-
-  /**
-   * Event comsumer service.
-   */
-
-  VLCB_SVC_TYPE_EVENT_CONSUMER = 6,
-
-  /**
-   * New event teaching service.
-   */
-
-  VLCB_SVC_TYPE_EVENT_TEACHING = 7,
-
-  /**
-   * Consume own events service.
-   */
-
-  VLCB_SVC_TYPE_CONSUME_OWN_EVENTS = 8,
-
-  /**
-   * Event acknowledge service.
-   *
-   * Useful for debugging event configuration.
-   */
-
-  VLCB_SVC_TYPE_EVENT_ACKNOWLEDGE = 9,
-
-  /**
-   * FCU/PIC bootloader service.
-   */
-
-  VLCB_SVC_TYPE_BOOTLOADER = 10,
-
-  /**
-   * Streaming (Long Messages) service.
-   */
-
-  VLCB_SVC_TYPE_STREAMING = 17,
-
-} VlcbServiceType;
-/**
- * Parameters to the MODE op-code
- *
- * Exclusive modes
- */
-
-typedef enum {
-
-  /**
-   * Uninitialized / factory settings
-   */
-
-  VLCB_MODULE_MODE_UNINITIALIZED = 255,
-
-  /**
-   * Set up mode
-   */
-
-  VLCB_MODULE_MODE_IN_SETUP = 0,
-
-  /**
-   * Normal operation mode
-   */
-
-  VLCB_MODULE_MODE_NORMAL = 1,
-
-  /**
-   * Turn on learn mode
-   */
-
-  VLCB_MODULE_MODE_ENABLE_LEARN_MODE = 8,
-
-  /**
-   * Turn off learn mode
-   */
-
-  VLCB_MODULE_MODE_DISABLE_LEARN_MODE = 9,
-
-  /**
-   * Turn on event acknowledgements
-   */
-
-  VLCB_MODULE_MODE_ENABLE_EVENT_ACK = 10,
-
-  /**
-   * Turn off event acknowledgements
-   */
-
-  VLCB_MODULE_MODE_DISABLE_EVENT_ACK = 11,
-
-  /**
-   * Turn on heartbeat
-   */
-
-  VLCB_MODULE_MODE_ENABLE_HEARTBEAT = 12,
-
-  /**
-   * Turn off heartbeat
-   */
-
-  VLCB_MODULE_MODE_DISABLE_HEARTBEAT = 13,
-
-  /**
-   * PIC Boot loader mode
-   */
-
-  VLCB_MODULE_MODE_BOOTLOADER = 14,
-
-} VlcbModuleMode;
-/**
- * GRSP codes
- */
-
-typedef enum {
-
-  /**
-   * Success
-   */
-
-  VLCB_GENERIC_RESPONSE_STAT_OK = 0,
-
-  /**
-   * Unknown non volatile memory type
-   */
-
-  VLCB_GENERIC_RESPONSE_STAT_UNKNOWN_PERSISTENT_MEMORY_TYPE = 254,
-
-  /**
-   * Invalid diagnostic
-   */
-
-  VLCB_GENERIC_RESPONSE_STAT_INVALID_DIAGNOSTIC = 253,
-
-  /**
-   * Invalid service
-   */
-
-  VLCB_GENERIC_RESPONSE_STAT_INVALID_SERVICE = 252,
-
-  /**
-   * Invalid parameter in command
-   */
-
-  VLCB_GENERIC_RESPONSE_STAT_INVALID_COMMAND_PARAMETER = 251,
-
-  /**
-   * Invalid Mode
-   */
-
-  VLCB_GENERIC_RESPONSE_STAT_INVALID_MODE = 250,
-
-} VlcbGenericResponseStatus;
-/**
- * SysPixie Module types (Konrad Orlowski)
- */
-
-typedef enum {
-
-  /**
-   * Motorised point motor driver with current sense
-   */
-
-  VLCB_SYSPIXIE_MODULE_CANPMSENSE = 1,
-
-} VlcbSysPixieModuleType;
-/**
- * Modes for STMOD
- */
-
-typedef enum {
-
-  /**
-   * 128-step speed mode
-   */
-
-  VLCB_DCC_THROTTLE_MODE_STEP128 = 0,
-
-  /**
-   * 14-step speed mode
-   */
-
-  VLCB_DCC_THROTTLE_MODE_STEP14 = 1,
-
-  /**
-   * interleaved 28-step speed mode
-   */
-
-  VLCB_DCC_THROTTLE_MODE_STEP28INTERLEAVED = 2,
-
-  /**
-   * 28-step speed mode
-   */
-
-  VLCB_DCC_THROTTLE_MODE_STEP28 = 3,
-
-} VlcbDccThrottleMode;
-/**
- * Status codes for SSTAT message
- */
-
-typedef enum {
-
-  VLCB_DCC_SVC_MODE_STAT_NO_ACK = 1,
-
-  VLCB_DCC_SVC_MODE_STAT_OVLD = 2,
-
-  VLCB_DCC_SVC_MODE_STAT_WRITE_ACK = 3,
-
-  VLCB_DCC_SVC_MODE_STAT_BUSY = 4,
-
-  VLCB_DCC_SVC_MODE_STAT_CV_ERROR = 5,
-
-} VlcbDccServiceModeStatus;
-/**
- * Sprog Module types
- */
-
-typedef enum {
-
-  /**
-   * Pi-SPROG 3 programmer/command station
-   */
-
-  VLCB_SPROG_MODULE_CANPI_SPRG3 = 1,
-
-  /**
-   * SPROG 3 Plus programmer/command station
-   */
-
-  VLCB_SPROG_MODULE_CANSPROG3P = 2,
-
-  /**
-   * CAN SPROG programmer/command station
-   */
-
-  VLCB_SPROG_MODULE_CANSPROG = 3,
-
-  /**
-   * System Booster
-   */
-
-  VLCB_SPROG_MODULE_CANSBOOST = 4,
-
-  /**
-   * Pi-SPROG 3 Plus programmer/command station
-   */
-
-  VLCB_SPROG_MODULE_CANPI_SPRGP = 5,
-
-  /**
-   * 8-channel (4-pairs) Solenoid I/O module
-   */
-
-  VLCB_SPROG_MODULE_CANSOLNOID = 8,
-
-  /**
-   * 8-channel Servo I/O module
-   */
-
-  VLCB_SPROG_MODULE_CANSERVOIO = 50,
-
-  /**
-   * CAN ISB Isolated CAN USB Interface
-   */
-
-  VLCB_SPROG_MODULE_CANISB = 100,
-
-  /**
-   * 8-channel (4-pairs) Solenoid I/O module
-   */
-
-  VLCB_SPROG_MODULE_CANSOLIO = 101,
-
-} VlcbSprogModuleType;
-/**
- * Spectrum Engineering Animated Modeller module types
- */
-
-typedef enum {
-
-  /**
-   * Animation controller (firmware derived from cancmd)
-   */
-
-  VLCB_SPECTRUM_MODULE_AMCTRLR = 1,
-
-  /**
-   * Dual cab based on cancab
-   */
-
-  VLCB_SPECTRUM_MODULE_DUALCAB = 2,
-
-} VlcbSpectrumModuleType;
-/**
- * Rocrail Module types
- */
-
-typedef enum {
-
-  /**
-   * RS232 PC interface
-   */
-
-  VLCB_ROCRAIL_MODULE_CANGC1 = 1,
-
-  /**
-   * 16 I/O
-   */
-
-  VLCB_ROCRAIL_MODULE_CANGC2 = 2,
-
-  /**
-   * Command station (derived from cancmd)
-   */
-
-  VLCB_ROCRAIL_MODULE_CANGC3 = 3,
-
-  /**
-   * 8 channel RFID reader
-   */
-
-  VLCB_ROCRAIL_MODULE_CANGC4 = 4,
-
-  /**
-   * Cab for fixed panels (derived from cancab)
-   */
-
-  VLCB_ROCRAIL_MODULE_CANGC5 = 5,
-
-  /**
-   * 4 channel servo controller
-   */
-
-  VLCB_ROCRAIL_MODULE_CANGC6 = 6,
-
-  /**
-   * Fast clock module
-   */
-
-  VLCB_ROCRAIL_MODULE_CANGC7 = 7,
-
-  /**
-   * CAN<->Ethernet interface
-   */
-
-  VLCB_ROCRAIL_MODULE_CANGC1E = 11,
-
-} VlcbRocRailModuleType;
-/**
- * Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)
- * Index numbers count from 1, subtract 1 for offset into parameter block
- * Note that RQNPN with index 0 returns the parameter count
- */
-
-typedef enum {
-
-  /**
-   * Number of parameters
-   */
-
-  VLCB_MODULE_PARAM_MODULE_PARAMETER_COUNT = 0,
-
-  /**
-   * Manufacturer id
-   */
-
-  VLCB_MODULE_PARAM_MODULE_MANUFACTURER = 1,
-
-  /**
-   * Minor version (single alphabetic character)
-   */
-
-  VLCB_MODULE_PARAM_MINOR_VERSION = 2,
-
-  /**
-   * Module type code
-   */
-
-  VLCB_MODULE_PARAM_MODULE_TYPE = 3,
-
-  /**
-   * Number of events supported
-   */
-
-  VLCB_MODULE_PARAM_MAX_EVENT_COUNT = 4,
-
-  /**
-   * Event variables per event
-   */
-
-  VLCB_MODULE_PARAM_EVENT_VARIABLE_COUNT = 5,
-
-  /**
-   * Number of Node variables
-   */
-
-  VLCB_MODULE_PARAM_NODE_VARIABLE_COUNT = 6,
-
-  /**
-   * Major version (numeric)
-   */
-
-  VLCB_MODULE_PARAM_MAJOR_VERSION = 7,
-
-  /**
-   * Node flags
-   */
-
-  VLCB_MODULE_PARAM_NODE_FLAGS = 8,
-
-  /**
-   * Processor type
-   */
-
-  VLCB_MODULE_PARAM_CPU_ID = 9,
-
-  /**
-   * Bus type
-   */
-
-  VLCB_MODULE_PARAM_BUS_TYPE = 10,
-
-  /**
-   * load address, 4 bytes
-   */
-
-  VLCB_MODULE_PARAM_LOAD_ADDRESS = 11,
-
-  /**
-   * CPU manufacturer's id as read from the chip config space, 4 bytes (note -
-   * read from cpu at runtime, so not included in checksum)
-   */
-
-  VLCB_MODULE_PARAM_CPU_MANUFACTURER_ID = 15,
-
-  /**
-   * CPU manufacturer code
-   */
-
-  VLCB_MODULE_PARAM_CPU_MANUFACTURER = 19,
-
-  /**
-   * Beta revision (numeric), or 0 if release
-   */
-
-  VLCB_MODULE_PARAM_BETA_VERSION = 20,
-
-} VlcbModuleParam;
-/**
- * Flags in node parameter FLAGS
- */
-
-typedef enum {
-
-  /**
-   * Module doesn't support events
-   */
-
-  VLCB_MODULE_FLAG_EVENTS_UNSUPPORTED = 0x0,
-
-  /**
-   * Module is a consumer of events
-   */
-
-  VLCB_MODULE_FLAG_EVENT_CONSUMER = 0x1,
-
-  /**
-   * Module is a producer of events
-   */
-
-  VLCB_MODULE_FLAG_EVENT_PRODUCER = 0x2,
-
-  /**
-   * Module is both a consumer and producer of events
-   */
-
-  VLCB_MODULE_FLAG_EVENT_COMBI = 0x3,
-
-  /**
-   * Module is in FLiM (CBUS)
-   */
-
-  VLCB_MODULE_FLAG_FLI_M = 0x4,
-
-  /**
-   * Module is in Normal mode (VLCB)
-   */
-
-  VLCB_MODULE_FLAG_NORMAL_MODE = 0x4,
-
-  /**
-   * Module supports the FCU bootloader protocol
-   */
-
-  VLCB_MODULE_FLAG_BOOTLOADER = 0x8,
-
-  /**
-   * Module can consume its own events
-   */
-
-  VLCB_MODULE_FLAG_CONSUME_OWN_EVENTS = 0x10,
-
-  /**
-   * Module is in learn mode
-   */
-
-  VLCB_MODULE_FLAG_LEARN_MODE = 0x20,
-
-  /**
-   * Module is VLCB compatible
-   */
-
-  VLCB_MODULE_FLAG_VLCB = 0x40,
-
-  /**
-   * Module supports Service Discovery (Deprecated in favour of PF_VLCB.)
-   */
-
-  VLCB_MODULE_FLAG_SERVICE_DISCOVERY = 0x40,
-
-} ModuleFlags;
-/**
- * MERG Module types
- */
-
-typedef enum {
-
-  /**
-   * default for SLiM nodes
-   */
-
-  VLCB_MERG_MODULE_SLIM = 0,
-
-  /**
-   * Solenoid point driver
-   */
-
-  VLCB_MERG_MODULE_CANACC4 = 1,
-
-  /**
-   * Motorised point driver
-   */
-
-  VLCB_MERG_MODULE_CANACC5 = 2,
-
-  /**
-   * 8 digital outputs
-   */
-
-  VLCB_MERG_MODULE_CANACC8 = 3,
-
-  /**
-   * Control panel switch/button encoder
-   */
-
-  VLCB_MERG_MODULE_CANACE3 = 4,
-
-  /**
-   * 8 digital inputs
-   */
-
-  VLCB_MERG_MODULE_CANACE8C = 5,
-
-  /**
-   * 64 led driver
-   */
-
-  VLCB_MERG_MODULE_CANLED = 6,
-
-  /**
-   * 64 led driver (multi leds per event)
-   */
-
-  VLCB_MERG_MODULE_CANLED64 = 7,
-
-  /**
-   * 12v version of CANACC4
-   */
-
-  VLCB_MERG_MODULE_CANACC4_2 = 8,
-
-  /**
-   * CANCAB hand throttle
-   */
-
-  VLCB_MERG_MODULE_CANCAB = 9,
-
-  /**
-   * CANCMD command station
-   */
-
-  VLCB_MERG_MODULE_CANCMD = 10,
-
-  /**
-   * 8 servo driver (on canacc8 or similar hardware)
-   */
-
-  VLCB_MERG_MODULE_CANSERVO = 11,
-
-  /**
-   * BC1a command station
-   */
-
-  VLCB_MERG_MODULE_CANBC = 12,
-
-  /**
-   * RPI and RFID interface
-   */
-
-  VLCB_MERG_MODULE_CANRPI = 13,
-
-  /**
-   * Turntable controller (turntable end)
-   */
-
-  VLCB_MERG_MODULE_CANTTCA = 14,
-
-  /**
-   * Turntable controller (control panel end)
-   */
-
-  VLCB_MERG_MODULE_CANTTCB = 15,
-
-  /**
-   * Handset controller for old BC1a type handsets
-   */
-
-  VLCB_MERG_MODULE_CANHS = 16,
-
-  /**
-   * Track occupancy detector
-   */
-
-  VLCB_MERG_MODULE_CANTOTI = 17,
-
-  /**
-   * 8 inputs 8 outputs
-   */
-
-  VLCB_MERG_MODULE_CAN8I8O = 18,
-
-  /**
-   * Canservo with servo position feedback
-   */
-
-  VLCB_MERG_MODULE_CANSERVO8C = 19,
-
-  /**
-   * RFID input
-   */
-
-  VLCB_MERG_MODULE_CANRFID = 20,
-
-  VLCB_MERG_MODULE_CANTC4 = 21,
-
-  /**
-   * 16 inputs
-   */
-
-  VLCB_MERG_MODULE_CANACE16C = 22,
-
-  /**
-   * 8 way I/O
-   */
-
-  VLCB_MERG_MODULE_CANIO8 = 23,
-
-  VLCB_MERG_MODULE_CANSNDX = 24,
-
-  /**
-   * Ethernet interface
-   */
-
-  VLCB_MERG_MODULE_CANETHER = 25,
-
-  /**
-   * Multiple aspect signalling for CANLED module
-   */
-
-  VLCB_MERG_MODULE_CANSIG64 = 26,
-
-  /**
-   * Multiple aspect signalling for CANACC8 module
-   */
-
-  VLCB_MERG_MODULE_CANSIG8 = 27,
-
-  /**
-   * Conditional event generation
-   */
-
-  VLCB_MERG_MODULE_CANCOND8C = 28,
-
-  /**
-   * Control panel 32/32
-   */
-
-  VLCB_MERG_MODULE_CANPAN = 29,
-
-  /**
-   * Newer version of CANACE3 firmware
-   */
-
-  VLCB_MERG_MODULE_CANACE3C = 30,
-
-  /**
-   * Control panel 64/64
-   */
-
-  VLCB_MERG_MODULE_CANPANEL = 31,
-
-  /**
-   * Multiple I/O – Universal CANMIO firmware
-   */
-
-  VLCB_MERG_MODULE_CANMIO = 32,
-
-  /**
-   * Multiple IO module 16 inputs emulating CANACE8C on CANMIO hardware
-   */
-
-  VLCB_MERG_MODULE_CANACE8MIO = 33,
-
-  /**
-   * Solenoid driver module
-   */
-
-  VLCB_MERG_MODULE_CANSOL = 34,
-
-  /**
-   * Universal CANBIP firmware - Bipolar IO module with additional 8 I/O pins
-   * (CANMIO family)
-   */
-
-  VLCB_MERG_MODULE_CANBIP = 35,
-
-  /**
-   * Solenoid driver module with additional 6 I/O pins (CANMIO family)
-   */
-
-  VLCB_MERG_MODULE_CANCDU = 36,
-
-  /**
-   * CANACC4 firmware ported to CANCDU
-   */
-
-  VLCB_MERG_MODULE_CANACC4CDU = 37,
-
-  /**
-   * CAN to MiWi base station
-   */
-
-  VLCB_MERG_MODULE_CANWI_BASE = 38,
-
-  /**
-   * Wireless cab using MiWi protocol
-   */
-
-  VLCB_MERG_MODULE_WI_CAB = 39,
-
-  /**
-   * CAN to WiFi connection with Withrottle to CBUS protocol conversion
-   */
-
-  VLCB_MERG_MODULE_CANWI_FI = 40,
-
-  /**
-   * Turntable controller configured using FLiM
-   */
-
-  VLCB_MERG_MODULE_CANFTT = 41,
-
-  /**
-   * Handset (alternative to CANCAB)
-   */
-
-  VLCB_MERG_MODULE_CANHNDST = 42,
-
-  /**
-   * Touchscreen handset
-   */
-
-  VLCB_MERG_MODULE_CANTCHNDST = 43,
-
-  /**
-   * multi-channel RFID reader
-   */
-
-  VLCB_MERG_MODULE_CANRFID8 = 44,
-
-  /**
-   * either a 2ch or 8ch RFID reader
-   */
-
-  VLCB_MERG_MODULE_CANMCH_RFID = 45,
-
-  /**
-   * a Raspberry Pi based module for WiFi
-   */
-
-  VLCB_MERG_MODULE_CANPI_WI = 46,
-
-  /**
-   * DC train controller
-   */
-
-  VLCB_MERG_MODULE_CAN4DC = 47,
-
-  /**
-   * Nelevator controller
-   */
-
-  VLCB_MERG_MODULE_CANELEV = 48,
-
-  /**
-   * 128 switch inputs
-   */
-
-  VLCB_MERG_MODULE_CANSCAN = 49,
-
-  /**
-   * 16MHz 25k80 version of CANSERVO8c on CANMIO hardware
-   */
-
-  VLCB_MERG_MODULE_CANMIO_SVO = 50,
-
-  /**
-   * 16MHz 25k80 version of CANACE8MIO on CANMIO hardware
-   */
-
-  VLCB_MERG_MODULE_CANMIO_INP = 51,
-
-  /**
-   * 16MHz 25k80 version of CANACC8 on CANMIO hardware
-   */
-
-  VLCB_MERG_MODULE_CANMIO_OUT = 52,
-
-  /**
-   * 16MHz 25k80 version of CANACC5 on CANBIP hardware
-   */
-
-  VLCB_MERG_MODULE_CANBIP_OUT = 53,
-
-  /**
-   * DCC stop generator
-   */
-
-  VLCB_MERG_MODULE_CANASTOP = 54,
-
-  /**
-   * CANCMD with on board 3A booster
-   */
-
-  VLCB_MERG_MODULE_CANCSB = 55,
-
-  /**
-   * Magnet on Track detector
-   */
-
-  VLCB_MERG_MODULE_CANMAG = 56,
-
-  /**
-   * 16 input equivaent to CANACE8C
-   */
-
-  VLCB_MERG_MODULE_CANACE16CMIO = 57,
-
-  /**
-   * CBUS module based on Raspberry Pi
-   */
-
-  VLCB_MERG_MODULE_CANPI_NODE = 58,
-
-  /**
-   * 25K80 version of CANLED64 (IHart and MB)
-   */
-
-  VLCB_MERG_MODULE_CANDISP = 59,
-
-  /**
-   * Compute Event processing engine
-   */
-
-  VLCB_MERG_MODULE_CANCOMPUTE = 60,
-
-  /**
-   * Read/Write from/to RC522 RFID tags
-   */
-
-  VLCB_MERG_MODULE_CANRC522 = 61,
-
-  /**
-   * 8 inputs module (2g version of CANACE8c) (Pete Brownlow)
-   */
-
-  VLCB_MERG_MODULE_CANINP = 62,
-
-  /**
-   * 8 outputs module (2g version of CANACC8) (Pete Brownlow)
-   */
-
-  VLCB_MERG_MODULE_CANOUT = 63,
-
-  /**
-   * Extended CANMIO (24 I/O ports) (Pete Brownlow)
-   */
-
-  VLCB_MERG_MODULE_CANXIO = 64,
-
-  /**
-   * DC cab
-   */
-
-  VLCB_MERG_MODULE_CANCABDC = 65,
-
-  /**
-   * DC Railcom detector/reader
-   */
-
-  VLCB_MERG_MODULE_CANRCOM = 66,
-
-  /**
-   * MP3 sound player in response to events (eg: station announcements) (Duncan
-   * Greenwood)
-   */
-
-  VLCB_MERG_MODULE_CANMP3 = 67,
-
-  /**
-   * Addressed RGB LED driver (Duncan Greenwood)
-   */
-
-  VLCB_MERG_MODULE_CANXMAS = 68,
-
-  /**
-   * Servo setting box (Duncan Greenwood)
-   */
-
-  VLCB_MERG_MODULE_CANSVOSET = 69,
-
-  /**
-   * DC Command station
-   */
-
-  VLCB_MERG_MODULE_CANCMDDC = 70,
-
-  /**
-   * Text message display
-   */
-
-  VLCB_MERG_MODULE_CANTEXT = 71,
-
-  /**
-   * Signal controller
-   */
-
-  VLCB_MERG_MODULE_CANASIGNAL = 72,
-
-  /**
-   * DCC cab with slider control (Dave Radcliffe)
-   */
-
-  VLCB_MERG_MODULE_CANSLIDER = 73,
-
-  /**
-   * DC ATC module (Dave Harris)
-   */
-
-  VLCB_MERG_MODULE_CANDCATC = 74,
-
-  /**
-   * Logic module using and/or gates (Phil Silver)
-   */
-
-  VLCB_MERG_MODULE_CANGATE = 75,
-
-  /**
-   * Q series PIC input module (Ian Hart)
-   */
-
-  VLCB_MERG_MODULE_CANSINP = 76,
-
-  /**
-   * Q series PIC input module (Ian Hart)
-   */
-
-  VLCB_MERG_MODULE_CANSOUT = 77,
-
-  /**
-   * Q series PIC input module (Ian Hart)
-   */
-
-  VLCB_MERG_MODULE_CANSBIP = 78,
-
-  /**
-   * Message buffer (Phil Silver)
-   */
-
-  VLCB_MERG_MODULE_CANBUFFER = 79,
-
-  /**
-   * Lever frame module (Tim Coombs)
-   */
-
-  VLCB_MERG_MODULE_CANLEVER = 80,
-
-  /**
-   * Kit 110 Arduino shield test firmware
-   */
-
-  VLCB_MERG_MODULE_CANSHIELD = 81,
-
-  /**
-   * 4 inputs 4 outputs (Arduino module)
-   */
-
-  VLCB_MERG_MODULE_CAN4IN4OUT = 82,
-
-  /**
-   * CANCMD with built in booster (Simon West)
-   */
-
-  VLCB_MERG_MODULE_CANCMDB = 83,
-
-  /**
-   * neopixel driver (Jon Denham)
-   */
-
-  VLCB_MERG_MODULE_CANPIXEL = 84,
-
-  /**
-   * Cab2 with pot or encoder (Simon West hardware, Jon Denham new C firmware)
-   */
-
-  VLCB_MERG_MODULE_CANCABPE = 85,
-
-  /**
-   * Smart train detector (Michael Smith)
-   */
-
-  VLCB_MERG_MODULE_CANSMARTTD = 86,
-
-  /**
-   * All VLCB modules have the same ID
-   */
-
-  VLCB_MERG_MODULE_VLCB = 252,
-
-  /**
-   * Software nodes
-   */
-
-  VLCB_MERG_MODULE_CAN_SW = 255,
-
-  /**
-   * Empty module, bootloader only
-   */
-
-  VLCB_MERG_MODULE_EMPTY = 254,
-
-  /**
-   * USB interface
-   */
-
-  VLCB_MERG_MODULE_CANUSB = 253,
-
-} VlcbMergModuleType;
-/**
- * Manufacturer definitions
- *
- * Here are definitions for all known MERG registered manufacturers.
- */
-
-typedef enum {
-
-  /**
-   * Develoment mode manufacturer
-   *
-   * For manufacturers who don't have a manufacturer id yet or
-   * for lib developers during testing.
-   *
-   * Do not use in production!
-   */
-
-  VLCB_MANU_DEVELOPMENT = 13,
-
-  /**
-   * https://www.merg.co.uk
-   */
-
-  VLCB_MANU_MERG = 165,
-
-  /**
-   * https://www.sprog-dcc.co.uk/
-   */
-
-  VLCB_MANU_SPROG = 44,
-
-  /**
-   * http://www.rocrail.net
-   */
-
-  VLCB_MANU_ROCRAIL = 70,
-
-  /**
-   * http://animatedmodeler.com  (Spectrum Engineering)
-   */
-
-  VLCB_MANU_SPECTRUM = 80,
-
-  /**
-   * range of MERG VLCB modules
-   */
-
-  VLCB_MANU_MERG_VLCB = 250,
-
-  /**
-   * Konrad Orlowski
-   */
-
-  VLCB_MANU_SYSPIXIE = 249,
-
-  /**
-   * http://rmeuk.com  (Railway Modelling Experts Limited)
-   */
-
-  VLCB_MANU_RME = 248,
-
-} VlcbManufacturer;
-/**
- * Error codes for ERR message
- */
-
-typedef enum {
-
-  VLCB_DCC_ERRLOCO_STACK_IS_FULL = 1,
-
-  VLCB_DCC_ERRLOCO_ADDRESS_IS_TAKEN = 2,
-
-  VLCB_DCC_ERRSESSION_IS_NOT_PRESENT = 3,
-
-  VLCB_DCC_ERREMPTY_CONSIST = 4,
-
-  VLCB_DCC_ERRLOCO_WAS_NOT_FOUND = 5,
-
-  VLCB_DCC_ERRRX_BUFFER_OVERFLOW = 6,
-
-  VLCB_DCC_ERRINVALID_REQUEST = 7,
-
-  VLCB_DCC_ERRSESSION_WAS_CANCELLED = 8,
-
-} VlcbDccError;
-/**
- * Error codes for CMDERR message
- */
-
-typedef enum {
-
-  /**
-   * Invalid command
-   */
-
-  VLCB_CMDERRINVALID_COMMAND = 1,
-
-  /**
-   * The mode is not currently in learn mode
-   */
-
-  VLCB_CMDERRNOT_IN_LEARN_MODE = 2,
-
-  /**
-   * The mode is not currently in setup mode
-   */
-
-  VLCB_CMDERRNOT_IN_SETUP_MODE = 3,
-
-  /**
-   * Too many events provisioned in module
-   *
-   * The event storage is exhausted
-   */
-
-  VLCB_CMDERRTOO_MANY_EVENTS = 4,
-
-  /**
-   * No Event-Variable
-   */
-
-  VLCB_CMDERRNO_EV = 5,
-
-  /**
-   * Invalid EV index
-   */
-
-  VLCB_CMDERRINVALID_EV_INDEX = 6,
-
-  /**
-   * Invalid event
-   */
-
-  VLCB_CMDERRINVALID_EVENT = 7,
-
-  /**
-   * Invalid event index
-   */
-
-  VLCB_CMDERRINVALID_EVENT_INDEX = 8,
-
-  /**
-   * Invalid param index
-   */
-
-  VLCB_CMDERRINVALID_PARAM_INDEX = 9,
-
-  /**
-   * Invalid NV index
-   */
-
-  VLCB_CMDERRINVALID_NV_INDEX = 10,
-
-  /**
-   * Invalid EV value
-   */
-
-  VLCB_CMDERRINVALID_EV_VALUE = 11,
-
-  /**
-   * Invalid NV value
-   */
-
-  VLCB_CMDERRINVALID_NV_VALUE = 12,
-
-  /**
-   * Another module is already in learn mode
-   *
-   * Sent when module in learn mode sees NNLRN for different module (also exits
-   * learn mode)
-   */
-
-  VLCB_CMDERRANOTHER_MODULE_IS_IN_LEARN_MODE = 13,
-
-} VlcbCommandError;
-/**
- * Defines the meaning of the remaining 3 bytes of the CABDAT message
- */
-
-typedef enum {
-
-  /**
-   * CABSIG
-   * Transmitted by a layout control system to send
-   * signal aspects to be displayed on a cab handset as cab
-   * signalling.
-   */
-
-  VLCB_DCC_CAB_CAB_SIGNALLING = 1,
-
-} VlcbDccCabDataCode;
-/**
- * BUS type that module is connected to
- */
-
-typedef enum {
-
-  VLCB_BUS_CAN = 1,
-
-  VLCB_BUS_ETHERNET = 2,
-
-  VLCB_BUS_MIWI = 3,
-
-  VLCB_BUS_USB = 4,
-
-} VlcbBusType;
-/**
- * Microchip Processor type codes (used by FCU to identify correct bootloader
- * compatibility)
- */
-
-typedef enum {
-
-  VLCB_PM_MICROCHIP_P18F2480 = 1,
-
-  VLCB_PM_MICROCHIP_P18F4480 = 2,
-
-  VLCB_PM_MICROCHIP_P18F2580 = 3,
-
-  VLCB_PM_MICROCHIP_P18F4580 = 4,
-
-  VLCB_PM_MICROCHIP_P18F2585 = 5,
-
-  VLCB_PM_MICROCHIP_P18F4585 = 6,
-
-  VLCB_PM_MICROCHIP_P18F2680 = 7,
-
-  VLCB_PM_MICROCHIP_P18F4680 = 8,
-
-  VLCB_PM_MICROCHIP_P18F2682 = 9,
-
-  VLCB_PM_MICROCHIP_P18F4682 = 10,
-
-  VLCB_PM_MICROCHIP_P18F2685 = 11,
-
-  VLCB_PM_MICROCHIP_P18F4685 = 12,
-
-  VLCB_PM_MICROCHIP_P18F25K80 = 13,
-
-  VLCB_PM_MICROCHIP_P18F45K80 = 14,
-
-  VLCB_PM_MICROCHIP_P18F26K80 = 15,
-
-  VLCB_PM_MICROCHIP_P18F46K80 = 16,
-
-  VLCB_PM_MICROCHIP_P18F65K80 = 17,
-
-  VLCB_PM_MICROCHIP_P18F66K80 = 18,
-
-  VLCB_PM_MICROCHIP_P18F25K83 = 19,
-
-  VLCB_PM_MICROCHIP_P18F26K83 = 20,
-
-  VLCB_PM_MICROCHIP_P18F27Q84 = 21,
-
-  VLCB_PM_MICROCHIP_P18F47Q84 = 22,
-
-  VLCB_PM_MICROCHIP_P18F27Q83 = 23,
-
-  VLCB_PM_MICROCHIP_P18F14K22 = 25,
-
-  VLCB_PM_MICROCHIP_P32MX534F064 = 30,
-
-  VLCB_PM_MICROCHIP_P32MX564F064 = 31,
-
-  VLCB_PM_MICROCHIP_P32MX564F128 = 32,
-
-  VLCB_PM_MICROCHIP_P32MX575F256 = 33,
-
-  VLCB_PM_MICROCHIP_P32MX575F512 = 34,
-
-  VLCB_PM_MICROCHIP_P32MX764F128 = 35,
-
-  VLCB_PM_MICROCHIP_P32MX775F256 = 36,
-
-  VLCB_PM_MICROCHIP_P32MX775F512 = 37,
-
-  VLCB_PM_MICROCHIP_P32MX795F512 = 38,
-
-} VlcbMicrochipProcessor;
-/**
- * ARM Processor type codes (used by FCU to identify correct bootloader
- * compatibility)
- */
-
-typedef enum {
-
-  VLCB_PM_ARM_ARM1176JZFS = 1,
-
-  VLCB_PM_ARM_CORTEXA7 = 2,
-
-  VLCB_PM_ARM_CORTEXA53 = 3,
-
-} VlcbArmProcessor;
-/**
- * Processor manufacturer codes
- */
-
-typedef enum {
-
-  VLCB_PM_MICROCHIP = 1,
-
-  VLCB_PM_ATMEL = 2,
-
-  VLCB_PM_ARM = 3,
-
-} VlcbProcessorManufacturer;
-#pragma once
-
-#pragma once
