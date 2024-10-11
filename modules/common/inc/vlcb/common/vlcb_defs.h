@@ -1,5 +1,3 @@
-#pragma once
-
 /**
  * VLCB opcodes
  */
@@ -1892,67 +1890,67 @@ typedef enum {
    * Module doesn't support events
    */
 
-  VLCB_MODULE_FLAG_EVENTS_UNSUPPORTED = 0b0,
+  VLCB_MODULE_FLAG_EVENTS_UNSUPPORTED = 0x0,
 
   /**
    * Module is a consumer of events
    */
 
-  VLCB_MODULE_FLAG_EVENT_CONSUMER = 0b1,
+  VLCB_MODULE_FLAG_EVENT_CONSUMER = 0x1,
 
   /**
    * Module is a producer of events
    */
 
-  VLCB_MODULE_FLAG_EVENT_PRODUCER = 0b10,
+  VLCB_MODULE_FLAG_EVENT_PRODUCER = 0x2,
 
   /**
    * Module is both a consumer and producer of events
    */
 
-  VLCB_MODULE_FLAG_EVENT_COMBI = 0b11,
+  VLCB_MODULE_FLAG_EVENT_COMBI = 0x3,
 
   /**
    * Module is in FLiM (CBUS)
    */
 
-  VLCB_MODULE_FLAG_FLI_M = 0b100,
+  VLCB_MODULE_FLAG_FLI_M = 0x4,
 
   /**
    * Module is in Normal mode (VLCB)
    */
 
-  VLCB_MODULE_FLAG_NORMAL_MODE = 0b100,
+  VLCB_MODULE_FLAG_NORMAL_MODE = 0x4,
 
   /**
    * Module supports the FCU bootloader protocol
    */
 
-  VLCB_MODULE_FLAG_BOOTLOADER = 0b1000,
+  VLCB_MODULE_FLAG_BOOTLOADER = 0x8,
 
   /**
    * Module can consume its own events
    */
 
-  VLCB_MODULE_FLAG_CONSUME_OWN_EVENTS = 0b10000,
+  VLCB_MODULE_FLAG_CONSUME_OWN_EVENTS = 0x10,
 
   /**
    * Module is in learn mode
    */
 
-  VLCB_MODULE_FLAG_LEARN_MODE = 0b100000,
+  VLCB_MODULE_FLAG_LEARN_MODE = 0x20,
 
   /**
    * Module is VLCB compatible
    */
 
-  VLCB_MODULE_FLAG_VLCB = 0b1000000,
+  VLCB_MODULE_FLAG_VLCB = 0x40,
 
   /**
    * Module supports Service Discovery (Deprecated in favour of PF_VLCB.)
    */
 
-  VLCB_MODULE_FLAG_SERVICE_DISCOVERY = 0b1000000,
+  VLCB_MODULE_FLAG_SERVICE_DISCOVERY = 0x40,
 
 } ModuleFlags;
 /**
@@ -2809,4 +2807,6 @@ typedef enum {
   VLCB_PM_ARM = 3,
 
 } VlcbProcessorManufacturer;
+#pragma once
+
 #pragma once
