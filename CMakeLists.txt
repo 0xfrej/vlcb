@@ -5,13 +5,15 @@ project(
         DESCRIPTION "VLCB bus SDK"
         LANGUAGES C
 )
+# TODO: make useable on other platforms as well
+#   https://github.com/doctest/doctest/blob/master/CMakeLists.txt
 include(GNUInstallDirs)
 
 set_property(GLOBAL PROPERTY C_STANDARD 99)
 
-# do not enable testing when this project is used as external project
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-endif()
+## do not enable testing when this project is used as external project
+#if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+#endif()
 
 add_subdirectory(modules)
 
@@ -27,7 +29,7 @@ include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
         "${CMAKE_CURRENT_BINARY_DIR}/vlcbConfigVersion.cmake"
         VERSION ${PROJECT_VERSION}
-        COMPATIBILITY AnyNewerVersion
+        COMPATIBILITY AnyNewerVersion # todo: check this if it's right
 )
 
 configure_file(
@@ -39,9 +41,9 @@ configure_file(
 install(FILES
         "${CMAKE_CURRENT_BINARY_DIR}/vlcbConfig.cmake"
         "${CMAKE_CURRENT_BINARY_DIR}/vlcbConfigVersion.cmake"
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/vlcb
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 install(EXPORT VLCBTargets
         NAMESPACE vlcb::
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/vlcb
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
