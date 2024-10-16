@@ -117,22 +117,6 @@ typedef enum {
 
 } VlcbBusType;
 /**
- * Defines the meaning of the remaining 3 bytes of the CABDAT message
- */
-
-typedef enum {
-
-  /**
-   * CABSIG
-   * Transmitted by a layout control system to send
-   * signal aspects to be displayed on a cab handset as cab
-   * signalling.
-   */
-
-  VLCB_DCC_CAB_CAB_SIGNALLING = 1,
-
-} VlcbDccCabDataCode;
-/**
  * Error codes for CMDERR message
  */
 
@@ -142,19 +126,19 @@ typedef enum {
    * Invalid command
    */
 
-  VLCB_CMDERRINVALID_COMMAND = 1,
+  VLCB_CMDERR_INVALID_COMMAND = 1,
 
   /**
    * The mode is not currently in learn mode
    */
 
-  VLCB_CMDERRNOT_IN_LEARN_MODE = 2,
+  VLCB_CMDERR_NOT_IN_LEARN_MODE = 2,
 
   /**
    * The mode is not currently in setup mode
    */
 
-  VLCB_CMDERRNOT_IN_SETUP_MODE = 3,
+  VLCB_CMDERR_NOT_IN_SETUP_MODE = 3,
 
   /**
    * Too many events provisioned in module
@@ -162,55 +146,55 @@ typedef enum {
    * The event storage is exhausted
    */
 
-  VLCB_CMDERRTOO_MANY_EVENTS = 4,
+  VLCB_CMDERR_TOO_MANY_EVENTS = 4,
 
   /**
    * No Event-Variable
    */
 
-  VLCB_CMDERRNO_EV = 5,
+  VLCB_CMDERR_NO_EV = 5,
 
   /**
    * Invalid EV index
    */
 
-  VLCB_CMDERRINVALID_EV_INDEX = 6,
+  VLCB_CMDERR_INVALID_EV_INDEX = 6,
 
   /**
    * Invalid event
    */
 
-  VLCB_CMDERRINVALID_EVENT = 7,
+  VLCB_CMDERR_INVALID_EVENT = 7,
 
   /**
    * Invalid event index
    */
 
-  VLCB_CMDERRINVALID_EVENT_INDEX = 8,
+  VLCB_CMDERR_INVALID_EVENT_INDEX = 8,
 
   /**
    * Invalid param index
    */
 
-  VLCB_CMDERRINVALID_PARAM_INDEX = 9,
+  VLCB_CMDERR_INVALID_PARAM_INDEX = 9,
 
   /**
    * Invalid NV index
    */
 
-  VLCB_CMDERRINVALID_NV_INDEX = 10,
+  VLCB_CMDERR_INVALID_NV_INDEX = 10,
 
   /**
    * Invalid EV value
    */
 
-  VLCB_CMDERRINVALID_EV_VALUE = 11,
+  VLCB_CMDERR_INVALID_EV_VALUE = 11,
 
   /**
    * Invalid NV value
    */
 
-  VLCB_CMDERRINVALID_NV_VALUE = 12,
+  VLCB_CMDERR_INVALID_NV_VALUE = 12,
 
   /**
    * Another module is already in learn mode
@@ -219,7 +203,7 @@ typedef enum {
    * learn mode)
    */
 
-  VLCB_CMDERRANOTHER_MODULE_IS_IN_LEARN_MODE = 13,
+  VLCB_CMDERR_ANOTHER_MODULE_IS_IN_LEARN_MODE = 13,
 
 } VlcbCommandError;
 /**
@@ -228,21 +212,21 @@ typedef enum {
 
 typedef enum {
 
-  VLCB_DCC_ERRLOCO_STACK_IS_FULL = 1,
+  VLCB_DCC_ERR_LOCO_STACK_IS_FULL = 1,
 
-  VLCB_DCC_ERRLOCO_ADDRESS_IS_TAKEN = 2,
+  VLCB_DCC_ERR_LOCO_ADDRESS_IS_TAKEN = 2,
 
-  VLCB_DCC_ERRSESSION_IS_NOT_PRESENT = 3,
+  VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT = 3,
 
-  VLCB_DCC_ERREMPTY_CONSIST = 4,
+  VLCB_DCC_ERR_EMPTY_CONSIST = 4,
 
-  VLCB_DCC_ERRLOCO_WAS_NOT_FOUND = 5,
+  VLCB_DCC_ERR_LOCO_WAS_NOT_FOUND = 5,
 
-  VLCB_DCC_ERRRX_BUFFER_OVERFLOW = 6,
+  VLCB_DCC_ERR_RX_BUFFER_OVERFLOW = 6,
 
-  VLCB_DCC_ERRINVALID_REQUEST = 7,
+  VLCB_DCC_ERR_INVALID_REQUEST = 7,
 
-  VLCB_DCC_ERRSESSION_WAS_CANCELLED = 8,
+  VLCB_DCC_ERR_SESSION_WAS_CANCELLED = 8,
 
 } VlcbDccError;
 /**
@@ -926,7 +910,7 @@ typedef enum {
 
   VLCB_MODULE_FLAG_SERVICE_DISCOVERY = 0x40,
 
-} ModuleFlags;
+} VlcbModuleFlags;
 /**
  * Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)
  * Index numbers count from 1, subtract 1 for offset into parameter block

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vlcb/common/error.h"
+#include "vlcb/platform/error.h"
 
 #ifndef VLCB_NOLOGGING
 

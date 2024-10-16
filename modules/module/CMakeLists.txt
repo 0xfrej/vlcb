@@ -2,9 +2,10 @@ set(
         SOURCES
         src/module.c
         src/state_machine.c
+        src/param.c
 )
 
-add_library(vlcb_module ${CMAKE_CURRENT_SOURCE_DIR})
+add_library(vlcb_module ${CMAKE_CURRENT_LIST_DIR})
 target_sources(vlcb_module PRIVATE ${SOURCES})
 target_link_libraries(vlcb_module PUBLIC vlcb_common vlcb_platform vlcb_net)
 unset(SOURCES)

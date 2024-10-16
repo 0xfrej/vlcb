@@ -2,31 +2,30 @@
 
 #include <stdbool.h>
 #include <stddef.h>
-#include <stdint.h>
 
 #include "packet/vlcb.h"
+#include "vlcb/platform/interface.h"
+#include "vlcb/net/addr.h"
 
 typedef enum {
   VLCB_NET_SOCK_ERR_OK = 0,
 
+  VLCB_NET_SOCK_ERR_WOULD_BLOCK,
+
   VLCB_NET_SOCK_ERR_RX_BUF_FULL,
+  VLCB_NET_SOCK_ERR_TX_BUF_FULL,
 
   VLCB_NET_SOCK_ERR_COUNT,
 } VlcbNetSocketErr;
 
 vlcb_error vlcb_net_sock_ErrToStr(VlcbNetSocketErr err);
 
-typedef struct {
-  bool (*SupportsProtocol)(VlcbProtocol protocol);
-  VlcbNetSocketErr (*ProcessPacket)(void *const self,
-                                    const VlcbPacket *const packet);
-  bool (*DispatchPacket)(void *const self, VlcbPacket *const packet);
-} VlcbNetSocketTrait;
-
-typedef struct {
-  void *const self;
-  const VlcbNetSocketTrait *const tc;
-} VlcbNetSocket;
+_INTERFACE_DECLARE(VlcbNetSocket,
+  _INTERFACE_METHOD_DECLARE(bool, SupportsProtocol, VlcbProtocol protocol)
+  _INTERFACE_METHOD_DECLARE(VlcbNetSocketErr, ProcessPacket, _INTERFACE_SELF_PTR_MUT, const VlcbPacket *const packet)
+  _INTERFACE_METHOD_DECLARE(bool, DispatchPacket, _INTERFACE_SELF_PTR_MUT, VlcbPacket *const packet)
+  _INTERFACE_METHOD_DECLARE(int, Bind, _INTERFACE_SELF_PTR_MUT, const VlcbNetHwAddr *const addr)
+)
 
 typedef VlcbNetSocket *VlcbNetSocketHandle;
 typedef struct {

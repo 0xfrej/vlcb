@@ -3,7 +3,7 @@ add_subdirectory(src/can)
 add_subdirectory(src/node)
 add_subdirectory(src/opcode)
 
-add_library(vlcb_common ${CMAKE_CURRENT_SOURCE_DIR})
+add_library(vlcb_common ${CMAKE_CURRENT_LIST_DIR})
 target_sources(vlcb_common PRIVATE ${SOURCES})
 unset(SOURCES)
 

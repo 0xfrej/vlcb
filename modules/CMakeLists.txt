@@ -9,6 +9,7 @@
 function(add_library target module_dir)
     # Forward all arguments to the original add_library
     _add_library(${target} ${ARGN})
+    _add_library(vlcb::${target} ALIAS ${target})
     # Ensure this directory is included as an interface include
     target_include_directories(
             ${target}

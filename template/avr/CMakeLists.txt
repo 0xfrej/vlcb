@@ -123,18 +123,12 @@ add_definitions("-std=gnu99")
 ##########################################################################
 include_directories(${AVR-EXAMPLE_SOURCE_DIR}/include)
 
-# install to local directory instead of system (we can use this to install external projects)
-set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/local)
-# add local includes from installed projects to search path
-include_directories(${CMAKE_SOURCE_DIR}/local/include)
-
 ##########################################################################
 # building library and application in their subdirectories
 ##########################################################################
 
-# allow use of FetchContent and ExternalProject
+# allow use of FetchContent
 include(FetchContent)
-include(ExternalProject)
 
 add_avr_executable(
 		${PROJECT_NAME}
@@ -151,7 +145,6 @@ message(STATUS "avr-libc: ${C_LIB}")
 avr_target_link_libraries(${PROJECT_NAME} ${C_LIB})
 
 # Add VLCB SDK
-message("vlcb: fetching")
 # We use FetchContent to download the source
 FetchContent_Declare(
 		vlcb
@@ -161,14 +154,9 @@ FetchContent_Declare(
 #		GIT_REPOSITORY "git@github.com:0xfrej/vlcb.git"
 #		GIT_TAG "origin/main"
 #		GIT_SUBMODULES "" # skip submodules (necessary)
-		OVERRIDE_FIND_PACKAGE # this is to make find_package work
 )
 FetchContent_MakeAvailable(vlcb)
-message("vlcb: fetched")
-set(VLCB_VERSION 0.1.0)
-message("vlcb: version ${VLCB_VERSION}")
-find_package(vlcb ${VLCB_VERSION} REQUIRED)
-# we need to use this as the toolchain version is bugged with libraries defined in FetchContent libraries
-target_link_libraries(${DEPENDENCY_TARGET} vlcb_common)
-message("vlcb: linked")
+# we need to use this as the toolchain avr_target_link_libraries is bugged with libraries defined in FetchContent libraries
+target_link_libraries(${DEPENDENCY_TARGET} vlcb::vlcb_common)
+message(STATUS "vlcb: linked")
 # end Add VLCB SDK

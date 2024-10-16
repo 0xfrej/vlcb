@@ -1,17 +1,11 @@
 #pragma once
 
-#include "module_types.h"
 #include "vlcb/platform/time.h"
+#include "vlcb/platform/interface.h"
 
-typedef struct {
-  void (*const Poll)(void *const self, const time_t now);
-  void (*const Draw)(void *const self, const VlcbModuleState);
-  // void (*const IndicateActivity)(void *const self);
-  // void (*const IsResetRequested)(const void *const self);
-} VlcbModuleUiTrait;
+_INTERFACE_DECLARE(VlcbModuleUi,
+  _INTERFACE_METHOD_DECLARE(void, IndicateState, _INTERFACE_SELF_PTR_MUT, const VlcbModuleState state)
+  _INTERFACE_METHOD_DECLARE(void, Poll, _INTERFACE_SELF_PTR_MUT, const clock_t now)
+)
 
-typedef struct {
-  void *const self;
-  const VlcbModuleUiTrait *const tc;
-} VlcbModuleUi;
-
+#define VLCB_MODULE_UI_NULL _INTERFACE_NULL(VlcbModuleUi)

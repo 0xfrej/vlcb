@@ -2,8 +2,6 @@
 
 #include <stdbool.h>
 
-#include "vlcb/common/vlcb_defs.h"
-
 bool vlcb_defs_IsCanPriorityValid(const VlcbCanPriority prio) {
   switch (prio) {
     case VLCB_CAN_PRIO_SELF_ENUM:

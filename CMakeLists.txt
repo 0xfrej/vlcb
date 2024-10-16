@@ -29,7 +29,7 @@ include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
         "${CMAKE_CURRENT_BINARY_DIR}/vlcbConfigVersion.cmake"
         VERSION ${PROJECT_VERSION}
-        COMPATIBILITY AnyNewerVersion # todo: check this if it's right
+        COMPATIBILITY SameMinorVersion
 )
 
 configure_file(
@@ -41,9 +41,14 @@ configure_file(
 install(FILES
         "${CMAKE_CURRENT_BINARY_DIR}/vlcbConfig.cmake"
         "${CMAKE_CURRENT_BINARY_DIR}/vlcbConfigVersion.cmake"
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/vlcb
 )
 install(EXPORT VLCBTargets
         NAMESPACE vlcb::
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/vlcb
+)
+
+export(EXPORT VLCBTargets
+        NAMESPACE vlcb::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/vlcbTargets.cmake"
 )

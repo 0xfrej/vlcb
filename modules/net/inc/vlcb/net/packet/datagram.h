@@ -3,7 +3,7 @@
 #include <inttypes.h>
 
 #include "vlcb/common/vlcb_defs.h"
-#include "vlcb/common/error.h"
+#include "vlcb/platform/error.h"
 
 #define VLCB_DGRAM_PKT_MAX_PAYLOAD 7
 

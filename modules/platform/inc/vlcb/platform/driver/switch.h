@@ -15,7 +15,7 @@ typedef struct {
   VlcbPlatformSwitchState state;
   bool hasChanged;
   VlcbPlatformSwitchStatusResolver resolver;
-  time_t lastChangeAt;
+  clock_t lastChangeAt;
   uint32_t prevChangeLastedForMs;
 } VlcbPlatformSwitchDriver;
 

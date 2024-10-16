@@ -47,7 +47,7 @@ VlcbNetAdptErr DispatchCanPacket(VlcbNetIface* const iface,
     memcpy(&adpt_pkt.payload + 1, packet->payload, packet->payload_len);
   }
 
-  VlcbNetAdptErr err = iface->adpt->tc->SendPkt(iface->adpt->self, &adpt_pkt);
+  VlcbNetAdptErr err = _INTERFACE_PTR_CALL(iface->adpt, SendPkt, &adpt_pkt);
 
   return err;
 }

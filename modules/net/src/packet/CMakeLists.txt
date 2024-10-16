@@ -1,3 +1,5 @@
+add_subdirectory(datagram)
+
 set(
         SOURCES
         ${SOURCES}

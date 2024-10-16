@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "vlcb/platform/log.h"
+#include "vlcb/platform/interface.h"
 #include "iface_can.h"
 
 void ProcessVlcbPacket(VlcbNetIface *const iface,
@@ -12,11 +13,11 @@ void ProcessVlcbPacket(VlcbNetIface *const iface,
   VlcbNetSocketListIter iter = vlcb_net_sock_list_GetIterator(iface->sockets);
   while (vlcb_net_sock_list_iter_HasNext(&iter)) {
     VlcbNetSocketHandle sock = vlcb_net_sock_list_iter_Next(&iter);
-    if (!sock->tc->SupportsProtocol(proto)) {
+    if (!_INTERFACE_PTR_STATIC_CALL(sock, SupportsProtocol, proto)) {
       continue;
     }
 
-    VlcbNetSocketErr err = sock->tc->ProcessPacket(sock->self, packet);
+    VlcbNetSocketErr err = _INTERFACE_PTR_CALL(sock, ProcessPacket, packet);
     if (err != VLCB_NET_SOCK_ERR_OK) {
       VLCBLOG_ERROR(vlcb_net_sock_ErrToStr(err));
     }

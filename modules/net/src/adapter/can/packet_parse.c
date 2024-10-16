@@ -6,7 +6,7 @@
 
 #include "../../../../../shared/log.h"
 
-VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
+inline VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
     const VlcbCanFrameId id, const bool is_rtr, const uint8_t payload_len,
     const VlcbNetAdptPayload *const payload, VlcbNetAdptPkt *const packet) {
   assert(payload != NULL && packet != NULL);
@@ -48,7 +48,7 @@ VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
   return VLCB_NET_ADPT_ERR_OK;
 }
 
-int vlcb_net_adpt_NewCanFrameIdFromPkt(
+inline int vlcb_net_adpt_NewCanFrameIdFromPkt(
     const VlcbNetAdptPkt *const packet, VlcbCanFrameId *const id) {
   assert(packet != NULL && id != NULL);
   if (vlcb_defs_IsCanIdValid(packet->src_addr.can_id)) {

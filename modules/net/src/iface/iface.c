@@ -24,11 +24,11 @@ bool IngressPackets(VlcbNetIface *const iface) {
   bool processed_any = false;
 
   const VlcbNetAdpt *adpt = iface->adpt;
-  const VlcbNetAdptCaps caps = adpt->tc->Caps(adpt->self);
+  const VlcbNetAdptCaps caps = _INTERFACE_PTR_CALL(adpt, Caps);
 
   do {
     VlcbNetAdptPkt *phy_packet;
-    VlcbNetAdptErr dev_err = adpt->tc->RecvPkt(adpt->self, phy_packet);
+    VlcbNetAdptErr dev_err = _INTERFACE_PTR_CALL(adpt, RecvPkt, phy_packet);
 
     // device has nothing in buffer and would block execution while waiting
     // for new packets
@@ -56,7 +56,7 @@ bool IngressPackets(VlcbNetIface *const iface) {
 bool EgressPackets(VlcbNetIface *const iface) {
   bool emitted_any = false;
 
-  const VlcbNetAdptCaps caps = iface->adpt->tc->Caps(iface->adpt->self);
+  const VlcbNetAdptCaps caps = _INTERFACE_PTR_CALL(iface->adpt, Caps);
   VlcbNetSocketListIter iter = vlcb_net_sock_list_GetIterator(iface->sockets);
 
   while (vlcb_net_sock_list_iter_HasNext(&iter)) {
@@ -64,7 +64,7 @@ bool EgressPackets(VlcbNetIface *const iface) {
 
     VlcbPacket packet;  // TODO: ensure clean packet
 
-    const bool emitted_packet = sock->tc->DispatchPacket(sock->self, &packet);
+    const bool emitted_packet = _INTERFACE_PTR_CALL(sock, DispatchPacket, &packet);
     // TODO: reject invalid packets -> for example when the packet wasn't filled
     emitted_any |= emitted_packet;
     if (emitted_packet) {

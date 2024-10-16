@@ -4,7 +4,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/src/driver/led.c
 )
 
-add_library(vlcb_platform ${CMAKE_CURRENT_SOURCE_DIR})
+add_library(vlcb_platform ${CMAKE_CURRENT_LIST_DIR})
 target_sources(vlcb_platform PRIVATE ${SOURCES})
 target_link_libraries(vlcb_platform PUBLIC vlcb_common)
 unset(SOURCES)
