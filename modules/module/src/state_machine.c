@@ -1,70 +1,185 @@
 #include "state_machine.h"
 
+#include "vlcb/common/node.h"
+#include "vlcb/module.h"
+#include "vlcb/module/state.h"
+#include "vlcb/net/packet/datagram.h"
 #include "vlcb/net/packet/datagram/module.h"
+#include "vlcb/net/socket.h"
+#include "vlcb/net/socket/datagram.h"
+#include "vlcb/platform/interface.h"
+#include <assert.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <string.h>
 
-inline void EnterUninitializedMode(VlcbModule *const module) {
-  const VlcbNodeAddr addr = module->config.nodeAddr;
+bool HandleTransitionToUninitialized(VlcbModule *const self) {
+  // TODO: do we need to also release the setup-state address, which is not
+  // persisted yet?
+  const VlcbNodeAddr addr = self->config.nodeAddr;
 
   // release the address if it was set
   if (addr != VLCB_NODE_ADDR_UNINITIALIZED) {
     VlcbPacketDatagram packet;
     vlcb_net_pkt_dgram_module_ReleaseNodeNumber_Serialize(
-      &packet,
-      (VlcbNetDgramReleaseNodeNumber) {.addr = addr}
-    );
-    const VlcbNetSocketErr err = vlcb_net_sock_dgram_Send(module->socket, &packet);
+        &packet, (VlcbNetDgramReleaseNodeNumber){.addr = addr});
+    const VlcbNetSocketErr err =
+        vlcb_net_sock_dgram_Send(self->socket, &packet);
     if (err != VLCB_NET_SOCK_ERR_OK) {
       // todo: log
-      return;
+      return false;
     }
-    module->config.nodeAddr = VLCB_NODE_ADDR_UNINITIALIZED;
+    self->config.nodeAddr = VLCB_NODE_ADDR_UNINITIALIZED;
   }
 
-  module->canCommunicate = false;
-  module->config.state = VLCB_MODULE_STATE_UNINITIALIZED;
+  self->config.state = VLCB_MODULE_PERSISTED_STATE_UNINITIALIZED;
+
+  return true;
 }
 
-inline void HandleUninitializedMode(
-  VlcbModule *const module,
-  const VlcbPacketDatagram *const packet
-) {
-  if (packet->opc == VLCB_OPC_QUERY_NODE_INFO) {
+bool HandleTransitionToSetup(VlcbModule *const self,
+                             VlcbModuleStateMachineSetupData setupData) {
+  VlcbPacketDatagram packet;
+  vlcb_net_pkt_dgram_module_RequestNodeNumber_Serialize(
+      &packet, (VlcbNetDgramRequestNodeNumber){.addr = setupData.nodeAddr});
+  const VlcbNetSocketErr err = vlcb_net_sock_dgram_Send(self->socket, &packet);
+  if (err != VLCB_NET_SOCK_ERR_OK) {
+    // TODO: log
+    return false;
+  }
+  return true;
+}
+
+bool HandleTransitionToNormal(VlcbModule *const self) {
+  if (self->config.nodeAddr != VLCB_NODE_ADDR_UNINITIALIZED) {
     VlcbPacketDatagram packet;
     vlcb_net_pkt_dgram_module_ReleaseNodeNumber_Serialize(
-      &packet,
-      (VlcbNetDgramReleaseNodeNumber) {.addr = addr}
-    );
-    const VlcbNetSocketErr err = vlcb_net_sock_dgram_Send(module->socket, &packet);
+        &packet,
+        (VlcbNetDgramReleaseNodeNumber){.addr = self->config.nodeAddr});
+    const VlcbNetSocketErr err =
+        vlcb_net_sock_dgram_Send(self->socket, &packet);
     if (err != VLCB_NET_SOCK_ERR_OK) {
-      // todo: log
+      // TODO: log
+      return false;
     }
-  }
-}
-
-inline void EnterSetupMode(VlcbModule *const module) {
-
-  module->canCommunicate = false;
-  module->config.state = VLCB_MODULE_STATE_SETUP;
-}
-
-inline void ModuleStatePoll(
-  VlcbModule *const module,
-  VlcbNetSocketDatagram *const packet
-) {
-  const VlcbModuleState prevState = module->state.currentState;
-
-  switch (prevState) {
-    case VLCB_MODULE_STATE_ENTERING_UNINITIALIZED:
-      return EnterUninitializedMode(module);
-    case VLCB_MODULE_STATE_UNINITIALIZED:
-      return HandleUninitializedMode(module, packet);
-    case VLCB_MODULE_STATE_ENTERING_SETUP:
-      return EnterSetupMode(module);
+    self->config.nodeAddr =
+        VLCB_NODE_ADDR_UNINITIALIZED; // if next call fails, prevent next
+                                      // transition to double-release the node
+                                      // number
   }
 
-  const VlcbModuleState currentState = module->state.currentState;
-  if (prevState != currentState) {
-    module->config.state = currentState;
-    _INTERFACE_CALL(module->ui, IndicateState, currentState);
+  VlcbPacketDatagram packet;
+  vlcb_net_pkt_dgram_module_NodeNumberAck_Serialize(
+      &packet,
+      (VlcbNetDgramNodeNumberAck){.addr = self->sm.data.setup.nodeAddr});
+  const VlcbNetSocketErr err = vlcb_net_sock_dgram_Send(self->socket, &packet);
+  if (err != VLCB_NET_SOCK_ERR_OK) {
+    // TODO: log
+    return false;
+  }
+
+  self->config.state = VLCB_MODULE_PERSISTED_STATE_NORMAL;
+  self->config.nodeAddr = self->sm.data.setup.nodeAddr;
+  return true;
+}
+
+void state_Dispatch(VlcbModule *const self, const ModuleStateEvent e) {
+  if (e.sig == MSE_INIT) {
+    // reset state, node and hw address when invalid state was resolved from
+    // config
+    VlcbModulePersistedState persistedState = self->config.state;
+    if (persistedState < VLCB_MODULE_PERSISTED_STATE_UNINITIALIZED ||
+        persistedState > VLCB_MODULE_PERSISTED_STATE_NORMAL) {
+      self->config.nodeAddr = 0;
+      memset(&self->config.hwAddr, 0, sizeof(VlcbNetHwAddr));
+      self->config.state = VLCB_MODULE_PERSISTED_STATE_UNINITIALIZED;
+    }
+    switch (self->config.state) {
+    case VLCB_MODULE_PERSISTED_STATE_UNINITIALIZED:
+      self->sm.state = VLCB_MODULE_STATE_UNINITIALIZED;
+      break;
+    case VLCB_MODULE_PERSISTED_STATE_NORMAL:
+      self->sm.state = VLCB_MODULE_STATE_NORMAL;
+    default:
+      assert(false);
+    }
+    _INTERFACE_CALL(self->ui, IndicateState, self->sm.state);
+    return;
+  }
+
+  // TODO: include error responses to invalid commands like in MNS 2.3.4.1
+
+  const VlcbModuleState currentState = self->sm.state;
+  switch (currentState) {
+  case VLCB_MODULE_STATE_UNINITIALIZED:
+    if (e.sig == MSE_UI_REQ_TO_SETUP) {
+      const VlcbModuleStateMachineSetupData setupData = {
+          .prevState = currentState, .nodeAddr = VLCB_NODE_ADDR_UNINITIALIZED};
+      if (HandleTransitionToSetup(self, setupData)) {
+        self->sm.state = VLCB_MODULE_STATE_SETUP;
+        self->sm.data.setup = setupData;
+      }
+    }
+    break;
+  case VLCB_MODULE_STATE_SETUP:
+    switch (e.sig) {
+    case MSE_MODE_MSG_FOR_ANOTHER_MODULE:
+      // Module encountered a MODE message for another module, aborting it's
+      // setup
+      // TODO: send NNACK, on fail log and either restart the module or send to
+      // uninitialized
+      self->sm.state = self->sm.data.setup.prevState;
+      break;
+    case MSE_UI_REQ_TO_PREV:
+      // UI or MODE requested to go back to previous state without saving
+      switch (self->sm.data.setup.prevState) {
+      case VLCB_MODULE_STATE_UNINITIALIZED:
+        // ignore req if transition failed
+        if (HandleTransitionToUninitialized(self)) {
+          self->sm.state = VLCB_MODULE_STATE_UNINITIALIZED;
+        }
+        break;
+      case VLCB_MODULE_STATE_NORMAL:
+        self->sm.state = VLCB_MODULE_STATE_NORMAL;
+        break;
+      }
+      break;
+    case MSE_NNRSM_MSG:
+      if (HandleTransitionToUninitialized(self)) {
+        self->sm.state = VLCB_MODULE_STATE_UNINITIALIZED;
+      }
+      break;
+    case MSE_SNN_MSG:
+      if (HandleTransitionToNormal(self)) {
+        self->sm.state = VLCB_MODULE_STATE_NORMAL;
+      }
+      break;
+    }
+    break;
+  case VLCB_MODULE_STATE_NORMAL:
+    switch (e.sig) {
+    case MSE_UI_REQ_TO_SETUP:
+    case MSE_MODE_REQ_TO_SETUP:;
+      const VlcbModuleStateMachineSetupData setupData = {
+          .prevState = currentState, .nodeAddr = self->config.nodeAddr};
+      if (HandleTransitionToSetup(self, setupData)) {
+        self->sm.state = VLCB_MODULE_STATE_SETUP;
+        self->sm.data.setup = setupData;
+      }
+      break;
+    case MSE_NNRSM_MSG:
+      // ignore on failure to transition
+      if (HandleTransitionToUninitialized(self)) {
+        self->sm.state = VLCB_MODULE_STATE_UNINITIALIZED;
+      }
+      break;
+    }
+    break;
+  default:
+    assert(false /* unhandled state */);
+  }
+
+  if (currentState != self->sm.state) {
+    _INTERFACE_CALL(self->ui, IndicateState, self->sm.state);
   }
 }

@@ -2,6 +2,3 @@
 
 #include "vlcb/module.h"
 
-typedef enum {
-  
-} ModuleEvent;

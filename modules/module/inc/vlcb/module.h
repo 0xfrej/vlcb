@@ -1,10 +1,13 @@
 #pragma once
 
-#include "vlcb/module/param.h"
-#include "vlcb/net/iface.h"
-#include "vlcb/platform/time.h"
 #include "vlcb/common/node.h"
+#include "vlcb/module/param.h"
+#include "vlcb/module/state.h"
+#include "vlcb/module/ui.h"
+#include "vlcb/net/iface.h"
 #include "vlcb/net/socket/datagram.h"
+#include "vlcb/platform/time.h"
+#include <stdint.h>
 
 // typedef struct {
 // } VlcbServiceTrait;
@@ -26,32 +29,29 @@
 //   VlcbServiceHandle nv;
 // } VlcbServiceMngr;
 
-typedef enum {
+/**
+ * Module state for persistent storage
+ *
+ * Module can enter states that should not be persisted
+ */
+typedef uint8_t VlcbModulePersistedState;
+enum VlcbPersistedModuleState {
+  VLCB_MODULE_PERSISTED_STATE_UNINITIALIZED = 1,
+  VLCB_MODULE_PERSISTED_STATE_NORMAL,
+};
+
+typedef uint8_t VlcbModuleOpFlags;
+enum VlcbModuleOpFlags {
   VLCB_MODULE_FLAGS_HEARTBEAT = 0x01,
   VLCB_MODULE_FLAGS_EVENT_ACK = 0x02,
-} VlcbModuleOpFlags;
-
-typedef enum {
-  VLCB_MODULE_STATE_UNINITIALIZED = 0,
-  VLCB_MODULE_STATE_ENTERING_SETUP,
-  VLCB_MODULE_STATE_SETUP,
-  VLCB_MODULE_STATE_ENTERING_NORMAL,
-  VLCB_MODULE_STATE_NORMAL,
-  VLCB_MODULE_STATE_ENTERING_UNINITIALIZED,
-} VlcbModuleState;
-
-typedef struct {
-  VlcbModuleState currentState;
-} VlcbModuleStateMachine;
+};
 
 typedef struct {
   VlcbModuleOpFlags operationFlags;
-  VlcbModuleState state;
+  VlcbModulePersistedState state;
   VlcbNetHwAddr hwAddr;
   VlcbNodeAddr nodeAddr;
 } VlcbModuleConfig;
-
-#include "vlcb/module/ui.h"
 
 typedef struct {
   VlcbNetIface *const iface;
@@ -59,29 +59,18 @@ typedef struct {
   VlcbModuleUi ui;
   VlcbModuleConfig config;
   VlcbModuleParams params;
-  VlcbModuleStateMachine state;
-  bool canCommunicate;
   // VlcbServiceMngr services;
+  VlcbModuleStateMachine sm;
 } VlcbModule;
 
-VlcbModule vlcb_module_New(
-  VlcbNetIface *const iface,
-  VlcbNetSocketDatagram *const socket,
-  const VlcbModuleUi ui,
-  const VlcbModuleParams params
-);
+VlcbModule vlcb_module_New(VlcbNetIface *const iface,
+                           VlcbNetSocketDatagram *const socket,
+                           const VlcbModuleUi ui,
+                           const VlcbModuleParams params);
 
-void vlcb_module_Init(
-  VlcbModule *const module,
-  const clock_t now
-);
+void vlcb_module_Init(VlcbModule *const module, const clock_t now);
 
-int vlcb_module_BindSock(
-  const VlcbModule *const module,
-  const VlcbNetSocket *const socket
-);
+int vlcb_module_BindSock(const VlcbModule *const module,
+                         const VlcbNetSocket *const socket);
 
-void vlcb_module_Poll(
-  VlcbModule *const module,
-  const clock_t now
-);
+void vlcb_module_Poll(VlcbModule *const module, const clock_t now);

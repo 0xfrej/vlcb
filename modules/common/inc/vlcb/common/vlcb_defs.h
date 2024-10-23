@@ -1,10 +1,13 @@
 #pragma once
 
+#include <stdint.h>
+
 /**
  * Processor manufacturer codes
  */
 
-typedef enum {
+typedef uint8_t VlcbProcessorManufacturer;
+enum VlcbProcessorManufacturer {
 
   VLCB_PM_MICROCHIP = 1,
 
@@ -12,13 +15,14 @@ typedef enum {
 
   VLCB_PM_ARM = 3,
 
-} VlcbProcessorManufacturer;
+};
 /**
  * ARM Processor type codes (used by FCU to identify correct bootloader
  * compatibility)
  */
 
-typedef enum {
+typedef uint8_t VlcbArmProcessor;
+enum VlcbArmProcessor {
 
   VLCB_PM_ARM_ARM1176JZFS = 1,
 
@@ -26,13 +30,14 @@ typedef enum {
 
   VLCB_PM_ARM_CORTEXA53 = 3,
 
-} VlcbArmProcessor;
+};
 /**
  * Microchip Processor type codes (used by FCU to identify correct bootloader
  * compatibility)
  */
 
-typedef enum {
+typedef uint8_t VlcbMicrochipProcessor;
+enum VlcbMicrochipProcessor {
 
   VLCB_PM_MICROCHIP_P18F2480 = 1,
 
@@ -100,12 +105,13 @@ typedef enum {
 
   VLCB_PM_MICROCHIP_P32MX795F512 = 38,
 
-} VlcbMicrochipProcessor;
+};
 /**
  * BUS type that module is connected to
  */
 
-typedef enum {
+typedef uint8_t VlcbBusType;
+enum VlcbBusType {
 
   VLCB_BUS_CAN = 1,
 
@@ -115,12 +121,13 @@ typedef enum {
 
   VLCB_BUS_USB = 4,
 
-} VlcbBusType;
+};
 /**
  * Error codes for CMDERR message
  */
 
-typedef enum {
+typedef uint8_t VlcbCommandError;
+enum VlcbCommandError {
 
   /**
    * Invalid command
@@ -205,12 +212,13 @@ typedef enum {
 
   VLCB_CMDERR_ANOTHER_MODULE_IS_IN_LEARN_MODE = 13,
 
-} VlcbCommandError;
+};
 /**
  * Error codes for ERR message
  */
 
-typedef enum {
+typedef uint8_t VlcbDccError;
+enum VlcbDccError {
 
   VLCB_DCC_ERR_LOCO_STACK_IS_FULL = 1,
 
@@ -228,14 +236,15 @@ typedef enum {
 
   VLCB_DCC_ERR_SESSION_WAS_CANCELLED = 8,
 
-} VlcbDccError;
+};
 /**
  * Manufacturer definitions
  *
  * Here are definitions for all known MERG registered manufacturers.
  */
 
-typedef enum {
+typedef uint8_t VlcbManufacturer;
+enum VlcbManufacturer {
 
   /**
    * Develoment mode manufacturer
@@ -290,12 +299,13 @@ typedef enum {
 
   VLCB_MANU_RME = 248,
 
-} VlcbManufacturer;
+};
 /**
  * MERG Module types
  */
 
-typedef enum {
+typedef uint8_t VlcbMergModuleType;
+enum VlcbMergModuleType {
 
   /**
    * default for SLiM nodes
@@ -837,12 +847,13 @@ typedef enum {
 
   VLCB_MERG_MODULE_CANUSB = 253,
 
-} VlcbMergModuleType;
+};
 /**
  * Flags in node parameter FLAGS
  */
 
-typedef enum {
+typedef uint8_t VlcbModuleFlags;
+enum VlcbModuleFlags {
 
   /**
    * Module doesn't support events
@@ -863,7 +874,8 @@ typedef enum {
   VLCB_MODULE_FLAG_EVENT_PRODUCER = 0x2,
 
   /**
-   * Module is both a consumer and producer of events
+   * Module is both a consumer and producer of events (Shorthand for
+   * EventConsumer combined with EventProducer)
    */
 
   VLCB_MODULE_FLAG_EVENT_COMBI = 0x3,
@@ -910,14 +922,15 @@ typedef enum {
 
   VLCB_MODULE_FLAG_SERVICE_DISCOVERY = 0x40,
 
-} VlcbModuleFlags;
+};
 /**
  * Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN)
  * Index numbers count from 1, subtract 1 for offset into parameter block
  * Note that RQNPN with index 0 returns the parameter count
  */
 
-typedef enum {
+typedef uint8_t VlcbModuleParam;
+enum VlcbModuleParam {
 
   /**
    * Number of parameters
@@ -1010,12 +1023,13 @@ typedef enum {
 
   VLCB_MODULE_PARAM_BETA_VERSION = 20,
 
-} VlcbModuleParam;
+};
 /**
  * Rocrail Module types
  */
 
-typedef enum {
+typedef uint8_t VlcbRocRailModuleType;
+enum VlcbRocRailModuleType {
 
   /**
    * RS232 PC interface
@@ -1065,12 +1079,13 @@ typedef enum {
 
   VLCB_ROCRAIL_MODULE_CANGC1E = 11,
 
-} VlcbRocRailModuleType;
+};
 /**
  * Spectrum Engineering Animated Modeller module types
  */
 
-typedef enum {
+typedef uint8_t VlcbSpectrumModuleType;
+enum VlcbSpectrumModuleType {
 
   /**
    * Animation controller (firmware derived from cancmd)
@@ -1084,12 +1099,13 @@ typedef enum {
 
   VLCB_SPECTRUM_MODULE_DUALCAB = 2,
 
-} VlcbSpectrumModuleType;
+};
 /**
  * Sprog Module types
  */
 
-typedef enum {
+typedef uint8_t VlcbSprogModuleType;
+enum VlcbSprogModuleType {
 
   /**
    * Pi-SPROG 3 programmer/command station
@@ -1145,12 +1161,13 @@ typedef enum {
 
   VLCB_SPROG_MODULE_CANSOLIO = 101,
 
-} VlcbSprogModuleType;
+};
 /**
  * Status codes for SSTAT message
  */
 
-typedef enum {
+typedef uint8_t VlcbDccServiceModeStatus;
+enum VlcbDccServiceModeStatus {
 
   VLCB_DCC_SVC_MODE_STAT_NO_ACK = 1,
 
@@ -1162,12 +1179,13 @@ typedef enum {
 
   VLCB_DCC_SVC_MODE_STAT_CV_ERROR = 5,
 
-} VlcbDccServiceModeStatus;
+};
 /**
  * Modes for STMOD
  */
 
-typedef enum {
+typedef uint8_t VlcbDccThrottleMode;
+enum VlcbDccThrottleMode {
 
   /**
    * 128-step speed mode
@@ -1193,12 +1211,13 @@ typedef enum {
 
   VLCB_DCC_THROTTLE_MODE_STEP28 = 3,
 
-} VlcbDccThrottleMode;
+};
 /**
  * SysPixie Module types (Konrad Orlowski)
  */
 
-typedef enum {
+typedef uint8_t VlcbSysPixieModuleType;
+enum VlcbSysPixieModuleType {
 
   /**
    * Motorised point motor driver with current sense
@@ -1206,12 +1225,13 @@ typedef enum {
 
   VLCB_SYSPIXIE_MODULE_CANPMSENSE = 1,
 
-} VlcbSysPixieModuleType;
+};
 /**
  * GRSP codes
  */
 
-typedef enum {
+typedef uint8_t VlcbGenericResponseStatus;
+enum VlcbGenericResponseStatus {
 
   /**
    * Success
@@ -1249,14 +1269,15 @@ typedef enum {
 
   VLCB_GENERIC_RESPONSE_STAT_INVALID_MODE = 250,
 
-} VlcbGenericResponseStatus;
+};
 /**
  * Parameters to the MODE op-code
  *
  * Exclusive modes
  */
 
-typedef enum {
+typedef uint8_t VlcbModuleMode;
+enum VlcbModuleMode {
 
   /**
    * Uninitialized / factory settings
@@ -1318,12 +1339,13 @@ typedef enum {
 
   VLCB_MODULE_MODE_BOOTLOADER = 14,
 
-} VlcbModuleMode;
+};
 /**
  * VLCB Service Types
  */
 
-typedef enum {
+typedef uint8_t VlcbServiceType;
+enum VlcbServiceType {
 
   /**
    * Internal service.
@@ -1408,12 +1430,13 @@ typedef enum {
 
   VLCB_SVC_TYPE_STREAMING = 17,
 
-} VlcbServiceType;
+};
 /**
  * VLCB opcodes
  */
 
-typedef enum {
+typedef uint8_t VlcbOpCode;
+enum VlcbOpCode {
 
   /**
    * General Acknowledgement.
@@ -2792,4 +2815,4 @@ typedef enum {
 
   VLCB_OPC_EXT_OP_CODE6 = 255,
 
-} VlcbOpCode;
+};
