@@ -1,4 +1,5 @@
 ## TODO
+- allow indenpendently poll ingress and egress of packets (this will benefit projects implementing module)
 - refactor
   - each socket holds a pointer to endpoint (this should be the hw addr) - done
     - if no hw addr is set yet, can't communicate
@@ -15,7 +16,6 @@
 - setup tests using unity
 - setup doxygen
 - setup github pipeline for testing
-- todo allow routing
 
 # implementation
 - module is a mediator
