@@ -1,7 +1,9 @@
 #pragma once
 
 #include "vlcb/common/node.h"
+#include "vlcb/platform/time.h"
 #include <stdint.h>
+#include <time.h>
 
 typedef uint8_t VlcbModuleState;
 enum VlcbModuleState {
@@ -12,7 +14,8 @@ enum VlcbModuleState {
 
 typedef struct {
   VlcbModuleState prevState;
-  VlcbNodeAddr nodeAddr;
+  VlcbNodeNumber nodeAddr;
+  clock_t startedAt;
 } VlcbModuleStateMachineSetupData;
 
 typedef union {

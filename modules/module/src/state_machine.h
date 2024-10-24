@@ -2,6 +2,7 @@
 
 #include "vlcb/common/node.h"
 #include "vlcb/module.h"
+#include <time.h>
 
 typedef enum {
   MSE_INIT,
@@ -12,10 +13,11 @@ typedef enum {
   MSE_MODE_MSG_FOR_ANOTHER_MODULE,
   MSE_NNRSM_MSG,
   MSE_SNN_MSG,
+  MSE_POLL,
 } ModuleStateEventSignal;
 
 typedef struct {
-  VlcbNodeAddr nodeAddr;
+  VlcbNodeNumber nodeAddr;
 } ModuleStateEventSnnMsgData;
 
 typedef union {
@@ -27,4 +29,5 @@ typedef struct {
   ModuleStateEventData data;
 } ModuleStateEvent;
 
-void state_Dispatch(VlcbModule *const self, const ModuleStateEvent e);
+void state_Dispatch(VlcbModule *const self, const ModuleStateEvent e,
+                    clock_t now);

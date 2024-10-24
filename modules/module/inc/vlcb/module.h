@@ -50,10 +50,12 @@ typedef struct {
   VlcbModuleOpFlags operationFlags;
   VlcbModulePersistedState state;
   VlcbNetHwAddr hwAddr;
-  VlcbNodeAddr nodeAddr;
+  VlcbNodeNumber nodeAddr;
 } VlcbModuleConfig;
 
 typedef struct {
+  clock_t lastHeartbeat;
+  uint8_t heartbeatCount;
   VlcbNetIface *const iface;
   VlcbNetSocketDatagram *const socket;
   VlcbModuleUi ui;

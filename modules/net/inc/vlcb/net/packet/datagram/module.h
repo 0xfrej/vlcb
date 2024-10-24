@@ -5,13 +5,13 @@
 #include "vlcb/net/packet/serialization.h"
 
 DEFINE_PACKET_DATA(vlcb_net_pkt_dgram_module, Dgram, ReleaseNodeNumber,
-                   VlcbPacketDatagram, VlcbNodeAddr addr;)
+                   VlcbPacketDatagram, VlcbNodeNumber addr;)
 
 DEFINE_PACKET_DATA(vlcb_net_pkt_dgram_module, Dgram, QueryNodeInfo,
-                   VlcbPacketDatagram, VlcbNodeAddr addr;)
+                   VlcbPacketDatagram, VlcbNodeNumber addr;)
 
 DEFINE_PACKET_DATA(vlcb_net_pkt_dgram_module, Dgram, RequestNodeNumber,
-                   VlcbPacketDatagram, VlcbNodeAddr addr;)
+                   VlcbPacketDatagram, VlcbNodeNumber addr;)
 
 DEFINE_PACKET_DATA(vlcb_net_pkt_dgram_module, Dgram, NodeNumberAck,
-                   VlcbPacketDatagram, VlcbNodeAddr addr;)
+                   VlcbPacketDatagram, VlcbNodeNumber addr;)
