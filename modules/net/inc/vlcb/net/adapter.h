@@ -3,9 +3,8 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
-#include "vlcb/common/can.h"
-#include "vlcb/platform/interface.h"
 #include "vlcb/platform/error.h"
+#include "vlcb/platform/interface.h"
 
 #define VLCB_NET_ADPT_MAX_PAYLOAD 8
 
@@ -76,43 +75,47 @@ typedef enum {
 vlcb_error vlcb_net_adpt_ErrToStr(VlcbNetAdptErr err);
 
 _INTERFACE_DECLARE(
-  VlcbNetAdpt,
+    IVlcbNetAdpt,
 
-  /**
-   * Receive a VLCB packet using this device
-   *
-   * Returns `VLCB_NET_DEV_ERR_WOULD_BLOCK` when there is nothing
-   * in the reception buffer.
-   */
-  _INTERFACE_METHOD_DECLARE(VlcbNetAdptErr, RecvPkt, _INTERFACE_SELF_PTR_MUT, VlcbNetAdptPkt *const pkt)
+    /**
+     * Receive a VLCB packet using this device
+     *
+     * Returns `VLCB_NET_DEV_ERR_WOULD_BLOCK` when there is nothing
+     * in the reception buffer.
+     */
+    _INTERFACE_METHOD_DECLARE(VlcbNetAdptErr, RecvPkt,
+                              _INTERFACE_SELF_PTR_MUT(IVlcbNetAdpt),
+                              VlcbNetAdptPkt *const pkt);
 
-  /**
-   * Transfer a VLCB packet using this device
-   */
-  _INTERFACE_METHOD_DECLARE(VlcbNetAdptErr, SendPkt, _INTERFACE_SELF_PTR_MUT, const VlcbNetAdptPkt *const pkt)
+    /**
+     * Transfer a VLCB packet using this device
+     */
+    _INTERFACE_METHOD_DECLARE(VlcbNetAdptErr, SendPkt,
+                              _INTERFACE_SELF_PTR_MUT(IVlcbNetAdpt),
+                              const VlcbNetAdptPkt *const pkt);
 
-  /**
-   * Get the device capabilities
-   */
-  _INTERFACE_METHOD_DECLARE(VlcbNetAdptCaps, Caps, _INTERFACE_SELF_PTR)
-)
+    /**
+     * Get the device capabilities
+     */
+    _INTERFACE_METHOD_DECLARE(VlcbNetAdptCaps, Caps,
+                              _INTERFACE_SELF_PTR(IVlcbNetAdpt)););
+;
 
-#define vlcb_net_adpt_impl(T, Name, send_f, receive_f, caps_f)              \
-  VlcbNetAdpt Name##_Upcast(T *x) {                                          \
-    _TYPE_UPCAST_METHOD_PTR_SIG(send_f, VlcbNetAdptErr, T *const,            \
-                                const VlcbNetAdptPkt *const)              \
-    _TYPE_UPCAST_METHOD_PTR_SIG(receive_f, VlcbNetAdptErr, T *const,         \
-                                VlcbNetAdptPkt *const)                    \
-    _TYPE_UPCAST_METHOD_PTR_SIG(caps_f, VlcbNetAdptCaps, const T *const)     \
-    _TYPE_UPCAST_VTABLE_DEF(                                                \
-        tc, VlcbNetAdptTrait,                                                \
-        _TYPE_UPCAST_VTABLE_METHOD_ENTRY(RecvPkt, receive_f, VlcbNetAdptErr, \
-                                         void *const,                       \
-                                         VlcbNetAdptPkt *const),          \
-        _TYPE_UPCAST_VTABLE_METHOD_ENTRY(SendPkt, send_f, VlcbNetAdptErr,       \
-                                         void *const,                       \
-                                         const VlcbNetAdptPkt *const),    \
-        _TYPE_UPCAST_VTABLE_METHOD_ENTRY(Caps, caps_f, VlcbNetAdptCaps,      \
-                                         const void *const))                \
-    return (VlcbNetAdpt){.tc = &tc, .self = x};               \
-  }
+// #define vlcb_net_adpt_impl(T, Name, send_f, receive_f, caps_f)                 \
+//   VlcbNetAdpt Name##_Upcast(T *x) {                                            \
+//     _TYPE_UPCAST_METHOD_PTR_SIG(send_f, VlcbNetAdptErr, T *const,              \
+//                                 const VlcbNetAdptPkt *const)                   \
+//     _TYPE_UPCAST_METHOD_PTR_SIG(receive_f, VlcbNetAdptErr, T *const,           \
+//                                 VlcbNetAdptPkt *const)                         \
+//     _TYPE_UPCAST_METHOD_PTR_SIG(caps_f, VlcbNetAdptCaps, const T *const)       \
+//     _TYPE_UPCAST_VTABLE_DEF(                                                   \
+//         tc, VlcbNetAdptTrait,                                                  \
+//         _TYPE_UPCAST_VTABLE_METHOD_ENTRY(RecvPkt, receive_f, VlcbNetAdptErr,   \
+//                                          void *const, VlcbNetAdptPkt *const),  \
+//         _TYPE_UPCAST_VTABLE_METHOD_ENTRY(SendPkt, send_f, VlcbNetAdptErr,      \
+//                                          void *const,                          \
+//                                          const VlcbNetAdptPkt *const),         \
+//         _TYPE_UPCAST_VTABLE_METHOD_ENTRY(Caps, caps_f, VlcbNetAdptCaps,        \
+//                                          const void *const))                   \
+//     return (VlcbNetAdpt){.tc = &tc, .self = x};                                \
+//   }

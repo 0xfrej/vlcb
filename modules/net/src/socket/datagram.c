@@ -2,7 +2,11 @@
 
 #include <assert.h>
 #include <stdbool.h>
+#include <stddef.h>
 
+#include "vlcb/net/addr.h"
+#include "vlcb/net/packet/vlcb.h"
+#include "vlcb/net/socket.h"
 #include "vlcb/platform/interface.h"
 
 bool SupportsProtocol(VlcbProtocol proto) {
@@ -39,8 +43,8 @@ bool DispatchPacket(const VlcbNetSocketDatagram *const self,
   }
 
   vlcb_net_pkt_NewUnchecked(VLCB_PROTO_DATAGRAM, datagram_packet.opc,
-                              datagram_packet.payload_len,
-                              &datagram_packet.payload, packet);
+                            datagram_packet.payload_len,
+                            &datagram_packet.payload, packet);
 
   return true;
 }
@@ -54,45 +58,63 @@ int Bind(VlcbNetSocketDatagram *const sock, const VlcbNetHwAddr *const addr) {
   return 1;
 }
 
-VlcbNetSocket vlcb_net_sock_dgram_Upcast(VlcbNetSocketDatagram *sock) {
-  _TYPE_UPCAST_METHOD_PTR_SIG(SupportsProtocol, bool, VlcbProtocol);
-  _TYPE_UPCAST_METHOD_PTR_SIG(ProcessPacket, VlcbNetSocketErr,
-                              VlcbNetSocketDatagram *const,
-                              const VlcbPacket *const);
-  _TYPE_UPCAST_METHOD_PTR_SIG(DispatchPacket, bool,
-                              VlcbNetSocketDatagram *const, VlcbPacket *const);
-  _TYPE_UPCAST_METHOD_PTR_SIG(Bind, bool,
-                              VlcbNetSocketDatagram *const, const VlcbNetHwAddr *const);
-  _TYPE_UPCAST_VTABLE_DEF(
-      tc, VlcbNetSocketTrait,
-      _TYPE_UPCAST_VTABLE_METHOD_ENTRY(SupportsProtocol, SupportsProtocol, bool,
-                                       VlcbProtocol),
-      _TYPE_UPCAST_VTABLE_METHOD_ENTRY(ProcessPacket, ProcessPacket,
-                                       VlcbNetSocketErr, void *const,
-                                       const VlcbPacket *const),
-      _TYPE_UPCAST_VTABLE_METHOD_ENTRY(DispatchPacket, DispatchPacket, bool,
-                                       void *const, VlcbPacket *const)
-                                       ,
-      _TYPE_UPCAST_VTABLE_METHOD_ENTRY(Bind, Bind, int,
-                                       void *const, const VlcbNetHwAddr *const)
-                                       );
-  return (VlcbNetSocket){.tc = &tc, .self = sock};
+_INTERFACE_VTABLE_DEFINE(
+    IVlcbNetSocket,
+    _INTERFACE_VTABLE_METHOD(SupportsProtocol, SupportsProtocol, bool,
+                             VlcbProtocol),
+    _INTERFACE_VTABLE_METHOD(ProcessPacket, ProcessPacket, VlcbNetSocketErr,
+                             _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
+                             const VlcbPacket *const),
+    _INTERFACE_VTABLE_METHOD(DispatchPacket, DispatchPacket, bool,
+                             _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
+                             VlcbPacket *const),
+    _INTERFACE_VTABLE_METHOD(Bind, Bind, int,
+                             _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
+                             const VlcbNetHwAddr *const));
+
+// VlcbNetSocket vlcb_net_sock_dgram_Upcast(VlcbNetSocketDatagram *sock) {
+//   _TYPE_UPCAST_METHOD_PTR_SIG(SupportsProtocol, bool, VlcbProtocol);
+//   _TYPE_UPCAST_METHOD_PTR_SIG(ProcessPacket, VlcbNetSocketErr,
+//                               VlcbNetSocketDatagram *const,
+//                               const VlcbPacket *const);
+//   _TYPE_UPCAST_METHOD_PTR_SIG(DispatchPacket, bool,
+//                               VlcbNetSocketDatagram *const, VlcbPacket
+//                               *const);
+//   _TYPE_UPCAST_METHOD_PTR_SIG(Bind, bool,
+//                               VlcbNetSocketDatagram *const, const
+//                               VlcbNetHwAddr *const);
+//   _TYPE_UPCAST_VTABLE_DEF(
+//       tc, VlcbNetSocketTrait,
+//       _TYPE_UPCAST_VTABLE_METHOD_ENTRY(SupportsProtocol, SupportsProtocol,
+//       bool,
+//                                        VlcbProtocol),
+//       _TYPE_UPCAST_VTABLE_METHOD_ENTRY(ProcessPacket, ProcessPacket,
+//                                        VlcbNetSocketErr, void *const,
+//                                        const VlcbPacket *const),
+//       _TYPE_UPCAST_VTABLE_METHOD_ENTRY(DispatchPacket, DispatchPacket, bool,
+//                                        void *const, VlcbPacket *const)
+//                                        ,
+//       _TYPE_UPCAST_VTABLE_METHOD_ENTRY(Bind, Bind, int,
+//                                        void *const, const VlcbNetHwAddr
+//                                        *const)
+//                                        );
+//   return (VlcbNetSocket){.tc = &tc, .self = sock};
+// }
+
+VlcbNetSocketDatagram vlcb_net_sock_dgram_New(VlcbPacketBuf *const rxBuf,
+                                              VlcbPacketBuf *const txBuf) {
+  assert(rxBuf != NULL && txBuf != NULL);
+  return (VlcbNetSocketDatagram){_INTERFACE_ASSIGN_VTABLE(IVlcbNetSocket),
+                                 .rxBuf = rxBuf, .txBuf = txBuf, .addr = NULL};
 }
 
-VlcbNetSocketDatagram vlcb_net_sock_dgram_New(
-    VlcbPacketBuf *const rxBuf, VlcbPacketBuf *const txBuf) {
-  assert(rxBuf !=NULL && txBuf!=NULL);
-  return (VlcbNetSocketDatagram){.rxBuf = rxBuf, .txBuf = txBuf, .addr = NULL};
-}
-
-VlcbNetSocketErr vlcb_net_sock_dgram_Send(VlcbNetSocketDatagram *const sock, const VlcbPacketDatagram *const packet) {
-  assert(sock != NULL);
-
-
-}
-
-VlcbNetSocketErr vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock, VlcbPacketDatagram *const packet) {
+VlcbNetSocketErr
+vlcb_net_sock_dgram_Send(VlcbNetSocketDatagram *const sock,
+                         const VlcbPacketDatagram *const packet) {
   assert(sock != NULL && packet != NULL);
+}
 
-
+VlcbNetSocketErr vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock,
+                                          VlcbPacketDatagram *const packet) {
+  assert(sock != NULL && packet != NULL);
 }

@@ -4,18 +4,16 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "vlcb/platform/log.h"
-#include "vlcb/net/adapter.h"
 #include "iface_can.h"
 #include "iface_vlcb.h"
+#include "vlcb/net/adapter.h"
+#include "vlcb/platform/log.h"
 
-VlcbNetIface vlcb_net_iface_New(VlcbNetAdpt *const adpt, VlcbNetSocketList *const sockets) {
+VlcbNetIface vlcb_net_iface_New(IVlcbNetAdpt *const adpt,
+                                VlcbNetSocketList *const sockets) {
   assert(adpt != NULL && sockets != NULL);
 
-  VlcbNetIface iface = {
-      .adpt = adpt,
-      .sockets = sockets
-  };
+  VlcbNetIface iface = {.adpt = adpt, .sockets = sockets};
 
   return iface;
 }
@@ -23,7 +21,7 @@ VlcbNetIface vlcb_net_iface_New(VlcbNetAdpt *const adpt, VlcbNetSocketList *cons
 bool IngressPackets(VlcbNetIface *const iface) {
   bool processed_any = false;
 
-  const VlcbNetAdpt *adpt = iface->adpt;
+  IVlcbNetAdpt *adpt = iface->adpt;
   const VlcbNetAdptCaps caps = _INTERFACE_PTR_CALL(adpt, Caps);
 
   do {
@@ -41,10 +39,10 @@ bool IngressPackets(VlcbNetIface *const iface) {
     }
 
     switch (caps.medium) {
-      case VLCB_MEDIUM_CAN:
-        ProcessCanPacket(iface, phy_packet);
-      default:
-        assert(false /* unsupported medium */);
+    case VLCB_MEDIUM_CAN:
+      ProcessCanPacket(iface, phy_packet);
+    default:
+      assert(false /* unsupported medium */);
     }
 
     processed_any = true;
@@ -62,16 +60,17 @@ bool EgressPackets(VlcbNetIface *const iface) {
   while (vlcb_net_sock_list_iter_HasNext(&iter)) {
     const VlcbNetSocketHandle sock = vlcb_net_sock_list_iter_Next(&iter);
 
-    VlcbPacket packet;  // TODO: ensure clean packet
+    VlcbPacket packet; // TODO: ensure clean packet
 
-    const bool emitted_packet = _INTERFACE_PTR_CALL(sock, DispatchPacket, &packet);
+    const bool emitted_packet =
+        _INTERFACE_PTR_CALL(sock, DispatchPacket, &packet);
     // TODO: reject invalid packets -> for example when the packet wasn't filled
     emitted_any |= emitted_packet;
     if (emitted_packet) {
       const VlcbNetAdptErr err = DispatchVlcbPacket(iface, caps, &packet);
-       if (err == VLCB_NET_ADPT_ERR_WOULD_BLOCK) {
-      //todo: handle this somehow
-    }
+      if (err == VLCB_NET_ADPT_ERR_WOULD_BLOCK) {
+        // todo: handle this somehow
+      }
 
       if (err != VLCB_NET_ADPT_ERR_OK) {
         VLCBLOG_ERROR(vlcb_net_adpt_ErrToStr(err));
@@ -82,8 +81,7 @@ bool EgressPackets(VlcbNetIface *const iface) {
   return emitted_any;
 }
 
-VlcbNetIfacePollResult vlcb_net_iface_Poll(
-    VlcbNetIface *const iface) {
+VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface) {
   assert(iface != NULL && iface->adpt != NULL /* iface, sockets need to be valid pointers and device needs to be initialized */);
 
   bool readiness_may_have_changed = false;

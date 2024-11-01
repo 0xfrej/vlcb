@@ -2,8 +2,7 @@
 
 #include <stdint.h>
 
-#include "packet.h"
-#include "../adapter.h"
+#include "../../adapter.h"
 
 /**
  * @brief CAN frame id used in transmission
@@ -56,8 +55,8 @@ VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
  * @retval 0 The id is valid
  * @retval 1 The id is invalid
  */
-int vlcb_net_adpt_NewCanFrameIdFromPkt(
-    const VlcbNetAdptPkt *const packet, VlcbCanFrameId *const id);
+int vlcb_net_adpt_NewCanFrameIdFromPkt(const VlcbNetAdptPkt *const packet,
+                                       VlcbCanFrameId *const id);
 
 /**
  * @brief Check if the packed passed in is correctly constructed

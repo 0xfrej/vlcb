@@ -1,10 +1,10 @@
-#include "../../../../net/adapter/can/packet_parse.h"
+#include "vlcb/net/adapter/can/packet_parse.h"
 
 #include <assert.h>
 #include <stdbool.h>
 #include <string.h>
 
-#include "../../../../../shared/log.h"
+#include "vlcb/platform/log.h"
 
 inline VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
     const VlcbCanFrameId id, const bool is_rtr, const uint8_t payload_len,
@@ -30,7 +30,7 @@ inline VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
     if (valid == false) {
       return VLCB_NET_ADPT_ERR_INVALID_CANID;
     }
-    packet->src_addr = vlcb_net_adpt_NewCanIdHwAddr(can_id);
+    packet->src_addr = vlcb_net_NewCanIdHwAddr(can_id);
   }
 
   VlcbCanPriority prio;
@@ -48,8 +48,9 @@ inline VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
   return VLCB_NET_ADPT_ERR_OK;
 }
 
-inline int vlcb_net_adpt_NewCanFrameIdFromPkt(
-    const VlcbNetAdptPkt *const packet, VlcbCanFrameId *const id) {
+inline int
+vlcb_net_adpt_NewCanFrameIdFromPkt(const VlcbNetAdptPkt *const packet,
+                                   VlcbCanFrameId *const id) {
   assert(packet != NULL && id != NULL);
   if (vlcb_defs_IsCanIdValid(packet->src_addr.can_id)) {
     return 1;
@@ -57,7 +58,7 @@ inline int vlcb_net_adpt_NewCanFrameIdFromPkt(
 
   *id = packet->src_addr.can_id;
 
-  VlcbCanPriority prio = VLCB_CAN_PRIO_DEFAULT;  // init with default priority
+  VlcbCanPriority prio = VLCB_CAN_PRIO_DEFAULT; // init with default priority
   if (packet->payload > 0) {
     prio = vlcb_defs_CanPriorityFromOpcode(packet->payload[0]);
   }

@@ -8,11 +8,12 @@
 typedef struct VlcbNetIface VlcbNetIface;
 
 struct VlcbNetIface {
-  VlcbNetAdpt *const adpt;
+  IVlcbNetAdpt *const adpt;
   VlcbNetSocketList *const sockets;
 };
 
-VlcbNetIface vlcb_net_iface_New(VlcbNetAdpt *const adpt, VlcbNetSocketList *const sockets);
+VlcbNetIface vlcb_net_iface_New(IVlcbNetAdpt *const adpt,
+                                VlcbNetSocketList *const sockets);
 
 typedef struct {
   bool readiness_may_have_changed;

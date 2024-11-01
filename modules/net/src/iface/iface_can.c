@@ -2,16 +2,14 @@
 #include <stddef.h>
 #include <string.h>
 
-#include "vlcb/common/opcode.h"
+#include "iface_vlcb.h"
 #include "vlcb/net/adapter.h"
 #include "vlcb/net/iface.h"
 #include "vlcb/net/packet/vlcb.h"
 #include "vlcb/platform/log.h"
-#include "iface_vlcb.h"
 
-void ProcessCanPacket(VlcbNetIface* const iface,
-                      VlcbNetAdptPkt* pkt) {
-  VlcbNetAdptPayload* payload = &pkt->payload;
+void ProcessCanPacket(VlcbNetIface *const iface, VlcbNetAdptPkt *pkt) {
+  VlcbNetAdptPayload *payload = &pkt->payload;
   VlcbOpCode opc;
   {
     int err = vlcb_defs_OpcodeFromByte(*payload[0], &opc);
@@ -24,7 +22,7 @@ void ProcessCanPacket(VlcbNetIface* const iface,
   VlcbPacket vlcb_pkt;
   {
     VlcbPacketConstructErr err;
-    err = vlcb_net_pkt_New(opc, pkt->payload_len, (VlcbPayload*)(payload + 1),
+    err = vlcb_net_pkt_New(opc, pkt->payload_len, (VlcbPayload *)(payload + 1),
                            &vlcb_pkt);
     if (err != VLCB_PKT_CONSTRUCT_ERR_OK) {
       VLCBLOG_ERROR(vlcb_net_pkt_ConstructErrToStr(err));
@@ -35,8 +33,8 @@ void ProcessCanPacket(VlcbNetIface* const iface,
   ProcessVlcbPacket(iface, &vlcb_pkt);
 }
 
-VlcbNetAdptErr DispatchCanPacket(VlcbNetIface* const iface,
-                                 const VlcbPacket* const packet) {
+VlcbNetAdptErr DispatchCanPacket(VlcbNetIface *const iface,
+                                 const VlcbPacket *const packet) {
   VlcbNetAdptPkt adpt_pkt;
 
   adpt_pkt.medium = VLCB_MEDIUM_CAN;
