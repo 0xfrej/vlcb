@@ -167,7 +167,7 @@ static inline void HandleMnsMessages(VlcbModule *const self,
                                      const VlcbNetPacketDatagram *const packet,
                                      clock_t now) {
   switch (packet->opc) {
-  case VLCB_OPC_QUERY_NODE_PARAMETERS:
+  case VLCB_OPC_QUERY_MODULE_PARAMETERS:
     HandleQueryNodeParameters(self);
     break;
   case VLCB_OPC_QUERY_NODE_PARAMETER_BY_INDEX:
@@ -179,7 +179,7 @@ static inline void HandleMnsMessages(VlcbModule *const self,
   case VLCB_OPC_REQUEST_NEW_NODE_NUMBER:
     AbortSetup(self, now);
     break;
-  case VLCB_OPC_QUERY_NODE_INFO:
+  case VLCB_OPC_QUERY_MODULE_INFO:
     HandleQueryNodeInfo(self);
     break;
   case VLCB_OPC_QUERY_MODULE_NAME:

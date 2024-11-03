@@ -6,10 +6,10 @@
 
 #include "vlcb_defs.h"
 
-typedef uint8_t CanId;
+typedef uint8_t VlcbCanId;
 
-int vlcb_defs_NewCanId(uint8_t value, CanId *const id);
-bool vlcb_defs_IsCanIdValid(CanId id);
+int vlcb_defs_NewCanId(uint8_t value, VlcbCanId *const id);
+bool vlcb_defs_IsCanIdValid(VlcbCanId id);
 
 typedef uint8_t VlcbCanPriority;
 enum VlcbCanPriority {

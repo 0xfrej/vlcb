@@ -2,4 +2,4 @@
 
 #include <stdbool.h>
 
-bool vlcb_defs_IsCanIdValid(const CanId id) { return id > 0 && id < 128; }
+bool vlcb_defs_IsCanIdValid(const VlcbCanId id) { return id > 0 && id < 128; }

@@ -3,10 +3,10 @@
 #include <assert.h>
 #include <stddef.h>
 
-int vlcb_defs_NewCanId(const uint8_t value, CanId *const id) {
+int vlcb_defs_NewCanId(const uint8_t value, VlcbCanId *const id) {
   assert(id != NULL);
 
-  const CanId _id = value;
+  const VlcbCanId _id = value;
 
   if (vlcb_defs_IsCanIdValid(_id)) {
     *id = _id;

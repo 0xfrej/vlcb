@@ -2047,7 +2047,7 @@ enum VlcbOpCode {
    * Request to change the operational mode of the module.
    */
 
-  VLCB_OPC_PUT_NODE_INTO_MODE = 118,
+  VLCB_OPC_CHANGE_MODULE_MODE = 118,
 
   /**
    * Request service discovery.
@@ -2056,7 +2056,7 @@ enum VlcbOpCode {
    * If the ServiceIndex is zero then the module responds with a SD
    */
 
-  VLCB_OPC_SERVICE_DISCOVERY_QUERY = 120,
+  VLCB_OPC_QUERY_SERVICE_DISCOVERY = 120,
 
   /**
    * Extended opcode with 2 additional bytes.
@@ -2369,7 +2369,7 @@ enum VlcbOpCode {
    * EVANS with the value for each EV.
    */
 
-  VLCB_OPC_QUERY_EVENT_VARIABLE_IN_LEARN_MODE = 178,
+  VLCB_OPC_QUERY_EVENT_VARIABLE_BY_IDEX = 178,
 
   /**
    * Accessory Response Event.

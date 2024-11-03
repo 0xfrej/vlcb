@@ -7,9 +7,9 @@ typedef enum {
 } VlcbNetMedium;
 
 typedef union {
-  CanId can_id;
+  VlcbCanId can_id;
 } VlcbNetHwAddr;
 
 bool vlcb_net_IsHwAddrValid(VlcbNetMedium medium, VlcbNetHwAddr addr);
 
-VlcbNetHwAddr vlcb_net_NewCanIdHwAddr(CanId id);
+VlcbNetHwAddr vlcb_net_NewCanIdHwAddr(VlcbCanId id);
