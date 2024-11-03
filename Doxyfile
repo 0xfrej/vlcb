@@ -1,0 +1,66 @@
+# Project-related configuration
+PROJECT_NAME           = "VLCB SDK"
+PROJECT_BRIEF          = "An opinionated SDK for VLCB protocol"
+# PROJECT_LOGO           = "path/to/logo.png"  # Optional logo path
+
+# Doxygen theme
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX = NO
+FULL_SIDEBAR = NO
+HTML_EXTRA_FILES = vendor/doxygen-awesome/doxygen-awesome-fragment-copy-button.js \
+  vendor/doxygen-awesome/doxygen-awesome-paragraph-link.js
+HTML_EXTRA_STYLESHEET  = vendor/doxygen-awesome/doxygen-awesome.css\
+                        vendor/doxygen-awesome/doxygen-awesome-sidebar-only.css
+HTML_COPY_CLIPBOARD = NO
+HTML_COLORSTYLE        = LIGHT # required with Doxygen >= 1.9.5
+
+OUTPUT_DIRECTORY       = docs 
+CREATE_SUBDIRS         = NO
+OUTPUT_LANGUAGE        = English
+
+# Source file configuration
+STRIP_FROM_PATH = modules
+INPUT                  = modules             # Set to top-level 'modules' directory
+FILE_PATTERNS          = *.c *.h
+RECURSIVE              = YES                 # Recursively search in 'modules' subdirectories
+
+# Documentation generation options
+EXTRACT_ALL            = YES                 # Extract all entities (functions, types, etc.)
+EXTRACT_PRIVATE        = NO                  # No private functions, variables
+EXTRACT_STATIC         = YES                 # Include static functions in the documentation
+
+# Build options
+GENERATE_LATEX         = NO
+GENERATE_HTML          = YES
+GENERATE_MAN           = NO
+GENERATE_XML           = NO
+
+# HTML settings
+HTML_OUTPUT            = html                # Output directory for HTML
+HTML_TIMESTAMP         = YES                 # Show timestamp in documentation
+
+# Comment format settings
+OPTIMIZE_OUTPUT_FOR_C  = YES                 # Optimize for C language
+ENABLE_PREPROCESSING   = YES                 # Enable preprocessing for macro definitions
+MACRO_EXPANSION        = YES                 # Expand macros in comments
+EXPAND_ONLY_PREDEF     = NO                  # Expand all macros
+
+# Source browser options
+SOURCE_BROWSER         = YES                 # Generate source links in documentation
+INLINE_SOURCES         = NO                 # Show code snippets in documentation
+
+# Customization options
+HIDE_UNDOC_MEMBERS     = NO
+SHOW_FILES             = YES
+
+# Diagrams (requires Graphviz)
+HAVE_DOT               = YES
+DOT_TRANSPARENT = YES
+DOT_IMAGE_FORMAT = svg
+CALL_GRAPH             = YES                 # Generate call graphs for functions
+CALLER_GRAPH           = YES                 # Generate caller graphs
+DOT_PATH               = "dot"      
+# Additional settings
+FULL_PATH_NAMES        = NO                  # Show only file names, not full paths
+WARN_IF_UNDOCUMENTED   = NO
+QUIET                  = NO            

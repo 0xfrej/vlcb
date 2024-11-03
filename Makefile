@@ -29,3 +29,7 @@ lsp_helper:
 .PHONY: pull_dependencies
 pull_dependencies:
 	git submodule update --rebase --remote
+
+.PHONY: docs
+docs:
+	doxygen Doxyfile
