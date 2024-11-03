@@ -22,7 +22,7 @@
 static bool HandleTransitionToUninitialized(VlcbModule *const self) {
   // TODO: do we need to also release the setup-state address, which is not
   // persisted yet?
-  const VlcbNodeNumber addr = self->config.nodeAddr;
+  const VlcbNodeNumber addr = self->config.nodeNumber;
 
   // release the address if it was set
   if (addr != VLCB_NODE_ADDR_UNINITIALIZED) {
@@ -35,7 +35,7 @@ static bool HandleTransitionToUninitialized(VlcbModule *const self) {
       // todo: log
       return false;
     }
-    self->config.nodeAddr = VLCB_NODE_ADDR_UNINITIALIZED;
+    self->config.nodeNumber = VLCB_NODE_ADDR_UNINITIALIZED;
   }
 
   self->config.state = VLCB_MODULE_PERSISTED_STATE_UNINITIALIZED;
@@ -57,7 +57,7 @@ static bool HandleTransitionToSetup(VlcbModule *const self,
 }
 
 static bool HandleTransitionToNormal(VlcbModule *const self) {
-  if (self->config.nodeAddr != VLCB_NODE_ADDR_UNINITIALIZED) {
+  if (self->config.nodeNumber != VLCB_NODE_ADDR_UNINITIALIZED) {
     VlcbPacketDatagram packet;
     vlcb_net_pkt_dgram_module_ReleaseNodeNumber_Serialize(
         &packet,
@@ -68,7 +68,7 @@ static bool HandleTransitionToNormal(VlcbModule *const self) {
       // TODO: log
       return false;
     }
-    self->config.nodeAddr =
+    self->config.nodeNumber =
         VLCB_NODE_ADDR_UNINITIALIZED; // if next call fails, prevent next
                                       // transition to double-release the node
                                       // number
@@ -85,7 +85,7 @@ static bool HandleTransitionToNormal(VlcbModule *const self) {
   }
 
   self->config.state = VLCB_MODULE_PERSISTED_STATE_NORMAL;
-  self->config.nodeAddr = self->sm.data.setup.nodeAddr;
+  self->config.nodeNumber = self->sm.data.setup.nodeAddr;
   return true;
 }
 
@@ -103,7 +103,7 @@ void state_Dispatch(VlcbModule *const self, const ModuleStateEvent e,
     VlcbModulePersistedState persistedState = self->config.state;
     if (persistedState < VLCB_MODULE_PERSISTED_STATE_UNINITIALIZED ||
         persistedState > VLCB_MODULE_PERSISTED_STATE_NORMAL) {
-      self->config.nodeAddr = 0;
+      self->config.nodeNumber = 0;
       memset(&self->config.hwAddr, 0, sizeof(VlcbNetHwAddr));
       self->config.state = VLCB_MODULE_PERSISTED_STATE_UNINITIALIZED;
     }
@@ -192,7 +192,7 @@ void state_Dispatch(VlcbModule *const self, const ModuleStateEvent e,
     case MSE_MODE_REQ_TO_SETUP:;
       const VlcbModuleStateMachineSetupData setupData = {
           .prevState = currentState,
-          .nodeAddr = self->config.nodeAddr,
+          .nodeAddr = self->config.nodeNumber,
           .startedAt = now};
       if (HandleTransitionToSetup(self, setupData)) {
         self->sm.state = VLCB_MODULE_STATE_SETUP;

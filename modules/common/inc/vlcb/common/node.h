@@ -7,7 +7,7 @@
  */
 typedef uint16_t VlcbNodeNumber;
 
-#define VLCB_NODE_ADDR_UNINITIALIZED (VlcbNodeAddr)0
+#define VLCB_NODE_NUMBER_UNINITIALIZED (VlcbNodeNumber)0
 
 VlcbNodeNumber vlcb_defs_NewNodeNumberFromBytesUnchecked(uint8_t hi,
                                                          uint8_t lo);

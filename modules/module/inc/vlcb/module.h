@@ -50,29 +50,33 @@ typedef struct {
   VlcbModuleOpFlags operationFlags;
   VlcbModulePersistedState state;
   VlcbNetHwAddr hwAddr;
-  VlcbNodeNumber nodeAddr;
+  VlcbNodeNumber nodeNumber;
 } VlcbModuleConfig;
+
+typedef void (*RestartRequestHandler)(void);
 
 typedef struct {
   clock_t lastHeartbeat;
-  uint8_t heartbeatCount;
+  uint8_t heartbeatSequence;
   VlcbNetIface *const iface;
   VlcbNetSocketDatagram *const socket;
-  VlcbModuleUi ui;
+  IVlcbModuleUi ui;
   VlcbModuleConfig config;
-  VlcbModuleParams params;
+  VlcbModuleParams *const params;
   // VlcbServiceMngr services;
   VlcbModuleStateMachine sm;
+  RestartRequestHandler restart;
 } VlcbModule;
 
 VlcbModule vlcb_module_New(VlcbNetIface *const iface,
                            VlcbNetSocketDatagram *const socket,
-                           const VlcbModuleUi ui,
-                           const VlcbModuleParams params);
+                           const IVlcbModuleUi ui,
+                           VlcbModuleParams *const params,
+                           RestartRequestHandler reboot);
 
 void vlcb_module_Init(VlcbModule *const module, const clock_t now);
 
 int vlcb_module_BindSock(const VlcbModule *const module,
-                         const VlcbNetSocket *const socket);
+                         IVlcbNetSocket *const socket);
 
 void vlcb_module_Poll(VlcbModule *const module, const clock_t now);

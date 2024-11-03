@@ -13,6 +13,7 @@ typedef enum {
   MSE_MODE_MSG_FOR_ANOTHER_MODULE,
   MSE_NNRSM_MSG,
   MSE_SNN_MSG,
+  MSE_ABORT_SETUP,
   MSE_POLL,
 } ModuleStateEventSignal;
 
