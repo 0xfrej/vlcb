@@ -10,21 +10,22 @@
 
 void ProcessCanPacket(VlcbNetIface *const iface, VlcbNetAdptPkt *pkt) {
   VlcbNetAdptPayload *payload = &pkt->payload;
-  VlcbOpCode opc;
-  {
-    int err = vlcb_defs_OpcodeFromByte(*payload[0], &opc);
-    if (err != 0) {
-      VLCBLOG_ERROR("invalid opcode, dropping packet");
-      return;
-    }
-  }
+  VlcbOpCode opc = *payload[0];
+  // TODO: should we validate opcodes?
+  // {
+  // int err = vlcb_defs_OpcodeFromByte(*payload[0], &opc);
+  // if (err != 0) {
+  //   VLCBLOG_ERROR("invalid opcode, dropping packet");
+  //   return;
+  // }
+  // }
 
-  VlcbPacket vlcb_pkt;
+  VlcbNetPacket vlcb_pkt;
   {
-    VlcbPacketConstructErr err;
-    err = vlcb_net_pkt_New(opc, pkt->payload_len, (VlcbPayload *)(payload + 1),
-                           &vlcb_pkt);
-    if (err != VLCB_PKT_CONSTRUCT_ERR_OK) {
+    VlcbNetPacketConstructErr err;
+    err = vlcb_net_pkt_New(opc, pkt->payload_len,
+                           (VlcbNetPayload *)(payload + 1), &vlcb_pkt);
+    if (err != VLCB_NET_PKT_CONSTRUCT_ERR_OK) {
       VLCBLOG_ERROR(vlcb_net_pkt_ConstructErrToStr(err));
       return;
     }
@@ -34,7 +35,7 @@ void ProcessCanPacket(VlcbNetIface *const iface, VlcbNetAdptPkt *pkt) {
 }
 
 VlcbNetAdptErr DispatchCanPacket(VlcbNetIface *const iface,
-                                 const VlcbPacket *const packet) {
+                                 const VlcbNetPacket *const packet) {
   VlcbNetAdptPkt adpt_pkt;
 
   adpt_pkt.medium = VLCB_MEDIUM_CAN;

@@ -12,4 +12,4 @@ typedef struct {
   VlcbCanPriority prio;
 } VlcbNetAdptCanPktMeta;
 
-#define VLCB_NET_CAN_MTU 8
+#define VLCB_NET_ADPT_CAN_MAX_PAYLOAD 8

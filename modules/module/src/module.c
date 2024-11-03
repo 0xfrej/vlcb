@@ -14,6 +14,7 @@
 #include "vlcb/net/socket.h"
 #include "vlcb/net/socket/datagram.h"
 #include "vlcb/platform/interface.h"
+#include "vlcb/platform/log.h"
 #include "vlcb/platform/time.h"
 
 #ifndef VLCB_MODULE_HEARTBEAT_MS
@@ -34,10 +35,15 @@ static inline void HandleHeartbeat(VlcbModule *const self, const clock_t now) {
                      .status = 0, // TODO: replace with diagnostic status
                      .statusBits = 0});
 
-    VlcbNetSocketErr err = vlcb_net_sock_dgram_Send(self->socket, &packet);
+    VlcbNetSocketDgramSendErr err =
+        vlcb_net_sock_dgram_Send(self->socket, &packet);
     // we can ignore misseed heartbeats due to socket buffer being full
-    if (err != VLCB_NET_SOCK_ERR_OK && err != VLCB_NET_SOCK_ERR_WOULD_BLOCK) {
-      // TODO: handle this if needed?
+    if (err != VLCB_NET_SOCK_DGRAM_SEND_ERR_OK) {
+      if (err != VLCB_NET_SOCK_DGRAM_SEND_ERR_BUF_FULL) {
+        VLCBLOG_ERROR(vlcb_net_sock_dgram_SendErrToStr(err));
+      }
+      return; // ensure that when socket errors out, we don't update heartbeat
+              // stats
     }
 
     self->lastHeartbeat = now;
@@ -102,8 +108,8 @@ static inline void HandleQueryModuleName(VlcbModule *const self) {
   // only respond in setup node or if node is in normal mode and the learn flag
   // is set
   if (self->sm.state == VLCB_MODULE_STATE_SETUP ||
-      (self->sm.state == VLCB_MODULE_PARAM_NODE_FLAGS &&
-       self->params.buf[VLCB_MODULE_PARAM_NODE_FLAGS] &
+      (self->sm.state == VLCB_MODULE_STATE_NORMAL &&
+       ModuleParamGetByte(self->params, VLCB_MODULE_PARAM_FLAGS) &
            VLCB_MODULE_FLAG_LEARN_MODE)) {
   }
 }
@@ -219,12 +225,6 @@ void vlcb_module_Init(VlcbModule *const module, const clock_t now) {
   _INTERFACE_CALL(module->ui, Poll, now);
 }
 
-int vlcb_module_BindSock(const VlcbModule *const module,
-                         IVlcbNetSocket *const socket) {
-  assert(module != NULL && socket != NULL);
-  return _INTERFACE_PTR_CALL(socket, Bind, &module->config.hwAddr);
-}
-
 void vlcb_module_Poll(VlcbModule *const module, const clock_t now) {
   assert(module != NULL && module->iface != NULL);
 
@@ -232,10 +232,10 @@ void vlcb_module_Poll(VlcbModule *const module, const clock_t now) {
   VlcbPacketDatagram *const packetPtr = &packet;
 
   while (1) {
-    const VlcbNetSocketErr err =
+    const VlcbNetSocketDgramRecvErr err =
         vlcb_net_sock_dgram_Recv(module->socket, packetPtr);
-    if (err != VLCB_NET_SOCK_ERR_OK) {
-      if (err == VLCB_NET_SOCK_ERR_WOULD_BLOCK) {
+    if (err != VLCB_NET_SOCK_DGRAM_RECV_ERR_OK) {
+      if (err == VLCB_NET_SOCK_DGRAM_RECV_ERR_WOULD_BLOCK) {
         break;
       }
     }

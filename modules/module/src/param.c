@@ -34,7 +34,8 @@ inline void vlcb_module_params_Init(
   params->buf[VLCB_MODULE_PARAM_EVENT_VARIABLE_COUNT] = eventVariableCount;
   params->buf[VLCB_MODULE_PARAM_NODE_VARIABLE_COUNT] = nodeVariableCount;
   params->buf[VLCB_MODULE_PARAM_MAJOR_VERSION] = version.major;
-  params->buf[VLCB_MODULE_PARAM_NODE_FLAGS] = moduleFlags;
+  params->buf[VLCB_MODULE_PARAM_FLAGS] =
+      moduleFlags | VLCB_MODULE_FLAG_VLCB | VLCB_MODULE_FLAG_NORMAL_MODE;
   params->buf[VLCB_MODULE_PARAM_CPU_ID] = cpuId;
   params->buf[VLCB_MODULE_PARAM_BUS_TYPE] = busType;
   memcpy(&params->buf[VLCB_MODULE_PARAM_LOAD_ADDRESS], &loadAddr,

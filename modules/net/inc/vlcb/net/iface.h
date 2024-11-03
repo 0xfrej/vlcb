@@ -21,3 +21,5 @@ typedef struct {
 
 VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface);
 VlcbNetMedium vlcb_net_iface_Medium(const VlcbNetIface *const iface);
+bool vlcb_net_iface_BindSock(VlcbNetIface *const iface,
+                             VlcbNetSocketHandle sock);

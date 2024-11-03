@@ -75,8 +75,4 @@ VlcbModule vlcb_module_New(VlcbNetIface *const iface,
                            RestartRequestHandler reboot);
 
 void vlcb_module_Init(VlcbModule *const module, const clock_t now);
-
-int vlcb_module_BindSock(const VlcbModule *const module,
-                         IVlcbNetSocket *const socket);
-
 void vlcb_module_Poll(VlcbModule *const module, const clock_t now);

@@ -8,30 +8,34 @@
 #include "vlcb/platform/interface.h"
 
 typedef enum {
-  VLCB_NET_SOCK_ERR_OK = 0,
+  VLCB_NET_SOCK_PROC_ERR_OK = 0,
 
-  VLCB_NET_SOCK_ERR_WOULD_BLOCK,
+  VLCB_NET_SOCK_PROC_ERR_RX_BUF_FULL,
+  VLCB_NET_SOCK_PROC_ERR_PAYLOAD_TOO_LARGE,
+  VLCB_NET_SOCK_PROC_ERR_UNKNOWN,
 
-  VLCB_NET_SOCK_ERR_RX_BUF_FULL,
-  VLCB_NET_SOCK_ERR_TX_BUF_FULL,
+  VLCB_NET_SOCK_PROC_ERR_COUNT,
+} VlcbNetSocketProcessErr;
+vlcb_error vlcb_net_sock_ProcessErrToStr(VlcbNetSocketProcessErr err);
 
-  VLCB_NET_SOCK_ERR_COUNT,
-} VlcbNetSocketErr;
+typedef enum {
+  VLCB_NET_SOCK_DISP_ERR_OK = 0,
 
-vlcb_error vlcb_net_sock_ErrToStr(VlcbNetSocketErr err);
+  VLCB_NET_SOCK_DISP_ERR_WOULD_BLOCK,
+
+  VLCB_NET_SOCK_DISP_ERR_COUNT,
+} VlcbNetSocketDispatchErr;
+vlcb_error vlcb_net_sock_DispatchErrToStr(VlcbNetSocketDispatchErr err);
 
 _INTERFACE_DECLARE(
     IVlcbNetSocket,
-    _INTERFACE_METHOD_DECLARE(bool, SupportsProtocol, VlcbProtocol protocol);
-    _INTERFACE_METHOD_DECLARE(VlcbNetSocketErr, ProcessPacket,
+    _INTERFACE_METHOD_DECLARE(bool, SupportsProtocol, VlcbNetProtocol protocol);
+    _INTERFACE_METHOD_DECLARE(VlcbNetSocketProcessErr, ProcessPacket,
                               _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
-                              const VlcbPacket *const packet);
-    _INTERFACE_METHOD_DECLARE(bool, DispatchPacket,
+                              const VlcbNetPacket *const packet);
+    _INTERFACE_METHOD_DECLARE(VlcbNetSocketDispatchErr, DispatchPacket,
                               _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
-                              VlcbPacket *const packet);
-    _INTERFACE_METHOD_DECLARE(int, Bind,
-                              _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
-                              const VlcbNetHwAddr *const addr););
+                              VlcbNetPacket *const packet););
 ;
 
 typedef IVlcbNetSocket *VlcbNetSocketHandle;
@@ -49,8 +53,8 @@ inline VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *const buf,
   VlcbNetSocketHandle name##_data[size];                                       \
   VlcbNetSocketList name = vlcb_net_sock_list_New(data_##name, size);
 
-void vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,
-                               VlcbNetSocketHandle sock);
+int vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,
+                              VlcbNetSocketHandle sock);
 
 typedef struct {
   size_t pointer;

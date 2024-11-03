@@ -14,11 +14,16 @@ inline VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *const list,
   };
 }
 
-void vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,
-                               VlcbNetSocketHandle sock) {
-  assert(list != NULL && list->len < list->capacity);
+int vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,
+                              VlcbNetSocketHandle sock) {
+  assert(list != NULL);
+
+  if (list->len < list->capacity - 1) {
+    return 1;
+  }
 
   list->buf[list->len++] = sock;
+  return 0;
 }
 
 VlcbNetSocketListIter
@@ -48,12 +53,12 @@ vlcb_net_sock_list_iter_Next(VlcbNetSocketListIter *const iter) {
   return iter->list->buf[iter->pointer++];
 }
 
-vlcb_error vlcb_net_sock_ErrToStr(VlcbNetSocketErr err) {
-  assert(err > VLCB_NET_SOCK_ERR_OK && err < VLCB_NET_SOCK_ERR_COUNT);
+vlcb_error vlcb_net_sock_ProcessErrToStr(VlcbNetSocketProcessErr err) {
+  assert(err > VLCB_NET_SOCK_PROC_ERR_OK && err < VLCB_NET_SOCK_PROC_ERR_COUNT);
 
   switch (err) {
-  case VLCB_NET_SOCK_ERR_RX_BUF_FULL:
-    return "socket rx buffer is full, dropping the packet";
+  case VLCB_NET_SOCK_PROC_ERR_RX_BUF_FULL:
+    return "socket rx buffer is full, dropping packet";
   }
   assert(false /* unhandled case guard */);
 }

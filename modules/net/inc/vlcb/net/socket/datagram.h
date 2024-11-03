@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../addr.h"
 #include "../packet/datagram.h"
 #include "../socket.h"
 #include "../storage/packet_buf.h"
 #include "vlcb/platform/interface.h"
+#include <stdint.h>
 
 #define VLCB_NET_SOCK_DGRAM_BUF(name, size)                                    \
   uint8_t                                                                      \
@@ -16,19 +16,43 @@ typedef struct {
   _INTERFACE_IMPLEMENT(IVlcbNetSocket);
   VlcbPacketBuf *const rxBuf;
   VlcbPacketBuf *const txBuf;
-  const VlcbNetHwAddr *addr;
 } VlcbNetSocketDatagram;
 
 VlcbNetSocketDatagram vlcb_net_sock_dgram_New(VlcbPacketBuf *const rxBuf,
                                               VlcbPacketBuf *const txBuf);
 
-VlcbNetSocketErr
+typedef enum {
+  VLCB_NET_SOCK_DGRAM_SEND_ERR_OK = 0,
+  VLCB_NET_SOCK_DGRAM_SEND_ERR_BUF_FULL,
+  VLCB_NET_SOKC_DGRAM_SEND_ERR_COUNT,
+} VlcbNetSocketDgramSendErr;
+vlcb_error vlcb_net_sock_dgram_SendErrToStr(VlcbNetSocketDgramSendErr err);
+
+typedef enum {
+  VLCB_NET_SOCK_DGRAM_RECV_ERR_OK = 0,
+  VLCB_NET_SOCK_DGRAM_RECV_ERR_WOULD_BLOCK,
+  VLCB_NET_SOKC_DGRAM_RECV_ERR_COUNT,
+} VlcbNetSocketDgramRecvErr;
+vlcb_error vlcb_net_sock_dgram_SendErrToStr(VlcbNetSocketDgramSendErr err);
+
+VlcbNetSocketDgramSendErr
 vlcb_net_sock_dgram_Send(VlcbNetSocketDatagram *const sock,
                          const VlcbPacketDatagram *const packet);
-VlcbNetSocketErr vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock,
-                                          VlcbPacketDatagram *const packet);
+VlcbNetSocketDgramRecvErr
+vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock,
+                         VlcbPacketDatagram *const packet);
 
 static inline IVlcbNetSocket *const
 vlcb_net_sock_dgram_Upcast(VlcbNetSocketDatagram *const sock) {
   return (IVlcbNetSocket *)sock;
 }
+
+typedef uint8_t VlcbNetSockDgramFlushMode;
+enum VlcbNetSockDgramFlushMode {
+  VLCB_NET_SOCK_DGRAM_FLUSH_BOTH,
+  VLCB_NET_SOCK_DGRAM_FLUSH_TX,
+  VLCB_NET_SOCK_DGRAM_FLUSH_RX,
+};
+
+void vlcb_net_sock_dgram_Flush(VlcbNetSocketDatagram *const sock,
+                               const VlcbNetSockDgramFlushMode mode);

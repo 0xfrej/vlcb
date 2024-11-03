@@ -7,6 +7,7 @@
 #include "iface_can.h"
 #include "iface_vlcb.h"
 #include "vlcb/net/adapter.h"
+#include "vlcb/net/socket.h"
 #include "vlcb/platform/log.h"
 
 VlcbNetIface vlcb_net_iface_New(IVlcbNetAdpt *const adpt,
@@ -60,7 +61,7 @@ bool EgressPackets(VlcbNetIface *const iface) {
   while (vlcb_net_sock_list_iter_HasNext(&iter)) {
     const VlcbNetSocketHandle sock = vlcb_net_sock_list_iter_Next(&iter);
 
-    VlcbPacket packet; // TODO: ensure clean packet
+    VlcbNetPacket packet; // TODO: ensure clean packet
 
     const bool emitted_packet =
         _INTERFACE_PTR_CALL(sock, DispatchPacket, &packet);
@@ -104,11 +105,12 @@ VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface) {
   };
 }
 
-// void vlcb_net_iface_RegisterNetDevListener(
-//     VlcbNetIface *const iface, VlcbIfaceNetDevInterceptor listener) {
-//   assert(iface != NULL &&
-//          listener != NULL /* iface and listener need to be valid poitners
-//          */);
-//
-//   iface->interceptors.net_dev = listener;
-// }
+bool vlcb_net_iface_BindSock(VlcbNetIface *const iface,
+                             VlcbNetSocketHandle sock) {
+  assert(iface != NULL && sock != NULL);
+  int res = vlcb_net_sock_list_Insert(iface->sockets, sock);
+  if (res == -1) {
+    return false;
+  }
+  return true;
+}

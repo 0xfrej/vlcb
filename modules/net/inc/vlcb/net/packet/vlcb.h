@@ -5,7 +5,7 @@
 #include "vlcb/common/vlcb_defs.h"
 #include "vlcb/platform/error.h"
 
-#define VLCB_PKT_MAX_PAYLOAD 7
+#define VLCB_NET_PKT_MAX_PAYLOAD 7
 
 /**
  * VLCB payload buffer
@@ -14,7 +14,7 @@
  * clients don't have to write the whole expression and
  * ensure it's correct.
  */
-typedef uint8_t VlcbPayload[VLCB_PKT_MAX_PAYLOAD];
+typedef uint8_t VlcbNetPayload[VLCB_NET_PKT_MAX_PAYLOAD];
 
 /**
  * VLCB sub-protocol
@@ -24,46 +24,47 @@ typedef uint8_t VlcbPayload[VLCB_PKT_MAX_PAYLOAD];
  * handling.
  */
 typedef enum {
-  VLCB_PROTO_DATAGRAM,
-  VLCB_PROTO_STREAM,
-} VlcbProtocol;
+  VLCB_NET_PROTO_DATAGRAM,
+  VLCB_NET_PROTO_STREAM,
+} VlcbNetProtocol;
 
-VlcbProtocol vlcb_net_pkt_DetectProtocol(VlcbOpCode opc);
+VlcbNetProtocol vlcb_net_pkt_DetectProtocol(VlcbOpCode opc);
 
 typedef struct {
-  VlcbProtocol proto;
+  VlcbNetProtocol proto;
   VlcbOpCode opc;
   uint8_t payload_len;
-  VlcbPayload payload;
-} VlcbPacket;
+  VlcbNetPayload payload;
+} VlcbNetPacket;
 
 typedef enum {
-  VLCB_PKT_CONSTRUCT_ERR_OK = 0,
+  VLCB_NET_PKT_CONSTRUCT_ERR_OK = 0,
 
   /**
    * Given payload was too large
    *
    * VLCB packets have max payload size of 7 bytes.
    */
-  VLCB_PKT_CONSTRUCT_ERR_PAYLOAD_TOO_LARGE,
+  VLCB_NET_PKT_CONSTRUCT_ERR_PAYLOAD_TOO_LARGE,
 
   /**
    * Opcode has invalid value
    */
-  VLCB_PKT_CONSTRUCT_ERR_INVALID_OPCODE,
+  VLCB_NET_PKT_CONSTRUCT_ERR_INVALID_OPCODE,
 
   /**
    * Not an actual error. Can be used to check if the given error value
    * is within the enum range.
    */
-  VLCB_PKT_CONSTRUCT_ERR_COUNT,
-} VlcbPacketConstructErr;
+  VLCB_NET_PKT_CONSTRUCT_ERR_COUNT,
+} VlcbNetPacketConstructErr;
 
-vlcb_error vlcb_net_pkt_ConstructErrToStr(VlcbPacketConstructErr err);
+vlcb_error vlcb_net_pkt_ConstructErrToStr(VlcbNetPacketConstructErr err);
 
-void vlcb_net_pkt_NewUnchecked(
-    VlcbProtocol proto, VlcbOpCode opc, uint8_t payload_len,
-    const VlcbPayload* const payload, VlcbPacket* const packet);
-VlcbPacketConstructErr vlcb_net_pkt_New(
-    VlcbOpCode opc, uint8_t payload_len, const VlcbPayload* const payload,
-    VlcbPacket* const packet);
+void vlcb_net_pkt_NewUnchecked(VlcbNetProtocol proto, VlcbOpCode opc,
+                               uint8_t payload_len,
+                               const VlcbNetPayload *const payload,
+                               VlcbNetPacket *const packet);
+VlcbNetPacketConstructErr vlcb_net_pkt_New(VlcbOpCode opc, uint8_t payload_len,
+                                           const VlcbNetPayload *const payload,
+                                           VlcbNetPacket *const packet);

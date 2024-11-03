@@ -4,9 +4,8 @@
 #include "vlcb/net/packet/vlcb.h"
 #include "vlcb/net/socket.h"
 
-void ProcessVlcbPacket(VlcbNetIface* const iface,
-                       VlcbPacket* const packet);
+void ProcessVlcbPacket(VlcbNetIface *const iface, VlcbNetPacket *const packet);
 
-VlcbNetAdptErr DispatchVlcbPacket(VlcbNetIface* const iface,
+VlcbNetAdptErr DispatchVlcbPacket(VlcbNetIface *const iface,
                                   VlcbNetAdptCaps caps,
-                                  const VlcbPacket* const packet);
+                                  const VlcbNetPacket *const packet);

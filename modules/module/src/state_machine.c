@@ -29,7 +29,7 @@ static bool HandleTransitionToUninitialized(VlcbModule *const self) {
     VlcbPacketDatagram packet;
     vlcb_net_pkt_dgram_module_ReleaseNodeNumber_Serialize(
         &packet, (VlcbNetDgramReleaseNodeNumber){.addr = addr});
-    const VlcbNetSocketErr err =
+    const VlcbNetSocketProcessErr err =
         vlcb_net_sock_dgram_Send(self->socket, &packet);
     if (err != VLCB_NET_SOCK_ERR_OK) {
       // todo: log
@@ -48,7 +48,8 @@ static bool HandleTransitionToSetup(VlcbModule *const self,
   VlcbPacketDatagram packet;
   vlcb_net_pkt_dgram_module_RequestNodeNumber_Serialize(
       &packet, (VlcbNetDgramRequestNodeNumber){.addr = setupData.nodeAddr});
-  const VlcbNetSocketErr err = vlcb_net_sock_dgram_Send(self->socket, &packet);
+  const VlcbNetSocketProcessErr err =
+      vlcb_net_sock_dgram_Send(self->socket, &packet);
   if (err != VLCB_NET_SOCK_ERR_OK) {
     // TODO: log
     return false;
@@ -62,7 +63,7 @@ static bool HandleTransitionToNormal(VlcbModule *const self) {
     vlcb_net_pkt_dgram_module_ReleaseNodeNumber_Serialize(
         &packet,
         (VlcbNetDgramReleaseNodeNumber){.addr = self->config.nodeAddr});
-    const VlcbNetSocketErr err =
+    const VlcbNetSocketProcessErr err =
         vlcb_net_sock_dgram_Send(self->socket, &packet);
     if (err != VLCB_NET_SOCK_ERR_OK) {
       // TODO: log
@@ -78,7 +79,8 @@ static bool HandleTransitionToNormal(VlcbModule *const self) {
   vlcb_net_pkt_dgram_module_NodeNumberAck_Serialize(
       &packet,
       (VlcbNetDgramNodeNumberAck){.addr = self->sm.data.setup.nodeAddr});
-  const VlcbNetSocketErr err = vlcb_net_sock_dgram_Send(self->socket, &packet);
+  const VlcbNetSocketProcessErr err =
+      vlcb_net_sock_dgram_Send(self->socket, &packet);
   if (err != VLCB_NET_SOCK_ERR_OK) {
     // TODO: log
     return false;

@@ -5,116 +5,112 @@
 #include <stddef.h>
 
 #include "vlcb/net/addr.h"
+#include "vlcb/net/packet/datagram.h"
 #include "vlcb/net/packet/vlcb.h"
 #include "vlcb/net/socket.h"
+#include "vlcb/net/storage/packet_buf.h"
 #include "vlcb/platform/interface.h"
 
-bool SupportsProtocol(VlcbProtocol proto) {
-  return proto == VLCB_PROTO_DATAGRAM;
+bool SupportsProtocol(VlcbNetProtocol proto) {
+  return proto == VLCB_NET_PROTO_DATAGRAM;
 }
 
-VlcbNetSocketErr ProcessPacket(const VlcbNetSocketDatagram *const self,
-                               const VlcbPacket *const packet) {
-  assert(self != NULL && packet != NULL);
-  if (self->addr == NULL) {
-    return VLCB_NET_SOCK_ERR_OK;
+VlcbNetSocketProcessErr ProcessPacket(const VlcbNetSocketDatagram *const self,
+                                      const VlcbNetPacket *const packet) {
+  assert(self != NULL && packet != NULL &&
+         packet->proto == VLCB_NET_PROTO_DATAGRAM && self->rxBuf != NULL);
+
+  VlcbPacketDatagram dgramPacket;
+  VlcbPacketDatagramConstructErr err = vlcb_net_pkt_dgram_New(
+      packet->opc, packet->payload_len, &packet->payload, &dgramPacket);
+  if (err != VLCB_DGRAM_PKT_CONSTRUCT_ERR_OK) {
+    switch (err) {
+    case VLCB_DGRAM_PKT_CONSTRUCT_ERR_PAYLOAD_TOO_LARGE:
+      return VLCB_NET_SOCK_PROC_ERR_PAYLOAD_TOO_LARGE;
+    default:
+      return VLCB_NET_SOCK_PROC_ERR_UNKNOWN;
+    }
   }
 
-  int res = vlcb_net_packetbuf_Push(self->rxBuf, &packet);
+  int res = vlcb_net_packetbuf_Push(self->rxBuf, &dgramPacket);
   if (res == -1) {
-    return VLCB_NET_SOCK_ERR_RX_BUF_FULL;
+    return VLCB_NET_SOCK_PROC_ERR_RX_BUF_FULL;
   }
 
-  return VLCB_NET_SOCK_ERR_OK;
+  return VLCB_NET_SOCK_PROC_ERR_OK;
 }
 
-bool DispatchPacket(const VlcbNetSocketDatagram *const self,
-                    VlcbPacket *const packet) {
-  assert(self != NULL && packet != NULL);
+VlcbNetSocketDispatchErr DispatchPacket(const VlcbNetSocketDatagram *const self,
+                                        VlcbNetPacket *const packet) {
+  assert(self != NULL && packet != NULL && self->txBuf != NULL);
 
-  if (self->addr == NULL) {
-    return VLCB_NET_SOCK_ERR_OK;
-  }
-
-  VlcbPacketDatagram datagram_packet;
-  int res = vlcb_net_packetbuf_Pop(self->txBuf, &datagram_packet);
+  VlcbPacketDatagram dgramPacket;
+  int res = vlcb_net_packetbuf_Pop(self->txBuf, &dgramPacket);
   if (res == -1) {
-    return false;
+    return VLCB_NET_SOCK_DISP_ERR_WOULD_BLOCK;
   }
 
-  vlcb_net_pkt_NewUnchecked(VLCB_PROTO_DATAGRAM, datagram_packet.opc,
-                            datagram_packet.payload_len,
-                            &datagram_packet.payload, packet);
+  vlcb_net_pkt_NewUnchecked(VLCB_NET_PROTO_DATAGRAM, dgramPacket.opc,
+                            dgramPacket.payload_len, &dgramPacket.payload,
+                            packet);
 
-  return true;
-}
-
-int Bind(VlcbNetSocketDatagram *const sock, const VlcbNetHwAddr *const addr) {
-  assert(sock != NULL && addr != NULL);
-  if (sock->addr == NULL) {
-    sock->addr = addr;
-    return 0;
-  }
-  return 1;
+  return VLCB_NET_SOCK_DISP_ERR_OK;
 }
 
 _INTERFACE_VTABLE_DEFINE(
     IVlcbNetSocket,
     _INTERFACE_VTABLE_METHOD(SupportsProtocol, SupportsProtocol, bool,
-                             VlcbProtocol),
-    _INTERFACE_VTABLE_METHOD(ProcessPacket, ProcessPacket, VlcbNetSocketErr,
+                             VlcbNetProtocol),
+    _INTERFACE_VTABLE_METHOD(ProcessPacket, ProcessPacket,
+                             VlcbNetSocketProcessErr,
                              _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
-                             const VlcbPacket *const),
-    _INTERFACE_VTABLE_METHOD(DispatchPacket, DispatchPacket, bool,
+                             const VlcbNetPacket *const),
+    _INTERFACE_VTABLE_METHOD(DispatchPacket, DispatchPacket,
+                             VlcbNetSocketDispatchErr,
                              _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
-                             VlcbPacket *const),
-    _INTERFACE_VTABLE_METHOD(Bind, Bind, int,
-                             _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
-                             const VlcbNetHwAddr *const));
-
-// VlcbNetSocket vlcb_net_sock_dgram_Upcast(VlcbNetSocketDatagram *sock) {
-//   _TYPE_UPCAST_METHOD_PTR_SIG(SupportsProtocol, bool, VlcbProtocol);
-//   _TYPE_UPCAST_METHOD_PTR_SIG(ProcessPacket, VlcbNetSocketErr,
-//                               VlcbNetSocketDatagram *const,
-//                               const VlcbPacket *const);
-//   _TYPE_UPCAST_METHOD_PTR_SIG(DispatchPacket, bool,
-//                               VlcbNetSocketDatagram *const, VlcbPacket
-//                               *const);
-//   _TYPE_UPCAST_METHOD_PTR_SIG(Bind, bool,
-//                               VlcbNetSocketDatagram *const, const
-//                               VlcbNetHwAddr *const);
-//   _TYPE_UPCAST_VTABLE_DEF(
-//       tc, VlcbNetSocketTrait,
-//       _TYPE_UPCAST_VTABLE_METHOD_ENTRY(SupportsProtocol, SupportsProtocol,
-//       bool,
-//                                        VlcbProtocol),
-//       _TYPE_UPCAST_VTABLE_METHOD_ENTRY(ProcessPacket, ProcessPacket,
-//                                        VlcbNetSocketErr, void *const,
-//                                        const VlcbPacket *const),
-//       _TYPE_UPCAST_VTABLE_METHOD_ENTRY(DispatchPacket, DispatchPacket, bool,
-//                                        void *const, VlcbPacket *const)
-//                                        ,
-//       _TYPE_UPCAST_VTABLE_METHOD_ENTRY(Bind, Bind, int,
-//                                        void *const, const VlcbNetHwAddr
-//                                        *const)
-//                                        );
-//   return (VlcbNetSocket){.tc = &tc, .self = sock};
-// }
+                             VlcbNetPacket *const));
 
 VlcbNetSocketDatagram vlcb_net_sock_dgram_New(VlcbPacketBuf *const rxBuf,
                                               VlcbPacketBuf *const txBuf) {
   assert(rxBuf != NULL && txBuf != NULL);
   return (VlcbNetSocketDatagram){_INTERFACE_ASSIGN_VTABLE(IVlcbNetSocket),
-                                 .rxBuf = rxBuf, .txBuf = txBuf, .addr = NULL};
+                                 .rxBuf = rxBuf, .txBuf = txBuf};
 }
 
-VlcbNetSocketErr
+VlcbNetSocketDgramSendErr
 vlcb_net_sock_dgram_Send(VlcbNetSocketDatagram *const sock,
                          const VlcbPacketDatagram *const packet) {
-  assert(sock != NULL && packet != NULL);
+  assert(sock != NULL && packet != NULL && sock->txBuf != NULL);
+
+  int res = vlcb_net_packetbuf_Push(sock->txBuf, packet);
+  if (res == -1) {
+    return VLCB_NET_SOCK_DGRAM_SEND_ERR_BUF_FULL;
+  }
+  return VLCB_NET_SOCK_DGRAM_SEND_ERR_OK;
 }
 
-VlcbNetSocketErr vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock,
-                                          VlcbPacketDatagram *const packet) {
-  assert(sock != NULL && packet != NULL);
+VlcbNetSocketDgramRecvErr
+vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock,
+                         VlcbPacketDatagram *const packet) {
+  assert(sock != NULL && packet != NULL && sock->rxBuf != NULL);
+  int res = vlcb_net_packetbuf_Pop(sock->rxBuf, packet);
+  if (res == -1) {
+    return VLCB_NET_SOCK_DGRAM_RECV_ERR_WOULD_BLOCK;
+  }
+  return VLCB_NET_SOCK_DGRAM_RECV_ERR_OK;
+}
+
+void vlcb_net_sock_dgram_Flush(VlcbNetSocketDatagram *const sock,
+                               const VlcbNetSockDgramFlushMode mode) {
+  assert(sock != NULL && sock->rxBuf != NULL && sock->txBuf != NULL);
+
+  if (mode == VLCB_NET_SOCK_DGRAM_FLUSH_TX ||
+      mode == VLCB_NET_SOCK_DGRAM_FLUSH_BOTH) {
+    vlcb_net_packetbuf_Reset(sock->txBuf);
+  }
+
+  if (mode == VLCB_NET_SOCK_DGRAM_FLUSH_RX ||
+      mode == VLCB_NET_SOCK_DGRAM_FLUSH_BOTH) {
+    vlcb_net_packetbuf_Reset(sock->rxBuf);
+  }
 }
