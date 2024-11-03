@@ -9,7 +9,7 @@
 
 #define VLCB_MODULE_PARAMS(name, len)                                          \
   uint8_t name##_data[sizeof(VlcbModuleParams) + sizeof(uint8_t) * len];       \
-  VlcbModuleParams *const name = (VlcbModuleParams *const)&name##_data;
+  VlcbModuleParams *const name = (VlcbModuleParams *const)name##_data;
 
 #define VLCB_MODULE_PARAMS_STD(name)                                           \
   VLCB_MODULE_PARAMS(name, VLCB_MODULE_PARAMS_MIN_LEN)

@@ -49,24 +49,24 @@ static inline void HandleQueryNodeParameters(VlcbModule *const self) {
   // RQNP, targets only modules in Setup mode
   if (self->sm.state == VLCB_MODULE_STATE_SETUP) {
     VlcbPacketDatagram response;
-    const VlcbModuleParamBuf *const params = &self->params.buf;
+    const VlcbModuleParams *const params = self->params;
     vlcb_net_pkt_dgram_module_NodeParams_Serialize(
         &response,
         (VlcbNetDgramNodeParams){
-            .manuId = ModuleParamGetByte(&self->params,
+            .manuId = ModuleParamGetByte(params,
                                          VLCB_MODULE_PARAM_MODULE_MANUFACTURER),
-            .moduleType = ModuleParamGetByte(&self->params,
-                                             VLCB_MODULE_PARAM_MODULE_TYPE),
-            .majorVersion = ModuleParamGetByte(&self->params,
-                                               VLCB_MODULE_PARAM_MAJOR_VERSION),
-            .minorVersion = ModuleParamGetByte(&self->params,
-                                               VLCB_MODULE_PARAM_MINOR_VERSION),
-            .eventCount = ModuleParamGetByte(&self->params,
-                                             VLCB_MODULE_PARAM_MAX_EVENT_COUNT),
+            .moduleType =
+                ModuleParamGetByte(params, VLCB_MODULE_PARAM_MODULE_TYPE),
+            .majorVersion =
+                ModuleParamGetByte(params, VLCB_MODULE_PARAM_MAJOR_VERSION),
+            .minorVersion =
+                ModuleParamGetByte(params, VLCB_MODULE_PARAM_MINOR_VERSION),
+            .eventCount =
+                ModuleParamGetByte(params, VLCB_MODULE_PARAM_MAX_EVENT_COUNT),
             .eventVariableCount = ModuleParamGetByte(
-                &self->params, VLCB_MODULE_PARAM_EVENT_VARIABLE_COUNT),
+                params, VLCB_MODULE_PARAM_EVENT_VARIABLE_COUNT),
             .nodeVariableCount = ModuleParamGetByte(
-                &self->params, VLCB_MODULE_PARAM_NODE_VARIABLE_COUNT)});
+                params, VLCB_MODULE_PARAM_NODE_VARIABLE_COUNT)});
   }
 }
 

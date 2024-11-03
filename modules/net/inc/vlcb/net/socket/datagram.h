@@ -10,7 +10,7 @@
   uint8_t                                                                      \
       name##_data[sizeof(VlcbPacketBuf) + sizeof(VlcbPacketDatagram) * size];  \
   vlcb_net_packetbuf_Init(name##_data, size, sizeof(VlcbPacketDatagram));      \
-  VlcbPacketBuf *const name = (VlcbPacketBuf *const)&name##_data;
+  VlcbPacketBuf *const name = (VlcbPacketBuf *const)name##_data;
 
 typedef struct {
   _INTERFACE_IMPLEMENT(IVlcbNetSocket);
