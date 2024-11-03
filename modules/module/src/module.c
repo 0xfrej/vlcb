@@ -22,12 +22,15 @@
 #endif /* ifndef VLCB_MODULE_HEARTBEAT_MS */
 
 static inline void HandleHeartbeat(VlcbModule *const self, const clock_t now) {
+  // send heartbeat if module is in normal mode, heartbeat is enabled and
+  // heartbeat timeout passed (or if it's the first heartbeat) heartbeatSequence
+  // increments, until it overflows, which is expected
   if (self->sm.state == VLCB_MODULE_STATE_NORMAL &&
       self->config.operationFlags & VLCB_MODULE_FLAGS_HEARTBEAT &&
       (self->lastHeartbeat == 0 ||
        vlcb_platform_time_DiffInMs(self->lastHeartbeat, now) >=
            VLCB_MODULE_HEARTBEAT_MS)) {
-    VlcbPacketDatagram packet;
+    VlcbNetPacketDatagram packet;
     vlcb_net_pkt_dgram_module_Heartbeat_Serialize(
         &packet, (VlcbNetDgramHeartbeat){
                      .nodeNumber = self->config.nodeNumber,
@@ -54,7 +57,7 @@ static inline void HandleHeartbeat(VlcbModule *const self, const clock_t now) {
 static inline void HandleQueryNodeParameters(VlcbModule *const self) {
   // RQNP, targets only modules in Setup mode
   if (self->sm.state == VLCB_MODULE_STATE_SETUP) {
-    VlcbPacketDatagram response;
+    VlcbNetPacketDatagram response;
     const VlcbModuleParams *const params = self->params;
     vlcb_net_pkt_dgram_module_NodeParams_Serialize(
         &response,
@@ -73,18 +76,29 @@ static inline void HandleQueryNodeParameters(VlcbModule *const self) {
                 params, VLCB_MODULE_PARAM_EVENT_VARIABLE_COUNT),
             .nodeVariableCount = ModuleParamGetByte(
                 params, VLCB_MODULE_PARAM_NODE_VARIABLE_COUNT)});
+    VlcbNetSocketDgramSendErr err =
+        vlcb_net_sock_dgram_Send(self->socket, &response);
+    if (err != VLCB_NET_SOCK_DGRAM_SEND_ERR_OK) {
+      if (err == VLCB_NET_SOCK_DGRAM_SEND_ERR_BUF_FULL) {
+        VLCBLOG_INFO(vlcb_net_sock_dgram_SendErrToStr(err));
+      } else {
+        VLCBLOG_ERROR(vlcb_net_sock_dgram_SendErrToStr(err));
+      }
+      return; // at the moment we don't do anything, just drop the packet
+    }
   }
 }
 
 static inline void
 HandleQueryNodeParameterByIndex(VlcbModule *const self,
-                                const VlcbPacketDatagram *const packet) {
+                                const VlcbNetPacketDatagram *const packet) {
   // RQNPN, index 0 should return number of available params, followed by each
   // param as a separate packet
 }
 
-static inline void HandleSetNodeNumber(VlcbModule *const self,
-                                       const VlcbPacketDatagram *const packet) {
+static inline void
+HandleSetNodeNumber(VlcbModule *const self,
+                    const VlcbNetPacketDatagram *const packet) {
   // SNN - set only in response to RQNN by the setup tool, only to node in setup
   // mode
   if (self->sm.state == VLCB_MODULE_STATE_SETUP) {
@@ -111,11 +125,32 @@ static inline void HandleQueryModuleName(VlcbModule *const self) {
       (self->sm.state == VLCB_MODULE_STATE_NORMAL &&
        ModuleParamGetByte(self->params, VLCB_MODULE_PARAM_FLAGS) &
            VLCB_MODULE_FLAG_LEARN_MODE)) {
+    VlcbNetPacketDatagram response;
+
+    // 11 - request for node module name, excluding "CAN" prefix
+    // sent during module transition, so no node number check
+    // DEBUG_SERIAL << F("> RQMN received") << endl;
+
+    // only respond if in transition to Normal, i.e. Setup mode, or in learn
+    // mode.
+
+    // if (instantMode == MODE_SETUP ||
+    //     (controller->getParam(PAR_FLAGS) & PF_LRN)) {
+    //   // respond with NAME
+    //   VlcbMessage response;
+    //   response.len = 8;
+    //   response.data[0] = OPC_NAME;
+    //   memcpy(response.data + 1, controller->getModuleName(), 7);
+    //   controller->sendMessage(&response);
+    // }
+    // request for module name, sent during transition to normal or during learn
+    // mode
   }
 }
 
-static inline void HandleRebootRequest(VlcbModule *const self,
-                                       const VlcbPacketDatagram *const packet) {
+static inline void
+HandleRebootRequest(VlcbModule *const self,
+                    const VlcbNetPacketDatagram *const packet) {
   if (packet->opc == VLCB_OPC_RESTART_ALL_NODES) {
     self->restart();
     return;
@@ -129,7 +164,7 @@ static inline void HandleRebootRequest(VlcbModule *const self,
 }
 
 static inline void HandleMnsMessages(VlcbModule *const self,
-                                     const VlcbPacketDatagram *const packet,
+                                     const VlcbNetPacketDatagram *const packet,
                                      clock_t now) {
   switch (packet->opc) {
   case VLCB_OPC_QUERY_NODE_PARAMETERS:
@@ -148,22 +183,7 @@ static inline void HandleMnsMessages(VlcbModule *const self,
     HandleQueryNodeInfo(self);
     break;
   case VLCB_OPC_QUERY_MODULE_NAME:
-    // 11 - request for node module name, excluding "CAN" prefix
-    // sent during module transition, so no node number check
-    // DEBUG_SERIAL << F("> RQMN received") << endl;
-
-    // only respond if in transition to Normal, i.e. Setup mode, or in learn
-    // mode.
-
-    // if (instantMode == MODE_SETUP ||
-    //     (controller->getParam(PAR_FLAGS) & PF_LRN)) {
-    //   // respond with NAME
-    //   VlcbMessage response;
-    //   response.len = 8;
-    //   response.data[0] = OPC_NAME;
-    //   memcpy(response.data + 1, controller->getModuleName(), 7);
-    //   controller->sendMessage(&response);
-    // }
+    HandleQueryModuleName(self);
     break;
 
     // case OPC_RQSD:
@@ -196,15 +216,16 @@ static inline void HandleMnsMessages(VlcbModule *const self,
   }
 }
 
-VlcbModule vlcb_module_New(VlcbNetIface *const iface,
+VlcbModule vlcb_module_New(const char *const name, VlcbNetIface *const iface,
                            VlcbNetSocketDatagram *const socket,
                            const IVlcbModuleUi ui,
                            VlcbModuleParams *const params,
                            RestartRequestHandler restartHandler) {
   assert(iface != NULL && socket != NULL && params != NULL &&
-         restartHandler != NULL);
+         restartHandler != NULL && name != NULL);
 
-  return (VlcbModule){.iface = iface,
+  return (VlcbModule){.name = name,
+                      .iface = iface,
                       .socket = socket,
                       .params = params,
                       .ui = ui,
@@ -228,16 +249,20 @@ void vlcb_module_Init(VlcbModule *const module, const clock_t now) {
 void vlcb_module_Poll(VlcbModule *const module, const clock_t now) {
   assert(module != NULL && module->iface != NULL);
 
-  VlcbPacketDatagram packet;
-  VlcbPacketDatagram *const packetPtr = &packet;
+  VlcbNetPacketDatagram packet;
 
   while (1) {
     const VlcbNetSocketDgramRecvErr err =
-        vlcb_net_sock_dgram_Recv(module->socket, packetPtr);
+        vlcb_net_sock_dgram_Recv(module->socket, &packet);
     if (err != VLCB_NET_SOCK_DGRAM_RECV_ERR_OK) {
       if (err == VLCB_NET_SOCK_DGRAM_RECV_ERR_WOULD_BLOCK) {
-        break;
+        break; // nothing to receive
       }
+    }
+    HandleMnsMessages(module, &packet, now);
+
+    if (module->sm.state == VLCB_MODULE_STATE_NORMAL) {
+      // TODO: handle services
     }
   }
 

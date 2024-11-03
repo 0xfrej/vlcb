@@ -20,9 +20,9 @@ typedef struct {
 } VlcbModuleParams;
 
 void vlcb_module_params_Init(
-    VlcbModuleParams *const params, const char *const name,
-    const VlcbModuleVersion version, const VlcbManufacturer moduleManu,
-    const VlcbBusType busType, const uint8_t moduleType, const uint8_t cpuId,
+    VlcbModuleParams *const params, const VlcbModuleVersion version,
+    const VlcbManufacturer moduleManu, const VlcbBusType busType,
+    const uint8_t moduleType, const uint8_t cpuId,
     const VlcbProcessorManufacturer cpuManu,
     const VlcbModuleParamCpuManuId cpuManuId,
     const VlcbModuleParamLoadAddr loadAddr, const VlcbModuleFlags moduleFlags,

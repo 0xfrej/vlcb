@@ -20,8 +20,8 @@ VlcbNetSocketProcessErr ProcessPacket(const VlcbNetSocketDatagram *const self,
   assert(self != NULL && packet != NULL &&
          packet->proto == VLCB_NET_PROTO_DATAGRAM && self->rxBuf != NULL);
 
-  VlcbPacketDatagram dgramPacket;
-  VlcbPacketDatagramConstructErr err = vlcb_net_pkt_dgram_New(
+  VlcbNetPacketDatagram dgramPacket;
+  VlcbNetPacketDatagramConstructErr err = vlcb_net_pkt_dgram_New(
       packet->opc, packet->payload_len, &packet->payload, &dgramPacket);
   if (err != VLCB_DGRAM_PKT_CONSTRUCT_ERR_OK) {
     switch (err) {
@@ -44,7 +44,7 @@ VlcbNetSocketDispatchErr DispatchPacket(const VlcbNetSocketDatagram *const self,
                                         VlcbNetPacket *const packet) {
   assert(self != NULL && packet != NULL && self->txBuf != NULL);
 
-  VlcbPacketDatagram dgramPacket;
+  VlcbNetPacketDatagram dgramPacket;
   int res = vlcb_net_packetbuf_Pop(self->txBuf, &dgramPacket);
   if (res == -1) {
     return VLCB_NET_SOCK_DISP_ERR_WOULD_BLOCK;
@@ -79,7 +79,7 @@ VlcbNetSocketDatagram vlcb_net_sock_dgram_New(VlcbPacketBuf *const rxBuf,
 
 VlcbNetSocketDgramSendErr
 vlcb_net_sock_dgram_Send(VlcbNetSocketDatagram *const sock,
-                         const VlcbPacketDatagram *const packet) {
+                         const VlcbNetPacketDatagram *const packet) {
   assert(sock != NULL && packet != NULL && sock->txBuf != NULL);
 
   int res = vlcb_net_packetbuf_Push(sock->txBuf, packet);
@@ -91,7 +91,7 @@ vlcb_net_sock_dgram_Send(VlcbNetSocketDatagram *const sock,
 
 VlcbNetSocketDgramRecvErr
 vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock,
-                         VlcbPacketDatagram *const packet) {
+                         VlcbNetPacketDatagram *const packet) {
   assert(sock != NULL && packet != NULL && sock->rxBuf != NULL);
   int res = vlcb_net_packetbuf_Pop(sock->rxBuf, packet);
   if (res == -1) {

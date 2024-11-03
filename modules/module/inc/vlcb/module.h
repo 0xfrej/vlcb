@@ -56,6 +56,7 @@ typedef struct {
 typedef void (*RestartRequestHandler)(void);
 
 typedef struct {
+  const char *const name;
   clock_t lastHeartbeat;
   uint8_t heartbeatSequence;
   VlcbNetIface *const iface;
@@ -68,7 +69,7 @@ typedef struct {
   RestartRequestHandler restart;
 } VlcbModule;
 
-VlcbModule vlcb_module_New(VlcbNetIface *const iface,
+VlcbModule vlcb_module_New(const char *const name, VlcbNetIface *const iface,
                            VlcbNetSocketDatagram *const socket,
                            const IVlcbModuleUi ui,
                            VlcbModuleParams *const params,

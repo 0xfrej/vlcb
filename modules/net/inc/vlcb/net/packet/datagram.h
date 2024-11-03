@@ -14,13 +14,13 @@
  * clients don't have to write the whole expression and
  * ensure it's correct.
  */
-typedef uint8_t VlcbDatagramPayload[VLCB_DGRAM_PKT_MAX_PAYLOAD];
+typedef uint8_t VlcbNetDatagramPayload[VLCB_DGRAM_PKT_MAX_PAYLOAD];
 
 typedef struct {
   VlcbOpCode opc;
   uint8_t payload_len;
-  VlcbDatagramPayload payload;
-} VlcbPacketDatagram;
+  VlcbNetDatagramPayload payload;
+} VlcbNetPacketDatagram;
 
 typedef enum {
   VLCB_DGRAM_PKT_CONSTRUCT_ERR_OK = 0,
@@ -42,16 +42,16 @@ typedef enum {
    * is within the enum range.
    */
   VLCB_DGRAM_PKT_CONSTRUCT_ERR_COUNT,
-} VlcbPacketDatagramConstructErr;
+} VlcbNetPacketDatagramConstructErr;
 
-vlcb_error vlcb_net_pkt_dgram_ConstructErrToStr(
-    VlcbPacketDatagramConstructErr err);
+vlcb_error
+vlcb_net_pkt_dgram_ConstructErrToStr(VlcbNetPacketDatagramConstructErr err);
 
-VlcbPacketDatagramConstructErr vlcb_net_pkt_dgram_NewUnchecked(
-    VlcbOpCode opc, uint8_t payload_len,
-    const VlcbDatagramPayload* const payload,
-    VlcbPacketDatagram* const packet);
-VlcbPacketDatagramConstructErr vlcb_net_pkt_dgram_New(
-    VlcbOpCode opc, uint8_t payload_len,
-    const VlcbDatagramPayload* const payload,
-    VlcbPacketDatagram* const packet);
+VlcbNetPacketDatagramConstructErr
+vlcb_net_pkt_dgram_NewUnchecked(VlcbOpCode opc, uint8_t payload_len,
+                                const VlcbNetDatagramPayload *const payload,
+                                VlcbNetPacketDatagram *const packet);
+VlcbNetPacketDatagramConstructErr
+vlcb_net_pkt_dgram_New(VlcbOpCode opc, uint8_t payload_len,
+                       const VlcbNetDatagramPayload *const payload,
+                       VlcbNetPacketDatagram *const packet);

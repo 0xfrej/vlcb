@@ -8,7 +8,7 @@
 
 #define NS vlcb_net_pkt_dgram_module
 #define S Dgram
-#define P VlcbPacketDatagram
+#define P VlcbNetPacketDatagram
 
 DEFINE_PACKET_WO_DATA(NS, S, P, RestartAllNodes, VLCB_OPC_RESTART_ALL_NODES)
 

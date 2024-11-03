@@ -16,16 +16,15 @@ inline VlcbModuleParam ModuleParamGetByte(const VlcbModuleParams *const params,
 }
 
 inline void vlcb_module_params_Init(
-    VlcbModuleParams *const params, const char *const name,
-    const VlcbModuleVersion version, const VlcbManufacturer moduleManu,
-    const VlcbBusType busType, const uint8_t moduleType, const uint8_t cpuId,
+    VlcbModuleParams *const params, const VlcbModuleVersion version,
+    const VlcbManufacturer moduleManu, const VlcbBusType busType,
+    const uint8_t moduleType, const uint8_t cpuId,
     const VlcbProcessorManufacturer cpuManu,
     const VlcbModuleParamCpuManuId cpuManuId,
     const VlcbModuleParamLoadAddr loadAddr, const VlcbModuleFlags moduleFlags,
     const uint8_t nodeVariableCount, const uint8_t eventCount,
     const uint8_t eventVariableCount) {
-  assert(params != NULL && name != NULL &&
-         params->len >= VLCB_MODULE_PARAMS_MIN_LEN);
+  assert(params != NULL && params->len >= VLCB_MODULE_PARAMS_MIN_LEN);
 
   params->buf[VLCB_MODULE_PARAM_MODULE_MANUFACTURER] = moduleManu;
   params->buf[VLCB_MODULE_PARAM_MINOR_VERSION] = version.minor;

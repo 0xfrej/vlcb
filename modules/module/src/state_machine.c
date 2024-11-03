@@ -26,7 +26,7 @@ static bool HandleTransitionToUninitialized(VlcbModule *const self) {
 
   // release the address if it was set
   if (addr != VLCB_NODE_ADDR_UNINITIALIZED) {
-    VlcbPacketDatagram packet;
+    VlcbNetPacketDatagram packet;
     vlcb_net_pkt_dgram_module_ReleaseNodeNumber_Serialize(
         &packet, (VlcbNetDgramReleaseNodeNumber){.addr = addr});
     const VlcbNetSocketProcessErr err =
@@ -45,7 +45,7 @@ static bool HandleTransitionToUninitialized(VlcbModule *const self) {
 
 static bool HandleTransitionToSetup(VlcbModule *const self,
                                     VlcbModuleStateMachineSetupData setupData) {
-  VlcbPacketDatagram packet;
+  VlcbNetPacketDatagram packet;
   vlcb_net_pkt_dgram_module_RequestNodeNumber_Serialize(
       &packet, (VlcbNetDgramRequestNodeNumber){.addr = setupData.nodeAddr});
   const VlcbNetSocketProcessErr err =
@@ -59,7 +59,7 @@ static bool HandleTransitionToSetup(VlcbModule *const self,
 
 static bool HandleTransitionToNormal(VlcbModule *const self) {
   if (self->config.nodeNumber != VLCB_NODE_ADDR_UNINITIALIZED) {
-    VlcbPacketDatagram packet;
+    VlcbNetPacketDatagram packet;
     vlcb_net_pkt_dgram_module_ReleaseNodeNumber_Serialize(
         &packet,
         (VlcbNetDgramReleaseNodeNumber){.addr = self->config.nodeAddr});
@@ -75,7 +75,7 @@ static bool HandleTransitionToNormal(VlcbModule *const self) {
                                       // number
   }
 
-  VlcbPacketDatagram packet;
+  VlcbNetPacketDatagram packet;
   vlcb_net_pkt_dgram_module_NodeNumberAck_Serialize(
       &packet,
       (VlcbNetDgramNodeNumberAck){.addr = self->sm.data.setup.nodeAddr});

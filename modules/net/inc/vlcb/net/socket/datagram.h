@@ -37,10 +37,10 @@ vlcb_error vlcb_net_sock_dgram_SendErrToStr(VlcbNetSocketDgramSendErr err);
 
 VlcbNetSocketDgramSendErr
 vlcb_net_sock_dgram_Send(VlcbNetSocketDatagram *const sock,
-                         const VlcbPacketDatagram *const packet);
+                         const VlcbNetPacketDatagram *const packet);
 VlcbNetSocketDgramRecvErr
 vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock,
-                         VlcbPacketDatagram *const packet);
+                         VlcbNetPacketDatagram *const packet);
 
 static inline IVlcbNetSocket *const
 vlcb_net_sock_dgram_Upcast(VlcbNetSocketDatagram *const sock) {
