@@ -80,7 +80,7 @@ bool vlcb_net_adpt_IsPacketValid(const VlcbNetAdptPkt *const packet) {
    */
   return packet->medium == VLCB_MEDIUM_CAN &&
          (packet->meta.can.is_rtr && packet->payload_len == 0 ||
-          packet->payload_len <= VLCB_NET_CAN_MTU) &&
+          packet->payload_len <= VLCB_NET_ADPT_CAN_MAX_PAYLOAD) &&
          vlcb_defs_IsCanIdValid(packet->src_addr.can_id) &&
          vlcb_defs_IsCanPriorityValid(packet->meta.can.prio);
 }

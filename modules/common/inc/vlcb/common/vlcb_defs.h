@@ -984,7 +984,7 @@ enum VlcbModuleParam {
    * Node flags
    */
 
-  VLCB_MODULE_PARAM_NODE_FLAGS = 8,
+  VLCB_MODULE_PARAM_FLAGS = 8,
 
   /**
    * Processor type

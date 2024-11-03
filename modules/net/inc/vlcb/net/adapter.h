@@ -100,22 +100,3 @@ _INTERFACE_DECLARE(
     _INTERFACE_METHOD_DECLARE(VlcbNetAdptCaps, Caps,
                               _INTERFACE_SELF_PTR(IVlcbNetAdpt)););
 ;
-
-// #define vlcb_net_adpt_impl(T, Name, send_f, receive_f, caps_f)                 \
-//   VlcbNetAdpt Name##_Upcast(T *x) {                                            \
-//     _TYPE_UPCAST_METHOD_PTR_SIG(send_f, VlcbNetAdptErr, T *const,              \
-//                                 const VlcbNetAdptPkt *const)                   \
-//     _TYPE_UPCAST_METHOD_PTR_SIG(receive_f, VlcbNetAdptErr, T *const,           \
-//                                 VlcbNetAdptPkt *const)                         \
-//     _TYPE_UPCAST_METHOD_PTR_SIG(caps_f, VlcbNetAdptCaps, const T *const)       \
-//     _TYPE_UPCAST_VTABLE_DEF(                                                   \
-//         tc, VlcbNetAdptTrait,                                                  \
-//         _TYPE_UPCAST_VTABLE_METHOD_ENTRY(RecvPkt, receive_f, VlcbNetAdptErr,   \
-//                                          void *const, VlcbNetAdptPkt *const),  \
-//         _TYPE_UPCAST_VTABLE_METHOD_ENTRY(SendPkt, send_f, VlcbNetAdptErr,      \
-//                                          void *const,                          \
-//                                          const VlcbNetAdptPkt *const),         \
-//         _TYPE_UPCAST_VTABLE_METHOD_ENTRY(Caps, caps_f, VlcbNetAdptCaps,        \
-//                                          const void *const))                   \
-//     return (VlcbNetAdpt){.tc = &tc, .self = x};                                \
-//   }
