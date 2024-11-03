@@ -19,5 +19,5 @@
   _DEFINE_PACKET_NAME(sock, name)                                              \
   _DEFINE_PACKET_METHOD(ns, name, _Deserialize)(const pktT *const packet);
 
-#define DEFINE_PACKET_WO_DATA(ns, sock, pktT, name, opcode)                    \
+#define DEFINE_PACKET_WO_DATA(ns, sock, pktT, name)                            \
   inline void _DEFINE_PACKET_METHOD(ns, name, _Serialize)(pktT *const packet);

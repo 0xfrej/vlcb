@@ -19,3 +19,5 @@ typedef struct {
   char minor;
   uint8_t beta;
 } VlcbModuleVersion;
+
+typedef uint8_t VlcbServiceVersion;
