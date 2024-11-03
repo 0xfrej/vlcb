@@ -4,15 +4,13 @@
 #include <stdbool.h>
 #include <string.h>
 
-VlcbPacketBuf vlcb_net_packetbuf_New(void *const buf, size_t maxlen,
-                                     size_t bucket_size) {
-  assert(buf != NULL && maxlen > 0 && bucket_size > 0);
-
-  return (VlcbPacketBuf){.buffer = buf,
-                         .tail = 0,
-                         .head = 0,
-                         .bucket_size = bucket_size,
-                         .maxlen = maxlen};
+void vlcb_net_packetbuf_Init(VlcbPacketBuf *const c, size_t maxlen,
+                             size_t bucket_size) {
+  assert(c != NULL && maxlen > 0 && bucket_size > 0);
+  c->tail = 0;
+  c->head = 0;
+  c->bucket_size = bucket_size;
+  c->maxlen = maxlen;
 }
 
 void vlcb_net_packetbuf_Reset(VlcbPacketBuf *const c) {

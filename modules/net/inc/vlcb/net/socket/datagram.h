@@ -6,10 +6,11 @@
 #include "../storage/packet_buf.h"
 #include "vlcb/platform/interface.h"
 
-#define VLCB_SOCK_DGRAM_BUF(name, size)                                        \
-  unsigned char data_##name[sizeof(VlcbPacketDatagram) * size];                \
-  VlcbPacketBuf name =                                                         \
-      vlcb_net_packetbuf_New(data_##name, size, sizeof(VlcbPacketDatagram));
+#define VLCB_NET_SOCK_DGRAM_BUF(name, size)                                    \
+  uint8_t                                                                      \
+      name##_data[sizeof(VlcbPacketBuf) + sizeof(VlcbPacketDatagram) * size];  \
+  vlcb_net_packetbuf_Init(name##_data, size, sizeof(VlcbPacketDatagram));      \
+  VlcbPacketBuf *const name = (VlcbPacketBuf *const)&name##_data;
 
 typedef struct {
   _INTERFACE_IMPLEMENT(IVlcbNetSocket);
@@ -17,8 +18,6 @@ typedef struct {
   VlcbPacketBuf *const txBuf;
   const VlcbNetHwAddr *addr;
 } VlcbNetSocketDatagram;
-
-// VlcbNetSocket vlcb_net_sock_dgram_Upcast(VlcbNetSocketDatagram *const sock);
 
 VlcbNetSocketDatagram vlcb_net_sock_dgram_New(VlcbPacketBuf *const rxBuf,
                                               VlcbPacketBuf *const txBuf);

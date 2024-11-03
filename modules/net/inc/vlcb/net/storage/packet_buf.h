@@ -2,17 +2,18 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdint.h>
 
 typedef struct {
-  void *const buffer;
   size_t head;
   size_t tail;
-  const size_t maxlen;
-  const size_t bucket_size;
+  size_t maxlen;
+  size_t bucket_size;
+  uint8_t buffer[];
 } VlcbPacketBuf;
 
-VlcbPacketBuf vlcb_net_packetbuf_New(void *const buf, size_t maxlen,
-                                     size_t bucket_size);
+void vlcb_net_packetbuf_Init(VlcbPacketBuf *const c, size_t maxlen,
+                             size_t bucket_size);
 void vlcb_net_packetbuf_Reset(VlcbPacketBuf *const c);
 bool vlcb_net_packetbuf_IsEmpty(VlcbPacketBuf *const c);
 bool vlcb_net_packetbuf_IsFull(VlcbPacketBuf *const c);

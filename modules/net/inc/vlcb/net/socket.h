@@ -35,17 +35,18 @@ _INTERFACE_DECLARE(
 ;
 
 typedef IVlcbNetSocket *VlcbNetSocketHandle;
+
 typedef struct {
-  const size_t size;
-  VlcbNetSocketHandle *const ptr;
+  size_t capacity;
   size_t len;
+  VlcbNetSocketHandle *const buf;
 } VlcbNetSocketList;
 
-VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *const list,
-                                         size_t size);
+inline VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *const buf,
+                                                size_t size);
 
 #define VLCB_NET_SOCK_LIST(name, size)                                         \
-  VlcbNetSocketHandle data_##name[size];                                       \
+  VlcbNetSocketHandle name##_data[size];                                       \
   VlcbNetSocketList name = vlcb_net_sock_list_New(data_##name, size);
 
 void vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,

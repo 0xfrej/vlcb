@@ -2,6 +2,8 @@
 
 #include <stdint.h>
 
+#include "vlcb/common/vlcb_defs.h"
 #include "vlcb/module/param.h"
 
-uint8_t ModuleParamGetByte(const VlcbModuleParams *const params, uint8_t index);
+VlcbModuleParam ModuleParamGetByte(const VlcbModuleParams *const params,
+                                   const VlcbModuleParam param);

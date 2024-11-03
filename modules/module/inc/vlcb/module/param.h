@@ -5,27 +5,26 @@
 #include "vlcb/common/module.h"
 #include "vlcb/common/vlcb_defs.h"
 
-#ifndef VLCB_MODULE_PARAM_BYTE_COUNT
-#define VLCB_MODULE_PARAM_BYTE_COUNT  21
-#endif
+#define VLCB_MODULE_PARAMS_MIN_LEN 20
 
-typedef uint8_t VlcbModuleParamBuf[VLCB_MODULE_PARAM_BYTE_COUNT];
+#define VLCB_MODULE_PARAMS(name, len)                                          \
+  uint8_t name##_data[sizeof(VlcbModuleParams) + sizeof(uint8_t) * len];       \
+  VlcbModuleParams *const name = (VlcbModuleParams *const)&name##_data;
+
+#define VLCB_MODULE_PARAMS_STD(name)                                           \
+  VLCB_MODULE_PARAMS(name, VLCB_MODULE_PARAMS_MIN_LEN)
 
 typedef struct {
-   VlcbModuleParamBuf buf;
+  uint8_t len;
+  uint8_t buf[];
 } VlcbModuleParams;
 
-VlcbModuleParams vlcb_module_params_New(
-   const VlcbModuleVersion version,
-   const VlcbManufacturer moduleManu,
-   const VlcbBusType busType,
-   const uint8_t moduleType,
-   const uint8_t cpuId,
-   const VlcbProcessorManufacturer cpuManu,
-   const VlcbModuleParamCpuManuId cpuManuId,
-   const VlcbModuleParamLoadAddr loadAddr,
-   const VlcbModuleFlags moduleFlags,
-   const uint8_t nodeVariableCount,
-   const uint8_t eventCount,
-   const uint8_t eventVariableCount
-);
+void vlcb_module_params_Init(
+    VlcbModuleParams *const params, const char *const name,
+    const VlcbModuleVersion version, const VlcbManufacturer moduleManu,
+    const VlcbBusType busType, const uint8_t moduleType, const uint8_t cpuId,
+    const VlcbProcessorManufacturer cpuManu,
+    const VlcbModuleParamCpuManuId cpuManuId,
+    const VlcbModuleParamLoadAddr loadAddr, const VlcbModuleFlags moduleFlags,
+    const uint8_t nodeVariableCount, const uint8_t eventCount,
+    const uint8_t eventVariableCount);
