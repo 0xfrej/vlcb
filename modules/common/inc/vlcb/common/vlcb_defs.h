@@ -854,13 +854,6 @@ enum VlcbMergModuleType {
 
 typedef uint8_t VlcbModuleFlags;
 enum VlcbModuleFlags {
-
-  /**
-   * Module doesn't support events
-   */
-
-  VLCB_MODULE_FLAG_EVENTS_UNSUPPORTED = 0x0,
-
   /**
    * Module is a consumer of events
    */
@@ -881,13 +874,7 @@ enum VlcbModuleFlags {
   VLCB_MODULE_FLAG_EVENT_COMBI = 0x3,
 
   /**
-   * Module is in FLiM (CBUS)
-   */
-
-  VLCB_MODULE_FLAG_FLI_M = 0x4,
-
-  /**
-   * Module is in Normal mode (VLCB)
+   * Module is in Normal mode (VLCB) or FLiM (CBUS)
    */
 
   VLCB_MODULE_FLAG_NORMAL_MODE = 0x4,
@@ -1184,8 +1171,8 @@ enum VlcbDccServiceModeStatus {
  * Modes for STMOD
  */
 
-typedef uint8_t VlcbDccThrottleMode;
-enum VlcbDccThrottleMode {
+typedef uint8_t VlcbDccThrottleSpeedMode;
+enum VlcbDccThrottleSpeedMode {
 
   /**
    * 128-step speed mode
@@ -1240,10 +1227,87 @@ enum VlcbGenericResponseStatus {
   VLCB_GENERIC_RESPONSE_STAT_OK = 0,
 
   /**
+   * Invalid command
+   */
+
+  VLCB_GENERIC_RESPONSE_INVALID_COMMAND = 1,
+
+  /**
+   * The mode is not currently in learn mode
+   */
+
+  VLCB_GENERIC_RESPONSE_NOT_IN_LEARN_MODE = 2,
+
+  /**
+   * The mode is not currently in setup mode
+   */
+
+  VLCB_GENERIC_RESPONSE_NOT_IN_SETUP_MODE = 3,
+
+  /**
+   * Too many events provisioned in module
+   *
+   * The event storage is exhausted
+   */
+
+  VLCB_GENERIC_RESPONSE_TOO_MANY_EVENTS = 4,
+
+  /**
+   * No Event-Variable
+   */
+
+  VLCB_GENERIC_RESPONSE_NO_EV = 5,
+
+  /**
+   * Invalid EV index
+   */
+
+  VLCB_GENERIC_RESPONSE_INVALID_EV_INDEX = 6,
+
+  /**
+   * Invalid event
+   */
+
+  VLCB_GENERIC_RESPONSE_INVALID_EVENT = 7,
+
+  /**
+   * Invalid param index
+   */
+
+  VLCB_GENERIC_RESPONSE_INVALID_PARAM_INDEX = 9,
+
+  /**
+   * Invalid NV index
+   */
+
+  VLCB_GENERIC_RESPONSE_INVALID_NV_INDEX = 10,
+
+  /**
+   * Invalid EV value
+   */
+
+  VLCB_GENERIC_RESPONSE_INVALID_EV_VALUE = 11,
+
+  /**
+   * Invalid NV value
+   */
+
+  VLCB_GENERIC_RESPONSE_INVALID_NV_VALUE = 12,
+
+  /**
+   * Another module is already in learn mode
+   *
+   * Sent when module in learn mode sees NNLRN for different module (also exits
+   * learn mode)
+   */
+
+  VLCB_GENERIC_RESPONSE_ANOTHER_MODULE_IS_IN_LEARN_MODE = 13,
+
+  /**
    * Unknown non volatile memory type
    */
 
-  VLCB_GENERIC_RESPONSE_STAT_UNKNOWN_PERSISTENT_MEMORY_TYPE = 254,
+  VLCB_GENERIC_RESPONSE_STAT_UNKNOWN_NVM_TYPE = 254,
 
   /**
    * Invalid diagnostic
@@ -1550,7 +1614,7 @@ enum VlcbOpCode {
    * Requests a PNN reply from each node on the bus.
    */
 
-  VLCB_OPC_QUERY_NODE_INFO = 13,
+  VLCB_OPC_QUERY_MODULE_INFO = 13,
 
   /**
    * Request node parameters.
@@ -1559,7 +1623,7 @@ enum VlcbOpCode {
    * Used when initially configuring a node.
    */
 
-  VLCB_OPC_QUERY_NODE_PARAMETERS = 16,
+  VLCB_OPC_QUERY_MODULE_PARAMETERS = 16,
 
   /**
    * Request module name.
@@ -1921,7 +1985,7 @@ enum VlcbOpCode {
    * Appendix C - CMDERR error codes for the list of supported codes.
    */
 
-  VLCB_OPC_NODE_CONFIGURATION_ERROR = 111,
+  VLCB_OPC_COMMAND_ERROR = 111,
 
   /**
    * Event space left reply from node.

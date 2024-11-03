@@ -26,11 +26,6 @@ init: pull_dependencies lsp_helper
 lsp_helper:
 	bear -- make
 
-.PHONY: gen_defs
-gen_defs:
-	$(MAKE) -C vendor/vlcb-defs/codegen generate_c
-	cp vendor/vlcb-defs/codegen/lang/c/output/vlcb_defs.h modules/common/inc/vlcb/common/vlcb_defs.h
-
 .PHONY: pull_dependencies
 pull_dependencies:
 	git submodule update --rebase --remote
