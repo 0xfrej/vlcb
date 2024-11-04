@@ -4,7 +4,6 @@
 #include <stddef.h>
 
 #include "packet/vlcb.h"
-#include "vlcb/net/addr.h"
 #include "vlcb/platform/interface.h"
 
 typedef enum {

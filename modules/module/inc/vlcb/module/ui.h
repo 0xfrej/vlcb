@@ -2,7 +2,6 @@
 
 #include "vlcb/module/state.h"
 #include "vlcb/platform/interface.h"
-#include "vlcb/platform/time.h"
 
 _INTERFACE_DECLARE(
     IVlcbModuleUi,

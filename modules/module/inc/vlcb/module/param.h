@@ -2,8 +2,10 @@
 
 #include <stdint.h>
 
+#include "vlcb/common/manufacturer.h"
 #include "vlcb/common/module.h"
-#include "vlcb/common/vlcb_defs.h"
+#include "vlcb/common/net.h"
+#include "vlcb/common/processor.h"
 
 #define VLCB_MODULE_PARAMS_MIN_LEN 20
 

@@ -1,8 +1,8 @@
 #pragma once
 
+#include "vlcb/common/manufacturer.h"
 #include "vlcb/common/module.h"
 #include "vlcb/common/node.h"
-#include "vlcb/common/vlcb_defs.h"
 #include "vlcb/net/packet/datagram.h"
 #include "vlcb/net/packet/serialization.h"
 #include <stdint.h>

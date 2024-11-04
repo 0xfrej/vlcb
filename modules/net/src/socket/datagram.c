@@ -4,7 +4,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#include "vlcb/net/addr.h"
 #include "vlcb/net/packet/datagram.h"
 #include "vlcb/net/packet/vlcb.h"
 #include "vlcb/net/socket.h"

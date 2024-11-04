@@ -3,7 +3,6 @@
 
 #include "vlcb/common/event.h"
 #include "vlcb/common/node.h"
-#include "vlcb/common/vlcb_defs.h"
 #include "vlcb/net/packet/datagram.h"
 #include "vlcb/net/packet/serialization.h"
 #include <stdint.h>

@@ -2,7 +2,6 @@
 
 #include "vlcb/net/iface.h"
 #include "vlcb/net/packet/vlcb.h"
-#include "vlcb/net/socket.h"
 
 void ProcessVlcbPacket(VlcbNetIface *const iface, VlcbNetPacket *const packet);
 

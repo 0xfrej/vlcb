@@ -7,7 +7,6 @@
 
 #include "param.h"
 #include "vlcb/common/module.h"
-#include "vlcb/common/vlcb_defs.h"
 
 inline VlcbModuleParam ModuleParamGetByte(const VlcbModuleParams *const params,
                                           const VlcbModuleParam param) {

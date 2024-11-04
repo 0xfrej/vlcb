@@ -1,7 +1,6 @@
 #pragma once
 
 #include "vlcb/common/node.h"
-#include "vlcb/platform/time.h"
 #include <stdint.h>
 #include <time.h>
 

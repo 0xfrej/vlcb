@@ -25,7 +25,7 @@ inline VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
   packet->medium = VLCB_MEDIUM_CAN;
 
   {
-    CanId can_id;
+    VlcbCanId can_id;
     const bool valid = vlcb_defs_NewCanId(((uint8_t)id) & 0x7f, &can_id);
     if (valid == false) {
       return VLCB_NET_ADPT_ERR_INVALID_CANID;

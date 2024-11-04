@@ -5,13 +5,11 @@
 
 #include "param.h"
 #include "state_machine.h"
-#include "vlcb/common/vlcb_defs.h"
 #include "vlcb/module.h"
 #include "vlcb/module/param.h"
 #include "vlcb/module/state.h"
 #include "vlcb/net/packet/datagram.h"
 #include "vlcb/net/packet/datagram/module.h"
-#include "vlcb/net/socket.h"
 #include "vlcb/net/socket/datagram.h"
 #include "vlcb/platform/interface.h"
 #include "vlcb/platform/log.h"
@@ -36,7 +34,7 @@ static inline void HandleHeartbeat(VlcbModule *const self, const clock_t now) {
                      .nodeNumber = self->config.nodeNumber,
                      .sequence = self->heartbeatSequence,
                      .status = 0, // TODO: replace with diagnostic status
-                     .statusBits = 0});
+                 });
 
     VlcbNetSocketDgramSendErr err =
         vlcb_net_sock_dgram_Send(self->socket, &packet);
@@ -123,7 +121,7 @@ static inline void HandleQueryModuleName(VlcbModule *const self) {
   // is set
   if (self->sm.state == VLCB_MODULE_STATE_SETUP ||
       (self->sm.state == VLCB_MODULE_STATE_NORMAL &&
-       ModuleParamGetByte(self->params, VLCB_MODULE_PARAM_FLAGS) &
+      ModuleParamGetByte(self->params, VLCB_MODULE_PARAM_FLAGS) &
            VLCB_MODULE_FLAG_LEARN_MODE)) {
     VlcbNetPacketDatagram response;
 

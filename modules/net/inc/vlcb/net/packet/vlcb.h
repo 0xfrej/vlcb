@@ -2,7 +2,7 @@
 
 #include <inttypes.h>
 
-#include "vlcb/common/vlcb_defs.h"
+#include "vlcb/common/opcode.h"
 #include "vlcb/platform/error.h"
 
 #define VLCB_NET_PKT_MAX_PAYLOAD 7

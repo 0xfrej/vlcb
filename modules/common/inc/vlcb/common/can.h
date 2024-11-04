@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "vlcb_defs.h"
+#include "opcode.h"
 
 typedef uint8_t VlcbCanId;
 

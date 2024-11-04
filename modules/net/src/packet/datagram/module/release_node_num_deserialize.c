@@ -2,9 +2,7 @@
 
 #include <assert.h>
 
-#include "vlcb/common/vlcb_defs.h"
 #include "vlcb/platform/endian.h"
-
 #include <string.h>
 
 inline VlcbNetDgramReleaseNodeNumber
