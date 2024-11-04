@@ -2,10 +2,21 @@ var common_2inc_2vlcb_2common_2dcc_8h =
 [
     [ "VlcbDccConsistId", "common_2inc_2vlcb_2common_2dcc_8h.html#a0ac4c4e41d6b443be39fe66f88ea6f4b", null ],
     [ "VlcbDccDecoderAddr", "common_2inc_2vlcb_2common_2dcc_8h.html#a4c61e0a9bddef124853598b4e578e89a", null ],
+    [ "VlcbDccError", "common_2inc_2vlcb_2common_2dcc_8h.html#a5260cfd1b2de4f489161eb66b503bc54", null ],
     [ "VlcbDccLocoFunctionRange", "common_2inc_2vlcb_2common_2dcc_8h.html#a0830956256e6825fb55e8be0ea1acacc", null ],
     [ "VlcbDccLocoState", "common_2inc_2vlcb_2common_2dcc_8h.html#a3ed91f890f5cd7c8f50b30776070116b", null ],
     [ "VlcbDccSessionNr", "common_2inc_2vlcb_2common_2dcc_8h.html#ae7840654fae47d8bf50b3af1fd93a56f", null ],
     [ "VlcbDccSessionQueryMode", "common_2inc_2vlcb_2common_2dcc_8h.html#a934aac1e16efb580012a2b530e82e38f", null ],
+    [ "VlcbDccError", "common_2inc_2vlcb_2common_2dcc_8h.html#a040df840503ae8455fc0eea219b69e36", [
+      [ "VLCB_DCC_ERR_LOCO_STACK_IS_FULL", "common_2inc_2vlcb_2common_2dcc_8h.html#a040df840503ae8455fc0eea219b69e36aad4ebb06528b9455e771bff4ae917ced", null ],
+      [ "VLCB_DCC_ERR_LOCO_ADDRESS_IS_TAKEN", "common_2inc_2vlcb_2common_2dcc_8h.html#a040df840503ae8455fc0eea219b69e36a07bfcbbec415884d2a62bb5089072fab", null ],
+      [ "VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT", "common_2inc_2vlcb_2common_2dcc_8h.html#a040df840503ae8455fc0eea219b69e36ac81fc4d33baabf97c2b3ad9f95a5389e", null ],
+      [ "VLCB_DCC_ERR_EMPTY_CONSIST", "common_2inc_2vlcb_2common_2dcc_8h.html#a040df840503ae8455fc0eea219b69e36a74d86b05fcef9b3e3b0e87713d79feb6", null ],
+      [ "VLCB_DCC_ERR_LOCO_WAS_NOT_FOUND", "common_2inc_2vlcb_2common_2dcc_8h.html#a040df840503ae8455fc0eea219b69e36a68af741b0396d76fafae499a959e50cb", null ],
+      [ "VLCB_DCC_ERR_RX_BUFFER_OVERFLOW", "common_2inc_2vlcb_2common_2dcc_8h.html#a040df840503ae8455fc0eea219b69e36ad5ae5439c072abf578e5fcbc77f26ad2", null ],
+      [ "VLCB_DCC_ERR_INVALID_REQUEST", "common_2inc_2vlcb_2common_2dcc_8h.html#a040df840503ae8455fc0eea219b69e36abe4c4056d4d178ea43cae78c6a4da1b3", null ],
+      [ "VLCB_DCC_ERR_SESSION_WAS_CANCELLED", "common_2inc_2vlcb_2common_2dcc_8h.html#a040df840503ae8455fc0eea219b69e36a0d706a5a665ef559fc71af72bf5b976e", null ]
+    ] ],
     [ "VlcbDccLocoFunctionRange", "common_2inc_2vlcb_2common_2dcc_8h.html#a358688c3fe121e145b009fed534642e3", [
       [ "VLCB_DCC_LOCO_FUNC_RANGE_F0_F4", "common_2inc_2vlcb_2common_2dcc_8h.html#a358688c3fe121e145b009fed534642e3a61c4f0299aec62ff2a717fea209d4cf8", null ],
       [ "VLCB_DCC_LOCLO_FUNC_RANGE_F5_F8", "common_2inc_2vlcb_2common_2dcc_8h.html#a358688c3fe121e145b009fed534642e3afcf968c4f591f42ba32e4ad3590b7d7e", null ],

@@ -151,9 +151,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>CAN frame id used in transmission. </p>
-<p>This type is used to store the CAN ID (11 bits wide). First 7 bits contain the <code>CAN ID</code> (see CanId) (node alias used on CAN bus). Rest of the bits contain the <code>priority value</code> (see <a class="el" href="common_2inc_2vlcb_2common_2can_8h.html#a18071d9b36196aff73331930bfe940f8">VlcbCanPriority</a>). </p>
+<p>This type is used to store the CAN ID (11 bits wide). First 7 bits contain the <a class="el" href="common_2inc_2vlcb_2common_2can_8h.html#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a> (node alias used on CAN bus). Rest of the bits contain the <a class="el" href="common_2inc_2vlcb_2common_2can_8h.html#a18071d9b36196aff73331930bfe940f8">VlcbCanPriority</a> (CAN bus priority used to prioritize some OPCODEs over others). </p>
 
-<p class="definition">Definition at line <a class="el" href="packet__parse_8h_source.html#l00015">15</a> of file <a class="el" href="packet__parse_8h_source.html">packet_parse.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="packet__parse_8h_source.html#l00016">16</a> of file <a class="el" href="packet__parse_8h_source.html">packet_parse.h</a>.</p>
 
 </div>
 </div>
@@ -290,7 +290,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Parse the CAN packet data into the inner format. </p>
-<p>This function validates and constructs a new <code>VlcbNetAdptPacket</code> (see VlcbNetAdptPacket) from raw data and flags passed in from the device deriver adapter. Device driver adapters should use this function instead of their own implementation, unless it's desirable.</p>
+<p>This function validates and constructs a new VlcbNetAdptPacket from raw data and flags passed in from the device deriver adapter. Device driver adapters should use this function instead of their own implementation, unless it's desirable.</p>
 <p>It is worthy to note that unknown priority values get aliased to the default one.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -302,7 +302,7 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The error code (returns <code>VLCB_NET_DEV_ERR_OK</code> (see <a class="el" href="adapter_8h.html#a07c07a6882fd3bdce27b16e759d145ff">VlcbNetAdptErr</a>) when there is no error) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The error code (returns <a class="el" href="adapter_8h.html#a07c07a6882fd3bdce27b16e759d145ffa12fd66b0858ae7bf461a3fd0f648a330">VLCB_NET_ADPT_ERR_OK</a> when there is no error) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="packet__parse_8c_source.html#l00009">9</a> of file <a class="el" href="packet__parse_8c_source.html">packet_parse.c</a>.</p>
 <div class="dynheader">
@@ -319,7 +319,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_427baa8a9a5be237f298d4545d0d1ce2.html">net</a></li><li class="navelem"><a class="el" href="dir_c0575b5e81918ff6cd7d86b5adbed5d0.html">inc</a></li><li class="navelem"><a class="el" href="dir_5314d62625720a050713b0cba532fdc8.html">vlcb</a></li><li class="navelem"><a class="el" href="dir_ca0879ab5012c7f5f5b50184c926c0b0.html">net</a></li><li class="navelem"><a class="el" href="dir_251c2cfa7c9e97b936d12c21e60a89ac.html">adapter</a></li><li class="navelem"><a class="el" href="dir_ba194bd51a911bf8b390351c17b6e626.html">can</a></li><li class="navelem"><a class="el" href="packet__parse_8h.html">packet_parse.h</a></li>
-    <li class="footer">Generated on Sun Nov 3 2024 23:50:22 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Mon Nov 4 2024 09:13:33 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

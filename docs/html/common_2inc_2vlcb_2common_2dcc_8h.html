@@ -132,6 +132,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:a0830956256e6825fb55e8be0ea1acacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a934aac1e16efb580012a2b530e82e38f" id="r_a934aac1e16efb580012a2b530e82e38f"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a934aac1e16efb580012a2b530e82e38f">VlcbDccSessionQueryMode</a></td></tr>
 <tr class="separator:a934aac1e16efb580012a2b530e82e38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5260cfd1b2de4f489161eb66b503bc54" id="r_a5260cfd1b2de4f489161eb66b503bc54"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5260cfd1b2de4f489161eb66b503bc54">VlcbDccError</a></td></tr>
+<tr class="separator:a5260cfd1b2de4f489161eb66b503bc54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -156,6 +158,19 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#acddd0c61409b4ca2b5d99bd2df6e24bda5b0bc5c641934d7b88f68df0cb6183bf">VLCB_DCC_SESSION_QUERY_MODE_SHARE</a> = 0x02
  }</td></tr>
 <tr class="separator:acddd0c61409b4ca2b5d99bd2df6e24bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a040df840503ae8455fc0eea219b69e36" id="r_a040df840503ae8455fc0eea219b69e36"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a040df840503ae8455fc0eea219b69e36">VlcbDccError</a> { <br />
+&#160;&#160;<a class="el" href="#a040df840503ae8455fc0eea219b69e36aad4ebb06528b9455e771bff4ae917ced">VLCB_DCC_ERR_LOCO_STACK_IS_FULL</a> = 1
+, <a class="el" href="#a040df840503ae8455fc0eea219b69e36a07bfcbbec415884d2a62bb5089072fab">VLCB_DCC_ERR_LOCO_ADDRESS_IS_TAKEN</a> = 2
+, <a class="el" href="#a040df840503ae8455fc0eea219b69e36ac81fc4d33baabf97c2b3ad9f95a5389e">VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT</a> = 3
+, <a class="el" href="#a040df840503ae8455fc0eea219b69e36a74d86b05fcef9b3e3b0e87713d79feb6">VLCB_DCC_ERR_EMPTY_CONSIST</a> = 4
+, <br />
+&#160;&#160;<a class="el" href="#a040df840503ae8455fc0eea219b69e36a68af741b0396d76fafae499a959e50cb">VLCB_DCC_ERR_LOCO_WAS_NOT_FOUND</a> = 5
+, <a class="el" href="#a040df840503ae8455fc0eea219b69e36ad5ae5439c072abf578e5fcbc77f26ad2">VLCB_DCC_ERR_RX_BUFFER_OVERFLOW</a> = 6
+, <a class="el" href="#a040df840503ae8455fc0eea219b69e36abe4c4056d4d178ea43cae78c6a4da1b3">VLCB_DCC_ERR_INVALID_REQUEST</a> = 7
+, <a class="el" href="#a040df840503ae8455fc0eea219b69e36a0d706a5a665ef559fc71af72bf5b976e">VLCB_DCC_ERR_SESSION_WAS_CANCELLED</a> = 8
+<br />
+ }</td></tr>
+<tr class="separator:a040df840503ae8455fc0eea219b69e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a0ac4c4e41d6b443be39fe66f88ea6f4b" name="a0ac4c4e41d6b443be39fe66f88ea6f4b"></a>
@@ -187,6 +202,23 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2dcc_8h_source.html#l00006">6</a> of file <a class="el" href="common_2inc_2vlcb_2common_2dcc_8h_source.html">common/inc/vlcb/common/dcc.h</a>.</p>
+
+</div>
+</div>
+<a id="a5260cfd1b2de4f489161eb66b503bc54" name="a5260cfd1b2de4f489161eb66b503bc54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5260cfd1b2de4f489161eb66b503bc54">&#9670;&#160;</a></span>VlcbDccError</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint8_t <a class="el" href="#a040df840503ae8455fc0eea219b69e36">VlcbDccError</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Error codes for ERR message </p>
+
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2dcc_8h_source.html#l00036">36</a> of file <a class="el" href="common_2inc_2vlcb_2common_2dcc_8h_source.html">common/inc/vlcb/common/dcc.h</a>.</p>
 
 </div>
 </div>
@@ -255,6 +287,32 @@ Enumerations</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a040df840503ae8455fc0eea219b69e36" name="a040df840503ae8455fc0eea219b69e36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a040df840503ae8455fc0eea219b69e36">&#9670;&#160;</a></span>VlcbDccError</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a040df840503ae8455fc0eea219b69e36">VlcbDccError</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a040df840503ae8455fc0eea219b69e36aad4ebb06528b9455e771bff4ae917ced" name="a040df840503ae8455fc0eea219b69e36aad4ebb06528b9455e771bff4ae917ced"></a>VLCB_DCC_ERR_LOCO_STACK_IS_FULL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a040df840503ae8455fc0eea219b69e36a07bfcbbec415884d2a62bb5089072fab" name="a040df840503ae8455fc0eea219b69e36a07bfcbbec415884d2a62bb5089072fab"></a>VLCB_DCC_ERR_LOCO_ADDRESS_IS_TAKEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a040df840503ae8455fc0eea219b69e36ac81fc4d33baabf97c2b3ad9f95a5389e" name="a040df840503ae8455fc0eea219b69e36ac81fc4d33baabf97c2b3ad9f95a5389e"></a>VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a040df840503ae8455fc0eea219b69e36a74d86b05fcef9b3e3b0e87713d79feb6" name="a040df840503ae8455fc0eea219b69e36a74d86b05fcef9b3e3b0e87713d79feb6"></a>VLCB_DCC_ERR_EMPTY_CONSIST&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a040df840503ae8455fc0eea219b69e36a68af741b0396d76fafae499a959e50cb" name="a040df840503ae8455fc0eea219b69e36a68af741b0396d76fafae499a959e50cb"></a>VLCB_DCC_ERR_LOCO_WAS_NOT_FOUND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a040df840503ae8455fc0eea219b69e36ad5ae5439c072abf578e5fcbc77f26ad2" name="a040df840503ae8455fc0eea219b69e36ad5ae5439c072abf578e5fcbc77f26ad2"></a>VLCB_DCC_ERR_RX_BUFFER_OVERFLOW&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a040df840503ae8455fc0eea219b69e36abe4c4056d4d178ea43cae78c6a4da1b3" name="a040df840503ae8455fc0eea219b69e36abe4c4056d4d178ea43cae78c6a4da1b3"></a>VLCB_DCC_ERR_INVALID_REQUEST&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a040df840503ae8455fc0eea219b69e36a0d706a5a665ef559fc71af72bf5b976e" name="a040df840503ae8455fc0eea219b69e36a0d706a5a665ef559fc71af72bf5b976e"></a>VLCB_DCC_ERR_SESSION_WAS_CANCELLED&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2dcc_8h_source.html#l00037">37</a> of file <a class="el" href="common_2inc_2vlcb_2common_2dcc_8h_source.html">common/inc/vlcb/common/dcc.h</a>.</p>
+
+</div>
+</div>
 <a id="a358688c3fe121e145b009fed534642e3" name="a358688c3fe121e145b009fed534642e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a358688c3fe121e145b009fed534642e3">&#9670;&#160;</a></span>VlcbDccLocoFunctionRange</h2>
 
@@ -327,7 +385,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_a065f42410ce59d310ee6ca453a28844.html">inc</a></li><li class="navelem"><a class="el" href="dir_dabd002a286daf8b53cce9bb96e1fd79.html">vlcb</a></li><li class="navelem"><a class="el" href="dir_be8fdd8b3e112515ea1901d7be0c2a8d.html">common</a></li><li class="navelem"><a class="el" href="common_2inc_2vlcb_2common_2dcc_8h.html">dcc.h</a></li>
-    <li class="footer">Generated on Sun Nov 3 2024 23:50:22 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Mon Nov 4 2024 09:13:33 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

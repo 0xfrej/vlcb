@@ -8,17 +8,18 @@
  * @brief CAN frame id used in transmission
  *
  * This type is used to store the CAN ID (11 bits wide).
- * First 7 bits contain the `CAN ID` (see @ref CanId) (node alias used on CAN
- * bus). Rest of the bits contain the `priority value` (see @ref
- * VlcbCanPriority).
+ * First 7 bits contain the @ref VlcbCanId (node alias used on
+ * CAN bus).
+ * Rest of the bits contain the @ref VlcbCanPriority (CAN bus priority used to
+ * prioritize some OPCODEs over others).
  */
 typedef uint16_t VlcbCanFrameId;
 
 /**
  * @brief Parse the CAN packet data into the inner format
  *
- * This function validates and constructs a new `VlcbNetAdptPacket` (see @ref
- * VlcbNetAdptPacket) from raw data and flags passed in from the device deriver
+ * This function validates and constructs a new @ref VlcbNetAdptPacket
+ * from raw data and flags passed in from the device deriver
  * adapter. Device driver adapters should use this function instead of their own
  * implementation, unless it's desirable.
  *
@@ -31,15 +32,15 @@ typedef uint16_t VlcbCanFrameId;
  * @param[in] payload The payload buffer containing data from received CAN frame
  * @param[out] packet Destination memory space for the constructed packets
  *
- * @return The error code (returns `VLCB_NET_DEV_ERR_OK` (see @ref
- * VlcbNetAdptErr) when there is no error)
+ * @return The error code (returns #VLCB_NET_ADPT_ERR_OK  when there is no
+ * error)
  */
 VlcbNetAdptErr vlcb_net_adpt_ParseRawCanData(
     VlcbCanFrameId id, bool is_rtr, uint8_t payload_len,
     const VlcbNetAdptPayload *const payload, VlcbNetAdptPkt *const packet);
 
 /**
- * @brief Construct new CAN frame ID from a packet
+ * @brief Construct new CAN frame ID from an inner format packet
  *
  * This method is useful when constructing outbound packets, provides
  * minimal validation to the packet and maps certain values, like priority,

@@ -101,7 +101,8 @@ $(function(){initNavTree('common_2inc_2vlcb_2common_2module_8h.html',''); initRe
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">module.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -143,6 +144,73 @@ Typedefs</h2></td></tr>
 <tr class="separator:a88196cb4e1abc32e82ac6bfc2fdd2595"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7281a859fcc20a53f8ff536adfb7b71" id="r_aa7281a859fcc20a53f8ff536adfb7b71"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7281a859fcc20a53f8ff536adfb7b71">VlcbServiceVersion</a></td></tr>
 <tr class="separator:aa7281a859fcc20a53f8ff536adfb7b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4bbce391abd9d5a97d0e78153e7de6b" id="r_ad4bbce391abd9d5a97d0e78153e7de6b"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4bbce391abd9d5a97d0e78153e7de6b">VlcbCommandError</a></td></tr>
+<tr class="separator:ad4bbce391abd9d5a97d0e78153e7de6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24fc6d545418ec4d3b7f5d4c79119752" id="r_a24fc6d545418ec4d3b7f5d4c79119752"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24fc6d545418ec4d3b7f5d4c79119752">VlcbModuleFlags</a></td></tr>
+<tr class="memdesc:a24fc6d545418ec4d3b7f5d4c79119752"><td class="mdescLeft">&#160;</td><td class="mdescRight">Module flags.  <br /></td></tr>
+<tr class="separator:a24fc6d545418ec4d3b7f5d4c79119752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dbd09ab98ebad0a4001973dd62cb892" id="r_a3dbd09ab98ebad0a4001973dd62cb892"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dbd09ab98ebad0a4001973dd62cb892">VlcbModuleParam</a></td></tr>
+<tr class="separator:a3dbd09ab98ebad0a4001973dd62cb892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a52e912cdf960b65aa3546f907cbe234c" id="r_a52e912cdf960b65aa3546f907cbe234c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52e912cdf960b65aa3546f907cbe234c">VlcbCommandError</a> { <br />
+&#160;&#160;<a class="el" href="#a52e912cdf960b65aa3546f907cbe234cae02c188612e9c34a232573618ecd7022">VLCB_CMDERR_INVALID_COMMAND</a> = 1
+, <a class="el" href="#a52e912cdf960b65aa3546f907cbe234ca88583f0102abdea90f66bf3b4624ed25">VLCB_CMDERR_NOT_IN_LEARN_MODE</a> = 2
+, <a class="el" href="#a52e912cdf960b65aa3546f907cbe234ca5bc4843aa9b6b55f99e5a53cc143a5ca">VLCB_CMDERR_NOT_IN_SETUP_MODE</a> = 3
+, <a class="el" href="#a52e912cdf960b65aa3546f907cbe234ca7f69e90001807a90a3d2d5a04de8eac8">VLCB_CMDERR_TOO_MANY_EVENTS</a> = 4
+, <br />
+&#160;&#160;<a class="el" href="#a52e912cdf960b65aa3546f907cbe234cac4a09887237d28bb1b901c2c9f195f89">VLCB_CMDERR_NO_EV</a> = 5
+, <a class="el" href="#a52e912cdf960b65aa3546f907cbe234ca4c1ad27f2ed18a51b427adce4eaed596">VLCB_CMDERR_INVALID_EV_INDEX</a> = 6
+, <a class="el" href="#a52e912cdf960b65aa3546f907cbe234ca413a45776d213654a59990e4c58f3e36">VLCB_CMDERR_INVALID_EVENT</a> = 7
+, <a class="el" href="#a52e912cdf960b65aa3546f907cbe234caf5fa3f495d1719a4038641d2321c8e38">VLCB_CMDERR_INVALID_EVENT_INDEX</a> = 8
+, <br />
+&#160;&#160;<a class="el" href="#a52e912cdf960b65aa3546f907cbe234ca5f2f5c558bdb026d313da66fe1e9317f">VLCB_CMDERR_INVALID_PARAM_INDEX</a> = 9
+, <a class="el" href="#a52e912cdf960b65aa3546f907cbe234ca7efd1d5c103a65bf779094331656577d">VLCB_CMDERR_INVALID_NV_INDEX</a> = 10
+, <a class="el" href="#a52e912cdf960b65aa3546f907cbe234ca33b13e2cd9211121db2ae8ec45219ba2">VLCB_CMDERR_INVALID_EV_VALUE</a> = 11
+, <a class="el" href="#a52e912cdf960b65aa3546f907cbe234cac603f345764318b389cd6ccd414e260c">VLCB_CMDERR_INVALID_NV_VALUE</a> = 12
+, <br />
+&#160;&#160;<a class="el" href="#a52e912cdf960b65aa3546f907cbe234caa0f59b9dfd24b2b674d5847aa48d737a">VLCB_CMDERR_ANOTHER_MODULE_IS_IN_LEARN_MODE</a> = 13
+<br />
+ }</td></tr>
+<tr class="separator:a52e912cdf960b65aa3546f907cbe234c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae47cd2f0f2aee33e282dc437d41cfd87" id="r_ae47cd2f0f2aee33e282dc437d41cfd87"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87">VlcbModuleFlags</a> { <br />
+&#160;&#160;<a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87a3d2a83465683221c3e9418bb46682f63">VLCB_MODULE_FLAG_EVENT_CONSUMER</a> = 0x1
+, <a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87af3c5a08c9dec8131e4f2129e33147cd2">VLCB_MODULE_FLAG_EVENT_PRODUCER</a> = 0x2
+, <a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87ab1584804783f8bb6d8a79d1e22a2a64c">VLCB_MODULE_FLAG_EVENT_COMBI</a> = 0x3
+, <a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87ae4774c3343d5ff18bd2a30e639ccce35">VLCB_MODULE_FLAG_NORMAL_MODE</a> = 0x4
+, <br />
+&#160;&#160;<a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87a71287efe7b2499774a7074b01e0f9037">VLCB_MODULE_FLAG_BOOTLOADER</a> = 0x8
+, <a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87a16a3809c9e5ffd69f4f37cd06a2bce79">VLCB_MODULE_FLAG_CONSUME_OWN_EVENTS</a> = 0x10
+, <a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87a3ce51c17e21cdf1aa9bbec94c781bbbd">VLCB_MODULE_FLAG_LEARN_MODE</a> = 0x20
+, <a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87a90a1464dec7f4db84e747a6c9cdfa1cf">VLCB_MODULE_FLAG_VLCB</a> = 0x40
+, <br />
+&#160;&#160;<a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87aeb06c9135d94733a2e35e2dc7b8511ee">VLCB_MODULE_FLAG_SERVICE_DISCOVERY</a> = 0x40
+<br />
+ }</td></tr>
+<tr class="separator:ae47cd2f0f2aee33e282dc437d41cfd87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe0ff697944049d3adacfa4fef4a3d67" id="r_afe0ff697944049d3adacfa4fef4a3d67"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67">VlcbModuleParam</a> { <br />
+&#160;&#160;<a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a26c6d1dd77be135a7cce70864553b09b">VLCB_MODULE_PARAM_MODULE_PARAMETER_COUNT</a> = 0
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67abe03b66417e9136b2145f37581a6c64a">VLCB_MODULE_PARAM_MODULE_MANUFACTURER</a> = 1
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a62ccc7f89900a883d2bb582bd533f0ad">VLCB_MODULE_PARAM_MINOR_VERSION</a> = 2
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a8329902e76b7742a239ca8e573af995f">VLCB_MODULE_PARAM_MODULE_TYPE</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a6653bf5cb187fdfa4fbab51fc3fac87b">VLCB_MODULE_PARAM_MAX_EVENT_COUNT</a> = 4
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67ab7cab2eb234f47ad477e81575638aa55">VLCB_MODULE_PARAM_EVENT_VARIABLE_COUNT</a> = 5
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a4ea841c84d556f5dc0a0e61bf9ecfaa7">VLCB_MODULE_PARAM_NODE_VARIABLE_COUNT</a> = 6
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67aa5d79525cd92e14f55fcf14a736df806">VLCB_MODULE_PARAM_MAJOR_VERSION</a> = 7
+, <br />
+&#160;&#160;<a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a3657ec24752f5ba89c9e75d22c6cb8ab">VLCB_MODULE_PARAM_FLAGS</a> = 8
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a23c3565f9c562c16a97c8d72fba5d6b9">VLCB_MODULE_PARAM_CPU_ID</a> = 9
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a8114c20348081fa213e6089ba3e8c8cf">VLCB_MODULE_PARAM_BUS_TYPE</a> = 10
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a6ef4e3b556545809f48dc9eb9085b9ff">VLCB_MODULE_PARAM_LOAD_ADDRESS</a> = 11
+, <br />
+&#160;&#160;<a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67acee38443f979373f7e7104632f549a10">VLCB_MODULE_PARAM_CPU_MANUFACTURER_ID</a> = 15
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a3f5fbba6a0049d80902b74552005b64d">VLCB_MODULE_PARAM_CPU_MANUFACTURER</a> = 19
+, <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67a4914f3ba221404df4e71d1111d08b6be">VLCB_MODULE_PARAM_BETA_VERSION</a> = 20
+<br />
+ }</td></tr>
+<tr class="separator:afe0ff697944049d3adacfa4fef4a3d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a6e81959e22c3a51190a17d8fde50e212" name="a6e81959e22c3a51190a17d8fde50e212"></a>
@@ -232,6 +300,59 @@ Typedefs</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a id="ad4bbce391abd9d5a97d0e78153e7de6b" name="ad4bbce391abd9d5a97d0e78153e7de6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4bbce391abd9d5a97d0e78153e7de6b">&#9670;&#160;</a></span>VlcbCommandError</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint8_t <a class="el" href="#a52e912cdf960b65aa3546f907cbe234c">VlcbCommandError</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Error codes for CMDERR message </p>
+
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html#l00028">28</a> of file <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html">common/inc/vlcb/common/module.h</a>.</p>
+
+</div>
+</div>
+<a id="a24fc6d545418ec4d3b7f5d4c79119752" name="a24fc6d545418ec4d3b7f5d4c79119752"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24fc6d545418ec4d3b7f5d4c79119752">&#9670;&#160;</a></span>VlcbModuleFlags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint8_t <a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87">VlcbModuleFlags</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Module flags. </p>
+<p>These flags are stored within the module parameter </p>
+
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html#l00106">106</a> of file <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html">common/inc/vlcb/common/module.h</a>.</p>
+
+</div>
+</div>
+<a id="a3dbd09ab98ebad0a4001973dd62cb892" name="a3dbd09ab98ebad0a4001973dd62cb892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dbd09ab98ebad0a4001973dd62cb892">&#9670;&#160;</a></span>VlcbModuleParam</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint8_t <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67">VlcbModuleParam</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Parameter index numbers (readable by OPC_RQNPN, returned in OPC_PARAN) Index numbers count from 1, subtract 1 for offset into parameter block Note that RQNPN with index 0 returns the parameter count </p>
+
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html#l00170">170</a> of file <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html">common/inc/vlcb/common/module.h</a>.</p>
+
+</div>
+</div>
 <a id="a88196cb4e1abc32e82ac6bfc2fdd2595" name="a88196cb4e1abc32e82ac6bfc2fdd2595"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a88196cb4e1abc32e82ac6bfc2fdd2595">&#9670;&#160;</a></span>VlcbModuleParamCpuManuId</h2>
 
@@ -280,13 +401,144 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a52e912cdf960b65aa3546f907cbe234c" name="a52e912cdf960b65aa3546f907cbe234c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52e912cdf960b65aa3546f907cbe234c">&#9670;&#160;</a></span>VlcbCommandError</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a52e912cdf960b65aa3546f907cbe234c">VlcbCommandError</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234cae02c188612e9c34a232573618ecd7022" name="a52e912cdf960b65aa3546f907cbe234cae02c188612e9c34a232573618ecd7022"></a>VLCB_CMDERR_INVALID_COMMAND&#160;</td><td class="fielddoc"><p>Invalid command </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234ca88583f0102abdea90f66bf3b4624ed25" name="a52e912cdf960b65aa3546f907cbe234ca88583f0102abdea90f66bf3b4624ed25"></a>VLCB_CMDERR_NOT_IN_LEARN_MODE&#160;</td><td class="fielddoc"><p>The mode is not currently in learn mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234ca5bc4843aa9b6b55f99e5a53cc143a5ca" name="a52e912cdf960b65aa3546f907cbe234ca5bc4843aa9b6b55f99e5a53cc143a5ca"></a>VLCB_CMDERR_NOT_IN_SETUP_MODE&#160;</td><td class="fielddoc"><p>The mode is not currently in setup mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234ca7f69e90001807a90a3d2d5a04de8eac8" name="a52e912cdf960b65aa3546f907cbe234ca7f69e90001807a90a3d2d5a04de8eac8"></a>VLCB_CMDERR_TOO_MANY_EVENTS&#160;</td><td class="fielddoc"><p>Too many events provisioned in module</p>
+<p>The event storage is exhausted </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234cac4a09887237d28bb1b901c2c9f195f89" name="a52e912cdf960b65aa3546f907cbe234cac4a09887237d28bb1b901c2c9f195f89"></a>VLCB_CMDERR_NO_EV&#160;</td><td class="fielddoc"><p>No Event-Variable </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234ca4c1ad27f2ed18a51b427adce4eaed596" name="a52e912cdf960b65aa3546f907cbe234ca4c1ad27f2ed18a51b427adce4eaed596"></a>VLCB_CMDERR_INVALID_EV_INDEX&#160;</td><td class="fielddoc"><p>Invalid EV index </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234ca413a45776d213654a59990e4c58f3e36" name="a52e912cdf960b65aa3546f907cbe234ca413a45776d213654a59990e4c58f3e36"></a>VLCB_CMDERR_INVALID_EVENT&#160;</td><td class="fielddoc"><p>Invalid event </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234caf5fa3f495d1719a4038641d2321c8e38" name="a52e912cdf960b65aa3546f907cbe234caf5fa3f495d1719a4038641d2321c8e38"></a>VLCB_CMDERR_INVALID_EVENT_INDEX&#160;</td><td class="fielddoc"><p>Invalid event index </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234ca5f2f5c558bdb026d313da66fe1e9317f" name="a52e912cdf960b65aa3546f907cbe234ca5f2f5c558bdb026d313da66fe1e9317f"></a>VLCB_CMDERR_INVALID_PARAM_INDEX&#160;</td><td class="fielddoc"><p>Invalid param index </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234ca7efd1d5c103a65bf779094331656577d" name="a52e912cdf960b65aa3546f907cbe234ca7efd1d5c103a65bf779094331656577d"></a>VLCB_CMDERR_INVALID_NV_INDEX&#160;</td><td class="fielddoc"><p>Invalid NV index </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234ca33b13e2cd9211121db2ae8ec45219ba2" name="a52e912cdf960b65aa3546f907cbe234ca33b13e2cd9211121db2ae8ec45219ba2"></a>VLCB_CMDERR_INVALID_EV_VALUE&#160;</td><td class="fielddoc"><p>Invalid EV value </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234cac603f345764318b389cd6ccd414e260c" name="a52e912cdf960b65aa3546f907cbe234cac603f345764318b389cd6ccd414e260c"></a>VLCB_CMDERR_INVALID_NV_VALUE&#160;</td><td class="fielddoc"><p>Invalid NV value </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a52e912cdf960b65aa3546f907cbe234caa0f59b9dfd24b2b674d5847aa48d737a" name="a52e912cdf960b65aa3546f907cbe234caa0f59b9dfd24b2b674d5847aa48d737a"></a>VLCB_CMDERR_ANOTHER_MODULE_IS_IN_LEARN_MODE&#160;</td><td class="fielddoc"><p>Another module is already in learn mode</p>
+<p>Sent when module in learn mode sees NNLRN for different module (also exits learn mode) </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html#l00029">29</a> of file <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html">common/inc/vlcb/common/module.h</a>.</p>
+
+</div>
+</div>
+<a id="ae47cd2f0f2aee33e282dc437d41cfd87" name="ae47cd2f0f2aee33e282dc437d41cfd87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae47cd2f0f2aee33e282dc437d41cfd87">&#9670;&#160;</a></span>VlcbModuleFlags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#ae47cd2f0f2aee33e282dc437d41cfd87">VlcbModuleFlags</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ae47cd2f0f2aee33e282dc437d41cfd87a3d2a83465683221c3e9418bb46682f63" name="ae47cd2f0f2aee33e282dc437d41cfd87a3d2a83465683221c3e9418bb46682f63"></a>VLCB_MODULE_FLAG_EVENT_CONSUMER&#160;</td><td class="fielddoc"><p>Module is a consumer of events </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae47cd2f0f2aee33e282dc437d41cfd87af3c5a08c9dec8131e4f2129e33147cd2" name="ae47cd2f0f2aee33e282dc437d41cfd87af3c5a08c9dec8131e4f2129e33147cd2"></a>VLCB_MODULE_FLAG_EVENT_PRODUCER&#160;</td><td class="fielddoc"><p>Module is a producer of events </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae47cd2f0f2aee33e282dc437d41cfd87ab1584804783f8bb6d8a79d1e22a2a64c" name="ae47cd2f0f2aee33e282dc437d41cfd87ab1584804783f8bb6d8a79d1e22a2a64c"></a>VLCB_MODULE_FLAG_EVENT_COMBI&#160;</td><td class="fielddoc"><p>Module is both a consumer and producer of events (Shorthand for EventConsumer combined with EventProducer) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae47cd2f0f2aee33e282dc437d41cfd87ae4774c3343d5ff18bd2a30e639ccce35" name="ae47cd2f0f2aee33e282dc437d41cfd87ae4774c3343d5ff18bd2a30e639ccce35"></a>VLCB_MODULE_FLAG_NORMAL_MODE&#160;</td><td class="fielddoc"><p>Module is in Normal mode (VLCB) or FLiM (CBUS) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae47cd2f0f2aee33e282dc437d41cfd87a71287efe7b2499774a7074b01e0f9037" name="ae47cd2f0f2aee33e282dc437d41cfd87a71287efe7b2499774a7074b01e0f9037"></a>VLCB_MODULE_FLAG_BOOTLOADER&#160;</td><td class="fielddoc"><p>Module supports the FCU bootloader protocol </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae47cd2f0f2aee33e282dc437d41cfd87a16a3809c9e5ffd69f4f37cd06a2bce79" name="ae47cd2f0f2aee33e282dc437d41cfd87a16a3809c9e5ffd69f4f37cd06a2bce79"></a>VLCB_MODULE_FLAG_CONSUME_OWN_EVENTS&#160;</td><td class="fielddoc"><p>Module can consume its own events </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae47cd2f0f2aee33e282dc437d41cfd87a3ce51c17e21cdf1aa9bbec94c781bbbd" name="ae47cd2f0f2aee33e282dc437d41cfd87a3ce51c17e21cdf1aa9bbec94c781bbbd"></a>VLCB_MODULE_FLAG_LEARN_MODE&#160;</td><td class="fielddoc"><p>Module is in learn mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae47cd2f0f2aee33e282dc437d41cfd87a90a1464dec7f4db84e747a6c9cdfa1cf" name="ae47cd2f0f2aee33e282dc437d41cfd87a90a1464dec7f4db84e747a6c9cdfa1cf"></a>VLCB_MODULE_FLAG_VLCB&#160;</td><td class="fielddoc"><p>Module is VLCB compatible </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae47cd2f0f2aee33e282dc437d41cfd87aeb06c9135d94733a2e35e2dc7b8511ee" name="ae47cd2f0f2aee33e282dc437d41cfd87aeb06c9135d94733a2e35e2dc7b8511ee"></a>VLCB_MODULE_FLAG_SERVICE_DISCOVERY&#160;</td><td class="fielddoc"><p>Module supports Service Discovery (Deprecated in favour of PF_VLCB.) </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html#l00107">107</a> of file <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html">common/inc/vlcb/common/module.h</a>.</p>
+
+</div>
+</div>
+<a id="afe0ff697944049d3adacfa4fef4a3d67" name="afe0ff697944049d3adacfa4fef4a3d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe0ff697944049d3adacfa4fef4a3d67">&#9670;&#160;</a></span>VlcbModuleParam</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#afe0ff697944049d3adacfa4fef4a3d67">VlcbModuleParam</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a26c6d1dd77be135a7cce70864553b09b" name="afe0ff697944049d3adacfa4fef4a3d67a26c6d1dd77be135a7cce70864553b09b"></a>VLCB_MODULE_PARAM_MODULE_PARAMETER_COUNT&#160;</td><td class="fielddoc"><p>Number of parameters </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67abe03b66417e9136b2145f37581a6c64a" name="afe0ff697944049d3adacfa4fef4a3d67abe03b66417e9136b2145f37581a6c64a"></a>VLCB_MODULE_PARAM_MODULE_MANUFACTURER&#160;</td><td class="fielddoc"><p>Manufacturer id </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a62ccc7f89900a883d2bb582bd533f0ad" name="afe0ff697944049d3adacfa4fef4a3d67a62ccc7f89900a883d2bb582bd533f0ad"></a>VLCB_MODULE_PARAM_MINOR_VERSION&#160;</td><td class="fielddoc"><p>Minor version (single alphabetic character) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a8329902e76b7742a239ca8e573af995f" name="afe0ff697944049d3adacfa4fef4a3d67a8329902e76b7742a239ca8e573af995f"></a>VLCB_MODULE_PARAM_MODULE_TYPE&#160;</td><td class="fielddoc"><p>Module type code </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a6653bf5cb187fdfa4fbab51fc3fac87b" name="afe0ff697944049d3adacfa4fef4a3d67a6653bf5cb187fdfa4fbab51fc3fac87b"></a>VLCB_MODULE_PARAM_MAX_EVENT_COUNT&#160;</td><td class="fielddoc"><p>Number of events supported </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67ab7cab2eb234f47ad477e81575638aa55" name="afe0ff697944049d3adacfa4fef4a3d67ab7cab2eb234f47ad477e81575638aa55"></a>VLCB_MODULE_PARAM_EVENT_VARIABLE_COUNT&#160;</td><td class="fielddoc"><p>Event variables per event </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a4ea841c84d556f5dc0a0e61bf9ecfaa7" name="afe0ff697944049d3adacfa4fef4a3d67a4ea841c84d556f5dc0a0e61bf9ecfaa7"></a>VLCB_MODULE_PARAM_NODE_VARIABLE_COUNT&#160;</td><td class="fielddoc"><p>Number of Node variables </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67aa5d79525cd92e14f55fcf14a736df806" name="afe0ff697944049d3adacfa4fef4a3d67aa5d79525cd92e14f55fcf14a736df806"></a>VLCB_MODULE_PARAM_MAJOR_VERSION&#160;</td><td class="fielddoc"><p>Major version (numeric) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a3657ec24752f5ba89c9e75d22c6cb8ab" name="afe0ff697944049d3adacfa4fef4a3d67a3657ec24752f5ba89c9e75d22c6cb8ab"></a>VLCB_MODULE_PARAM_FLAGS&#160;</td><td class="fielddoc"><p>Node flags </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a23c3565f9c562c16a97c8d72fba5d6b9" name="afe0ff697944049d3adacfa4fef4a3d67a23c3565f9c562c16a97c8d72fba5d6b9"></a>VLCB_MODULE_PARAM_CPU_ID&#160;</td><td class="fielddoc"><p>Processor type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a8114c20348081fa213e6089ba3e8c8cf" name="afe0ff697944049d3adacfa4fef4a3d67a8114c20348081fa213e6089ba3e8c8cf"></a>VLCB_MODULE_PARAM_BUS_TYPE&#160;</td><td class="fielddoc"><p>Bus type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a6ef4e3b556545809f48dc9eb9085b9ff" name="afe0ff697944049d3adacfa4fef4a3d67a6ef4e3b556545809f48dc9eb9085b9ff"></a>VLCB_MODULE_PARAM_LOAD_ADDRESS&#160;</td><td class="fielddoc"><p>load address, 4 bytes </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67acee38443f979373f7e7104632f549a10" name="afe0ff697944049d3adacfa4fef4a3d67acee38443f979373f7e7104632f549a10"></a>VLCB_MODULE_PARAM_CPU_MANUFACTURER_ID&#160;</td><td class="fielddoc"><p>CPU manufacturer's id as read from the chip config space, 4 bytes (note - read from cpu at runtime, so not included in checksum) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a3f5fbba6a0049d80902b74552005b64d" name="afe0ff697944049d3adacfa4fef4a3d67a3f5fbba6a0049d80902b74552005b64d"></a>VLCB_MODULE_PARAM_CPU_MANUFACTURER&#160;</td><td class="fielddoc"><p>CPU manufacturer code </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afe0ff697944049d3adacfa4fef4a3d67a4914f3ba221404df4e71d1111d08b6be" name="afe0ff697944049d3adacfa4fef4a3d67a4914f3ba221404df4e71d1111d08b6be"></a>VLCB_MODULE_PARAM_BETA_VERSION&#160;</td><td class="fielddoc"><p>Beta revision (numeric), or 0 if release </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html#l00171">171</a> of file <a class="el" href="common_2inc_2vlcb_2common_2module_8h_source.html">common/inc/vlcb/common/module.h</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_a065f42410ce59d310ee6ca453a28844.html">inc</a></li><li class="navelem"><a class="el" href="dir_dabd002a286daf8b53cce9bb96e1fd79.html">vlcb</a></li><li class="navelem"><a class="el" href="dir_be8fdd8b3e112515ea1901d7be0c2a8d.html">common</a></li><li class="navelem"><a class="el" href="common_2inc_2vlcb_2common_2module_8h.html">module.h</a></li>
-    <li class="footer">Generated on Sun Nov 3 2024 23:50:22 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Mon Nov 4 2024 09:13:33 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>
