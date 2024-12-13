@@ -1,7 +1,7 @@
 #pragma once
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #include "vlcb/platform/time.h"
 
@@ -27,8 +27,8 @@ typedef struct {
   bool hasStarted;
   VlcbPlatformLedEffectType type;
   VlcbPlatformLedEffectData data;
-  clock_t currentCycleStartedAt;
-  clock_t startedAt;
+  vlcb_milis currentCycleStartedAt;
+  vlcb_milis startedAt;
   uint32_t duration;
 } VlcbPlatformLedEffect;
 
@@ -51,4 +51,6 @@ typedef struct {
   VlcbPlatformLedStatusChangeHandler statusChangeHandler;
 } VlcbPlatformLedDriver;
 
-VlcbPlatformLedDriver vlcb_platform_led_New(VlcbPlatformLedStatusResolver resolver, VlcbPlatformLedStatusChangeHandler changeHandler);
+VlcbPlatformLedDriver
+vlcb_platform_led_New(VlcbPlatformLedStatusResolver resolver,
+                      VlcbPlatformLedStatusChangeHandler changeHandler);

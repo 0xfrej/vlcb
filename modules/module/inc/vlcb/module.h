@@ -48,7 +48,7 @@ enum VlcbModuleOpFlags {
 typedef struct {
   VlcbModuleOpFlags operationFlags;
   VlcbModulePersistedState state;
-  VlcbNetHwAddr hwAddr;
+  VlcbNetWireAddr hwAddr;
   VlcbNodeNumber nodeNumber;
 } VlcbModuleConfig;
 

@@ -1,7 +1,13 @@
+set(VLCB_TIME_IMPL ${CMAKE_CURRENT_SOURCE_DIR}/src/arch/generic/time.c)
+# if(CMAKE_SYSTEM_PROCESSOR STREQUAL "avr")
+#   set(VLCB_TIME_IMPL ${CMAKE_CURRENT_SOURCE_DIR}/src/arch/avr/time.c)
+# endif()
+
 set(
         SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/src/log.c
         ${CMAKE_CURRENT_SOURCE_DIR}/src/driver/led.c
+        ${VLCB_TIME_IMPL}
 )
 
 add_library(vlcb_platform ${CMAKE_CURRENT_LIST_DIR})

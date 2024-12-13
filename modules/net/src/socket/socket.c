@@ -2,6 +2,8 @@
 
 #include <assert.h>
 #include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
 
 inline VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *const list,
                                                 size_t size) {
@@ -23,6 +25,25 @@ int vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,
   }
 
   list->buf[list->len++] = sock;
+  return 0;
+}
+
+int vlcb_net_sock_list_Remove(VlcbNetSocketList *const list,
+                              VlcbNetSocketHandle sock) {
+  assert(list != NULL);
+
+  size_t i = 0;
+  size_t len = list->len;
+  VlcbNetSocketHandle *const buf = list->buf;
+  for (; i < len; i++) {
+    if (buf[i] == sock) {
+      break;
+    }
+  }
+
+  for (size_t y = i + 1; y < len; y++) {
+    buf[y - 1] = buf[y];
+  }
   return 0;
 }
 

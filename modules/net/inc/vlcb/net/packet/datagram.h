@@ -18,7 +18,7 @@ typedef uint8_t VlcbNetDatagramPayload[VLCB_DGRAM_PKT_MAX_PAYLOAD];
 
 typedef struct {
   VlcbOpCode opc;
-  uint8_t payload_len;
+  uint8_t payloadLen;
   VlcbNetDatagramPayload payload;
 } VlcbNetPacketDatagram;
 

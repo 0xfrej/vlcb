@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+#include "vlcb/net/addr.h"
 #include "vlcb/net/packet/datagram.h"
 #include "vlcb/net/packet/vlcb.h"
 #include "vlcb/net/socket.h"
@@ -19,9 +20,13 @@ VlcbNetSocketProcessErr ProcessPacket(const VlcbNetSocketDatagram *const self,
   assert(self != NULL && packet != NULL &&
          packet->proto == VLCB_NET_PROTO_DATAGRAM && self->rxBuf != NULL);
 
+  if (false == vlcb_net_IsWireEndpointValid(self->endpoint)) {
+    return VLCB_NET_SOCK_PROC_ERR_OK;
+  }
+
   VlcbNetPacketDatagram dgramPacket;
   VlcbNetPacketDatagramConstructErr err = vlcb_net_pkt_dgram_New(
-      packet->opc, packet->payload_len, &packet->payload, &dgramPacket);
+      packet->opc, packet->payloadLen, &packet->payload, &dgramPacket);
   if (err != VLCB_DGRAM_PKT_CONSTRUCT_ERR_OK) {
     switch (err) {
     case VLCB_DGRAM_PKT_CONSTRUCT_ERR_PAYLOAD_TOO_LARGE:
@@ -40,20 +45,31 @@ VlcbNetSocketProcessErr ProcessPacket(const VlcbNetSocketDatagram *const self,
 }
 
 VlcbNetSocketDispatchErr DispatchPacket(const VlcbNetSocketDatagram *const self,
-                                        VlcbNetPacket *const packet) {
-  assert(self != NULL && packet != NULL && self->txBuf != NULL);
+                                        VlcbNetSocketPacketToken *const tok) {
+  assert(self != NULL && tok != NULL && self->txBuf != NULL);
+
+  if (false == vlcb_net_IsWireEndpointValid(self->endpoint)) {
+    return VLCB_NET_SOCK_DISP_ERR_OK;
+  }
 
   VlcbNetPacketDatagram dgramPacket;
-  int res = vlcb_net_packetbuf_Pop(self->txBuf, &dgramPacket);
-  if (res == -1) {
+  int res = vlcb_net_packetbuf_PopDeferred(self->txBuf, &tok->_t, &dgramPacket);
+  if (res == -1 || res == -2) {
     return VLCB_NET_SOCK_DISP_ERR_WOULD_BLOCK;
   }
 
   vlcb_net_pkt_NewUnchecked(VLCB_NET_PROTO_DATAGRAM, dgramPacket.opc,
-                            dgramPacket.payload_len, &dgramPacket.payload,
-                            packet);
+                            dgramPacket.payloadLen, &dgramPacket.payload,
+                            &tok->packet);
 
   return VLCB_NET_SOCK_DISP_ERR_OK;
+}
+
+const VlcbNetWireEndpointHandle
+WireEndpoint(const VlcbNetSocketDatagram *const self) {
+  assert(self != NULL);
+
+  return self->endpoint;
 }
 
 _INTERFACE_VTABLE_DEFINE(
@@ -67,13 +83,18 @@ _INTERFACE_VTABLE_DEFINE(
     _INTERFACE_VTABLE_METHOD(DispatchPacket, DispatchPacket,
                              VlcbNetSocketDispatchErr,
                              _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
-                             VlcbNetPacket *const));
+                             VlcbNetSocketPacketToken *const),
+    _INTERFACE_VTABLE_METHOD(WireEndpoint, WireEndpoint,
+                             const VlcbNetWireEndpointHandle,
+                             _INTERFACE_SELF_PTR(IVlcbNetSocket)));
 
-VlcbNetSocketDatagram vlcb_net_sock_dgram_New(VlcbPacketBuf *const rxBuf,
-                                              VlcbPacketBuf *const txBuf) {
-  assert(rxBuf != NULL && txBuf != NULL);
+VlcbNetSocketDatagram
+vlcb_net_sock_dgram_New(VlcbPacketBuf *const rxBuf, VlcbPacketBuf *const txBuf,
+                        VlcbNetWireEndpointHandle endpoint) {
+  assert(rxBuf != NULL && txBuf != NULL && endpoint != NULL);
   return (VlcbNetSocketDatagram){_INTERFACE_ASSIGN_VTABLE(IVlcbNetSocket),
-                                 .rxBuf = rxBuf, .txBuf = txBuf};
+                                 .rxBuf = rxBuf, .txBuf = txBuf,
+                                 .endpoint = endpoint};
 }
 
 VlcbNetSocketDgramSendErr
@@ -93,7 +114,7 @@ vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock,
                          VlcbNetPacketDatagram *const packet) {
   assert(sock != NULL && packet != NULL && sock->rxBuf != NULL);
   int res = vlcb_net_packetbuf_Pop(sock->rxBuf, packet);
-  if (res == -1) {
+  if (res == -1 || res == -2) {
     return VLCB_NET_SOCK_DGRAM_RECV_ERR_WOULD_BLOCK;
   }
   return VLCB_NET_SOCK_DGRAM_RECV_ERR_OK;

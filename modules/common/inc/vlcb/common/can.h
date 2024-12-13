@@ -8,6 +8,7 @@
 
 typedef uint8_t VlcbCanId;
 
+#define VLCB_CAN_ID_EMPTY (VlcbCanId)0
 int vlcb_defs_NewCanId(uint8_t value, VlcbCanId *const id);
 bool vlcb_defs_IsCanIdValid(VlcbCanId id);
 

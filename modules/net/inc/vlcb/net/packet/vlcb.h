@@ -33,7 +33,7 @@ VlcbNetProtocol vlcb_net_pkt_DetectProtocol(VlcbOpCode opc);
 typedef struct {
   VlcbNetProtocol proto;
   VlcbOpCode opc;
-  uint8_t payload_len;
+  uint8_t payloadLen;
   VlcbNetPayload payload;
 } VlcbNetPacket;
 

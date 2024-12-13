@@ -20,9 +20,13 @@ vlcb_net_pkt_dgram_ConstructErrToStr(VlcbNetPacketDatagramConstructErr err) {
 VlcbNetPacketDatagramConstructErr
 vlcb_net_pkt_dgram_NewUnchecked(VlcbOpCode opc, uint8_t payload_len,
                                 const VlcbNetDatagramPayload *const payload,
-                                VlcbNetPacketDatagram *const packet) {}
+                                VlcbNetPacketDatagram *const packet) {
+  // TODO: implement
+}
 
 VlcbNetPacketDatagramConstructErr
 vlcb_net_pkt_dgram_New(VlcbOpCode opc, uint8_t payload_len,
                        const VlcbNetDatagramPayload *const payload,
-                       VlcbNetPacketDatagram *const packet) {}
+                       VlcbNetPacketDatagram *const packet) {
+  // TODO: implement
+}

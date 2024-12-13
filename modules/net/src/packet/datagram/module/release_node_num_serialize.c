@@ -9,8 +9,8 @@
 inline void vlcb_net_pkt_dgram_module_ReleaseNodeNumber_serialize(
     VlcbNetPacketDatagram *const packet, VlcbNetDgramReleaseNodeNumber data) {
   assert(packet != NULL);
-  data.nodeNumber = htons(data.nodeNumber);
+  data.nodeNumber = vlcb_htons(data.nodeNumber);
   packet->opc = VLCB_OPC_NODE_NUMBER_RELEASED;
-  packet->payload_len = sizeof(data.nodeNumber);
+  packet->payloadLen = sizeof(data.nodeNumber);
   memcpy(&packet->payload, &data.nodeNumber, sizeof(data.nodeNumber));
 }

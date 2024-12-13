@@ -2,15 +2,17 @@
 
 #include <assert.h>
 #include <stdbool.h>
+#include <stddef.h>
 #include <string.h>
 
 void vlcb_net_packetbuf_Init(VlcbPacketBuf *const c, size_t maxlen,
-                             size_t bucket_size) {
-  assert(c != NULL && maxlen > 0 && bucket_size > 0);
+                             size_t bucketSize) {
+  assert(c != NULL && maxlen > 0 && bucketSize > 0);
   c->tail = 0;
   c->head = 0;
-  c->bucket_size = bucket_size;
+  c->bucketSize = bucketSize;
   c->maxlen = maxlen;
+  c->isLocked = false;
 }
 
 void vlcb_net_packetbuf_Reset(VlcbPacketBuf *const c) {
@@ -56,11 +58,15 @@ size_t vlcb_net_packetbuf_Capacity(VlcbPacketBuf *const c) {
 size_t vlcb_net_packetbuf_BucketSize(VlcbPacketBuf *const c) {
   assert(c != NULL);
 
-  return c->bucket_size;
+  return c->bucketSize;
 }
 
 int vlcb_net_packetbuf_Push(VlcbPacketBuf *const c, const void *data) {
   assert(c != NULL && data != NULL);
+
+  if (c->isLocked) {
+    return -2;
+  }
 
   int next;
 
@@ -74,7 +80,7 @@ int vlcb_net_packetbuf_Push(VlcbPacketBuf *const c, const void *data) {
     return -1;
   }
 
-  memcpy(&c->buffer[c->head], data, c->bucket_size);
+  memcpy(&c->buffer[c->head], data, c->bucketSize);
   c->head = next;
   return 0;
 }
@@ -82,6 +88,10 @@ int vlcb_net_packetbuf_Push(VlcbPacketBuf *const c, const void *data) {
 int vlcb_net_packetbuf_Pop(VlcbPacketBuf *const c, void *data) {
   assert(c != NULL && data != NULL);
   int next;
+
+  if (c->isLocked) {
+    return -2;
+  }
 
   if (vlcb_net_packetbuf_IsEmpty(c)) {
     return -1;
@@ -92,7 +102,45 @@ int vlcb_net_packetbuf_Pop(VlcbPacketBuf *const c, void *data) {
     next = 0;
   }
 
-  memcpy(data, &c->buffer[c->tail], c->bucket_size);
+  memcpy(data, &c->buffer[c->tail], c->bucketSize);
   c->tail = next;
   return 0;
+}
+
+int vlcb_net_packetbuf_PopDeferred(VlcbPacketBuf *const c,
+                                   VlcbPacketBufToken *const tok, void *data) {
+  assert(c != NULL && tok != NULL && data != NULL);
+  int next;
+
+  if (c->isLocked) {
+    return -2;
+  }
+
+  if (vlcb_net_packetbuf_IsEmpty(c)) {
+    return -1;
+  }
+
+  tok->buf = c;
+  c->isLocked = true;
+  memcpy(data, &c->buffer[c->tail], c->bucketSize);
+  return 0;
+}
+
+void vlcb_net_packetbuf_PopDeferredAccept(VlcbPacketBufToken tok) {
+  assert(tok.buf != NULL);
+
+  int next = tok.buf->tail + 1;
+  if (next >= tok.buf->maxlen) {
+    next = 0;
+  }
+  tok.buf->tail = next;
+
+  tok.buf->isLocked = false;
+  tok.buf = NULL;
+}
+
+void vlcb_net_packetbuf_PopDeferredRefuse(VlcbPacketBufToken tok) {
+  assert(tok.buf != NULL);
+  tok.buf->isLocked = false;
+  tok.buf = NULL;
 }

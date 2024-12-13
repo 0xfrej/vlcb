@@ -106,7 +106,7 @@ void state_Dispatch(VlcbModule *const self, const ModuleStateEvent e,
     if (persistedState < VLCB_MODULE_PERSISTED_STATE_UNINITIALIZED ||
         persistedState > VLCB_MODULE_PERSISTED_STATE_NORMAL) {
       self->config.nodeNumber = 0;
-      memset(&self->config.hwAddr, 0, sizeof(VlcbNetHwAddr));
+      memset(&self->config.hwAddr, 0, sizeof(VlcbNetWireAddr));
       self->config.state = VLCB_MODULE_PERSISTED_STATE_UNINITIALIZED;
     }
     switch (self->config.state) {

@@ -4,6 +4,8 @@
 #include <stddef.h>
 
 #include "packet/vlcb.h"
+#include "vlcb/net/addr.h"
+#include "vlcb/net/storage/packet_buf.h"
 #include "vlcb/platform/interface.h"
 
 typedef enum {
@@ -26,6 +28,21 @@ typedef enum {
 } VlcbNetSocketDispatchErr;
 vlcb_error vlcb_net_sock_DispatchErrToStr(VlcbNetSocketDispatchErr err);
 
+typedef struct {
+  VlcbPacketBufToken _t;
+  VlcbNetPacket packet;
+} VlcbNetSocketPacketToken;
+
+static inline void
+vlcb_net_sock_packet_token_Accept(VlcbNetSocketPacketToken tok) {
+  vlcb_net_packetbuf_PopDeferredAccept(tok._t);
+}
+
+static inline void
+vlcb_net_sock_packet_token_Refuse(VlcbNetSocketPacketToken tok) {
+  vlcb_net_packetbuf_PopDeferredRefuse(tok._t);
+}
+
 _INTERFACE_DECLARE(
     IVlcbNetSocket,
     _INTERFACE_METHOD_DECLARE(bool, SupportsProtocol, VlcbNetProtocol protocol);
@@ -34,7 +51,9 @@ _INTERFACE_DECLARE(
                               const VlcbNetPacket *const packet);
     _INTERFACE_METHOD_DECLARE(VlcbNetSocketDispatchErr, DispatchPacket,
                               _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
-                              VlcbNetPacket *const packet););
+                              VlcbNetSocketPacketToken *const tok);
+    _INTERFACE_METHOD_DECLARE(const VlcbNetWireEndpointHandle, WireEndpoint,
+                              _INTERFACE_SELF_PTR(IVlcbNetSocket)););
 ;
 
 typedef IVlcbNetSocket *VlcbNetSocketHandle;
@@ -53,6 +72,8 @@ inline VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *const buf,
   VlcbNetSocketList name = vlcb_net_sock_list_New(data_##name, size);
 
 int vlcb_net_sock_list_Insert(VlcbNetSocketList *const list,
+                              VlcbNetSocketHandle sock);
+int vlcb_net_sock_list_Remove(VlcbNetSocketList *const list,
                               VlcbNetSocketHandle sock);
 
 typedef struct {

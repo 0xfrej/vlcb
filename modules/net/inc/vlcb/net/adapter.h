@@ -26,9 +26,9 @@ typedef union {
  */
 typedef struct {
   VlcbNetMedium medium;
-  VlcbNetHwAddr src_addr;
+  VlcbNetWireAddr srcAddr;
   VlcbNetAdptPktMeta meta;
-  uint8_t payload_len;
+  uint8_t payloadLen;
   VlcbNetAdptPayload payload;
 } VlcbNetAdptPkt;
 
