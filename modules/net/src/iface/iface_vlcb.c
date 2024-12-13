@@ -31,6 +31,7 @@ VlcbNetAdptErr DispatchVlcbPacket(VlcbNetIface *const iface,
   case VLCB_MEDIUM_CAN:
     return DispatchCanPacket(iface, packet);
     break;
+  default:
+    assert(false /* unimplemented behavior guard */);
   }
-  assert(false /* unimplemented behavior guard */);
 }

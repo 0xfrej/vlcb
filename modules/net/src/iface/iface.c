@@ -19,7 +19,7 @@ VlcbNetIface vlcb_net_iface_New(IVlcbNetAdpt *const adpt,
   return iface;
 }
 
-bool IngressPackets(VlcbNetIface *const iface) {
+bool IngressPackets(VlcbNetIface *const iface, clock_t now) {
   bool processed_any = false;
 
   IVlcbNetAdpt *adpt = iface->adpt;
@@ -41,7 +41,7 @@ bool IngressPackets(VlcbNetIface *const iface) {
 
     switch (caps.medium) {
     case VLCB_MEDIUM_CAN:
-      ProcessCanPacket(iface, phy_packet);
+      ProcessCanPacket(iface, phy_packet, now);
     default:
       assert(false /* unsupported medium */);
     }
@@ -52,7 +52,7 @@ bool IngressPackets(VlcbNetIface *const iface) {
   return processed_any;
 }
 
-bool EgressPackets(VlcbNetIface *const iface) {
+bool EgressPackets(VlcbNetIface *const iface, clock_t now) {
   bool emitted_any = false;
 
   const VlcbNetAdptCaps caps = _INTERFACE_PTR_CALL(iface->adpt, Caps);
@@ -61,28 +61,37 @@ bool EgressPackets(VlcbNetIface *const iface) {
   while (vlcb_net_sock_list_iter_HasNext(&iter)) {
     const VlcbNetSocketHandle sock = vlcb_net_sock_list_iter_Next(&iter);
 
-    VlcbNetPacket packet; // TODO: ensure clean packet
-
-    const bool emitted_packet =
-        _INTERFACE_PTR_CALL(sock, DispatchPacket, &packet);
-    // TODO: reject invalid packets -> for example when the packet wasn't filled
-    emitted_any |= emitted_packet;
-    if (emitted_packet) {
-      const VlcbNetAdptErr err = DispatchVlcbPacket(iface, caps, &packet);
-      if (err == VLCB_NET_ADPT_ERR_WOULD_BLOCK) {
-        // todo: handle this somehow
-      }
-
-      if (err != VLCB_NET_ADPT_ERR_OK) {
-        VLCBLOG_ERROR(vlcb_net_adpt_ErrToStr(err));
+    VlcbNetSocketPacketToken packetTok;
+    {
+      VlcbNetSocketDispatchErr err =
+          _INTERFACE_PTR_CALL(sock, DispatchPacket, &packetTok);
+      if (err != VLCB_NET_SOCK_DISP_ERR_OK) {
+        if (err == VLCB_NET_SOCK_DISP_ERR_WOULD_BLOCK) {
+          continue;
+        }
+        VLCBLOG_ERROR(vlcb_net_sock_DispatchErrToStr(err));
+        vlcb_net_sock_packet_token_Refuse(packetTok);
       }
     }
+
+    const VlcbNetAdptErr err =
+        DispatchVlcbPacket(iface, caps, &packetTok.packet);
+
+    if (err != VLCB_NET_ADPT_ERR_OK) {
+      vlcb_net_sock_packet_token_Refuse(packetTok);
+      if (err == VLCB_NET_ADPT_ERR_WOULD_BLOCK) {
+        continue;
+      }
+      VLCBLOG_ERROR(vlcb_net_adpt_ErrToStr(err));
+    }
+    emitted_any = true;
   }
 
   return emitted_any;
 }
 
-VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface) {
+VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface,
+                                           clock_t now) {
   assert(iface != NULL && iface->adpt != NULL /* iface, sockets need to be valid pointers and device needs to be initialized */);
 
   bool readiness_may_have_changed = false;
@@ -90,8 +99,8 @@ VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface) {
   do {
     bool did_something = false;
 
-    did_something = IngressPackets(iface);
-    did_something = EgressPackets(iface);
+    did_something |= IngressPackets(iface, now);
+    did_something |= EgressPackets(iface, now);
 
     if (did_something) {
       readiness_may_have_changed = true;
@@ -113,4 +122,10 @@ bool vlcb_net_iface_BindSock(VlcbNetIface *const iface,
     return false;
   }
   return true;
+}
+
+void vlcb_net_iface_FreeSock(VlcbNetIface *const iface,
+                             VlcbNetSocketHandle sock) {
+  assert(iface != NULL && sock != NULL);
+  vlcb_net_sock_list_Remove(iface->sockets, sock);
 }

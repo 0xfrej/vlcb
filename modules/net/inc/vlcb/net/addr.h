@@ -1,15 +1,39 @@
 #pragma once
 
 #include "vlcb/common/can.h"
+#include "vlcb/platform/time.h"
+#include <stdint.h>
 
 typedef enum {
   VLCB_MEDIUM_CAN,
 } VlcbNetMedium;
 
+typedef enum {
+  VLCB_NET_WIRE_CAN_STATE_UNINITIALIZED = 0,
+  VLCB_NET_WIRE_CAN_STATE_ENUMERATING,
+  VLCB_NET_WIRE_CAN_STATE_INITIALIZED,
+  VLCB_NET_WIRE_CAN_STATE_RESPONDING,
+} VlcbNetWireCanState;
+
 typedef union {
-  VlcbCanId can_id;
-} VlcbNetHwAddr;
+  VlcbCanId can;
+} VlcbNetWireAddr;
 
-bool vlcb_net_IsHwAddrValid(VlcbNetMedium medium, VlcbNetHwAddr addr);
+typedef struct {
+  union {
+    struct {
+      clock_t lastTimestamp;
+      VlcbNetWireCanState state;
+      uint8_t occupiedIdCache[16];
+    } can;
+  } meta;
+  VlcbNetWireAddr addr;
+} VlcbNetWireEndpoint;
 
-VlcbNetHwAddr vlcb_net_NewCanIdHwAddr(VlcbCanId id);
+typedef VlcbNetWireEndpoint *const VlcbNetWireEndpointHandle;
+
+bool vlcb_net_IsWireEndpointValid(VlcbNetWireEndpointHandle endpoint);
+
+bool vlcb_net_IsWireAddrValid(VlcbNetMedium medium, VlcbNetWireAddr addr);
+
+VlcbNetWireAddr vlcb_net_NewCanWireAddr(VlcbCanId id);
