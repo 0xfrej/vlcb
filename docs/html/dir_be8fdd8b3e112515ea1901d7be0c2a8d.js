@@ -8,6 +8,6 @@ var dir_be8fdd8b3e112515ea1901d7be0c2a8d =
     [ "module.h", "common_2inc_2vlcb_2common_2module_8h.html", "common_2inc_2vlcb_2common_2module_8h" ],
     [ "net.h", "common_2inc_2vlcb_2common_2net_8h.html", "common_2inc_2vlcb_2common_2net_8h" ],
     [ "node.h", "node_8h.html", "node_8h" ],
-    [ "processor.h", "processor_8h.html", "processor_8h" ],
-    [ "vlcb_defs.h", "vlcb__defs_8h.html", "vlcb__defs_8h" ]
+    [ "opcode.h", "opcode_8h.html", "opcode_8h" ],
+    [ "processor.h", "processor_8h.html", "processor_8h" ]
 ];

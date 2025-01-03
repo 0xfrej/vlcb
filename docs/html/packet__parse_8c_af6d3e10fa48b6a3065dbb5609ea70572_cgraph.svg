@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="can__prio__from__byte_8c.html#aaf28fed27e9847fafa6adab1bc112f84" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="can__prio__from__byte_8c.html#aaf28fed27e9847fafa6adab1bc112f84" target="_top" xlink:title="Checked cast from raw byte.">
 <polygon fill="white" stroke="#666666" points="383.75,-98.75 214.75,-98.75 214.75,-78 383.75,-78 383.75,-98.75"/>
 <text text-anchor="middle" x="299.25" y="-85.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_CanPriorityFromByte</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="can__id__new_8c.html#a96585647cdbba9c7da0b3ab571b37c77" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="can__id__new_8c.html#a96585647cdbba9c7da0b3ab571b37c77" target="_top" xlink:title="Checked cast from raw byte.">
 <polygon fill="white" stroke="#666666" points="357.88,-59.75 240.62,-59.75 240.62,-39 357.88,-39 357.88,-59.75"/>
 <text text-anchor="middle" x="299.25" y="-46.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_NewCanId</text>
 </a>
@@ -74,7 +74,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="can__is__prio__valid_8c.html#aaa5c7e38a9971c1c2a6af4b6e8fee051" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="can__is__prio__valid_8c.html#aaa5c7e38a9971c1c2a6af4b6e8fee051" target="_top" xlink:title="Check if CAN priority value is valid.">
 <polygon fill="white" stroke="#666666" points="573.75,-98.75 419.75,-98.75 419.75,-78 573.75,-78 573.75,-98.75"/>
 <text text-anchor="middle" x="496.75" y="-85.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_IsCanPriorityValid</text>
 </a>
@@ -92,7 +92,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="can__id__is__valid_8c.html#aba3ce98e83c4691c65ebc79eadde51a2" target="_top" xlink:title=" ">
+<g id="a_Node000005"><a xlink:href="can__id__is__valid_8c.html#aba3ce98e83c4691c65ebc79eadde51a2" target="_top" xlink:title="Check if VLCB CAN ID value is valid.">
 <polygon fill="white" stroke="#666666" points="560.62,-59.75 432.88,-59.75 432.88,-39 560.62,-39 560.62,-59.75"/>
 <text text-anchor="middle" x="496.75" y="-46.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_IsCanIdValid</text>
 </a>

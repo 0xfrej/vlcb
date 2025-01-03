@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Checked cast from raw byte.">
 <polygon fill="#999999" stroke="#666666" points="117.25,-20.75 0,-20.75 0,0 117.25,0 117.25,-20.75"/>
 <text text-anchor="middle" x="58.62" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_NewCanId</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="can__id__is__valid_8c.html#aba3ce98e83c4691c65ebc79eadde51a2" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="can__id__is__valid_8c.html#aba3ce98e83c4691c65ebc79eadde51a2" target="_top" xlink:title="Check if VLCB CAN ID value is valid.">
 <polygon fill="white" stroke="#666666" points="281,-20.75 153.25,-20.75 153.25,0 281,0 281,-20.75"/>
 <text text-anchor="middle" x="217.12" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_IsCanIdValid</text>
 </a>

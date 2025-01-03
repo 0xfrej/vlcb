@@ -120,8 +120,10 @@ Functions</h2></td></tr>
 <tr class="memitem:afa93f2be27cc4b8acfd6b00e1e93fb37" id="r_afa93f2be27cc4b8acfd6b00e1e93fb37"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa93f2be27cc4b8acfd6b00e1e93fb37">IsNodeNumberValid</a> (const <a class="el" href="node_8h.html#a288c9b9d5ebc0ec8de072db1e84c1c8a">VlcbNodeNumber</a> addr)</td></tr>
 <tr class="separator:afa93f2be27cc4b8acfd6b00e1e93fb37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb0c834eaaf6f88fd6f0507ed3e555a4" id="r_acb0c834eaaf6f88fd6f0507ed3e555a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb0c834eaaf6f88fd6f0507ed3e555a4">vlcb_defs_NewNodeNumber</a> (const uint16_t val, <a class="el" href="node_8h.html#a288c9b9d5ebc0ec8de072db1e84c1c8a">VlcbNodeNumber</a> *const addr)</td></tr>
+<tr class="memdesc:acb0c834eaaf6f88fd6f0507ed3e555a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast raw value to a node number.  <br /></td></tr>
 <tr class="separator:acb0c834eaaf6f88fd6f0507ed3e555a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adee3c126b7b8bdbe83012706b974da69" id="r_adee3c126b7b8bdbe83012706b974da69"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adee3c126b7b8bdbe83012706b974da69">vlcb_defs_NewNodeNumberFromBytes</a> (const uint8_t hi, const uint8_t lo, <a class="el" href="node_8h.html#a288c9b9d5ebc0ec8de072db1e84c1c8a">VlcbNodeNumber</a> *const addr)</td></tr>
+<tr class="memdesc:adee3c126b7b8bdbe83012706b974da69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast raw bytes to a node number.  <br /></td></tr>
 <tr class="separator:adee3c126b7b8bdbe83012706b974da69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -158,7 +160,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int vlcb_defs_NewNodeNumber </td>
           <td>(</td>
-          <td class="paramtype">const uint16_t</td>          <td class="paramname"><span class="paramname"><em>val</em></span>, </td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>val</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -167,6 +169,23 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Cast raw value to a node number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">val</td><td>raw value to cast </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">addr</td><td>pointer to the destiantion variable for result</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>whether the cast succeeded </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">0</td><td>successful </td></tr>
+    <tr><td class="paramname">1</td><td>failure </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="node__new__number_8c_source.html#l00009">9</a> of file <a class="el" href="node__new__number_8c_source.html">node_new_number.c</a>.</p>
 <div class="dynheader">
@@ -191,12 +210,12 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int vlcb_defs_NewNodeNumberFromBytes </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>hi</em></span>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>hi</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>lo</em></span>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>lo</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -205,6 +224,24 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Cast raw bytes to a node number. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">hi</td><td>high byte of the address </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lo</td><td>low byte of the address </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">addr</td><td>pointer to destination variable for the result</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>whether the cast was succesful </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">0</td><td>successful </td></tr>
+    <tr><td class="paramname">1</td><td>failure </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="node__new__number_8c_source.html#l00019">19</a> of file <a class="el" href="node__new__number_8c_source.html">node_new_number.c</a>.</p>
 
@@ -216,7 +253,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_4e4d22e38ca4e2e8207825ee2d00bc54.html">src</a></li><li class="navelem"><a class="el" href="dir_24ddad310a1594b81d8b2778ac008376.html">node</a></li><li class="navelem"><a class="el" href="node__new__number_8c.html">node_new_number.c</a></li>
-    <li class="footer">Generated on Mon Nov 4 2024 09:13:33 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

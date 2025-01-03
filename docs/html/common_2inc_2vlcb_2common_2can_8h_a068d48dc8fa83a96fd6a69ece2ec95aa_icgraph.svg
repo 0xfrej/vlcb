@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Check if VLCB CAN ID value is valid.">
 <polygon fill="#999999" stroke="#666666" points="539.25,-87.75 411.5,-87.75 411.5,-67 539.25,-67 539.25,-87.75"/>
 <text text-anchor="middle" x="475.38" y="-74.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_IsCanIdValid</text>
 </a>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="can__id__new_8c.html#a96585647cdbba9c7da0b3ab571b37c77" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="can__id__new_8c.html#a96585647cdbba9c7da0b3ab571b37c77" target="_top" xlink:title="Checked cast from raw byte.">
 <polygon fill="white" stroke="#666666" points="353.75,-149.75 236.5,-149.75 236.5,-129 353.75,-129 353.75,-149.75"/>
 <text text-anchor="middle" x="295.12" y="-136.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_NewCanId</text>
 </a>
@@ -56,7 +56,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="packet__parse_8c.html#acbc4558259bef220d1ce09f4609732f6" target="_top" xlink:title="Construct new CAN frame ID from a packet.">
+<g id="a_Node000005"><a xlink:href="packet__parse_8c.html#acbc4558259bef220d1ce09f4609732f6" target="_top" xlink:title="Construct new CAN frame ID from an inner format packet.">
 <polygon fill="white" stroke="#666666" points="375.5,-72.12 214.75,-72.12 214.75,-38.62 375.5,-38.62 375.5,-72.12"/>
 <text text-anchor="start" x="222.75" y="-58.62" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_net_adpt_NewCanFrame</text>
 <text text-anchor="middle" x="295.12" y="-45.88" font-family="Helvetica,sans-Serif" font-size="10.00">IdFromPkt</text>

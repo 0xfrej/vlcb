@@ -2,28 +2,52 @@
 
 #include <stdint.h>
 
+/**
+ * @brief Module bootloader load address
+ */
 typedef uint32_t VlcbModuleParamLoadAddr;
 #define VLCB_MODULE_LOAD_ADDR_EMPTY (VlcbModuleParamLoadAddr)0
 
+/**
+ * @brief Module CPU manufacturer ID
+ *
+ * This should be resolved at runtime on machines
+ * where possible to not include the CPU ID in checksum.
+ */
 typedef char VlcbModuleParamCpuManuId[4];
 #define VLCB_MODULE_CPU_MANUID_UNKNOWN                                         \
   (VlcbModuleParamCpuManuId){'?', '?', '?', '?'}
 
+/**
+ * @brief Construct a module version (release)
+ */
 #define VLCB_VERSION(major, minor)                                             \
-  (VlcbModuleVersion){.major = major, .minor = minor.beta = 0}
-#define VLCB_VERSION_BETA(major, minor, beta)                                  \
-  (VlcbModuleVersion) { .major = major, .minor = minor.beta = beta }
+  (VlcbModuleVersion){.major = major, .minor = minor, .beta = 0}
 
+/**
+ * @brief Construct a module version (beta)
+ */
+#define VLCB_VERSION_BETA(major, minor, beta)                                  \
+  (VlcbModuleVersion) { .major = major, .minor = minor, .beta = beta }
+
+/**
+ * @brief Module version
+ */
 typedef struct {
   uint8_t major;
   char minor;
-  uint8_t beta;
+  uint8_t beta; /**< Beta version (0 for release builds) */
 } VlcbModuleVersion;
 
+/**
+ * @brief Module service version
+ *
+ * This is specification version of the service, not it's implementation
+ */
 typedef uint8_t VlcbServiceVersion;
 
 /**
- * Error codes for #VLCB_OPC_COMMAND
+ * @brief Error codes for #VLCB_OPC_COMMAN TODO: fix the reference
  */
 typedef uint8_t VlcbCommandError;
 enum VlcbCommandError {
@@ -148,10 +172,10 @@ enum VlcbModuleFlags {
 };
 
 /**
- * Module parameter indices
+ * @brief Module parameter indices
  *
  * These parameters are used for identifiying and correctly configuring modules
- * using the configuraiton tools.
+ * using the configuraiton tools.
  */
 typedef uint8_t VlcbModuleParam;
 enum VlcbModuleParam {
@@ -233,7 +257,7 @@ enum VlcbModuleParam {
 };
 
 /**
- * GRSP codes
+ * @brief Generic response codes
  */
 typedef uint8_t VlcbGenericResponseStatus;
 enum VlcbGenericResponseStatus {
@@ -334,7 +358,7 @@ enum VlcbGenericResponseStatus {
 };
 
 /**
- * Parameters to the MODE op-code
+ * @brief Parameters to the MODE op-code
  *
  * Exclusive modes
  */
@@ -392,13 +416,13 @@ enum VlcbModuleMode {
 };
 
 /**
- * VLCB Service Types
+ * @brief Module service types
  */
 typedef uint8_t VlcbServiceType;
 enum VlcbServiceType {
 
   /**
-   * Internal service.
+   * @brief Internal service.
    *
    * Can be used for implementing certain behaviors while
    * using the service pattern for the implementation.
@@ -408,7 +432,7 @@ enum VlcbServiceType {
   VLCB_SVC_TYPE_INTERNAL = 0,
 
   /**
-   * The minimum node service.
+   * @brief The minimum node service.
    *
    * All modules must implement this.
    */
@@ -420,7 +444,7 @@ enum VlcbServiceType {
   VLCB_SVC_TYPE_NODE_VARIABLE = 2,
 
   /**
-   * CAN service.
+   * @brief CAN service.
    *
    * Deals with CANID enumeration.
    */
@@ -452,7 +476,7 @@ enum VlcbServiceType {
   VLCB_SVC_TYPE_CONSUME_OWN_EVENTS = 8,
 
   /**
-   * Event acknowledge service.
+   * @brief Event acknowledge service.
    *
    * Useful for debugging event configuration.
    */
@@ -468,4 +492,3 @@ enum VlcbServiceType {
    */
   VLCB_SVC_TYPE_STREAMING = 17,
 };
-

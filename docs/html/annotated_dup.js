@@ -31,6 +31,5 @@ var annotated_dup =
     [ "VlcbPlatformLedEffectData", "unionVlcbPlatformLedEffectData.html", "unionVlcbPlatformLedEffectData" ],
     [ "VlcbPlatformLedEffectDataBlink", "structVlcbPlatformLedEffectDataBlink.html", "structVlcbPlatformLedEffectDataBlink" ],
     [ "VlcbPlatformLedEffectDataPulse", "structVlcbPlatformLedEffectDataPulse.html", "structVlcbPlatformLedEffectDataPulse" ],
-    [ "VlcbPlatformSwitchDriver", "structVlcbPlatformSwitchDriver.html", "structVlcbPlatformSwitchDriver" ],
-    [ "VlcbShortEvent", "structVlcbShortEvent.html", "structVlcbShortEvent" ]
+    [ "VlcbPlatformSwitchDriver", "structVlcbPlatformSwitchDriver.html", "structVlcbPlatformSwitchDriver" ]
 ];

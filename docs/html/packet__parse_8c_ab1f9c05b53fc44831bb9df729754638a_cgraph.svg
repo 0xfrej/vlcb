@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="can__id__is__valid_8c.html#aba3ce98e83c4691c65ebc79eadde51a2" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="can__id__is__valid_8c.html#aba3ce98e83c4691c65ebc79eadde51a2" target="_top" xlink:title="Check if VLCB CAN ID value is valid.">
 <polygon fill="white" stroke="#666666" points="330.12,-59.75 202.38,-59.75 202.38,-39 330.12,-39 330.12,-59.75"/>
 <text text-anchor="middle" x="266.25" y="-46.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_IsCanIdValid</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="can__is__prio__valid_8c.html#aaa5c7e38a9971c1c2a6af4b6e8fee051" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="can__is__prio__valid_8c.html#aaa5c7e38a9971c1c2a6af4b6e8fee051" target="_top" xlink:title="Check if CAN priority value is valid.">
 <polygon fill="white" stroke="#666666" points="343.25,-20.75 189.25,-20.75 189.25,0 343.25,0 343.25,-20.75"/>
 <text text-anchor="middle" x="266.25" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_IsCanPriorityValid</text>
 </a>

@@ -3,18 +3,21 @@
 #include <stdint.h>
 
 /**
- * Processor manufacturer codes
+ * @brief Processor manufacturer codes
  */
 typedef uint8_t VlcbProcessorManufacturer;
 enum VlcbProcessorManufacturer {
-  VLCB_PM_MICROCHIP = 1,
-  VLCB_PM_ATMEL = 2,
-  VLCB_PM_ARM = 3,
+  VLCB_PM_MICROCHIP =
+      1, /**< Microchip PIC @see VlcbMicrochipProcessor for possible values */
+  VLCB_PM_ATMEL = 2, /**< At the moment there is no value enum */
+  VLCB_PM_ARM =
+      3, /**< ARM type codes @see VlcbArmProcessor for possible values */
 };
 
 /**
- * ARM Processor type codes (used by FCU to identify correct bootloader
- * compatibility)
+ * @brief ARM Processor type codes
+ *
+ * Used by FCU to identify correct bootloader compatibility
  */
 typedef uint8_t VlcbArmProcessor;
 enum VlcbArmProcessor {
@@ -24,8 +27,9 @@ enum VlcbArmProcessor {
 };
 
 /**
- * Microchip Processor type codes (used by FCU to identify correct bootloader
- * compatibility)
+ * @brief Microchip Processor type codes
+ *
+ * Used by FCU to identify correct bootloader compatibility
  */
 typedef uint8_t VlcbMicrochipProcessor;
 enum VlcbMicrochipProcessor {

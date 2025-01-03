@@ -28,6 +28,5 @@ var searchData=
   ['vlcbplatformledeffectdata_25',['VlcbPlatformLedEffectData',['../unionVlcbPlatformLedEffectData.html',1,'']]],
   ['vlcbplatformledeffectdatablink_26',['VlcbPlatformLedEffectDataBlink',['../structVlcbPlatformLedEffectDataBlink.html',1,'']]],
   ['vlcbplatformledeffectdatapulse_27',['VlcbPlatformLedEffectDataPulse',['../structVlcbPlatformLedEffectDataPulse.html',1,'']]],
-  ['vlcbplatformswitchdriver_28',['VlcbPlatformSwitchDriver',['../structVlcbPlatformSwitchDriver.html',1,'']]],
-  ['vlcbshortevent_29',['VlcbShortEvent',['../structVlcbShortEvent.html',1,'']]]
+  ['vlcbplatformswitchdriver_28',['VlcbPlatformSwitchDriver',['../structVlcbPlatformSwitchDriver.html',1,'']]]
 ];

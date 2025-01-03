@@ -3,492 +3,749 @@
 #include <stdint.h>
 
 /**
- * VLCB opcodes
+ * @brief VLCB opcodes
  */
 typedef uint8_t VlcbOpCode;
 enum VlcbOpCode {
   /**
-   * General Acknowledgement.
+   * @brief General Acknowledgement.
    *
-   * Positive response to query/ request performed or report of availability
+   * Positive response to query/request performed or report of availability
    * on-line.
+   *
+   * Short name: ACK
    */
   VLCB_OPC_GENERAL_ACK = 0,
 
   /**
-   * General No Ack.
+   * @brief General No Ack.
    *
-   * Negative response to query/ request denied.
+   * Negative response to query/request denied by the target.
+   *
+   * Short name: NAK
    */
   VLCB_OPC_GENERAL_NACK = 1,
 
   /**
-   * Bus Halt.
+   * @brief Bus Halt.
    *
    * Commonly broadcasted to all nodes to indicate CBUS is not available and
-   * no further packets should be sent until a BON or ARST is received.
+   * no further packets should be sent until a #VLCB_OPC_BUS_RESUME or
+   * #VLCB_OPC_RESTART_ALL_NODES is received.
+   *
+   * Short name: HLT
    */
   VLCB_OPC_BUS_HALT = 2,
 
   /**
-   * Bus ON
+   * @brief Bus ON
    *
-   * Commonly broadcasted to all nodes to indicate CBUS is available after a HLT
-   * message was transmitted.
+   * Commonly broadcasted to all nodes to indicate CBUS is available after a
+   * #VLCB_OPC_BUS_HALT message was transmitted.
+   *
+   * Short name: BON
    */
   VLCB_OPC_BUS_RESUME = 3,
 
   /**
-   * DCC track off.
+   * @brief DCC track off.
    *
    * Commonly broadcasted to all nodes by a command station to indicate track
    * power is off and no further command packets should be sent, except
    * inquiries.
+   *
+   * Short name: TOF
    */
   VLCB_OPC_DCC_TRACK_POWERED_OFF = 4,
 
   /**
-   * DCC track on.
+   * @brief DCC track on.
    *
    * Commonly broadcasted to all nodes by a command station to indicate track
    * power is on.
+   *
+   * Short name: TON
    */
   VLCB_OPC_DCC_TRACK_POWERED_ON = 5,
 
   /**
-   * DCC emergency stop.
+   * @brief DCC emergency stop.
    *
    * Commonly broadcast to all nodes by a command station to indicate all
    * engines have been emergency stopped.
+   *
+   * Short name: ESTOP
    */
   VLCB_OPC_DCC_EMERGENCY_STOP_ENGAGED = 6,
 
   /**
-   * Perform reboot on all nodes.
+   * @brief Perform reboot on all nodes.
    *
    * Commonly broadcasted to all nodes to indicate a full system restart.
-   * Similar to NNRST which directs a single node to be restarted.
+   * Similar to #VLCB_OPC_RESTART_NODE which directs a single node to be
+   * restarted.
+   *
+   * Short name: ARST
    */
   VLCB_OPC_RESTART_ALL_NODES = 7,
 
   /**
-   * DCC request track off.
+   * @brief DCC request track off.
    *
    * Sent to request change of track power state to “off”.
+   *
+   * Short name: RTOF
    */
   VLCB_OPC_DCC_TRACK_POWER_OFF = 8,
 
   /**
-   * DCC request track on.
+   * @brief DCC request track on.
    *
    * Sent to request change of track power state to “on”.
+   *
+   * Short name: RTON
    */
   VLCB_OPC_DCC_TRACK_POWER_ON = 9,
 
   /**
-   * DCC request emergency stop.
+   * @brief DCC request emergency stop.
    *
    * Sent to request an emergency stop to all trains.
    * Does not affect accessory control.
+   *
+   * Short name: RESTP
    */
   VLCB_OPC_DCC_EMERGENCY_STOP = 10,
 
   /**
-   * Request Command Station Status.
+   * @brief Request Command Station Status.
    *
-   * Sent to query the status of the command station. See description of (STAT)
-   * for the response from the command station.
+   * Sent to query the status of the command station. See description of
+   * #VLCB_OPC_DCC_COMMAND_STATION_STATUS for the response from the command
+   * station.
+   *
+   * Short name: RSTAT
    */
   VLCB_OPC_DCC_QUERY_COMMAND_STATION_STATUS = 12,
 
   /**
-   * Query node number.
+   * @brief Query node number.
    *
-   * Requests a PNN reply from each node on the bus.
+   * Requests a #VLCB_OPC_MODULE_INFO reply from each node on the bus.
+   * Can be used by management software to obtain list of nodes on the
+   * network
+   *
+   * Short name: QNN
    */
   VLCB_OPC_QUERY_MODULE_INFO = 13,
 
   /**
-   * Request node parameters.
+   * @brief Request node parameters.
    *
    * Sent to a node while in Setup mode to read its parameter set.
    * Used when initially configuring a node.
+   *
+   * Short name: RQNP
    */
   VLCB_OPC_QUERY_MODULE_PARAMETERS = 16,
 
   /**
-   * Request module name.
+   * @brief Request module name.
    *
    * Sent by a node to request the name of the type of module that is in setup
    * mode or Learn mode. The module in setup mode or learn mode will reply with
-   * opcode NAME.
+   * #VLCB_OPC_MODULE_NAME message.
+   *
+   * Note: if there are two modules one in setup mode and the other in learn
+   * mode, both will respond to the query.
+   *
+   * Short name: RQMN
    */
   VLCB_OPC_QUERY_MODULE_NAME = 17,
 
   /**
-   * Release Engine.
+   * @brief Release Engine.
    *
    * Sent by a CAB to the Command Station. The engine with that Session number
    * is removed from the active engine list.
+   *
+   * Short name: KLOC
+   *
+   * On session not found: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_RELEASE_SESSION = 33,
 
   /**
-   * Query engine.
+   * @brief query engine.
    *
-   * Used to determine if the command station session is valid and to obtain
+   * used to determine if the command station session is valid and to obtain
    * information about the status of the locomotive.
+   *
+   * short name: qloc
+   *
+   * on `session not found`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_QUERY_LOCO_STATUS = 34,
 
   /**
-   * Session keep alive.
+   * @brief Session keep alive.
    *
    * The cab sends a keep alive at regular intervals for the active session.
    * The interval between keep alive messages must be less than the session
    * timeout implemented by the command station.
+   *
+   * Sort name: DKEEP
    */
   VLCB_OPC_DCC_SESSION_KEEP_ALIVE = 35,
 
   /**
-   * Debug message with one data byte.
+   * @brief Debug message with one data byte.
    *
    * Freeform status byte for debugging during CBUS module development. Not used
    * during normal operation.
+   *
+   * Short name: DBG1
    */
   VLCB_OPC_DEBUG_MSG1 = 48,
 
   /**
-   * Extended opcode with zero additional bytes.
+   * @brief Extended opcode with zero additional bytes.
+   *
    * Reserved to allow the 0 additional bytes range to be extended by a further
    * 256 opcodes.
+   *
+   * Short name: EXTC
    */
-  VLCB_OPC_EXT_OP_CODE = 63,
+  VLCB_OPC_EXT_OPCODE0 = 63,
 
   /**
-   * Request engine session.
+   * @brief Request engine session.
    *
    * This command is typically sent by a cab to the command station following a
-   * change of the controlled decoder address. RLOC is exactly equivalent to
-   * GLOC with all flag bits set to zero, but command stations
+   * change of the controlled decoder address. Thsi is exactly equivalent to
+   * #VLCB_OPC_DCC_QUERY_LOCO_SESSION with all flag bits set to zero.
+   *
+   * Short name: RLOC
+   *
+   * On `success`: target responds with #VLCB_OPC_DCC_LOCO_REPORT
+   * On `decoder address being already assigned`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * On `no available session slots`: target responds with
+   * #VLCB_DCC_ERR_LOCO_ADDRESS_IS_TAKEN code #VLCB_DCC_ERR_LOCO_STACK_IS_FULL
    */
   VLCB_OPC_DCC_REQUEST_NEW_SESSION = 64,
 
   /**
-   * Query Consist.
+   * @brief Query Consist.
    *
-   * Allows enumeration of a consist. Command station responds with PLOC if an
-   * engine exists at the specified index, otherwise responds
+   * Allows enumeration of a consist. Command station responds with
+   * #VLCB_OPC_DCC_LOCO_REPORT if an engine exists at the specified index,
+   * otherwise responds with #VLCB_OPC_DCC_COMMAND_STATION_ERROR and code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
+   *
+   * Short name: QCON
+   *
+   * On `session not found`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_QUERY_CONSIST = 65,
 
   /**
-   * Set Node Number.
+   * @brief Set Node Number.
    *
    * Sent by a configuration tool to assign a node number to a requesting node
-   * in response to a RQNN message. The target node must be in
+   * in response to a #VLCB_OPC_REQUEST_NEW_NODE_NUMBER message. The target node
+   * must be in `setup` mode.
+   *
+   * Short name: SNN
+   *
+   * On `success`: target responds with #VLCB_OPC_NODE_NUMBER_ACK
    */
   VLCB_OPC_SET_NODE_NUMBER = 66,
 
   /**
-   * Allocate loco to activity.
+   * @brief Allocate loco to activity.
+   *
+   * Short name: ALOC
+   *
+   * On `session not found`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_ALLOCATE_LOCO_TO_ACTIVITY = 67,
 
   /**
-   * Set CAB session mode.
+   * @brief Set CAB session mode.
    *
-   * Bits 0–1: speed mode
-   * - 00 =128 speed steps
-   * - 01 =14 speed steps
-   * - 10 =28 speed steps with interleave steps
-   * - 11 =28 speed steps
+   * Short name: STMOD
    *
-   * Bit 2: service mode
-   * Bit 3:sound control mode
+   * On `session not found`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_SET_THROTTLE_MODE = 68,
 
   /**
-   * Consist Engine.
+   * @brief Consist Engine.
    *
    * Adds a decoder specified by Session to a consist.
-   * Consist# has bit 7 set if consist direction is reversed.
+   * If a consist with that ID does not exist yet, new consist will be
+   * created with the specified ID.
+   *
+   * Short name: PCON
+   *
+   * On `session not found`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_CONSIST_ADD_LOCO = 69,
 
   /**
-   * Removes a loco from a consist.
+   * @brief Removes a loco from a consist.
+   *
+   * Short name: KCON
+   *
+   * On `session not found`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_CONSIST_REMOVE_LOCO = 70,
 
   /**
-   * Set Engine Speed/Dir.
+   * @brief Set Engine Speed/Dir.
    *
-   * Speed/dir value, where the most significant bit is direction and the 7ls
-   * bits are the unsigned speed value. Sent by a CAB or equivalent to request
-   * an engine speed/dir change.
+   * Sent by a CAB or equivalent to request an engine speed/direction change.
+   *
+   * Short name: DSPD
+   *
+   * On `session not found`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_SET_LOCO_THROTTLE = 71,
 
   /**
-   * Set Engine Flags.
+   * @brief Set Engine Flags.
    *
    * Sent by a cab to notify the command station of a change in engine flags.
    *
-   * Bits 0-1: Speed Mode (00 =128 speed steps, 01 =14 speed steps,10 =28 speed
-   * steps with interleave steps, 11 =28 speed steps) Bit 2:Lights On/OFF Bit
-   * 3:Engine relative direction Bits 4-5: Engine state (active =0 , consisted
-   * =1, consist master=2, inactive=3) Bits 6-7: Reserved.
+   * Short name: DFLG
+   *
+   * On `session not found`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_SET_LOCO_FLAGS = 72,
 
   /**
-   * Set Engine function on.
+   * @brief Set Engine function on.
    *
    * Sent by a cab to turn on a specific loco function.
-   * This provides an alternative method to DFUN for controlling loco functions.
-   * A command
+   * This provides an alternative method to #VLCB_OPC_DCC_SET_LOCO_FUNCTIONS for
+   * controlling loco functions.
+   *
+   * Short name: DFNON
+   *
+   * On `session not found`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_LOCO_FUNCTION_ON = 73,
 
   /**
-   * Set Engine function off.
+   * @brief Set Engine function off.
    *
    * Sent by a cab to turn off a specific loco function.
-   * This provides an alternative method to DFUN for controlling loco functions.
-   * A command
+   * This provides an alternative method to #VLCB_OPC_DCC_SET_LOCO_FUNCTIONS for
+   * controlling loco functions.
+   *
+   * Short name: DFNOF
+   *
+   * On `session not found`: target responds with
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_LOCO_FUNCTION_OFF = 74,
 
   /**
-   * Service mode status.
+   * @brief Service mode status.
    *
    * Status returned by command station/programmer at the end of a programming
-   * operation that does not return data. Response to QCVS to indicate no data.
+   * operation that does not return data.
+   *
+   * Response to #VLCB_OPC_DCC_READ_CV to indicate no data.
+   *
+   * Short name: SSTAT
    */
   VLCB_OPC_DCC_SERVICE_MODE_STATUS = 76,
 
   /**
-   * Reset to manufacturer settings.
-   * Reset a module back to manufacturer settings.
+   * @brief Reset to manufacturer settings.
+   *
+   * Reset a module back e to manufacturer settings.
+   *
+   * Short name: NNRSM
+   *
+   * On `success`: target responds with #VLCB_OPC_GENERIC_RESPONSE code
+   * #VLCB_GENERIC_RESPONSE_STAT_OK
    */
   VLCB_OPC_RESET_MODULE_TO_FACTORY = 79,
 
   /**
-   * Request node number.
+   * @brief Request node number.
    *
    * The module is requesting that it is provided with a new node number.
-   * A configuration tool should respond with SNN to provide the requesting
+   * A configuration tool should respond with #VLCB_OPC_SET_NODE_NUMBER to
+   * provide the requesting node a new number.
+   *
+   * If the module won't receive a #VLCB_OPC_SET_NODE_NUMBER within 30 seconds,
+   * it returns to previous state and reclaims it old node number with
+   * #VLCB_OPC_NODE_NUMBER_ACK
+   *
+   * Short name: RQNN
    */
   VLCB_OPC_REQUEST_NEW_NODE_NUMBER = 80,
 
   /**
-   * Node number release.
+   * @brief Node number release.
    *
-   * A node signals that it no longer requires a node number by sending NNREL.
+   * A node signals that it no longer requires it's node number.
+   *
    * The module will do this upon moving from normal mode to setup mode.
+   *
+   * Short name: NNREL
    */
   VLCB_OPC_NODE_NUMBER_RELEASED = 81,
 
   /**
-   * Node number acknowledge.
+   * @brief Node number acknowledge.
    *
-   * This message is sent in response to SNN.
-   * A node signals that it will
+   * This message is sent in response to #VLCB_OPC_SET_NODE_NUMBER.
+   * A node signals that it will now use the provided node number.
+   *
+   * Short name: NNACK
    */
   VLCB_OPC_NODE_NUMBER_ACK = 82,
 
   /**
-   * Set node into learn mode.
+   * @brief Set node into learn mode.
    *
    * Sent by a configuration tool to put a specific node into learn mode.
+   *
+   * Short name: NNLRN
+   *
+   * @deprecated replaced by #VLCB_OPC_CHANGE_MODULE_MODE
+   *
+   * @warning When feature `EXPERIMENTAL_CBUS_DEPRECATION_DROP` is enabled, this
+   * will not be available
    */
   VLCB_OPC_PUT_NODE_INTO_LEARN_MODE = 83,
 
   /**
-   * Release node from learn mode.
+   * @brief Release node from learn mode.
    *
    * Sent by a configuration tool to take the module out of learn mode and
    * revert to normal operation.
+   *
+   * Short name: NNULN
+   *
+   * @deprecated replaced by #VLCB_OPC_CHANGE_MODULE_MODE
+   *
+   * @warning When feature `EXPERIMENTAL_CBUS_DEPRECATION_DROP` is enabled, this
+   * will not be available
    */
   VLCB_OPC_RELEASE_NODE_FROM_LEARN_MODE = 84,
 
   /**
-   * Clear all events from a node.
+   * @brief Clear all events from a node.
    *
    * Sent by a configuration tool to clear all events from a specific node.
    * Must be in learn mode first to safeguard against accidental erasure of all
    * events
+   *
+   * Short name: NNCLR
+   *
+   * On `success`: tearget responds with #VLCB_OPC_WRITE_ACK
+   * On `module not in learn mode`: target responds with #VLCB_OPC_COMMAND_ERROR
+   * code #VLCB_CMDERR_NOT_IN_LEARN_MODE and #VLCB_OPC_GENERIC_RESPONSE code
+   * #VLCB_GENERIC_RESPONSE_NOT_IN_LEARN_MODE
+   * @warning When feature `EXPERIMENTAL_CBUS_DEPRECATION_DROP` is enabled,
+   * modules implemented by this SDK will respond only with
+   * #VLCB_OPC_GENERIC_RESPONSE
    */
   VLCB_OPC_FORGET_ALL_LEARNED_EVENTS = 85,
 
   /**
-   * Read the number of event slots available in a node.
+   * @brief Read the number of event slots available in a node.
    *
    * Sent by a configuration tool to read the number of available event slots in
    * a node.
+   *
+   * Short name: NNEVN
+   *
+   * On `success`: target responds with #VLCB_OPC_AVAILABLE_EVENT_SLOTS
    */
   VLCB_OPC_QUERY_AVAILABLE_EVENT_SLOTS = 86,
 
   /**
-   * Read back all stored events in a node.
+   * @brief Read back all stored events in a node.
    *
-   * There MUST be no hidden events.
+   * There must be no hidden events.
    * Sent by a configuration tool to read all the stored events in a node.
+   *
+   * Short name: NERD
+   *
+   * On `success`: target responds with #VLCB_OPC_LEARNED_EVENT_RESPONSE
    */
   VLCB_OPC_QUERY_ALL_LEARNED_EVENTS = 87,
 
   /**
-   * Request to read number of stored events.
+   * @brief Request to read number of stored events.
    *
    * Sent by a configuration tool to read the number of stored events in a node.
+   *
+   * Short name RQEVN
+   *
+   * On `success`: target responds with #VLCB_OPC_LEARNED_EVENT_COUNT
    */
   VLCB_OPC_QUERY_LEARNED_EVENT_COUNT = 88,
 
   /**
-   * Write acknowledge.
+   * @brief Write acknowledge.
    *
    * Sent by a node to indicate the completion of a write to memory operation.
-   * All nodes must issue WRACK when a write operation to node variables, events
-   * or event variables has completed. This allows for teaching nodes where the
-   * processing time may be slow.
+   * All nodes must issue #VLCB_OPC_WRITE_ACK when a write operation to node
+   * variables, events or event variables has completed. This allows for
+   * teaching nodes where the processing time may be slow.
+   *
+   * Short name: WRACK
+   *
+   * @deprecated replaced by #VLCB_OPC_GENERIC_RESPONSE
+   * @@warning When feature `EXPERIMENTAL_CBUS_DEPRECATION_DROP` is enabled,
+   * this will not be available
    */
   VLCB_OPC_WRITE_ACK = 89,
 
   /**
-   * Request node data event.
+   * @brief Request node data event.
    *
    * Sent by one node to read the data event from another node.(eg: RFID data).
+   *
+   * Short name: RQDAT
+   *
+   * On `success`: target responds with #VLCB_OPC_NODE_ACCESSORY_DATA
    */
-  VLCB_OPC_QUERY_NODE_DATA = 90,
+  VLCB_OPC_QUERY_NODE_ACCESSORY_DATA = 90,
 
   /**
-   * Request device data –short mode.
+   * @brief Request device data (short mode).
    *
    * To request a ‘data set’ from a device using the short event method where DN
    * is the device number.
+   *
+   * On `success`: target responds with #VLCB_OPC_DEVICE_DATA_SHORT_MODE
    */
-  VLCB_OPC_REQUEST_DEVICE_DATA_SHORT_MODE = 91,
+  VLCB_OPC_QUERY_DEVICE_DATA_SHORT_MODE = 91,
 
   /**
-   * Put node into bootloading mode.
-   * For modules with no NN then the NN of the command must be zero. For nodes
-   * in Normal mode the command must contain the NN of the target node. Sent by
-   * a configuration tool to prepare for loading a new program.
+   * @brief Put node into bootloading mode.
+   *
+   * For modules with no node number, the value shall be 0. For nodes
+   * in Normal mode the command must contain current node number of the target.
+   * Sent by a configuration tool to prepare for loading a new program.
+   *
+   * Short name: BOOTM
+   *
+   * @deprecated replaced by #VLCB_OPC_CHANGE_MODULE_MODE
+   * @warning When feature `EXPERIMENTAL_CBUS_DEPRECATION_DROP` is enabled, this
+   * will not be available
    */
   VLCB_OPC_REBOOT_INTO_BOOTLOADER = 92,
 
   /**
-   * Force a self enumeration cycle for use with CAN.
+   * @brief Force a self enumeration cycle for use with CAN.
    *
    * For nodes in Normal mode using CAN as a transport.
    * This message will force a self-enumeration cycle for the specified node.
-   * A new CAN_ID will be allocated if needed.
+   * A new CAN ID will be allocated if needed.
+   *
+   * Short name: ENUM
+   *
+   * On `success`: target responds with #VLCB_OPC_NODE_NUMBER_ACK
+   * On `enumeration failure`: target responds with #VLCB_OPC_COMMAND_ERROR code
+   * #VLCB_CMDERR_INVALID_EVENT
+   *
+   * @deprecated Replaced by automatic enumeration implementation with duplicate
+   * CAN ID detection.
+   * @warning Modules implemented using this SDK will ignore this command,
+   * unless user handles it themselves.
    */
   VLCB_OPC_FORCE_CAN_ENUMERATION = 93,
 
   /**
-   * Reset module’s CPU.
+   * @brief Reset module’s CPU.
    *
    * Reset a module’s microprocessor.
+   *
+   * Short name: NNRST
    */
   VLCB_OPC_RESTART_NODE = 94,
 
   /**
-   * Extended opcode with 1 additional byte.
+   * @brief Extended opcode with 1 additional byte.
    *
    * Reserved to allow the 1 additional bytes range to be extended by a further
    * 256 opcodes.
+   *
+   * Short name: EXTC1
    */
-  VLCB_OPC_EXT_OP_CODE1 = 95,
+  VLCB_OPC_EXT_OPCODE1 = 95,
 
   /**
-   * Set Engine functions.
+   * @brief Set Engine functions.
    *
-   * <Fn1>is the function range 1 is F0(FL) to F4, 2 is F5 to F8, 3 is F9 to
-   * F12, 4 is F13 to F20, 5 is F21to F28) <Fn2> is the NMRA DCC format function
-   * byte for that range in corresponding bits. A bit set to 1 turns function
-   * “on” and a cleared bit sets function “off”. Sent by a CAB or equivalent to
-   * request an engine Fn state change.
+   * Short name: DFUN
+   *
+   * On `session not found`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_SET_LOCO_FUNCTIONS = 96,
 
   /**
-   * Get engine session.
+   * @brief Get engine session.
    *
-   * <Flags> contains flag bits as follows: Bit 0: Set for "Steal" mode Bit 1:
-   * Set for "Share" mode. Both bits set to 0 is exactly equivalent to an RLOC
-   * request but
+   * Short name: GLOC
+   *
+   * On `success`: target responds with #VLCB_OPC_DCC_LOCO_REPORT
+   * On `loco address taken and mode is not steal/share`: target responds with
+   * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_LOCO_ADDRESS_IS_TAKEN On `no available session slots`: target
+   * responds with #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_LOCO_STACK_IS_FULL On `session for loco not found`: target
+   * responds with #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
+   * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    */
   VLCB_OPC_DCC_QUERY_LOCO_SESSION = 97,
 
   /**
-   * Command Station Error report.
+   * @brief Command Station Error report.
    *
    * Sent in response to an error situation by a command station.
-   * See Appendix A - DCC ERR error codes for a list of error codes.
+   *
+   * @see VlcbDccError for possible error code values
+   *
+   * Short name: ERR
    */
   VLCB_OPC_DCC_COMMAND_STATION_ERROR = 99,
 
   /**
-   * Error messages from nodes during configuration.
+   * @brief Error messages from nodes during configuration.
    *
-   * Sent by node if there is an error when a configuration command is sent. See
-   * Appendix C - CMDERR error codes for the list of supported codes.
+   * Sent by node if there is an error when a configuration command is sent.
+   *
+   * @see VlcbCommandError for possible error code values
+   *
+   * Short name: CMDERR
+   *
+   * @deprecated replaced by #VLCB_OPC_GENERIC_RESPONSE
+   * @warning  feature `EXPERIMENTAL_CBUS_DEPRECATION_DROP` is enabled, this
+   * will not be available
    */
   VLCB_OPC_COMMAND_ERROR = 111,
 
   /**
-   * Event space left reply from node.
+   * @brief Event space left reply from node.
    *
    * Spaces is a one byte value giving the number of available event spaces left
    * in the node’s event table. This is the maximum number of additional events
    * that can be stored by the module.
+   *
+   * Sent as a response to #VLCB_OPC_QUERY_AVAILABLE_EVENT_SLOTS
+   *
+   * Short name: EVNLF
    */
   VLCB_OPC_AVAILABLE_EVENT_SLOTS = 112,
 
   /**
-   * Request read of a node variable.
+   * @brief Request read of a node variable.
    *
    * NV# is the index for the node variable value requested.
-   * Response is NVANS.
+   *
+   * If NV# is of value 0, then the target will respond with
+   * #VLCB_OPC_NODE_VARIABLE_VALUE for each of it's stored node variable.
+   *
+   * Short name: NVRD
+   *
+   * On `success`: target responds with one or seies of
+   * #VLCB_OPC_NODE_VARIABLE_VALUE messages, depending on the NV# requested On
+   * `NV# requested is larger than supported mount of node variables`: target
+   * responds with #VLCB_OPC_COMMAND_ERROR code #VLCB_CMDERR_INVALID_NV_INDEX
+   * and #VLCB_OPC_GENERIC_RESPONSE code #VLCB_GENERIC_RESPONSE_INVALID_NV_INDEX
    */
   VLCB_OPC_QUERY_NODE_VARIABLE = 113,
 
   /**
-   * Request read of stored event by event index.
+   * @brief Request read of stored event by event index.
    *
    * EN# is the index for the stored event requested.
+   *
+   * Short name: NENRD
+   *
+   * On `success`: target responds with #VLCB_OPC_LEARNED_EVENT_RESPONSE
+   * On `invalid EN# index`: target responds with #VLCB_OPC_COMMAND_ERROR code
+   * #VLCB_CMDERR_INVALID_EVENT_INDEX
    */
   VLCB_OPC_QUERY_LEARNED_EVENT_BY_INDEX = 114,
 
   /**
-   * Request read of a node parameter by index.
+   * @brief Request read of a node parameter by index.
    *
-   * Para# is the index for the parameter requested. Reading Index 0 first
-   * returns a PARAN with the number of available
+   * Para# is the index for the parameter requested.
+   * If request contains Para# of value 0, target returns a response with number
+   * of node parameters available
+   *
+   * Short name: RQNPN
+   *
+   * on `success`: target responds with #VLCB_OPC_NODE_PARAMETER_VALUE. For
+   * requests with Para# of value 0, target shall respond with
+   * #VLCB_OPC_NODE_PARAMETER_VALUE containing the lenght of available
+   * parameters and a series of #VLCB_OPC_NODE_PARAMETER_VALUE messages, each
+   * containing one of the parameters (starting from parameter 1 up to the
+   * limit)
    */
   VLCB_OPC_QUERY_NODE_PARAMETER_BY_INDEX = 115,
 
   /**
-   * Number of events stored by node.
+   * @brief Number of events stored by node.
    *
-   * Response to request RQEVN
+   * Response to #VLCB_OPC_QUERY_LEARNED_EVENT_COUNT
+   *
+   * Short name: NUMEV
    */
   VLCB_OPC_LEARNED_EVENT_COUNT = 116,
 
   /**
-   * Set the CAN_ID in the node.
+   * @brief Forcefully set the node's CAN ID.
    *
-   * Used to force a specified CAN_ID into a node. Value range is from 1 to 0x63
-   * (99 decimal). This OPC must be used with care as duplicate CAN_IDs are not
+   * Used to force a specified CAN ID for a node. Value range is from 1 to 0x63
+   * (99 decimal). This OPC must be used with care as duplicate CAN IDs are not
    * allowed.
+   *
+   * Short name: CANID
+   *
+   * @deprecated Replaced with self-enumeration
+   * @warning Modules implemented by this SDK will ignore the command, unless it
+   * is handled by the user
    */
   VLCB_OPC_SET_NODE_CAN_ID = 117,
 
   /**
-   * Request a change to a module’s operating mode.
+   * @brief Request a change to module’s operating mode.
    *
    * Request to change the operational mode of the module.
    */
@@ -508,7 +765,7 @@ enum VlcbOpCode {
    * Reserved to allow the 2 additional bytes range to be extended by a
    * further 256 opcodes.
    */
-  VLCB_OPC_EXT_OP_CODE2 = 127,
+  VLCB_OPC_EXT_OPCODE2 = 127,
 
   /**
    * Request 3-byte DCC Packet.
@@ -703,7 +960,7 @@ enum VlcbOpCode {
    * Reserved to allow the 3 additional bytes range to be extended by a further
    * 256 opcodes.
    */
-  VLCB_OPC_EXT_OP_CODE3 = 159,
+  VLCB_OPC_EXT_OPCODE3 = 159,
 
   /**
    * Request 4-byte DCC Packet.
@@ -810,7 +1067,7 @@ enum VlcbOpCode {
    *
    * Sent in response to a QNN request.
    */
-  VLCB_OPC_NODE_INFO = 182,
+  VLCB_OPC_MODULE_INFO = 182,
 
   /**
    * Accessory Short ON.
@@ -856,7 +1113,7 @@ enum VlcbOpCode {
    * Reserved to allow the 4 additional bytes range to be extended by a further
    * 256 opcodes.
    */
-  VLCB_OPC_EXT_OP_CODE4 = 191,
+  VLCB_OPC_EXT_OPCODE4 = 191,
 
   /**
    * Request 5-byte DCC Packet.
@@ -1019,7 +1276,7 @@ enum VlcbOpCode {
    * Reserved to allow the 5 additional bytes range to be extended by a further
    * 256 opcodes.
    */
-  VLCB_OPC_EXT_OP_CODE5 = 223,
+  VLCB_OPC_EXT_OPCODE5 = 223,
 
   /**
    * Request 6-byte DCC Packet.
@@ -1170,7 +1427,7 @@ enum VlcbOpCode {
    * Indicates a node data response. A response event is a reply to a status
    * request (RQDAT) without producing a new data event.
    */
-  VLCB_OPC_NODE_DATA_EVENT_RESPONSE = 247,
+  VLCB_OPC_NODE_ACCESSORY_DATA = 247,
 
   /**
    * Accessory Short ON.
@@ -1208,7 +1465,7 @@ enum VlcbOpCode {
    *
    * The response to a RQDDS request for data from a device.
    */
-  VLCB_OPC_DEVICE_DATA_RESPONSE_SHORT_MODE = 251,
+  VLCB_OPC_DEVICE_DATA_SHORT_MODE = 251,
 
   /**
    * Write data.
@@ -1240,5 +1497,5 @@ enum VlcbOpCode {
    * Reserved to allow the 6 additional bytes range to be extended by a further
    * 256 opcodes.
    */
-  VLCB_OPC_EXT_OP_CODE6 = 255,
+  VLCB_OPC_EXT_OPCODE6 = 255,
 };

@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 /**
- * Manufacturer definitions
+ * @brief Manufacturer definitions
  *
  * Here are definitions for all known MERG registered manufacturers.
  */

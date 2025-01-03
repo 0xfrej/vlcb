@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 /**
- * BUS type that node is connected to
+ * @brief Transport medium type that node is connected to
  */
 typedef uint8_t VlcbBusType;
 enum VlcbBusType {

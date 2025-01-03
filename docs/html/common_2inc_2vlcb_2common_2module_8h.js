@@ -6,10 +6,13 @@ var common_2inc_2vlcb_2common_2module_8h =
     [ "VLCB_VERSION", "common_2inc_2vlcb_2common_2module_8h.html#a03f7302653f0cab8f1762f4259df5aab", null ],
     [ "VLCB_VERSION_BETA", "common_2inc_2vlcb_2common_2module_8h.html#ac83fac6e55722fa4ae5e895d7799b42a", null ],
     [ "VlcbCommandError", "common_2inc_2vlcb_2common_2module_8h.html#ad4bbce391abd9d5a97d0e78153e7de6b", null ],
+    [ "VlcbGenericResponseStatus", "common_2inc_2vlcb_2common_2module_8h.html#acd04461491c31b4bb2a40da90c3599b4", null ],
     [ "VlcbModuleFlags", "common_2inc_2vlcb_2common_2module_8h.html#a24fc6d545418ec4d3b7f5d4c79119752", null ],
+    [ "VlcbModuleMode", "common_2inc_2vlcb_2common_2module_8h.html#ade834ae32c51bf3d52000566333ac852", null ],
     [ "VlcbModuleParam", "common_2inc_2vlcb_2common_2module_8h.html#a3dbd09ab98ebad0a4001973dd62cb892", null ],
     [ "VlcbModuleParamCpuManuId", "common_2inc_2vlcb_2common_2module_8h.html#a88196cb4e1abc32e82ac6bfc2fdd2595", null ],
     [ "VlcbModuleParamLoadAddr", "common_2inc_2vlcb_2common_2module_8h.html#a6fbb6c150a9530d639f0e36235949f6a", null ],
+    [ "VlcbServiceType", "common_2inc_2vlcb_2common_2module_8h.html#ad02578af1733a55b1eebcaae11090c43", null ],
     [ "VlcbServiceVersion", "common_2inc_2vlcb_2common_2module_8h.html#aa7281a859fcc20a53f8ff536adfb7b71", null ],
     [ "VlcbCommandError", "common_2inc_2vlcb_2common_2module_8h.html#a52e912cdf960b65aa3546f907cbe234c", [
       [ "VLCB_CMDERR_INVALID_COMMAND", "common_2inc_2vlcb_2common_2module_8h.html#a52e912cdf960b65aa3546f907cbe234cae02c188612e9c34a232573618ecd7022", null ],
@@ -26,6 +29,26 @@ var common_2inc_2vlcb_2common_2module_8h =
       [ "VLCB_CMDERR_INVALID_NV_VALUE", "common_2inc_2vlcb_2common_2module_8h.html#a52e912cdf960b65aa3546f907cbe234cac603f345764318b389cd6ccd414e260c", null ],
       [ "VLCB_CMDERR_ANOTHER_MODULE_IS_IN_LEARN_MODE", "common_2inc_2vlcb_2common_2module_8h.html#a52e912cdf960b65aa3546f907cbe234caa0f59b9dfd24b2b674d5847aa48d737a", null ]
     ] ],
+    [ "VlcbGenericResponseStatus", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28", [
+      [ "VLCB_GENERIC_RESPONSE_STAT_OK", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a69d07c6fd6f622a70a578b8a292e6423", null ],
+      [ "VLCB_GENERIC_RESPONSE_INVALID_COMMAND", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a0cf67b0c33899d6e8dd2ef817f460bfb", null ],
+      [ "VLCB_GENERIC_RESPONSE_NOT_IN_LEARN_MODE", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a22b71debd73475657c1ff6ac3e7f3773", null ],
+      [ "VLCB_GENERIC_RESPONSE_NOT_IN_SETUP_MODE", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28ac16175f6ba04f9eebd1bb3e2950fce2a", null ],
+      [ "VLCB_GENERIC_RESPONSE_TOO_MANY_EVENTS", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a672526c0a27645e210a064014282fe5c", null ],
+      [ "VLCB_GENERIC_RESPONSE_NO_EV", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a987ae56fc60d42f1a2bc42871e5cc163", null ],
+      [ "VLCB_GENERIC_RESPONSE_INVALID_EV_INDEX", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a5eda3c7ce8e2d9c51265fe19743cbaed", null ],
+      [ "VLCB_GENERIC_RESPONSE_INVALID_EVENT", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a0101e34b34ca62e0f057bf9ac87d13f6", null ],
+      [ "VLCB_GENERIC_RESPONSE_INVALID_PARAM_INDEX", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28abf66ad683fbb61b7b766c670d1a6b490", null ],
+      [ "VLCB_GENERIC_RESPONSE_INVALID_NV_INDEX", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a452129f452b1ee26eb8246c35458ab3c", null ],
+      [ "VLCB_GENERIC_RESPONSE_INVALID_EV_VALUE", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a5831dea24164c59bf12890c3e23f3a85", null ],
+      [ "VLCB_GENERIC_RESPONSE_INVALID_NV_VALUE", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a569aed8fae3a3d2b255b5129b65f2b94", null ],
+      [ "VLCB_GENERIC_RESPONSE_ANOTHER_MODULE_IS_IN_LEARN_MODE", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a452786d9231c77bff5abc9d35cc678c3", null ],
+      [ "VLCB_GENERIC_RESPONSE_STAT_UNKNOWN_NVM_TYPE", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a3a91d6039c14f735560df90e186e76a7", null ],
+      [ "VLCB_GENERIC_RESPONSE_STAT_INVALID_DIAGNOSTIC", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28ae7945692f472978ce59a36ad1694ab32", null ],
+      [ "VLCB_GENERIC_RESPONSE_STAT_INVALID_SERVICE", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28ad6dc81676501c877f0aa27aa255be13a", null ],
+      [ "VLCB_GENERIC_RESPONSE_STAT_INVALID_COMMAND_PARAMETER", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28ad50351d58d5877d661841bfb84ffe13f", null ],
+      [ "VLCB_GENERIC_RESPONSE_STAT_INVALID_MODE", "common_2inc_2vlcb_2common_2module_8h.html#af1c0a74ddedc1da777d8979720d1bd28a8cc32721261bf873cf5cc1cdf41f0a25", null ]
+    ] ],
     [ "VlcbModuleFlags", "common_2inc_2vlcb_2common_2module_8h.html#ae47cd2f0f2aee33e282dc437d41cfd87", [
       [ "VLCB_MODULE_FLAG_EVENT_CONSUMER", "common_2inc_2vlcb_2common_2module_8h.html#ae47cd2f0f2aee33e282dc437d41cfd87a3d2a83465683221c3e9418bb46682f63", null ],
       [ "VLCB_MODULE_FLAG_EVENT_PRODUCER", "common_2inc_2vlcb_2common_2module_8h.html#ae47cd2f0f2aee33e282dc437d41cfd87af3c5a08c9dec8131e4f2129e33147cd2", null ],
@@ -34,8 +57,19 @@ var common_2inc_2vlcb_2common_2module_8h =
       [ "VLCB_MODULE_FLAG_BOOTLOADER", "common_2inc_2vlcb_2common_2module_8h.html#ae47cd2f0f2aee33e282dc437d41cfd87a71287efe7b2499774a7074b01e0f9037", null ],
       [ "VLCB_MODULE_FLAG_CONSUME_OWN_EVENTS", "common_2inc_2vlcb_2common_2module_8h.html#ae47cd2f0f2aee33e282dc437d41cfd87a16a3809c9e5ffd69f4f37cd06a2bce79", null ],
       [ "VLCB_MODULE_FLAG_LEARN_MODE", "common_2inc_2vlcb_2common_2module_8h.html#ae47cd2f0f2aee33e282dc437d41cfd87a3ce51c17e21cdf1aa9bbec94c781bbbd", null ],
-      [ "VLCB_MODULE_FLAG_VLCB", "common_2inc_2vlcb_2common_2module_8h.html#ae47cd2f0f2aee33e282dc437d41cfd87a90a1464dec7f4db84e747a6c9cdfa1cf", null ],
-      [ "VLCB_MODULE_FLAG_SERVICE_DISCOVERY", "common_2inc_2vlcb_2common_2module_8h.html#ae47cd2f0f2aee33e282dc437d41cfd87aeb06c9135d94733a2e35e2dc7b8511ee", null ]
+      [ "VLCB_MODULE_FLAG_VLCB", "common_2inc_2vlcb_2common_2module_8h.html#ae47cd2f0f2aee33e282dc437d41cfd87a90a1464dec7f4db84e747a6c9cdfa1cf", null ]
+    ] ],
+    [ "VlcbModuleMode", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09", [
+      [ "VLCB_MODULE_MODE_UNINITIALIZED", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09a30b6e2165d851df0c811e3e79a391be6", null ],
+      [ "VLCB_MODULE_MODE_IN_SETUP", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09a87cb753632058ea9e0d9f52076ed15ed", null ],
+      [ "VLCB_MODULE_MODE_NORMAL", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09aad07de5e923fdcdb583677db8dc02788", null ],
+      [ "VLCB_MODULE_MODE_ENABLE_LEARN_MODE", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09a92a44f4ebb3b005d3cf096317ca6b584", null ],
+      [ "VLCB_MODULE_MODE_DISABLE_LEARN_MODE", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09a8309e0d1674373ce553637cca40ec0cb", null ],
+      [ "VLCB_MODULE_MODE_ENABLE_EVENT_ACK", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09ac6c0b973e20d299b8eea9ebadd608362", null ],
+      [ "VLCB_MODULE_MODE_DISABLE_EVENT_ACK", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09a48bc38cd2eda2b2df69533ecd895d8ff", null ],
+      [ "VLCB_MODULE_MODE_ENABLE_HEARTBEAT", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09a25e21224b7ae47af93a66e73453df3f1", null ],
+      [ "VLCB_MODULE_MODE_DISABLE_HEARTBEAT", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09a6cb24ec92ffbf3f03636995de654bffc", null ],
+      [ "VLCB_MODULE_MODE_BOOTLOADER", "common_2inc_2vlcb_2common_2module_8h.html#a01224f0dba2af600bccf21ead833ba09a80ce69ec45e210c4879d104d10a1aa05", null ]
     ] ],
     [ "VlcbModuleParam", "common_2inc_2vlcb_2common_2module_8h.html#afe0ff697944049d3adacfa4fef4a3d67", [
       [ "VLCB_MODULE_PARAM_MODULE_PARAMETER_COUNT", "common_2inc_2vlcb_2common_2module_8h.html#afe0ff697944049d3adacfa4fef4a3d67a26c6d1dd77be135a7cce70864553b09b", null ],
@@ -53,5 +87,19 @@ var common_2inc_2vlcb_2common_2module_8h =
       [ "VLCB_MODULE_PARAM_CPU_MANUFACTURER_ID", "common_2inc_2vlcb_2common_2module_8h.html#afe0ff697944049d3adacfa4fef4a3d67acee38443f979373f7e7104632f549a10", null ],
       [ "VLCB_MODULE_PARAM_CPU_MANUFACTURER", "common_2inc_2vlcb_2common_2module_8h.html#afe0ff697944049d3adacfa4fef4a3d67a3f5fbba6a0049d80902b74552005b64d", null ],
       [ "VLCB_MODULE_PARAM_BETA_VERSION", "common_2inc_2vlcb_2common_2module_8h.html#afe0ff697944049d3adacfa4fef4a3d67a4914f3ba221404df4e71d1111d08b6be", null ]
+    ] ],
+    [ "VlcbServiceType", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339", [
+      [ "VLCB_SVC_TYPE_INTERNAL", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339a84274054b157dfcb67eb75a817f0e091", null ],
+      [ "VLCB_SVC_TYPE_MINIMUM_NODE_SERVICE", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339a7fbefb0b19c5b08e3773dcb040739054", null ],
+      [ "VLCB_SVC_TYPE_NODE_VARIABLE", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339a4ef9ad990704525c69e9e77a54f2a74e", null ],
+      [ "VLCB_SVC_TYPE_CAN_BUS", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339a87f0ae03d3ed8c7fda904b45f04c577d", null ],
+      [ "VLCB_SVC_TYPE_LEGACY_EVENT_TEACHING", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339a6a83c9bbf74475e6dd8dbe15173722d3", null ],
+      [ "VLCB_SVC_TYPE_EVENT_PRODUCER", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339a366d369f45a4b4b0122137e25d4e3475", null ],
+      [ "VLCB_SVC_TYPE_EVENT_CONSUMER", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339a8aeb3cf2c497814ff5fa28158fc6f89b", null ],
+      [ "VLCB_SVC_TYPE_EVENT_TEACHING", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339a29a70e503653fa75db480148dbe34a2a", null ],
+      [ "VLCB_SVC_TYPE_CONSUME_OWN_EVENTS", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339adae23fae59061b85a4cd1ca3e01f24a1", null ],
+      [ "VLCB_SVC_TYPE_EVENT_ACKNOWLEDGE", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339a4ac07e7f375696d535189710e489f8bc", null ],
+      [ "VLCB_SVC_TYPE_BOOTLOADER", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339ae128c5500a06b06f41f0dd9f811d4d6a", null ],
+      [ "VLCB_SVC_TYPE_STREAMING", "common_2inc_2vlcb_2common_2module_8h.html#aae6e26c50d2b4bc3c228801eddf7b339a0fe3ee06f2346aab1517e40caa7c1190", null ]
     ] ]
 ];

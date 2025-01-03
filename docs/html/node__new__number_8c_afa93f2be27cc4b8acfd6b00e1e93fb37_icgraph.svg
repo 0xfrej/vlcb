@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="node__new__number_8c.html#acb0c834eaaf6f88fd6f0507ed3e555a4" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="node__new__number_8c.html#acb0c834eaaf6f88fd6f0507ed3e555a4" target="_top" xlink:title="Cast raw value to a node number.">
 <polygon fill="white" stroke="#666666" points="368.75,-46.12 214.75,-46.12 214.75,-25.38 368.75,-25.38 368.75,-46.12"/>
 <text text-anchor="middle" x="291.75" y="-32.62" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_NewNodeNumber</text>
 </a>
@@ -38,7 +38,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="node__new__number__from__bytes_8c.html#adee3c126b7b8bdbe83012706b974da69" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="node__new__number__from__bytes_8c.html#adee3c126b7b8bdbe83012706b974da69" target="_top" xlink:title="Cast raw bytes to a node number.">
 <polygon fill="white" stroke="#666666" points="178.75,-33.5 0,-33.5 0,0 178.75,0 178.75,-33.5"/>
 <text text-anchor="start" x="8" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_defs_NewNodeNumberFrom</text>
 <text text-anchor="middle" x="89.38" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">Bytes</text>

@@ -109,7 +109,7 @@ $(function(){initNavTree('packet__parse_8h.html',''); initResizable(true); });
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for packet_parse.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="packet__parse_8h__incl.svg" width="838" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="packet__parse_8h__incl.svg" width="834" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -131,7 +131,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:aa61f85167251ae3de0e951b40147302d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the CAN packet data into the inner format.  <br /></td></tr>
 <tr class="separator:aa61f85167251ae3de0e951b40147302d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbc4558259bef220d1ce09f4609732f6" id="r_acbc4558259bef220d1ce09f4609732f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbc4558259bef220d1ce09f4609732f6">vlcb_net_adpt_NewCanFrameIdFromPkt</a> (const <a class="el" href="structVlcbNetAdptPkt.html">VlcbNetAdptPkt</a> *const packet, <a class="el" href="#aa1387f2c36e9f3c5789d3e6dad4ae83b">VlcbCanFrameId</a> *const id)</td></tr>
-<tr class="memdesc:acbc4558259bef220d1ce09f4609732f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct new CAN frame ID from a packet.  <br /></td></tr>
+<tr class="memdesc:acbc4558259bef220d1ce09f4609732f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct new CAN frame ID from an inner format packet.  <br /></td></tr>
 <tr class="separator:acbc4558259bef220d1ce09f4609732f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a882c3e3fc6ac43b4aa332177fa48aec3" id="r_a882c3e3fc6ac43b4aa332177fa48aec3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a882c3e3fc6ac43b4aa332177fa48aec3">vlcb_net_adpt_IsCanAdptPktValid</a> (const <a class="el" href="structVlcbNetAdptPkt.html">VlcbNetAdptPkt</a> *const packet)</td></tr>
 <tr class="memdesc:a882c3e3fc6ac43b4aa332177fa48aec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the packed passed in is correctly constructed.  <br /></td></tr>
@@ -219,7 +219,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct new CAN frame ID from a packet. </p>
+<p>Construct new CAN frame ID from an inner format packet. </p>
 <p>This method is useful when constructing outbound packets, provides minimal validation to the packet and maps certain values, like priority, based on the OPCODE.</p>
 <p>It is worthy to note that unknown priority values get alias to the default one.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -319,7 +319,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_427baa8a9a5be237f298d4545d0d1ce2.html">net</a></li><li class="navelem"><a class="el" href="dir_c0575b5e81918ff6cd7d86b5adbed5d0.html">inc</a></li><li class="navelem"><a class="el" href="dir_5314d62625720a050713b0cba532fdc8.html">vlcb</a></li><li class="navelem"><a class="el" href="dir_ca0879ab5012c7f5f5b50184c926c0b0.html">net</a></li><li class="navelem"><a class="el" href="dir_251c2cfa7c9e97b936d12c21e60a89ac.html">adapter</a></li><li class="navelem"><a class="el" href="dir_ba194bd51a911bf8b390351c17b6e626.html">can</a></li><li class="navelem"><a class="el" href="packet__parse_8h.html">packet_parse.h</a></li>
-    <li class="footer">Generated on Mon Nov 4 2024 09:13:33 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

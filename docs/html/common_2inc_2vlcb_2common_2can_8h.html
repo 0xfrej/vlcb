@@ -109,16 +109,16 @@ $(function(){initNavTree('common_2inc_2vlcb_2common_2can_8h.html',''); initResiz
 <div class="textblock"><code>#include &lt;inttypes.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="vlcb__defs_8h_source.html">vlcb_defs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="opcode_8h_source.html">opcode.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for common/inc/vlcb/common/can.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="common_2inc_2vlcb_2common_2can_8h__incl.svg" width="374" height="190"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="common_2inc_2vlcb_2common_2can_8h__incl.svg" width="359" height="190"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="common_2inc_2vlcb_2common_2can_8h__dep__incl.svg" width="1580" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="common_2inc_2vlcb_2common_2can_8h__dep__incl.svg" width="1334" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="common_2inc_2vlcb_2common_2can_8h_source.html">Go to the source code of this file.</a></p>
@@ -131,14 +131,16 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ad42ad890e4874044a9a1094938e52f39" id="r_ad42ad890e4874044a9a1094938e52f39"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a></td></tr>
+<tr class="memdesc:ad42ad890e4874044a9a1094938e52f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">VLCB CAN ID aliad.  <br /></td></tr>
 <tr class="separator:ad42ad890e4874044a9a1094938e52f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8cab5c77f2e62e620e5beb6d58cf561" id="r_ac8cab5c77f2e62e620e5beb6d58cf561"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8cab5c77f2e62e620e5beb6d58cf561">VlcbCanPriority</a></td></tr>
+<tr class="memdesc:ac8cab5c77f2e62e620e5beb6d58cf561"><td class="mdescLeft">&#160;</td><td class="mdescRight">VLCB CAN priority.  <br /></td></tr>
 <tr class="separator:ac8cab5c77f2e62e620e5beb6d58cf561"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a18071d9b36196aff73331930bfe940f8" id="r_a18071d9b36196aff73331930bfe940f8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18071d9b36196aff73331930bfe940f8">VlcbCanPriority</a> { <br />
-&#160;&#160;<a class="el" href="#a18071d9b36196aff73331930bfe940f8a28290a4d40679eb75347e07b6840e58d">VLCB_CAN_PRIO_SELF_ENUM</a> = 0x0
+&#160;&#160;<a class="el" href="#a18071d9b36196aff73331930bfe940f8a28290a4d40679eb75347e07b6840e58d">VLCB_CAN_PRIO_SELF_ENUM</a>
 , <a class="el" href="#a18071d9b36196aff73331930bfe940f8ab7c9ef4349fcd22832e0a32df51f2de3">VLCB_CAN_PRIO_HIGH</a> = 0x4
 , <a class="el" href="#a18071d9b36196aff73331930bfe940f8ae5dd1ffa20241065a63bb0746aade1e7">VLCB_CAN_PRIO_ABOVE</a> = 0x5
 , <a class="el" href="#a18071d9b36196aff73331930bfe940f8a09930e40df9a6e4efda4cb6a4d319d17">VLCB_CAN_PRIO_NORMAL</a> = 0x6
@@ -152,14 +154,19 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a5bacda1a1abb28a3553360ed42d65ac6" id="r_a5bacda1a1abb28a3553360ed42d65ac6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bacda1a1abb28a3553360ed42d65ac6">vlcb_defs_NewCanId</a> (uint8_t <a class="el" href="net_2inc_2vlcb_2net_2packet_2datagram_2dcc_8h.html#a638e4503e0ae6ce655b7ad2e17e8f0ad">value</a>, <a class="el" href="#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a> *const id)</td></tr>
+<tr class="memdesc:a5bacda1a1abb28a3553360ed42d65ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checked cast from raw byte.  <br /></td></tr>
 <tr class="separator:a5bacda1a1abb28a3553360ed42d65ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a068d48dc8fa83a96fd6a69ece2ec95aa" id="r_a068d48dc8fa83a96fd6a69ece2ec95aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a068d48dc8fa83a96fd6a69ece2ec95aa">vlcb_defs_IsCanIdValid</a> (<a class="el" href="#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a> id)</td></tr>
+<tr class="memdesc:a068d48dc8fa83a96fd6a69ece2ec95aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if VLCB CAN ID value is valid.  <br /></td></tr>
 <tr class="separator:a068d48dc8fa83a96fd6a69ece2ec95aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab59093481dcc60c2bbb089acfae4bbb3" id="r_ab59093481dcc60c2bbb089acfae4bbb3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab59093481dcc60c2bbb089acfae4bbb3">vlcb_defs_IsCanPriorityValid</a> (<a class="el" href="#a18071d9b36196aff73331930bfe940f8">VlcbCanPriority</a> prio)</td></tr>
+<tr class="memdesc:ab59093481dcc60c2bbb089acfae4bbb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if CAN priority value is valid.  <br /></td></tr>
 <tr class="separator:ab59093481dcc60c2bbb089acfae4bbb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7b856ebdf097e29dca30ba4e6aef9a7" id="r_ab7b856ebdf097e29dca30ba4e6aef9a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a18071d9b36196aff73331930bfe940f8">VlcbCanPriority</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7b856ebdf097e29dca30ba4e6aef9a7">vlcb_defs_CanPriorityFromOpcode</a> (<a class="el" href="vlcb__defs_8h.html#ab80c8c76c6de5d49862d7469b6c5f88c">VlcbOpCode</a> opc)</td></tr>
+<tr class="memitem:ab7b856ebdf097e29dca30ba4e6aef9a7" id="r_ab7b856ebdf097e29dca30ba4e6aef9a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a18071d9b36196aff73331930bfe940f8">VlcbCanPriority</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7b856ebdf097e29dca30ba4e6aef9a7">vlcb_defs_CanPriorityFromOpcode</a> (<a class="el" href="opcode_8h.html#ab80c8c76c6de5d49862d7469b6c5f88c">VlcbOpCode</a> opc)</td></tr>
+<tr class="memdesc:ab7b856ebdf097e29dca30ba4e6aef9a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a priority for <a class="el" href="opcode_8h.html#ab80c8c76c6de5d49862d7469b6c5f88c">VlcbOpCode</a>.  <br /></td></tr>
 <tr class="separator:ab7b856ebdf097e29dca30ba4e6aef9a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad26aa34cc4e018fd4df83e510a53983f" id="r_ad26aa34cc4e018fd4df83e510a53983f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad26aa34cc4e018fd4df83e510a53983f">vlcb_defs_CanPriorityFromByte</a> (uint8_t val, <a class="el" href="#a18071d9b36196aff73331930bfe940f8">VlcbCanPriority</a> *const prio)</td></tr>
+<tr class="memdesc:ad26aa34cc4e018fd4df83e510a53983f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checked cast from raw byte.  <br /></td></tr>
 <tr class="separator:ad26aa34cc4e018fd4df83e510a53983f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -175,7 +182,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html#l00024">24</a> of file <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html">common/inc/vlcb/common/can.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html#l00058">58</a> of file <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html">common/inc/vlcb/common/can.h</a>.</p>
 
 </div>
 </div>
@@ -192,7 +199,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html#l00009">9</a> of file <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html">common/inc/vlcb/common/can.h</a>.</p>
+<p>VLCB CAN ID aliad. </p>
+<p>Alias ID for a node communicating on CAN bus medium using the VLCB protocol.</p>
+<p>This is added to the CAN frame ID and functions to resolve frame collisions. </p>
+
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html#l00018">18</a> of file <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html">common/inc/vlcb/common/can.h</a>.</p>
 
 </div>
 </div>
@@ -208,7 +219,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html#l00014">14</a> of file <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html">common/inc/vlcb/common/can.h</a>.</p>
+<p>VLCB CAN priority. </p>
+<p>Added value to CAN frame ID to prioritize transmission of some messages on the bus. </p>
+
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html#l00047">47</a> of file <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html">common/inc/vlcb/common/can.h</a>.</p>
 
 </div>
 </div>
@@ -225,7 +239,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a18071d9b36196aff73331930bfe940f8a28290a4d40679eb75347e07b6840e58d" name="a18071d9b36196aff73331930bfe940f8a28290a4d40679eb75347e07b6840e58d"></a>VLCB_CAN_PRIO_SELF_ENUM&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a18071d9b36196aff73331930bfe940f8a28290a4d40679eb75347e07b6840e58d" name="a18071d9b36196aff73331930bfe940f8a28290a4d40679eb75347e07b6840e58d"></a>VLCB_CAN_PRIO_SELF_ENUM&#160;</td><td class="fielddoc"><p>Priority used for <a class="el" href="#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a> resolution </p>
+</td></tr>
 <tr><td class="fieldname"><a id="a18071d9b36196aff73331930bfe940f8ab7c9ef4349fcd22832e0a32df51f2de3" name="a18071d9b36196aff73331930bfe940f8ab7c9ef4349fcd22832e0a32df51f2de3"></a>VLCB_CAN_PRIO_HIGH&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a18071d9b36196aff73331930bfe940f8ae5dd1ffa20241065a63bb0746aade1e7" name="a18071d9b36196aff73331930bfe940f8ae5dd1ffa20241065a63bb0746aade1e7"></a>VLCB_CAN_PRIO_ABOVE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a18071d9b36196aff73331930bfe940f8a09930e40df9a6e4efda4cb6a4d319d17" name="a18071d9b36196aff73331930bfe940f8a09930e40df9a6e4efda4cb6a4d319d17"></a>VLCB_CAN_PRIO_NORMAL&#160;</td><td class="fielddoc"></td></tr>
@@ -233,7 +248,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a18071d9b36196aff73331930bfe940f8ae6770d270a920eb098437e4ffeaf5d27" name="a18071d9b36196aff73331930bfe940f8ae6770d270a920eb098437e4ffeaf5d27"></a>VLCB_CAN_PRIO_LOWEST&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html#l00015">15</a> of file <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html">common/inc/vlcb/common/can.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html#l00048">48</a> of file <a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html">common/inc/vlcb/common/can.h</a>.</p>
 
 </div>
 </div>
@@ -256,6 +271,23 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checked cast from raw byte. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">val</td><td>the raw value to be casted </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">prio</td><td>pointer to the destination variable</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>if the raw value is a valid priority </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">0</td><td>the passed in value was valid </td></tr>
+    <tr><td class="paramname">1</td><td>the passed in value was invalid </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="can__prio__from__byte_8c_source.html#l00006">6</a> of file <a class="el" href="can__prio__from__byte_8c_source.html">can_prio_from_byte.c</a>.</p>
 <div class="dynheader">
@@ -280,11 +312,20 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="#a18071d9b36196aff73331930bfe940f8">VlcbCanPriority</a> vlcb_defs_CanPriorityFromOpcode </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="vlcb__defs_8h.html#ab80c8c76c6de5d49862d7469b6c5f88c">VlcbOpCode</a></td>          <td class="paramname"><span class="paramname"><em>opc</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="opcode_8h.html#ab80c8c76c6de5d49862d7469b6c5f88c">VlcbOpCode</a></td>          <td class="paramname"><span class="paramname"><em>opc</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Get a priority for <a class="el" href="opcode_8h.html#ab80c8c76c6de5d49862d7469b6c5f88c">VlcbOpCode</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">VLCB</td><td>OpCode</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Resolved priority for given opcode </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="can__prio__from__opc_8c_source.html#l00005">5</a> of file <a class="el" href="can__prio__from__opc_8c_source.html">can_prio_from_opc.c</a>.</p>
 <div class="dynheader">
@@ -310,6 +351,15 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>Check if VLCB CAN ID value is valid. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>the value to be checked</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>whether the passed in value was a valid <code>VlcbCanId</code> </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="can__id__is__valid_8c_source.html#l00005">5</a> of file <a class="el" href="can__id__is__valid_8c_source.html">can_id_is_valid.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -333,6 +383,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check if CAN priority value is valid. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">prio</td><td>Priority value to be checked</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>if the priority is valid </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="can__is__prio__valid_8c_source.html#l00005">5</a> of file <a class="el" href="can__is__prio__valid_8c_source.html">can_is_prio_valid.c</a>.</p>
 <div class="dynheader">
@@ -362,6 +421,23 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>Checked cast from raw byte. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>the raw value to be cast into <code>VlcbCanId</code> </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">the</td><td>destination variable for the result</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>whether the cast was successful </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">0</td><td>The value was valid </td></tr>
+    <tr><td class="paramname">1</td><td>The value passed in was not a valid <code>VlcbCanId</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="can__id__new_8c_source.html#l00006">6</a> of file <a class="el" href="can__id__new_8c_source.html">can_id_new.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
@@ -382,7 +458,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_bdd9a5d540de89e9fe90efdfc6973a4f.html">common</a></li><li class="navelem"><a class="el" href="dir_a065f42410ce59d310ee6ca453a28844.html">inc</a></li><li class="navelem"><a class="el" href="dir_dabd002a286daf8b53cce9bb96e1fd79.html">vlcb</a></li><li class="navelem"><a class="el" href="dir_be8fdd8b3e112515ea1901d7be0c2a8d.html">common</a></li><li class="navelem"><a class="el" href="common_2inc_2vlcb_2common_2can_8h.html">can.h</a></li>
-    <li class="footer">Generated on Mon Nov 4 2024 09:13:33 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>
