@@ -1,5 +1,6 @@
 var annotated_dup =
 [
+    [ "CanSvcEvent", "structCanSvcEvent.html", "structCanSvcEvent" ],
     [ "ModuleStateEvent", "structModuleStateEvent.html", "structModuleStateEvent" ],
     [ "ModuleStateEventData", "unionModuleStateEventData.html", "unionModuleStateEventData" ],
     [ "ModuleStateEventSnnMsgData", "structModuleStateEventSnnMsgData.html", "structModuleStateEventSnnMsgData" ],
@@ -17,7 +18,6 @@ var annotated_dup =
     [ "VlcbNetAdptCaps", "structVlcbNetAdptCaps.html", "structVlcbNetAdptCaps" ],
     [ "VlcbNetAdptPkt", "structVlcbNetAdptPkt.html", "structVlcbNetAdptPkt" ],
     [ "VlcbNetAdptPktMeta", "unionVlcbNetAdptPktMeta.html", "unionVlcbNetAdptPktMeta" ],
-    [ "VlcbNetHwAddr", "unionVlcbNetHwAddr.html", "unionVlcbNetHwAddr" ],
     [ "VlcbNetIface", "structVlcbNetIface.html", "structVlcbNetIface" ],
     [ "VlcbNetIfacePollResult", "structVlcbNetIfacePollResult.html", "structVlcbNetIfacePollResult" ],
     [ "VlcbNetPacket", "structVlcbNetPacket.html", "structVlcbNetPacket" ],
@@ -25,7 +25,11 @@ var annotated_dup =
     [ "VlcbNetSocketDatagram", "structVlcbNetSocketDatagram.html", "structVlcbNetSocketDatagram" ],
     [ "VlcbNetSocketList", "structVlcbNetSocketList.html", "structVlcbNetSocketList" ],
     [ "VlcbNetSocketListIter", "structVlcbNetSocketListIter.html", "structVlcbNetSocketListIter" ],
+    [ "VlcbNetSocketPacketToken", "structVlcbNetSocketPacketToken.html", "structVlcbNetSocketPacketToken" ],
+    [ "VlcbNetWireAddr", "unionVlcbNetWireAddr.html", "unionVlcbNetWireAddr" ],
+    [ "VlcbNetWireEndpoint", "structVlcbNetWireEndpoint.html", "structVlcbNetWireEndpoint" ],
     [ "VlcbPacketBuf", "structVlcbPacketBuf.html", "structVlcbPacketBuf" ],
+    [ "VlcbPacketBufToken", "structVlcbPacketBufToken.html", "structVlcbPacketBufToken" ],
     [ "VlcbPlatformLedDriver", "structVlcbPlatformLedDriver.html", "structVlcbPlatformLedDriver" ],
     [ "VlcbPlatformLedEffect", "structVlcbPlatformLedEffect.html", "structVlcbPlatformLedEffect" ],
     [ "VlcbPlatformLedEffectData", "unionVlcbPlatformLedEffectData.html", "unionVlcbPlatformLedEffectData" ],

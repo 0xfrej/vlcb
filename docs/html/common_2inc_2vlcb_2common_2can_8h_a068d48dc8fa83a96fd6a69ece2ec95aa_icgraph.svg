@@ -75,9 +75,9 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="addr_8c.html#a572dd582301bafe582b697727ab12387" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="361.62,-20.75 228.62,-20.75 228.62,0 361.62,0 361.62,-20.75"/>
-<text text-anchor="middle" x="295.12" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_net_IsHwAddrValid</text>
+<g id="a_Node000006"><a xlink:href="addr_8c.html#a0ab65595519fc6fe5e4b49b6f0fe0ee0" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="365,-20.75 225.25,-20.75 225.25,0 365,0 365,-20.75"/>
+<text text-anchor="middle" x="295.12" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">vlcb_net_IsWireAddrValid</text>
 </a>
 </g>
 </g>

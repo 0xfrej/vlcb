@@ -1,7 +1,7 @@
 var endian_8h =
 [
-    [ "htonl", "endian_8h.html#a9421829d2e2251a14fbee106026fa4e6", null ],
-    [ "htons", "endian_8h.html#ada7ce35f49c9b735d495ebed3a97421e", null ],
-    [ "ntohl", "endian_8h.html#a3a4394992703021896d4c8beb257e9b7", null ],
-    [ "ntohs", "endian_8h.html#a433eb2718ba6c2a08ff649a475ebe7f6", null ]
+    [ "vlcb_htonl", "endian_8h.html#a336fc4caad9be0dab7f2529474b000a6", null ],
+    [ "vlcb_htons", "endian_8h.html#ad9ca3d602189bfc2c39b66239b15d4d5", null ],
+    [ "vlcb_ntohl", "endian_8h.html#aaa3f4378f1fb46bae703873745c622fb", null ],
+    [ "vlcb_ntohs", "endian_8h.html#a1e3c39ac48f92947ed3a0ee628ba15cd", null ]
 ];

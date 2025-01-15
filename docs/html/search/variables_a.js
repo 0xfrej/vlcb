@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['major_0',['major',['../structVlcbModuleVersion.html#a18418a4e1a9d563e1c4f2de646a86e04',1,'VlcbModuleVersion']]],
-  ['maxlen_1',['maxlen',['../structVlcbPacketBuf.html#a7acee390c20ffe2eb91b0bdb518fb440',1,'VlcbPacketBuf']]],
-  ['medium_2',['medium',['../structVlcbNetAdptPkt.html#a3526968b17176d44ea3d27e6aa18644f',1,'VlcbNetAdptPkt::medium'],['../structVlcbNetAdptCaps.html#a24c80fcc2cfe07dd383b93f1febe7497',1,'VlcbNetAdptCaps::medium']]],
-  ['message_3',['message',['../structVlcbLogMessage.html#a2e7531216529ad4da1bbce6ce97f0e44',1,'VlcbLogMessage']]],
-  ['meta_4',['meta',['../structVlcbNetAdptPkt.html#a28192625e0e93faf1a85a90d1b4983b8',1,'VlcbNetAdptPkt']]],
-  ['minor_5',['minor',['../structVlcbModuleVersion.html#aba0f3c64ee776c9c3f3cf6a2a813982d',1,'VlcbModuleVersion']]],
-  ['mode_6',['mode',['../net_2inc_2vlcb_2net_2packet_2datagram_2dcc_8h.html#a37e90f5e3bd99fac2021fb3a326607d4',1,'dcc.h']]]
+  ['lastchangeat_0',['lastChangeAt',['../structVlcbPlatformSwitchDriver.html#adcc5d7273e402df305e916c4bd0f4239',1,'VlcbPlatformSwitchDriver']]],
+  ['lastheartbeat_1',['lastHeartbeat',['../structVlcbModule.html#a2a8b328212231874ce831b5f8fa02388',1,'VlcbModule']]],
+  ['lasttimestamp_2',['lastTimestamp',['../structVlcbNetWireEndpoint.html#a7e1774e6cae0af5fdd0c1a718d3b9554',1,'VlcbNetWireEndpoint']]],
+  ['len_3',['len',['../structVlcbModuleParams.html#acc7021d8f40fa8a7051fcfad3acc735b',1,'VlcbModuleParams::len'],['../structVlcbNetSocketList.html#a1893291ab8cac45c1330309279e606a5',1,'VlcbNetSocketList::len']]],
+  ['list_4',['list',['../structVlcbNetSocketListIter.html#a3173efedd871981668e3e10f97091c6f',1,'VlcbNetSocketListIter']]],
+  ['locofunctionon_5',['LocoFunctionOn',['../net_2inc_2vlcb_2net_2packet_2datagram_2dcc_8h.html#ac97158ec0cb688b457b41cc123ff7296',1,'dcc.h']]],
+  ['loghandler_6',['logHandler',['../log_8c.html#a90bb67a3d46d75504fc988850a337ad7',1,'log.c']]],
+  ['longeventaccessoryoff1_7',['LongEventAccessoryOff1',['../net_2inc_2vlcb_2net_2packet_2datagram_2event_8h.html#a32de84466885352990299ff014c7849a',1,'event.h']]]
 ];

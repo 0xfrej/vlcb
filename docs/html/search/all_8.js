@@ -17,8 +17,6 @@ var searchData=
   ['head_14',['head',['../structVlcbPacketBuf.html#a8cdac911c9aeeb3477e3344b8c10fba4',1,'VlcbPacketBuf']]],
   ['heartbeat_15',['Heartbeat',['../net_2inc_2vlcb_2net_2packet_2datagram_2module_8h.html#a5c3d4f62ab30739ba2663663dd28fcff',1,'module.h']]],
   ['heartbeatsequence_16',['heartbeatSequence',['../structVlcbModule.html#af5adb597a2eeb04f0c4e4c79ca930a40',1,'VlcbModule']]],
-  ['htonl_17',['htonl',['../endian_8h.html#a9421829d2e2251a14fbee106026fa4e6',1,'endian.h']]],
-  ['htons_18',['htons',['../endian_8h.html#ada7ce35f49c9b735d495ebed3a97421e',1,'endian.h']]],
-  ['hwaddr_19',['hwAddr',['../structVlcbModuleConfig.html#afd6b81511803edfa272775d5f811d689',1,'VlcbModuleConfig']]],
-  ['hz_20',['hz',['../structVlcbPlatformLedEffectDataBlink.html#ad941e11a3bf10f24be0cc2853647f82b',1,'VlcbPlatformLedEffectDataBlink']]]
+  ['hwaddr_17',['hwAddr',['../structVlcbModuleConfig.html#a0b6435aa6c83b71e2760e96c9479258e',1,'VlcbModuleConfig']]],
+  ['hz_18',['hz',['../structVlcbPlatformLedEffectDataBlink.html#ad941e11a3bf10f24be0cc2853647f82b',1,'VlcbPlatformLedEffectDataBlink']]]
 ];

@@ -1,5 +1,6 @@
 var common_2inc_2vlcb_2common_2can_8h =
 [
+    [ "VLCB_CAN_ID_EMPTY", "common_2inc_2vlcb_2common_2can_8h.html#a2bf1a9590999bd78e2788150dff6b751", null ],
     [ "VLCB_CAN_PRIO_DEFAULT", "common_2inc_2vlcb_2common_2can_8h.html#abd4e90384f86e2bb1dbf05f5da9770b3", null ],
     [ "VlcbCanId", "common_2inc_2vlcb_2common_2can_8h.html#ad42ad890e4874044a9a1094938e52f39", null ],
     [ "VlcbCanPriority", "common_2inc_2vlcb_2common_2can_8h.html#ac8cab5c77f2e62e620e5beb6d58cf561", null ],

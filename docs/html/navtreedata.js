@@ -25,13 +25,15 @@
 var NAVTREE =
 [
   [ "VLCB SDK", "index.html", [
+    [ "Deprecated List", "deprecated.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
       [ "Data Fields", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Enumerator", "functions_eval.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -52,10 +54,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "adapter_8c.html",
-"dir_f1df6bf3c4d5ecb8cd899af8a2980af4.html",
-"module_2inc_2vlcb_2module_8h.html#a15ce5db19c8e79ec52bd78fc76940c33",
-"opcode_8h.html#ab80c8c76c6de5d49862d7469b6c5f88cab4d333ae8186d53c9b54871679a65c15",
-"src_2param_8h.html"
+"dir_be8fdd8b3e112515ea1901d7be0c2a8d.html",
+"merg_8h.html#acccc02d5f4ba6a303f26241459673f3aacb1ba700c3bfa5053bb488fd5dda487d",
+"opcode_8h.html#ab80c8c76c6de5d49862d7469b6c5f88ca93f32221829f205c26728bbfb0ddea40",
+"socket_8h.html#aa132a1a7db070818f04c678980b3cac6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -103,27 +103,34 @@ $(function(){initNavTree('time_8h_source.html',''); initResizable(true); });
 <div class="contents">
 <a href="time_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Alias to libc time.h, used by this SDK to provide easy to shim entry point</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// should we need to implement shims for certain platforms. The idea is not to</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// reinvent the &quot;time&quot; wheel by introducing custom functions and types.</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">// this should also keep the footprint as minimal as possible</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="time_8h.html">time.h</a>&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="time_8h.html#ab82b0190a9360bc97f1249408977c866">   10</a></span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="time_8h.html#ab82b0190a9360bc97f1249408977c866">vlcb_platform_time_DiffInMs</a>(<span class="keyword">const</span> clock_t start, <span class="keyword">const</span> clock_t end) {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keywordflow">return</span> ((<span class="keywordtype">double</span>)(end - start) / CLOCKS_PER_SEC) * 1000.0;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="time_8h.html#a9a966b6d96396d1fc5f23ccb1da50404">    5</a></span><span class="keyword">typedef</span> uint32_t <a class="code hl_typedef" href="time_8h.html#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a>;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><a class="code hl_typedef" href="time_8h.html#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a> <a class="code hl_function" href="time_8h.html#ac4c09984f36f2279075afcf308013f76">vlcb_time_Milis</a>();</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="time_8h.html#a2a34cabf5e5715e8c1d5f56048a2f9f9">    9</a></span><span class="preprocessor">#define VLCB_MILIS_MAX UINT32_MAX</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="time_8h.html#a6d9d94c15f365e302dcdd44f25dedc6c">   11</a></span><span class="keyword">static</span> <span class="keyword">inline</span> <a class="code hl_typedef" href="time_8h.html#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a> <a class="code hl_function" href="time_8h.html#a6d9d94c15f365e302dcdd44f25dedc6c">vlcb_time_DiffMilis</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="time_8h.html#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a> start,</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>                                             <span class="keyword">const</span> <a class="code hl_typedef" href="time_8h.html#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a> end) {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  <span class="keywordflow">if</span> (end &lt; start) {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordflow">return</span> (<a class="code hl_define" href="time_8h.html#a2a34cabf5e5715e8c1d5f56048a2f9f9">VLCB_MILIS_MAX</a> - start) + end;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  }</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  <span class="keywordflow">return</span> (end - start);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
 </div>
-<div class="ttc" id="atime_8h_html"><div class="ttname"><a href="time_8h.html">time.h</a></div></div>
-<div class="ttc" id="atime_8h_html_ab82b0190a9360bc97f1249408977c866"><div class="ttname"><a href="time_8h.html#ab82b0190a9360bc97f1249408977c866">vlcb_platform_time_DiffInMs</a></div><div class="ttdeci">static double vlcb_platform_time_DiffInMs(const clock_t start, const clock_t end)</div><div class="ttdef"><b>Definition</b> <a href="#l00010">time.h:10</a></div></div>
+<div class="ttc" id="atime_8h_html_a2a34cabf5e5715e8c1d5f56048a2f9f9"><div class="ttname"><a href="time_8h.html#a2a34cabf5e5715e8c1d5f56048a2f9f9">VLCB_MILIS_MAX</a></div><div class="ttdeci">#define VLCB_MILIS_MAX</div><div class="ttdef"><b>Definition</b> <a href="#l00009">time.h:9</a></div></div>
+<div class="ttc" id="atime_8h_html_a6d9d94c15f365e302dcdd44f25dedc6c"><div class="ttname"><a href="time_8h.html#a6d9d94c15f365e302dcdd44f25dedc6c">vlcb_time_DiffMilis</a></div><div class="ttdeci">static vlcb_milis vlcb_time_DiffMilis(const vlcb_milis start, const vlcb_milis end)</div><div class="ttdef"><b>Definition</b> <a href="#l00011">time.h:11</a></div></div>
+<div class="ttc" id="atime_8h_html_a9a966b6d96396d1fc5f23ccb1da50404"><div class="ttname"><a href="time_8h.html#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a></div><div class="ttdeci">uint32_t vlcb_milis</div><div class="ttdef"><b>Definition</b> <a href="#l00005">time.h:5</a></div></div>
+<div class="ttc" id="atime_8h_html_ac4c09984f36f2279075afcf308013f76"><div class="ttname"><a href="time_8h.html#ac4c09984f36f2279075afcf308013f76">vlcb_time_Milis</a></div><div class="ttdeci">vlcb_milis vlcb_time_Milis()</div><div class="ttdef"><b>Definition</b> <a href="time_8c_source.html#l00006">time.c:6</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c5a52a81292cf9a5167198f4f346d6d9.html">platform</a></li><li class="navelem"><a class="el" href="dir_d0dbfc5afe52f9e9278ab3044cf3a498.html">inc</a></li><li class="navelem"><a class="el" href="dir_011a1ce7cb8341f18a3c354b8ea7ac96.html">vlcb</a></li><li class="navelem"><a class="el" href="dir_cbc9439951466582abb6f6ea7a9f4a2c.html">platform</a></li><li class="navelem"><a class="el" href="time_8h.html">time.h</a></li>
-    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Jan 15 2025 17:24:52 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

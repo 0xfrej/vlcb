@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['name_0',['name',['../structVlcbModule.html#a4e2a8027c67f43acfe3c5ca25c2716b3',1,'VlcbModule']]],
-  ['nodeaddr_1',['nodeAddr',['../structVlcbModuleStateMachineSetupData.html#adb74f08546b99e305e270d9019ebd071',1,'VlcbModuleStateMachineSetupData::nodeAddr'],['../structModuleStateEventSnnMsgData.html#abfa39fb1d443429ec74d544f911feb3f',1,'ModuleStateEventSnnMsgData::nodeAddr']]],
-  ['nodenumber_2',['nodeNumber',['../structVlcbEvent.html#a11048047ece735f52d9d8a0c41556879',1,'VlcbEvent::nodeNumber'],['../structVlcbModuleConfig.html#ace3f0cb4e0141536c9098fc14b2c4722',1,'VlcbModuleConfig::nodeNumber'],['../net_2inc_2vlcb_2net_2packet_2datagram_2event_8h.html#a7f0b37deb14819da745c50e4dcda6802',1,'nodeNumber:&#160;event.h'],['../net_2inc_2vlcb_2net_2packet_2datagram_2module_8h.html#a7f0b37deb14819da745c50e4dcda6802',1,'nodeNumber:&#160;module.h']]],
-  ['nodevariablevalue_3',['NodeVariableValue',['../net_2inc_2vlcb_2net_2packet_2datagram_2module_8h.html#a88d4bb0d2982f6f126794338300b7011',1,'module.h']]]
+  ['major_0',['major',['../structVlcbModuleVersion.html#a18418a4e1a9d563e1c4f2de646a86e04',1,'VlcbModuleVersion']]],
+  ['maxlen_1',['maxlen',['../structVlcbPacketBuf.html#a7acee390c20ffe2eb91b0bdb518fb440',1,'VlcbPacketBuf']]],
+  ['medium_2',['medium',['../structVlcbNetAdptPkt.html#a3526968b17176d44ea3d27e6aa18644f',1,'VlcbNetAdptPkt::medium'],['../structVlcbNetAdptCaps.html#a24c80fcc2cfe07dd383b93f1febe7497',1,'VlcbNetAdptCaps::medium']]],
+  ['message_3',['message',['../structVlcbLogMessage.html#a2e7531216529ad4da1bbce6ce97f0e44',1,'VlcbLogMessage']]],
+  ['meta_4',['meta',['../structVlcbNetAdptPkt.html#a28192625e0e93faf1a85a90d1b4983b8',1,'VlcbNetAdptPkt::meta'],['../structVlcbNetWireEndpoint.html#a7c43c71d600ca7b9f8b6ea22cf3be68b',1,'VlcbNetWireEndpoint::meta']]],
+  ['minor_5',['minor',['../structVlcbModuleVersion.html#aba0f3c64ee776c9c3f3cf6a2a813982d',1,'VlcbModuleVersion']]],
+  ['mode_6',['mode',['../net_2inc_2vlcb_2net_2packet_2datagram_2dcc_8h.html#a37e90f5e3bd99fac2021fb3a326607d4',1,'dcc.h']]]
 ];

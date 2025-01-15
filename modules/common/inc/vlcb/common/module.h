@@ -47,7 +47,7 @@ typedef struct {
 typedef uint8_t VlcbServiceVersion;
 
 /**
- * @brief Error codes for #VLCB_OPC_COMMAN TODO: fix the reference
+ * @brief Error codes for #VLCB_OPC_COMMAND_ERROR
  */
 typedef uint8_t VlcbCommandError;
 enum VlcbCommandError {

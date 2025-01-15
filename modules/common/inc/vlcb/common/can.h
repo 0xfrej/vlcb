@@ -22,7 +22,7 @@ typedef uint8_t VlcbCanId;
  * @brief Checked cast from raw byte
  *
  * @param[in] value the raw value to be cast into `VlcbCanId`
- * @param[out] the destination variable for the result
+ * @param[out] id the destination variable for the result
  *
  * @return whether the cast was successful
  * @retval 0 The value was valid
@@ -70,7 +70,7 @@ bool vlcb_defs_IsCanPriorityValid(VlcbCanPriority prio);
 /**
  * @brief Get a priority for @ref VlcbOpCode
  *
- * @param[in] VLCB OpCode
+ * @param[in] opc VLCB OpCode
  *
  * @return Resolved priority for given opcode
  */

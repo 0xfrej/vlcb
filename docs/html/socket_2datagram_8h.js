@@ -19,7 +19,7 @@ var socket_2datagram_8h =
       [ "VLCB_NET_SOKC_DGRAM_SEND_ERR_COUNT", "socket_2datagram_8h.html#a28028d287c51d607de89fa30fafd59eda4f3c829a6f8fd6a646b360b9c6ec87bf", null ]
     ] ],
     [ "vlcb_net_sock_dgram_Flush", "socket_2datagram_8h.html#ace9a39a2d4982328c45166d299f7e60e", null ],
-    [ "vlcb_net_sock_dgram_New", "socket_2datagram_8h.html#a5bb2f9672ef998d9552159a44875dc0b", null ],
+    [ "vlcb_net_sock_dgram_New", "socket_2datagram_8h.html#af395cf7ab49dd5071cbe58f1c4286720", null ],
     [ "vlcb_net_sock_dgram_Recv", "socket_2datagram_8h.html#a107d2d2542862f851d0fd20080b277cb", null ],
     [ "vlcb_net_sock_dgram_Send", "socket_2datagram_8h.html#a7da610c48db02cd38212ef1545d00f00", null ],
     [ "vlcb_net_sock_dgram_SendErrToStr", "socket_2datagram_8h.html#a396e9e0c1c9943bbb0cb52fe73967630", null ],

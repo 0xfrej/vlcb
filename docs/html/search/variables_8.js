@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['iface_0',['iface',['../structVlcbModule.html#a73f17f844df5b42ba82912c8be44fd42',1,'VlcbModule']]],
-  ['index_1',['index',['../net_2inc_2vlcb_2net_2packet_2datagram_2event_8h.html#aae5a12e607d0f782506d9e6ec6179c64',1,'index:&#160;event.h'],['../net_2inc_2vlcb_2net_2packet_2datagram_2module_8h.html#aae5a12e607d0f782506d9e6ec6179c64',1,'index:&#160;module.h']]],
-  ['is_5frtr_2',['is_rtr',['../structVlcbNetAdptCanPktMeta.html#aaa7a3d83327b909fca9296c7beaa1832',1,'VlcbNetAdptCanPktMeta']]],
-  ['isreversed_3',['isReversed',['../net_2inc_2vlcb_2net_2packet_2datagram_2dcc_8h.html#a34f985c0f977edb23c52dd39bc0b8750',1,'dcc.h']]]
+  ['haschanged_0',['hasChanged',['../structVlcbPlatformSwitchDriver.html#a40c57627528bb02cbdc194ba4e59efeb',1,'VlcbPlatformSwitchDriver']]],
+  ['haseffect_1',['hasEffect',['../structVlcbPlatformLedDriver.html#a80996de10503b6a552f93c842273575e',1,'VlcbPlatformLedDriver']]],
+  ['hasstarted_2',['hasStarted',['../structVlcbPlatformLedEffect.html#a3256eda78e880c016b16f45aef9554a1',1,'VlcbPlatformLedEffect']]],
+  ['head_3',['head',['../structVlcbPacketBuf.html#a8cdac911c9aeeb3477e3344b8c10fba4',1,'VlcbPacketBuf']]],
+  ['heartbeat_4',['Heartbeat',['../net_2inc_2vlcb_2net_2packet_2datagram_2module_8h.html#a5c3d4f62ab30739ba2663663dd28fcff',1,'module.h']]],
+  ['heartbeatsequence_5',['heartbeatSequence',['../structVlcbModule.html#af5adb597a2eeb04f0c4e4c79ca930a40',1,'VlcbModule']]],
+  ['hwaddr_6',['hwAddr',['../structVlcbModuleConfig.html#a0b6435aa6c83b71e2760e96c9479258e',1,'VlcbModuleConfig']]],
+  ['hz_7',['hz',['../structVlcbPlatformLedEffectDataBlink.html#ad941e11a3bf10f24be0cc2853647f82b',1,'VlcbPlatformLedEffectDataBlink']]]
 ];

@@ -100,43 +100,78 @@ $(function(){initNavTree('addr_8h.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">addr.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="common_2inc_2vlcb_2common_2can_8h_source.html">vlcb/common/can.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="time_8h_source.html">vlcb/platform/time.h</a>&quot;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for addr.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8h__incl.svg" width="359" height="266"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8h__incl.svg" width="587" height="266"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8h__dep__incl.svg" width="866" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8h__dep__incl.svg" width="1442" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="addr_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionVlcbNetHwAddr.html">VlcbNetHwAddr</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionVlcbNetWireAddr.html">VlcbNetWireAddr</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structVlcbNetWireEndpoint.html">VlcbNetWireEndpoint</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:aa2003a78ef8f482c7fe5b2bf8eac05d0" id="r_aa2003a78ef8f482c7fe5b2bf8eac05d0"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structVlcbNetWireEndpoint.html">VlcbNetWireEndpoint</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2003a78ef8f482c7fe5b2bf8eac05d0">VlcbNetWireEndpointHandle</a></td></tr>
+<tr class="separator:aa2003a78ef8f482c7fe5b2bf8eac05d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a1423a1155f8265f43d497a9396472504" id="r_a1423a1155f8265f43d497a9396472504"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1423a1155f8265f43d497a9396472504">VlcbNetMedium</a> { <a class="el" href="#a1423a1155f8265f43d497a9396472504abd96c05cc8f94a727544f068266155ca">VLCB_MEDIUM_CAN</a>
  }</td></tr>
 <tr class="separator:a1423a1155f8265f43d497a9396472504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ead1006631174d78f5ecd0370438b5c" id="r_a9ead1006631174d78f5ecd0370438b5c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ead1006631174d78f5ecd0370438b5c">VlcbNetWireCanState</a> { <a class="el" href="#a9ead1006631174d78f5ecd0370438b5ca3c2ad2761753c4f5cbc8611955f0da97">VLCB_NET_WIRE_CAN_STATE_UNINITIALIZED</a> = 0
+, <a class="el" href="#a9ead1006631174d78f5ecd0370438b5ca012681c375fa8ba269cecca44796c12b">VLCB_NET_WIRE_CAN_STATE_ENUMERATING</a>
+, <a class="el" href="#a9ead1006631174d78f5ecd0370438b5ca351d89e1318019632510a9de6daac7f4">VLCB_NET_WIRE_CAN_STATE_INITIALIZED</a>
+, <a class="el" href="#a9ead1006631174d78f5ecd0370438b5ca6a5fef33457a1611e8556c80c0697fdf">VLCB_NET_WIRE_CAN_STATE_RESPONDING</a>
+ }</td></tr>
+<tr class="separator:a9ead1006631174d78f5ecd0370438b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a79203c23d41737d8bd9509c1e05a7026" id="r_a79203c23d41737d8bd9509c1e05a7026"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79203c23d41737d8bd9509c1e05a7026">vlcb_net_IsHwAddrValid</a> (<a class="el" href="#a1423a1155f8265f43d497a9396472504">VlcbNetMedium</a> medium, <a class="el" href="unionVlcbNetHwAddr.html">VlcbNetHwAddr</a> addr)</td></tr>
-<tr class="separator:a79203c23d41737d8bd9509c1e05a7026"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a296b58687413d6a830b8a96d214d0c7f" id="r_a296b58687413d6a830b8a96d214d0c7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionVlcbNetHwAddr.html">VlcbNetHwAddr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a296b58687413d6a830b8a96d214d0c7f">vlcb_net_NewCanIdHwAddr</a> (<a class="el" href="common_2inc_2vlcb_2common_2can_8h.html#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a> id)</td></tr>
-<tr class="separator:a296b58687413d6a830b8a96d214d0c7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d3f92953278599a373c60afe6806c6" id="r_a83d3f92953278599a373c60afe6806c6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83d3f92953278599a373c60afe6806c6">vlcb_net_IsWireEndpointValid</a> (<a class="el" href="#aa2003a78ef8f482c7fe5b2bf8eac05d0">VlcbNetWireEndpointHandle</a> endpoint)</td></tr>
+<tr class="separator:a83d3f92953278599a373c60afe6806c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a289b27d036b1ff7cbc8b75f0ba5a7864" id="r_a289b27d036b1ff7cbc8b75f0ba5a7864"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a289b27d036b1ff7cbc8b75f0ba5a7864">vlcb_net_IsWireAddrValid</a> (<a class="el" href="#a1423a1155f8265f43d497a9396472504">VlcbNetMedium</a> medium, <a class="el" href="unionVlcbNetWireAddr.html">VlcbNetWireAddr</a> addr)</td></tr>
+<tr class="separator:a289b27d036b1ff7cbc8b75f0ba5a7864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515e45396e971dc5d7049a78a51cb45f" id="r_a515e45396e971dc5d7049a78a51cb45f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionVlcbNetWireAddr.html">VlcbNetWireAddr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a515e45396e971dc5d7049a78a51cb45f">vlcb_net_NewCanWireAddr</a> (<a class="el" href="common_2inc_2vlcb_2common_2can_8h.html#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a> id)</td></tr>
+<tr class="separator:a515e45396e971dc5d7049a78a51cb45f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="aa2003a78ef8f482c7fe5b2bf8eac05d0" name="aa2003a78ef8f482c7fe5b2bf8eac05d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2003a78ef8f482c7fe5b2bf8eac05d0">&#9670;&#160;</a></span>VlcbNetWireEndpointHandle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="structVlcbNetWireEndpoint.html">VlcbNetWireEndpoint</a>* const <a class="el" href="#aa2003a78ef8f482c7fe5b2bf8eac05d0">VlcbNetWireEndpointHandle</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="addr_8h_source.html#l00033">33</a> of file <a class="el" href="addr_8h_source.html">addr.h</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a1423a1155f8265f43d497a9396472504" name="a1423a1155f8265f43d497a9396472504"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1423a1155f8265f43d497a9396472504">&#9670;&#160;</a></span>VlcbNetMedium</h2>
@@ -153,26 +188,48 @@ Functions</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1423a1155f8265f43d497a9396472504abd96c05cc8f94a727544f068266155ca" name="a1423a1155f8265f43d497a9396472504abd96c05cc8f94a727544f068266155ca"></a>VLCB_MEDIUM_CAN&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="addr_8h_source.html#l00005">5</a> of file <a class="el" href="addr_8h_source.html">addr.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="addr_8h_source.html#l00007">7</a> of file <a class="el" href="addr_8h_source.html">addr.h</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a79203c23d41737d8bd9509c1e05a7026" name="a79203c23d41737d8bd9509c1e05a7026"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79203c23d41737d8bd9509c1e05a7026">&#9670;&#160;</a></span>vlcb_net_IsHwAddrValid()</h2>
+<a id="a9ead1006631174d78f5ecd0370438b5c" name="a9ead1006631174d78f5ecd0370438b5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ead1006631174d78f5ecd0370438b5c">&#9670;&#160;</a></span>VlcbNetWireCanState</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool vlcb_net_IsHwAddrValid </td>
+          <td class="memname">enum <a class="el" href="#a9ead1006631174d78f5ecd0370438b5c">VlcbNetWireCanState</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9ead1006631174d78f5ecd0370438b5ca3c2ad2761753c4f5cbc8611955f0da97" name="a9ead1006631174d78f5ecd0370438b5ca3c2ad2761753c4f5cbc8611955f0da97"></a>VLCB_NET_WIRE_CAN_STATE_UNINITIALIZED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ead1006631174d78f5ecd0370438b5ca012681c375fa8ba269cecca44796c12b" name="a9ead1006631174d78f5ecd0370438b5ca012681c375fa8ba269cecca44796c12b"></a>VLCB_NET_WIRE_CAN_STATE_ENUMERATING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ead1006631174d78f5ecd0370438b5ca351d89e1318019632510a9de6daac7f4" name="a9ead1006631174d78f5ecd0370438b5ca351d89e1318019632510a9de6daac7f4"></a>VLCB_NET_WIRE_CAN_STATE_INITIALIZED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9ead1006631174d78f5ecd0370438b5ca6a5fef33457a1611e8556c80c0697fdf" name="a9ead1006631174d78f5ecd0370438b5ca6a5fef33457a1611e8556c80c0697fdf"></a>VLCB_NET_WIRE_CAN_STATE_RESPONDING&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="addr_8h_source.html#l00011">11</a> of file <a class="el" href="addr_8h_source.html">addr.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a289b27d036b1ff7cbc8b75f0ba5a7864" name="a289b27d036b1ff7cbc8b75f0ba5a7864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a289b27d036b1ff7cbc8b75f0ba5a7864">&#9670;&#160;</a></span>vlcb_net_IsWireAddrValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool vlcb_net_IsWireAddrValid </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a1423a1155f8265f43d497a9396472504">VlcbNetMedium</a></td>          <td class="paramname"><span class="paramname"><em>medium</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="unionVlcbNetHwAddr.html">VlcbNetHwAddr</a></td>          <td class="paramname"><span class="paramname"><em>addr</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="unionVlcbNetWireAddr.html">VlcbNetWireAddr</a></td>          <td class="paramname"><span class="paramname"><em>addr</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -181,19 +238,41 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8h_a79203c23d41737d8bd9509c1e05a7026_cgraph.svg" width="407" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8h_a289b27d036b1ff7cbc8b75f0ba5a7864_cgraph.svg" width="416" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="a296b58687413d6a830b8a96d214d0c7f" name="a296b58687413d6a830b8a96d214d0c7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a296b58687413d6a830b8a96d214d0c7f">&#9670;&#160;</a></span>vlcb_net_NewCanIdHwAddr()</h2>
+<a id="a83d3f92953278599a373c60afe6806c6" name="a83d3f92953278599a373c60afe6806c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83d3f92953278599a373c60afe6806c6">&#9670;&#160;</a></span>vlcb_net_IsWireEndpointValid()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="unionVlcbNetHwAddr.html">VlcbNetHwAddr</a> vlcb_net_NewCanIdHwAddr </td>
+          <td class="memname">bool vlcb_net_IsWireEndpointValid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aa2003a78ef8f482c7fe5b2bf8eac05d0">VlcbNetWireEndpointHandle</a></td>          <td class="paramname"><span class="paramname"><em>endpoint</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8h_a83d3f92953278599a373c60afe6806c6_icgraph.svg" width="1128" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a515e45396e971dc5d7049a78a51cb45f" name="a515e45396e971dc5d7049a78a51cb45f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515e45396e971dc5d7049a78a51cb45f">&#9670;&#160;</a></span>vlcb_net_NewCanWireAddr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="unionVlcbNetWireAddr.html">VlcbNetWireAddr</a> vlcb_net_NewCanWireAddr </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="common_2inc_2vlcb_2common_2can_8h.html#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
           <td></td>
@@ -202,11 +281,6 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="addr_8c_source.html#l00017">17</a> of file <a class="el" href="addr_8c_source.html">addr.c</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8h_a296b58687413d6a830b8a96d214d0c7f_icgraph.svg" width="498" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
@@ -216,7 +290,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_427baa8a9a5be237f298d4545d0d1ce2.html">net</a></li><li class="navelem"><a class="el" href="dir_c0575b5e81918ff6cd7d86b5adbed5d0.html">inc</a></li><li class="navelem"><a class="el" href="dir_5314d62625720a050713b0cba532fdc8.html">vlcb</a></li><li class="navelem"><a class="el" href="dir_ca0879ab5012c7f5f5b50184c926c0b0.html">net</a></li><li class="navelem"><a class="el" href="addr_8h.html">addr.h</a></li>
-    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Jan 15 2025 17:24:52 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

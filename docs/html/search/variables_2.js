@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['can_0',['can',['../unionVlcbNetAdptPktMeta.html#a1b05acf6ad7845230a2aa86a2b1f5c0e',1,'VlcbNetAdptPktMeta']]],
-  ['can_5fid_1',['can_id',['../unionVlcbNetHwAddr.html#a9cfd36241cab77a63577a8428efbed00',1,'VlcbNetHwAddr']]],
-  ['capacity_2',['capacity',['../structVlcbNetSocketList.html#a6fcf08393e9559fcaf2387a4db75660a',1,'VlcbNetSocketList']]],
-  ['config_3',['config',['../structVlcbModule.html#aabe36b5857026c58123c633de98aa341',1,'VlcbModule']]],
-  ['consistaddloco_4',['ConsistAddLoco',['../net_2inc_2vlcb_2net_2packet_2datagram_2dcc_8h.html#a201debbc14a81ee1876b269e24089f92',1,'dcc.h']]],
-  ['consistid_5',['consistId',['../net_2inc_2vlcb_2net_2packet_2datagram_2dcc_8h.html#a520814b143a77b03be87f581e5cb20fc',1,'dcc.h']]],
-  ['currentcyclestartedat_6',['currentCycleStartedAt',['../structVlcbPlatformLedEffect.html#af113f25ce17410f19ea7cef7e2211800',1,'VlcbPlatformLedEffect']]],
-  ['cv_7',['cv',['../net_2inc_2vlcb_2net_2packet_2datagram_2dcc_8h.html#a3cb2745481f55266e7beaf0fff2c66a2',1,'dcc.h']]]
+  ['beta_0',['beta',['../structVlcbModuleVersion.html#aa8b2668855d955cc795ec605ed6c424c',1,'VlcbModuleVersion']]],
+  ['blink_1',['blink',['../unionVlcbPlatformLedEffectData.html#ac14f84696c2598b22b4c42ee88455682',1,'VlcbPlatformLedEffectData']]],
+  ['bucketsize_2',['bucketSize',['../structVlcbPacketBuf.html#aee66da4cf87502c98e42f0d1c2685435',1,'VlcbPacketBuf']]],
+  ['buf_3',['buf',['../structVlcbModuleParams.html#aa3d295ed6712c1b2f9a69671e409b2e0',1,'VlcbModuleParams::buf'],['../structVlcbNetSocketList.html#af3368cd6c765cf7205683951e4f11d28',1,'VlcbNetSocketList::buf'],['../structVlcbPacketBufToken.html#a407886d777fef675574ba99a548dbd13',1,'VlcbPacketBufToken::buf']]],
+  ['buffer_4',['buffer',['../structVlcbPacketBuf.html#a2e7af7005700c8c446d982d9ed8ef197',1,'VlcbPacketBuf']]]
 ];

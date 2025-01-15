@@ -1679,4 +1679,3 @@ enum VlcbOpCode {
    */
   VLCB_OPC_EXT_OPCODE6 = 255,
 };
-lg

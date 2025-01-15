@@ -110,22 +110,26 @@ $(function(){initNavTree('socket_8h.html',''); initResizable(true); });
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="vlcb_8h_source.html">packet/vlcb.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="addr_8h_source.html">vlcb/net/addr.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="packet__buf_8h_source.html">vlcb/net/storage/packet_buf.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="interface_8h_source.html">vlcb/platform/interface.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for socket.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h__incl.svg" width="692" height="266"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h__incl.svg" width="1119" height="359"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h__dep__incl.svg" width="1191" height="342"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h__dep__incl.svg" width="1127" height="342"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="socket_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structVlcbNetSocketPacketToken.html">VlcbNetSocketPacketToken</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structVlcbNetSocketList.html">VlcbNetSocketList</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structVlcbNetSocketListIter.html">VlcbNetSocketListIter</a></td></tr>
@@ -165,12 +169,18 @@ Functions</h2></td></tr>
 <tr class="separator:a8e1f8d2c6242378d1d4eda56527a4a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1798c6232affacea2af6454ee98581d" id="r_af1798c6232affacea2af6454ee98581d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="error_8h.html#ab95cb734291e5e025c1ba1e3ddc4e921">vlcb_error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1798c6232affacea2af6454ee98581d">vlcb_net_sock_DispatchErrToStr</a> (<a class="el" href="#aa350c617fca1cb8dea0db959eff6ac3f">VlcbNetSocketDispatchErr</a> err)</td></tr>
 <tr class="separator:af1798c6232affacea2af6454ee98581d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a296ac53554c956e56073d96758371c3f" id="r_a296ac53554c956e56073d96758371c3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a296ac53554c956e56073d96758371c3f">_INTERFACE_DECLARE</a> (IVlcbNetSocket, <a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(bool, <a class="el" href="socket_2datagram_8c.html#a97bab8fe9b6021439207f5bf70a2f2a3">SupportsProtocol</a>, <a class="el" href="vlcb_8h.html#a94390117831585849f7b080dbd112ed0">VlcbNetProtocol</a> protocol);<a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(<a class="el" href="#a5b5d55a3d8a5bfc6adf92c639eaed968">VlcbNetSocketProcessErr</a>, <a class="el" href="socket_2datagram_8c.html#a61c95cabe20ca7a61ea528e4c70f1245">ProcessPacket</a>, <a class="el" href="interface_8h.html#a3c34d887fc6765cfdf9a23265e222477">_INTERFACE_SELF_PTR_MUT</a>(IVlcbNetSocket), const <a class="el" href="structVlcbNetPacket.html">VlcbNetPacket</a> *const packet);<a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(<a class="el" href="#aa350c617fca1cb8dea0db959eff6ac3f">VlcbNetSocketDispatchErr</a>, <a class="el" href="socket_2datagram_8c.html#a29815c6431ed6e303052217a8ecca9cc">DispatchPacket</a>, <a class="el" href="interface_8h.html#a3c34d887fc6765cfdf9a23265e222477">_INTERFACE_SELF_PTR_MUT</a>(IVlcbNetSocket), <a class="el" href="structVlcbNetPacket.html">VlcbNetPacket</a> *const packet);)</td></tr>
-<tr class="separator:a296ac53554c956e56073d96758371c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af905793053bfcc309d3c4588cacdd8ad" id="r_af905793053bfcc309d3c4588cacdd8ad"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af905793053bfcc309d3c4588cacdd8ad">vlcb_net_sock_packet_token_Accept</a> (<a class="el" href="structVlcbNetSocketPacketToken.html">VlcbNetSocketPacketToken</a> tok)</td></tr>
+<tr class="separator:af905793053bfcc309d3c4588cacdd8ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc6ab24adb81104732076d7fe4bcda01" id="r_abc6ab24adb81104732076d7fe4bcda01"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc6ab24adb81104732076d7fe4bcda01">vlcb_net_sock_packet_token_Refuse</a> (<a class="el" href="structVlcbNetSocketPacketToken.html">VlcbNetSocketPacketToken</a> tok)</td></tr>
+<tr class="separator:abc6ab24adb81104732076d7fe4bcda01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bad6b8197bc90448dc9aec169c53843" id="r_a8bad6b8197bc90448dc9aec169c53843"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bad6b8197bc90448dc9aec169c53843">_INTERFACE_DECLARE</a> (IVlcbNetSocket, <a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(bool, <a class="el" href="socket_2datagram_8c.html#a97bab8fe9b6021439207f5bf70a2f2a3">SupportsProtocol</a>, <a class="el" href="vlcb_8h.html#a94390117831585849f7b080dbd112ed0">VlcbNetProtocol</a> protocol);<a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(<a class="el" href="#a5b5d55a3d8a5bfc6adf92c639eaed968">VlcbNetSocketProcessErr</a>, <a class="el" href="socket_2datagram_8c.html#a61c95cabe20ca7a61ea528e4c70f1245">ProcessPacket</a>, <a class="el" href="interface_8h.html#a3c34d887fc6765cfdf9a23265e222477">_INTERFACE_SELF_PTR_MUT</a>(IVlcbNetSocket), const <a class="el" href="structVlcbNetPacket.html">VlcbNetPacket</a> *const packet);<a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(<a class="el" href="#aa350c617fca1cb8dea0db959eff6ac3f">VlcbNetSocketDispatchErr</a>, <a class="el" href="socket_2datagram_8c.html#a7078de64bfd986745f84ef33ea013ddd">DispatchPacket</a>, <a class="el" href="interface_8h.html#a3c34d887fc6765cfdf9a23265e222477">_INTERFACE_SELF_PTR_MUT</a>(IVlcbNetSocket), <a class="el" href="structVlcbNetSocketPacketToken.html">VlcbNetSocketPacketToken</a> *const tok);<a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(const <a class="el" href="addr_8h.html#aa2003a78ef8f482c7fe5b2bf8eac05d0">VlcbNetWireEndpointHandle</a>, <a class="el" href="socket_2datagram_8c.html#a1e4494ad2bba82d6a96bcf49fc08ebd3">WireEndpoint</a>, <a class="el" href="interface_8h.html#aa694ca0a30762780840a8da8aa29782d">_INTERFACE_SELF_PTR</a>(IVlcbNetSocket));)</td></tr>
+<tr class="separator:a8bad6b8197bc90448dc9aec169c53843"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fa2ed8475f9a5df9396c9fd1e346f98" id="r_a4fa2ed8475f9a5df9396c9fd1e346f98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structVlcbNetSocketList.html">VlcbNetSocketList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fa2ed8475f9a5df9396c9fd1e346f98">vlcb_net_sock_list_New</a> (<a class="el" href="#aacfb837cdc6b674971a70b3c3481082e">VlcbNetSocketHandle</a> *const buf, size_t size)</td></tr>
 <tr class="separator:a4fa2ed8475f9a5df9396c9fd1e346f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a003645532ffd39ccfa0895ba38d71ba9" id="r_a003645532ffd39ccfa0895ba38d71ba9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a003645532ffd39ccfa0895ba38d71ba9">vlcb_net_sock_list_Insert</a> (<a class="el" href="structVlcbNetSocketList.html">VlcbNetSocketList</a> *const list, <a class="el" href="#aacfb837cdc6b674971a70b3c3481082e">VlcbNetSocketHandle</a> sock)</td></tr>
 <tr class="separator:a003645532ffd39ccfa0895ba38d71ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae52542e9bd013037046248751891e5fa" id="r_ae52542e9bd013037046248751891e5fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae52542e9bd013037046248751891e5fa">vlcb_net_sock_list_Remove</a> (<a class="el" href="structVlcbNetSocketList.html">VlcbNetSocketList</a> *const list, <a class="el" href="#aacfb837cdc6b674971a70b3c3481082e">VlcbNetSocketHandle</a> sock)</td></tr>
+<tr class="separator:ae52542e9bd013037046248751891e5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9401eccd14dd3acd44764c5e8a05beaf" id="r_a9401eccd14dd3acd44764c5e8a05beaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structVlcbNetSocketListIter.html">VlcbNetSocketListIter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9401eccd14dd3acd44764c5e8a05beaf">vlcb_net_sock_list_GetIterator</a> (const <a class="el" href="structVlcbNetSocketList.html">VlcbNetSocketList</a> *const list)</td></tr>
 <tr class="separator:a9401eccd14dd3acd44764c5e8a05beaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa132a1a7db070818f04c678980b3cac6" id="r_aa132a1a7db070818f04c678980b3cac6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa132a1a7db070818f04c678980b3cac6">vlcb_net_sock_list_iter_Reset</a> (<a class="el" href="structVlcbNetSocketListIter.html">VlcbNetSocketListIter</a> *const iter)</td></tr>
@@ -201,11 +211,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">  <a class="code hl_typedef" href="#aacfb837cdc6b674971a70b3c3481082e">VlcbNetSocketHandle</a> name##_data[size];                                       \</div>
 <div class="line">  <a class="code hl_struct" href="structVlcbNetSocketList.html">VlcbNetSocketList</a> name = <a class="code hl_function" href="#a4fa2ed8475f9a5df9396c9fd1e346f98">vlcb_net_sock_list_New</a>(data_##name, size);</div>
-<div class="ttc" id="asocket_8h_html_a4fa2ed8475f9a5df9396c9fd1e346f98"><div class="ttname"><a href="#a4fa2ed8475f9a5df9396c9fd1e346f98">vlcb_net_sock_list_New</a></div><div class="ttdeci">VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *const buf, size_t size)</div><div class="ttdef"><b>Definition</b> <a href="socket_8c_source.html#l00006">socket.c:6</a></div></div>
-<div class="ttc" id="asocket_8h_html_aacfb837cdc6b674971a70b3c3481082e"><div class="ttname"><a href="#aacfb837cdc6b674971a70b3c3481082e">VlcbNetSocketHandle</a></div><div class="ttdeci">IVlcbNetSocket * VlcbNetSocketHandle</div><div class="ttdef"><b>Definition</b> <a href="socket_8h_source.html#l00040">socket.h:40</a></div></div>
-<div class="ttc" id="astructVlcbNetSocketList_html"><div class="ttname"><a href="structVlcbNetSocketList.html">VlcbNetSocketList</a></div><div class="ttdef"><b>Definition</b> <a href="socket_8h_source.html#l00042">socket.h:42</a></div></div>
+<div class="ttc" id="asocket_8h_html_a4fa2ed8475f9a5df9396c9fd1e346f98"><div class="ttname"><a href="#a4fa2ed8475f9a5df9396c9fd1e346f98">vlcb_net_sock_list_New</a></div><div class="ttdeci">VlcbNetSocketList vlcb_net_sock_list_New(VlcbNetSocketHandle *const buf, size_t size)</div><div class="ttdef"><b>Definition</b> <a href="socket_8c_source.html#l00008">socket.c:8</a></div></div>
+<div class="ttc" id="asocket_8h_html_aacfb837cdc6b674971a70b3c3481082e"><div class="ttname"><a href="#aacfb837cdc6b674971a70b3c3481082e">VlcbNetSocketHandle</a></div><div class="ttdeci">IVlcbNetSocket * VlcbNetSocketHandle</div><div class="ttdef"><b>Definition</b> <a href="socket_8h_source.html#l00059">socket.h:59</a></div></div>
+<div class="ttc" id="astructVlcbNetSocketList_html"><div class="ttname"><a href="structVlcbNetSocketList.html">VlcbNetSocketList</a></div><div class="ttdef"><b>Definition</b> <a href="socket_8h_source.html#l00061">socket.h:61</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="socket_8h_source.html#l00051">51</a> of file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8h_source.html#l00070">70</a> of file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
 
 </div>
 </div>
@@ -222,7 +232,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8h_source.html#l00040">40</a> of file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8h_source.html#l00059">59</a> of file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
 
 </div>
 </div>
@@ -244,7 +254,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="aa350c617fca1cb8dea0db959eff6ac3fac544da45f789ec9c950cefd08fdf0689" name="aa350c617fca1cb8dea0db959eff6ac3fac544da45f789ec9c950cefd08fdf0689"></a>VLCB_NET_SOCK_DISP_ERR_COUNT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="socket_8h_source.html#l00020">20</a> of file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8h_source.html#l00022">22</a> of file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
 
 </div>
 </div>
@@ -267,13 +277,13 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a5b5d55a3d8a5bfc6adf92c639eaed968acc4ec816bddee98fc1a9d852684fbd7d" name="a5b5d55a3d8a5bfc6adf92c639eaed968acc4ec816bddee98fc1a9d852684fbd7d"></a>VLCB_NET_SOCK_PROC_ERR_COUNT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="socket_8h_source.html#l00009">9</a> of file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8h_source.html#l00011">11</a> of file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a296ac53554c956e56073d96758371c3f" name="a296ac53554c956e56073d96758371c3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a296ac53554c956e56073d96758371c3f">&#9670;&#160;</a></span>_INTERFACE_DECLARE()</h2>
+<a id="a8bad6b8197bc90448dc9aec169c53843" name="a8bad6b8197bc90448dc9aec169c53843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bad6b8197bc90448dc9aec169c53843">&#9670;&#160;</a></span>_INTERFACE_DECLARE()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -286,7 +296,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(bool, <a class="el" href="socket_2datagram_8c.html#a97bab8fe9b6021439207f5bf70a2f2a3">SupportsProtocol</a>, <a class="el" href="vlcb_8h.html#a94390117831585849f7b080dbd112ed0">VlcbNetProtocol</a> protocol);<a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(<a class="el" href="#a5b5d55a3d8a5bfc6adf92c639eaed968">VlcbNetSocketProcessErr</a>, <a class="el" href="socket_2datagram_8c.html#a61c95cabe20ca7a61ea528e4c70f1245">ProcessPacket</a>, <a class="el" href="interface_8h.html#a3c34d887fc6765cfdf9a23265e222477">_INTERFACE_SELF_PTR_MUT</a>(IVlcbNetSocket), const <a class="el" href="structVlcbNetPacket.html">VlcbNetPacket</a> *const packet);<a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(<a class="el" href="#aa350c617fca1cb8dea0db959eff6ac3f">VlcbNetSocketDispatchErr</a>, <a class="el" href="socket_2datagram_8c.html#a29815c6431ed6e303052217a8ecca9cc">DispatchPacket</a>, <a class="el" href="interface_8h.html#a3c34d887fc6765cfdf9a23265e222477">_INTERFACE_SELF_PTR_MUT</a>(IVlcbNetSocket), <a class="el" href="structVlcbNetPacket.html">VlcbNetPacket</a> *const packet);</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(bool, <a class="el" href="socket_2datagram_8c.html#a97bab8fe9b6021439207f5bf70a2f2a3">SupportsProtocol</a>, <a class="el" href="vlcb_8h.html#a94390117831585849f7b080dbd112ed0">VlcbNetProtocol</a> protocol);<a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(<a class="el" href="#a5b5d55a3d8a5bfc6adf92c639eaed968">VlcbNetSocketProcessErr</a>, <a class="el" href="socket_2datagram_8c.html#a61c95cabe20ca7a61ea528e4c70f1245">ProcessPacket</a>, <a class="el" href="interface_8h.html#a3c34d887fc6765cfdf9a23265e222477">_INTERFACE_SELF_PTR_MUT</a>(IVlcbNetSocket), const <a class="el" href="structVlcbNetPacket.html">VlcbNetPacket</a> *const packet);<a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(<a class="el" href="#aa350c617fca1cb8dea0db959eff6ac3f">VlcbNetSocketDispatchErr</a>, <a class="el" href="socket_2datagram_8c.html#a7078de64bfd986745f84ef33ea013ddd">DispatchPacket</a>, <a class="el" href="interface_8h.html#a3c34d887fc6765cfdf9a23265e222477">_INTERFACE_SELF_PTR_MUT</a>(IVlcbNetSocket), <a class="el" href="structVlcbNetSocketPacketToken.html">VlcbNetSocketPacketToken</a> *const tok);<a class="el" href="interface_8h.html#a15d61a8d3bdf688ea541ce9a1b603e52">_INTERFACE_METHOD_DECLARE</a>(const <a class="el" href="addr_8h.html#aa2003a78ef8f482c7fe5b2bf8eac05d0">VlcbNetWireEndpointHandle</a>, <a class="el" href="socket_2datagram_8c.html#a1e4494ad2bba82d6a96bcf49fc08ebd3">WireEndpoint</a>, <a class="el" href="interface_8h.html#aa694ca0a30762780840a8da8aa29782d">_INTERFACE_SELF_PTR</a>(IVlcbNetSocket));</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -307,6 +317,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_af1798c6232affacea2af6454ee98581d_icgraph.svg" width="562" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -325,11 +340,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00030">30</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00051">51</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_a9401eccd14dd3acd44764c5e8a05beaf_icgraph.svg" width="887" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_a9401eccd14dd3acd44764c5e8a05beaf_icgraph.svg" width="887" height="140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -353,7 +368,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00017">17</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00019">19</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -377,11 +392,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00043">43</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00064">64</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_a176c72971ceb14a338d824d7a3bb0fac_icgraph.svg" width="1075" height="92"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_a176c72971ceb14a338d824d7a3bb0fac_icgraph.svg" width="1075" height="158"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -401,7 +416,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00050">50</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00071">71</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -410,7 +425,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_a81bef9c5afd9ccbb9d0a52b2ae1da9b2_icgraph.svg" width="887" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_a81bef9c5afd9ccbb9d0a52b2ae1da9b2_icgraph.svg" width="887" height="140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -430,7 +445,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00038">38</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00059">59</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 
 </div>
 </div>
@@ -461,7 +476,104 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00006">6</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00008">8</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+
+</div>
+</div>
+<a id="ae52542e9bd013037046248751891e5fa" name="ae52542e9bd013037046248751891e5fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae52542e9bd013037046248751891e5fa">&#9670;&#160;</a></span>vlcb_net_sock_list_Remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vlcb_net_sock_list_Remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structVlcbNetSocketList.html">VlcbNetSocketList</a> *const</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aacfb837cdc6b674971a70b3c3481082e">VlcbNetSocketHandle</a></td>          <td class="paramname"><span class="paramname"><em>sock</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00031">31</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_ae52542e9bd013037046248751891e5fa_icgraph.svg" width="380" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="af905793053bfcc309d3c4588cacdd8ad" name="af905793053bfcc309d3c4588cacdd8ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af905793053bfcc309d3c4588cacdd8ad">&#9670;&#160;</a></span>vlcb_net_sock_packet_token_Accept()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void vlcb_net_sock_packet_token_Accept </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structVlcbNetSocketPacketToken.html">VlcbNetSocketPacketToken</a></td>          <td class="paramname"><span class="paramname"><em>tok</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="socket_8h_source.html#l00037">37</a> of file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_af905793053bfcc309d3c4588cacdd8ad_cgraph.svg" width="376" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="abc6ab24adb81104732076d7fe4bcda01" name="abc6ab24adb81104732076d7fe4bcda01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc6ab24adb81104732076d7fe4bcda01">&#9670;&#160;</a></span>vlcb_net_sock_packet_token_Refuse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void vlcb_net_sock_packet_token_Refuse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structVlcbNetSocketPacketToken.html">VlcbNetSocketPacketToken</a></td>          <td class="paramname"><span class="paramname"><em>tok</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="socket_8h_source.html#l00042">42</a> of file <a class="el" href="socket_8h_source.html">socket.h</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_abc6ab24adb81104732076d7fe4bcda01_cgraph.svg" width="376" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8h_abc6ab24adb81104732076d7fe4bcda01_icgraph.svg" width="530" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -480,7 +592,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00056">56</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00077">77</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -495,7 +607,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_427baa8a9a5be237f298d4545d0d1ce2.html">net</a></li><li class="navelem"><a class="el" href="dir_c0575b5e81918ff6cd7d86b5adbed5d0.html">inc</a></li><li class="navelem"><a class="el" href="dir_5314d62625720a050713b0cba532fdc8.html">vlcb</a></li><li class="navelem"><a class="el" href="dir_ca0879ab5012c7f5f5b50184c926c0b0.html">net</a></li><li class="navelem"><a class="el" href="socket_8h.html">socket.h</a></li>
-    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Jan 15 2025 17:24:52 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

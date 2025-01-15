@@ -110,34 +110,34 @@ $(function(){initNavTree('addr_8c.html',''); initResizable(true); });
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for addr.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8c__incl.svg" width="428" height="342"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8c__incl.svg" width="510" height="342"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="addr_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a572dd582301bafe582b697727ab12387" id="r_a572dd582301bafe582b697727ab12387"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a572dd582301bafe582b697727ab12387">vlcb_net_IsHwAddrValid</a> (const <a class="el" href="addr_8h.html#a1423a1155f8265f43d497a9396472504">VlcbNetMedium</a> medium, const <a class="el" href="unionVlcbNetHwAddr.html">VlcbNetHwAddr</a> addr)</td></tr>
-<tr class="separator:a572dd582301bafe582b697727ab12387"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01a3ff7e0be059c4ab66d240255e13b6" id="r_a01a3ff7e0be059c4ab66d240255e13b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionVlcbNetHwAddr.html">VlcbNetHwAddr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01a3ff7e0be059c4ab66d240255e13b6">vlcb_net_NewCanIdHwAddr</a> (const <a class="el" href="common_2inc_2vlcb_2common_2can_8h.html#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a> id)</td></tr>
-<tr class="separator:a01a3ff7e0be059c4ab66d240255e13b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ab65595519fc6fe5e4b49b6f0fe0ee0" id="r_a0ab65595519fc6fe5e4b49b6f0fe0ee0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ab65595519fc6fe5e4b49b6f0fe0ee0">vlcb_net_IsWireAddrValid</a> (const <a class="el" href="addr_8h.html#a1423a1155f8265f43d497a9396472504">VlcbNetMedium</a> medium, const <a class="el" href="unionVlcbNetWireAddr.html">VlcbNetWireAddr</a> addr)</td></tr>
+<tr class="separator:a0ab65595519fc6fe5e4b49b6f0fe0ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a269818c33af30a206cb603b1c66efe45" id="r_a269818c33af30a206cb603b1c66efe45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionVlcbNetWireAddr.html">VlcbNetWireAddr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a269818c33af30a206cb603b1c66efe45">vlcb_net_NewCanWireAddr</a> (const <a class="el" href="common_2inc_2vlcb_2common_2can_8h.html#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a> id)</td></tr>
+<tr class="separator:a269818c33af30a206cb603b1c66efe45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a572dd582301bafe582b697727ab12387" name="a572dd582301bafe582b697727ab12387"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a572dd582301bafe582b697727ab12387">&#9670;&#160;</a></span>vlcb_net_IsHwAddrValid()</h2>
+<a id="a0ab65595519fc6fe5e4b49b6f0fe0ee0" name="a0ab65595519fc6fe5e4b49b6f0fe0ee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ab65595519fc6fe5e4b49b6f0fe0ee0">&#9670;&#160;</a></span>vlcb_net_IsWireAddrValid()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool vlcb_net_IsHwAddrValid </td>
+          <td class="memname">bool vlcb_net_IsWireAddrValid </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="addr_8h.html#a1423a1155f8265f43d497a9396472504">VlcbNetMedium</a></td>          <td class="paramname"><span class="paramname"><em>medium</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="unionVlcbNetHwAddr.html">VlcbNetHwAddr</a></td>          <td class="paramname"><span class="paramname"><em>addr</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="unionVlcbNetWireAddr.html">VlcbNetWireAddr</a></td>          <td class="paramname"><span class="paramname"><em>addr</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -146,19 +146,19 @@ Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8c_a572dd582301bafe582b697727ab12387_cgraph.svg" width="407" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8c_a0ab65595519fc6fe5e4b49b6f0fe0ee0_cgraph.svg" width="416" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="a01a3ff7e0be059c4ab66d240255e13b6" name="a01a3ff7e0be059c4ab66d240255e13b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01a3ff7e0be059c4ab66d240255e13b6">&#9670;&#160;</a></span>vlcb_net_NewCanIdHwAddr()</h2>
+<a id="a269818c33af30a206cb603b1c66efe45" name="a269818c33af30a206cb603b1c66efe45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a269818c33af30a206cb603b1c66efe45">&#9670;&#160;</a></span>vlcb_net_NewCanWireAddr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="unionVlcbNetHwAddr.html">VlcbNetHwAddr</a> vlcb_net_NewCanIdHwAddr </td>
+          <td class="memname"><a class="el" href="unionVlcbNetWireAddr.html">VlcbNetWireAddr</a> vlcb_net_NewCanWireAddr </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="common_2inc_2vlcb_2common_2can_8h.html#ad42ad890e4874044a9a1094938e52f39">VlcbCanId</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
           <td></td>
@@ -167,11 +167,6 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="addr_8c_source.html#l00017">17</a> of file <a class="el" href="addr_8c_source.html">addr.c</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="addr_8c_a01a3ff7e0be059c4ab66d240255e13b6_icgraph.svg" width="498" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 
 </div>
 </div>
@@ -181,7 +176,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_427baa8a9a5be237f298d4545d0d1ce2.html">net</a></li><li class="navelem"><a class="el" href="dir_1125596c65a252cc7ae564f4b9ccb92e.html">src</a></li><li class="navelem"><a class="el" href="addr_8c.html">addr.c</a></li>
-    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Jan 15 2025 17:24:52 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

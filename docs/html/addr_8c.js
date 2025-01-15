@@ -1,5 +1,5 @@
 var addr_8c =
 [
-    [ "vlcb_net_IsHwAddrValid", "addr_8c.html#a572dd582301bafe582b697727ab12387", null ],
-    [ "vlcb_net_NewCanIdHwAddr", "addr_8c.html#a01a3ff7e0be059c4ab66d240255e13b6", null ]
+    [ "vlcb_net_IsWireAddrValid", "addr_8c.html#a0ab65595519fc6fe5e4b49b6f0fe0ee0", null ],
+    [ "vlcb_net_NewCanWireAddr", "addr_8c.html#a269818c33af30a206cb603b1c66efe45", null ]
 ];

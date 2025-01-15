@@ -99,32 +99,80 @@ $(function(){initNavTree('time_8h.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">time.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="time_8h_source.html">time.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for time.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="time_8h__incl.svg" width="99" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="time_8h__incl.svg" width="82" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="time_8h__dep__incl.svg" width="728" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="time_8h__dep__incl.svg" width="2012" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="time_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a2a34cabf5e5715e8c1d5f56048a2f9f9" id="r_a2a34cabf5e5715e8c1d5f56048a2f9f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a34cabf5e5715e8c1d5f56048a2f9f9">VLCB_MILIS_MAX</a>&#160;&#160;&#160;UINT32_MAX</td></tr>
+<tr class="separator:a2a34cabf5e5715e8c1d5f56048a2f9f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a9a966b6d96396d1fc5f23ccb1da50404" id="r_a9a966b6d96396d1fc5f23ccb1da50404"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a></td></tr>
+<tr class="separator:a9a966b6d96396d1fc5f23ccb1da50404"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab82b0190a9360bc97f1249408977c866" id="r_ab82b0190a9360bc97f1249408977c866"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab82b0190a9360bc97f1249408977c866">vlcb_platform_time_DiffInMs</a> (const clock_t start, const clock_t end)</td></tr>
-<tr class="separator:ab82b0190a9360bc97f1249408977c866"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4c09984f36f2279075afcf308013f76" id="r_ac4c09984f36f2279075afcf308013f76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4c09984f36f2279075afcf308013f76">vlcb_time_Milis</a> ()</td></tr>
+<tr class="separator:ac4c09984f36f2279075afcf308013f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d9d94c15f365e302dcdd44f25dedc6c" id="r_a6d9d94c15f365e302dcdd44f25dedc6c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d9d94c15f365e302dcdd44f25dedc6c">vlcb_time_DiffMilis</a> (const <a class="el" href="#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a> start, const <a class="el" href="#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a> end)</td></tr>
+<tr class="separator:a6d9d94c15f365e302dcdd44f25dedc6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a2a34cabf5e5715e8c1d5f56048a2f9f9" name="a2a34cabf5e5715e8c1d5f56048a2f9f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a34cabf5e5715e8c1d5f56048a2f9f9">&#9670;&#160;</a></span>VLCB_MILIS_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VLCB_MILIS_MAX&#160;&#160;&#160;UINT32_MAX</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00009">9</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a9a966b6d96396d1fc5f23ccb1da50404" name="a9a966b6d96396d1fc5f23ccb1da50404"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a966b6d96396d1fc5f23ccb1da50404">&#9670;&#160;</a></span>vlcb_milis</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint32_t <a class="el" href="#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00005">5</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ab82b0190a9360bc97f1249408977c866" name="ab82b0190a9360bc97f1249408977c866"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab82b0190a9360bc97f1249408977c866">&#9670;&#160;</a></span>vlcb_platform_time_DiffInMs()</h2>
+<a id="a6d9d94c15f365e302dcdd44f25dedc6c" name="a6d9d94c15f365e302dcdd44f25dedc6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d9d94c15f365e302dcdd44f25dedc6c">&#9670;&#160;</a></span>vlcb_time_DiffMilis()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -133,14 +181,14 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static double vlcb_platform_time_DiffInMs </td>
+          <td class="memname">static <a class="el" href="#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a> vlcb_time_DiffMilis </td>
           <td>(</td>
-          <td class="paramtype">const clock_t</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a></td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const clock_t</td>          <td class="paramname"><span class="paramname"><em>end</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a></td>          <td class="paramname"><span class="paramname"><em>end</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -150,12 +198,26 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00010">10</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="time_8h_ab82b0190a9360bc97f1249408977c866_icgraph.svg" width="1131" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<p class="definition">Definition at line <a class="el" href="time_8h_source.html#l00011">11</a> of file <a class="el" href="time_8h_source.html">time.h</a>.</p>
+
 </div>
+</div>
+<a id="ac4c09984f36f2279075afcf308013f76" name="ac4c09984f36f2279075afcf308013f76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4c09984f36f2279075afcf308013f76">&#9670;&#160;</a></span>vlcb_time_Milis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a> vlcb_time_Milis </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="time_8c_source.html#l00006">6</a> of file <a class="el" href="time_8c_source.html">time.c</a>.</p>
 
 </div>
 </div>
@@ -165,7 +227,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c5a52a81292cf9a5167198f4f346d6d9.html">platform</a></li><li class="navelem"><a class="el" href="dir_d0dbfc5afe52f9e9278ab3044cf3a498.html">inc</a></li><li class="navelem"><a class="el" href="dir_011a1ce7cb8341f18a3c354b8ea7ac96.html">vlcb</a></li><li class="navelem"><a class="el" href="dir_cbc9439951466582abb6f6ea7a9f4a2c.html">platform</a></li><li class="navelem"><a class="el" href="time_8h.html">time.h</a></li>
-    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Jan 15 2025 17:24:52 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

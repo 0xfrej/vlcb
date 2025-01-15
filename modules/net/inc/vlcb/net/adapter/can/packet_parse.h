@@ -18,7 +18,7 @@ typedef uint16_t VlcbCanFrameId;
 /**
  * @brief Parse the CAN packet data into the inner format
  *
- * This function validates and constructs a new @ref VlcbNetAdptPacket
+ * This function validates and constructs a new @ref VlcbNetAdptPkt
  * from raw data and flags passed in from the device deriver
  * adapter. Device driver adapters should use this function instead of their own
  * implementation, unless it's desirable.

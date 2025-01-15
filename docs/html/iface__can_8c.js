@@ -1,5 +1,5 @@
 var iface__can_8c =
 [
     [ "DispatchCanPacket", "iface__can_8c.html#a76a59452e911a2f524037904fd59f0bf", null ],
-    [ "ProcessCanPacket", "iface__can_8c.html#a8aa9c1f4ce14446285c7f5b9240f83d9", null ]
+    [ "ProcessCanPacket", "iface__can_8c.html#a96e0054424451b9fdc03c51cd74b9cb8", null ]
 ];

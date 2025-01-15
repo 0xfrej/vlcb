@@ -110,12 +110,13 @@ $(function(){initNavTree('socket_2datagram_8h.html',''); initResizable(true); })
 <div class="textblock"><code>#include &quot;<a class="el" href="packet_2datagram_8h_source.html">../packet/datagram.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="socket_8h_source.html">../socket.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="packet__buf_8h_source.html">../storage/packet_buf.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="addr_8h_source.html">vlcb/net/addr.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="interface_8h_source.html">vlcb/platform/interface.h</a>&quot;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for socket/datagram.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="socket_2datagram_8h__incl.svg" width="776" height="342"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_2datagram_8h__incl.svg" width="1242" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -160,8 +161,8 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5bb2f9672ef998d9552159a44875dc0b" id="r_a5bb2f9672ef998d9552159a44875dc0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structVlcbNetSocketDatagram.html">VlcbNetSocketDatagram</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bb2f9672ef998d9552159a44875dc0b">vlcb_net_sock_dgram_New</a> (<a class="el" href="structVlcbPacketBuf.html">VlcbPacketBuf</a> *const rxBuf, <a class="el" href="structVlcbPacketBuf.html">VlcbPacketBuf</a> *const txBuf)</td></tr>
-<tr class="separator:a5bb2f9672ef998d9552159a44875dc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af395cf7ab49dd5071cbe58f1c4286720" id="r_af395cf7ab49dd5071cbe58f1c4286720"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structVlcbNetSocketDatagram.html">VlcbNetSocketDatagram</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af395cf7ab49dd5071cbe58f1c4286720">vlcb_net_sock_dgram_New</a> (<a class="el" href="structVlcbPacketBuf.html">VlcbPacketBuf</a> *const rxBuf, <a class="el" href="structVlcbPacketBuf.html">VlcbPacketBuf</a> *const txBuf, <a class="el" href="addr_8h.html#aa2003a78ef8f482c7fe5b2bf8eac05d0">VlcbNetWireEndpointHandle</a> endpoint)</td></tr>
+<tr class="separator:af395cf7ab49dd5071cbe58f1c4286720"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a396e9e0c1c9943bbb0cb52fe73967630" id="r_a396e9e0c1c9943bbb0cb52fe73967630"><td class="memItemLeft" align="right" valign="top"><a class="el" href="error_8h.html#ab95cb734291e5e025c1ba1e3ddc4e921">vlcb_error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a396e9e0c1c9943bbb0cb52fe73967630">vlcb_net_sock_dgram_SendErrToStr</a> (<a class="el" href="#a28028d287c51d607de89fa30fafd59ed">VlcbNetSocketDgramSendErr</a> err)</td></tr>
 <tr class="separator:a396e9e0c1c9943bbb0cb52fe73967630"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7da610c48db02cd38212ef1545d00f00" id="r_a7da610c48db02cd38212ef1545d00f00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a28028d287c51d607de89fa30fafd59ed">VlcbNetSocketDgramSendErr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7da610c48db02cd38212ef1545d00f00">vlcb_net_sock_dgram_Send</a> (<a class="el" href="structVlcbNetSocketDatagram.html">VlcbNetSocketDatagram</a> *const sock, const <a class="el" href="structVlcbNetPacketDatagram.html">VlcbNetPacketDatagram</a> *const packet)</td></tr>
@@ -198,7 +199,7 @@ Functions</h2></td></tr>
 <div class="line">  <a class="code hl_struct" href="structVlcbPacketBuf.html">VlcbPacketBuf</a> *<span class="keyword">const</span> name = (<a class="code hl_struct" href="structVlcbPacketBuf.html">VlcbPacketBuf</a> *<span class="keyword">const</span>)name##_data;</div>
 <div class="ttc" id="astructVlcbPacketBuf_html"><div class="ttname"><a href="structVlcbPacketBuf.html">VlcbPacketBuf</a></div><div class="ttdef"><b>Definition</b> <a href="packet__buf_8h_source.html#l00007">packet_buf.h:7</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00009">9</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00010">10</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
 
 </div>
 </div>
@@ -215,7 +216,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00050">50</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00054">54</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
 
 </div>
 </div>
@@ -237,7 +238,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="ac4523c6aa63954cf0bd1dbb9ceefb6cda94459b563b52bbe22da5302e670f5c1b" name="ac4523c6aa63954cf0bd1dbb9ceefb6cda94459b563b52bbe22da5302e670f5c1b"></a>VLCB_NET_SOCK_DGRAM_FLUSH_RX&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00051">51</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00055">55</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
 
 </div>
 </div>
@@ -258,7 +259,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="ab33782aba9372a7b9dd196e09da93f25a49de06d16a1af57608ff4ec95b40cd43" name="ab33782aba9372a7b9dd196e09da93f25a49de06d16a1af57608ff4ec95b40cd43"></a>VLCB_NET_SOKC_DGRAM_RECV_ERR_COUNT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00031">31</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00034">34</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
 
 </div>
 </div>
@@ -279,7 +280,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a28028d287c51d607de89fa30fafd59eda4f3c829a6f8fd6a646b360b9c6ec87bf" name="a28028d287c51d607de89fa30fafd59eda4f3c829a6f8fd6a646b360b9c6ec87bf"></a>VLCB_NET_SOKC_DGRAM_SEND_ERR_COUNT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00024">24</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00027">27</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
 
 </div>
 </div>
@@ -303,7 +304,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_2datagram_8c_source.html#l00102">102</a> of file <a class="el" href="socket_2datagram_8c_source.html">socket/datagram.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_2datagram_8c_source.html#l00123">123</a> of file <a class="el" href="socket_2datagram_8c_source.html">socket/datagram.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -312,8 +313,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a5bb2f9672ef998d9552159a44875dc0b" name="a5bb2f9672ef998d9552159a44875dc0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bb2f9672ef998d9552159a44875dc0b">&#9670;&#160;</a></span>vlcb_net_sock_dgram_New()</h2>
+<a id="af395cf7ab49dd5071cbe58f1c4286720" name="af395cf7ab49dd5071cbe58f1c4286720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af395cf7ab49dd5071cbe58f1c4286720">&#9670;&#160;</a></span>vlcb_net_sock_dgram_New()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -326,12 +327,17 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structVlcbPacketBuf.html">VlcbPacketBuf</a> *const</td>          <td class="paramname"><span class="paramname"><em>txBuf</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structVlcbPacketBuf.html">VlcbPacketBuf</a> *const</td>          <td class="paramname"><span class="paramname"><em>txBuf</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="addr_8h.html#aa2003a78ef8f482c7fe5b2bf8eac05d0">VlcbNetWireEndpointHandle</a></td>          <td class="paramname"><span class="paramname"><em>endpoint</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_2datagram_8c_source.html#l00072">72</a> of file <a class="el" href="socket_2datagram_8c_source.html">socket/datagram.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_2datagram_8c_source.html#l00092">92</a> of file <a class="el" href="socket_2datagram_8c_source.html">socket/datagram.c</a>.</p>
 
 </div>
 </div>
@@ -354,7 +360,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_2datagram_8c_source.html#l00092">92</a> of file <a class="el" href="socket_2datagram_8c_source.html">socket/datagram.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_2datagram_8c_source.html#l00113">113</a> of file <a class="el" href="socket_2datagram_8c_source.html">socket/datagram.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -387,7 +393,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_2datagram_8c_source.html#l00080">80</a> of file <a class="el" href="socket_2datagram_8c_source.html">socket/datagram.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_2datagram_8c_source.html#l00101">101</a> of file <a class="el" href="socket_2datagram_8c_source.html">socket/datagram.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -446,7 +452,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00046">46</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_2datagram_8h_source.html#l00049">49</a> of file <a class="el" href="socket_2datagram_8h_source.html">socket/datagram.h</a>.</p>
 
 </div>
 </div>
@@ -456,7 +462,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_427baa8a9a5be237f298d4545d0d1ce2.html">net</a></li><li class="navelem"><a class="el" href="dir_c0575b5e81918ff6cd7d86b5adbed5d0.html">inc</a></li><li class="navelem"><a class="el" href="dir_5314d62625720a050713b0cba532fdc8.html">vlcb</a></li><li class="navelem"><a class="el" href="dir_ca0879ab5012c7f5f5b50184c926c0b0.html">net</a></li><li class="navelem"><a class="el" href="dir_a03e1dae6f64b92f7d96771dae9e32e0.html">socket</a></li><li class="navelem"><a class="el" href="socket_2datagram_8h.html">datagram.h</a></li>
-    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Jan 15 2025 17:24:52 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

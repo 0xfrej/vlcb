@@ -106,23 +106,26 @@ $(function(){initNavTree('iface__can_8c.html',''); initResizable(true); });
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="iface__can__svc_8c_source.html">iface_can_svc.c</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="iface__vlcb_8h_source.html">iface_vlcb.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="adapter_8h_source.html">vlcb/net/adapter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="addr_8h_source.html">vlcb/net/addr.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="iface_8h_source.html">vlcb/net/iface.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="vlcb_8h_source.html">vlcb/net/packet/vlcb.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="socket_8h_source.html">vlcb/net/socket.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="log_8h_source.html">vlcb/platform/log.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for iface_can.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="iface__can_8c__incl.svg" width="1136" height="568"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="iface__can_8c__incl.svg" width="1480" height="586"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="iface__can_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8aa9c1f4ce14446285c7f5b9240f83d9" id="r_a8aa9c1f4ce14446285c7f5b9240f83d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8aa9c1f4ce14446285c7f5b9240f83d9">ProcessCanPacket</a> (<a class="el" href="structVlcbNetIface.html">VlcbNetIface</a> *const iface, <a class="el" href="structVlcbNetAdptPkt.html">VlcbNetAdptPkt</a> *pkt)</td></tr>
-<tr class="separator:a8aa9c1f4ce14446285c7f5b9240f83d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96e0054424451b9fdc03c51cd74b9cb8" id="r_a96e0054424451b9fdc03c51cd74b9cb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96e0054424451b9fdc03c51cd74b9cb8">ProcessCanPacket</a> (<a class="el" href="structVlcbNetIface.html">VlcbNetIface</a> *const iface, <a class="el" href="structVlcbNetAdptPkt.html">VlcbNetAdptPkt</a> *pkt, <a class="el" href="time_8h.html#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a> now)</td></tr>
+<tr class="separator:a96e0054424451b9fdc03c51cd74b9cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76a59452e911a2f524037904fd59f0bf" id="r_a76a59452e911a2f524037904fd59f0bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="adapter_8h.html#a07c07a6882fd3bdce27b16e759d145ff">VlcbNetAdptErr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76a59452e911a2f524037904fd59f0bf">DispatchCanPacket</a> (<a class="el" href="structVlcbNetIface.html">VlcbNetIface</a> *const iface, const <a class="el" href="structVlcbNetPacket.html">VlcbNetPacket</a> *const packet)</td></tr>
 <tr class="separator:a76a59452e911a2f524037904fd59f0bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -146,7 +149,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="iface__can_8c_source.html#l00037">37</a> of file <a class="el" href="iface__can_8c_source.html">iface_can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="iface__can_8c_source.html#l00061">61</a> of file <a class="el" href="iface__can_8c_source.html">iface_can.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -155,8 +158,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a8aa9c1f4ce14446285c7f5b9240f83d9" name="a8aa9c1f4ce14446285c7f5b9240f83d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8aa9c1f4ce14446285c7f5b9240f83d9">&#9670;&#160;</a></span>ProcessCanPacket()</h2>
+<a id="a96e0054424451b9fdc03c51cd74b9cb8" name="a96e0054424451b9fdc03c51cd74b9cb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e0054424451b9fdc03c51cd74b9cb8">&#9670;&#160;</a></span>ProcessCanPacket()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,21 +172,26 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structVlcbNetAdptPkt.html">VlcbNetAdptPkt</a> *</td>          <td class="paramname"><span class="paramname"><em>pkt</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structVlcbNetAdptPkt.html">VlcbNetAdptPkt</a> *</td>          <td class="paramname"><span class="paramname"><em>pkt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="time_8h.html#a9a966b6d96396d1fc5f23ccb1da50404">vlcb_milis</a></td>          <td class="paramname"><span class="paramname"><em>now</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="iface__can_8c_source.html#l00011">11</a> of file <a class="el" href="iface__can_8c_source.html">iface_can.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="iface__can_8c_source.html#l00014">14</a> of file <a class="el" href="iface__can_8c_source.html">iface_can.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="iface__can_8c_a8aa9c1f4ce14446285c7f5b9240f83d9_cgraph.svg" width="882" height="426"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="iface__can_8c_a96e0054424451b9fdc03c51cd74b9cb8_cgraph.svg" width="906" height="552"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="iface__can_8c_a8aa9c1f4ce14446285c7f5b9240f83d9_icgraph.svg" width="510" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="iface__can_8c_a96e0054424451b9fdc03c51cd74b9cb8_icgraph.svg" width="510" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -194,7 +202,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_427baa8a9a5be237f298d4545d0d1ce2.html">net</a></li><li class="navelem"><a class="el" href="dir_1125596c65a252cc7ae564f4b9ccb92e.html">src</a></li><li class="navelem"><a class="el" href="dir_30421521c2cd29aad93f606c088e1b39.html">iface</a></li><li class="navelem"><a class="el" href="iface__can_8c.html">iface_can.c</a></li>
-    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Jan 15 2025 17:24:52 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

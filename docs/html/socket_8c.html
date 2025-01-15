@@ -106,10 +106,12 @@ $(function(){initNavTree('socket_8c.html',''); initResizable(true); });
 <div class="textblock"><code>#include &quot;<a class="el" href="socket_8h_source.html">vlcb/net/socket.h</a>&quot;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for socket.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8c__incl.svg" width="692" height="342"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8c__incl.svg" width="1158" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="socket_8c_source.html">Go to the source code of this file.</a></p>
@@ -120,6 +122,8 @@ Functions</h2></td></tr>
 <tr class="separator:a537a368d82060b07a5f1c68761d7532f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a003645532ffd39ccfa0895ba38d71ba9" id="r_a003645532ffd39ccfa0895ba38d71ba9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a003645532ffd39ccfa0895ba38d71ba9">vlcb_net_sock_list_Insert</a> (<a class="el" href="structVlcbNetSocketList.html">VlcbNetSocketList</a> *const list, <a class="el" href="socket_8h.html#aacfb837cdc6b674971a70b3c3481082e">VlcbNetSocketHandle</a> sock)</td></tr>
 <tr class="separator:a003645532ffd39ccfa0895ba38d71ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae52542e9bd013037046248751891e5fa" id="r_ae52542e9bd013037046248751891e5fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae52542e9bd013037046248751891e5fa">vlcb_net_sock_list_Remove</a> (<a class="el" href="structVlcbNetSocketList.html">VlcbNetSocketList</a> *const list, <a class="el" href="socket_8h.html#aacfb837cdc6b674971a70b3c3481082e">VlcbNetSocketHandle</a> sock)</td></tr>
+<tr class="separator:ae52542e9bd013037046248751891e5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9401eccd14dd3acd44764c5e8a05beaf" id="r_a9401eccd14dd3acd44764c5e8a05beaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structVlcbNetSocketListIter.html">VlcbNetSocketListIter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9401eccd14dd3acd44764c5e8a05beaf">vlcb_net_sock_list_GetIterator</a> (const <a class="el" href="structVlcbNetSocketList.html">VlcbNetSocketList</a> *const list)</td></tr>
 <tr class="separator:a9401eccd14dd3acd44764c5e8a05beaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa132a1a7db070818f04c678980b3cac6" id="r_aa132a1a7db070818f04c678980b3cac6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa132a1a7db070818f04c678980b3cac6">vlcb_net_sock_list_iter_Reset</a> (<a class="el" href="structVlcbNetSocketListIter.html">VlcbNetSocketListIter</a> *const iter)</td></tr>
@@ -147,11 +151,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00030">30</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00051">51</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8c_a9401eccd14dd3acd44764c5e8a05beaf_icgraph.svg" width="887" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8c_a9401eccd14dd3acd44764c5e8a05beaf_icgraph.svg" width="887" height="140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -175,7 +179,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00017">17</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00019">19</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -199,11 +203,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00043">43</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00064">64</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8c_a176c72971ceb14a338d824d7a3bb0fac_icgraph.svg" width="1075" height="92"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8c_a176c72971ceb14a338d824d7a3bb0fac_icgraph.svg" width="1075" height="158"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -223,7 +227,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00050">50</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00071">71</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -232,7 +236,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8c_a81bef9c5afd9ccbb9d0a52b2ae1da9b2_icgraph.svg" width="887" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8c_a81bef9c5afd9ccbb9d0a52b2ae1da9b2_icgraph.svg" width="887" height="140"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -252,7 +256,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00038">38</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00059">59</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 
 </div>
 </div>
@@ -283,7 +287,35 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00006">6</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00008">8</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+
+</div>
+</div>
+<a id="ae52542e9bd013037046248751891e5fa" name="ae52542e9bd013037046248751891e5fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae52542e9bd013037046248751891e5fa">&#9670;&#160;</a></span>vlcb_net_sock_list_Remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vlcb_net_sock_list_Remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structVlcbNetSocketList.html">VlcbNetSocketList</a> *const</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="socket_8h.html#aacfb837cdc6b674971a70b3c3481082e">VlcbNetSocketHandle</a></td>          <td class="paramname"><span class="paramname"><em>sock</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00031">31</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="socket_8c_ae52542e9bd013037046248751891e5fa_icgraph.svg" width="380" height="56"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -302,7 +334,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00056">56</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="socket_8c_source.html#l00077">77</a> of file <a class="el" href="socket_8c_source.html">socket.c</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -317,7 +349,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_427baa8a9a5be237f298d4545d0d1ce2.html">net</a></li><li class="navelem"><a class="el" href="dir_1125596c65a252cc7ae564f4b9ccb92e.html">src</a></li><li class="navelem"><a class="el" href="dir_153fc0cdf8d9d5a517ac8950790f1c55.html">socket</a></li><li class="navelem"><a class="el" href="socket_8c.html">socket.c</a></li>
-    <li class="footer">Generated on Fri Nov 8 2024 16:10:13 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Jan 15 2025 17:24:52 for VLCB SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>
