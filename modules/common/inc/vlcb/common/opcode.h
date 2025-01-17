@@ -13,7 +13,9 @@ enum VlcbOpCode {
    * Positive response to query/request performed or report of availability
    * on-line.
    *
-   * Short name: ACK
+   * @remark Short name: ACK
+   *
+   * @remark response
    */
   VLCB_OPC_GENERAL_ACK = 0,
 
@@ -22,7 +24,9 @@ enum VlcbOpCode {
    *
    * Negative response to query/request denied by the target.
    *
-   * Short name: NAK
+   * @remark Short name: NAK
+   *
+   * @remark response
    */
   VLCB_OPC_GENERAL_NACK = 1,
 
@@ -33,7 +37,9 @@ enum VlcbOpCode {
    * no further packets should be sent until a #VLCB_OPC_BUS_RESUME or
    * #VLCB_OPC_RESTART_ALL_NODES is received.
    *
-   * Short name: HLT
+   * @remark Short name: HLT
+   *
+   * @remark notification
    */
   VLCB_OPC_BUS_HALT = 2,
 
@@ -43,7 +49,9 @@ enum VlcbOpCode {
    * Commonly broadcasted to all nodes to indicate CBUS is available after a
    * #VLCB_OPC_BUS_HALT message was transmitted.
    *
-   * Short name: BON
+   * @remark Short name: BON
+   *
+   * @remark notification
    */
   VLCB_OPC_BUS_RESUME = 3,
 
@@ -54,7 +62,9 @@ enum VlcbOpCode {
    * power is off and no further command packets should be sent, except
    * inquiries.
    *
-   * Short name: TOF
+   * @remark Short name: TOF
+   *
+   * @remark notification
    */
   VLCB_OPC_DCC_TRACK_POWERED_OFF = 4,
 
@@ -64,7 +74,9 @@ enum VlcbOpCode {
    * Commonly broadcasted to all nodes by a command station to indicate track
    * power is on.
    *
-   * Short name: TON
+   * @remark Short name: TON
+   *
+   * @remark notification
    */
   VLCB_OPC_DCC_TRACK_POWERED_ON = 5,
 
@@ -74,7 +86,9 @@ enum VlcbOpCode {
    * Commonly broadcast to all nodes by a command station to indicate all
    * engines have been emergency stopped.
    *
-   * Short name: ESTOP
+   * @remark Short name: ESTOP
+   *
+   * @remark notification
    */
   VLCB_OPC_DCC_EMERGENCY_STOP_ENGAGED = 6,
 
@@ -85,7 +99,9 @@ enum VlcbOpCode {
    * Similar to #VLCB_OPC_RESTART_NODE which directs a single node to be
    * restarted.
    *
-   * Short name: ARST
+   * @remark Short name: ARST
+   *
+   * @remark request
    */
   VLCB_OPC_RESTART_ALL_NODES = 7,
 
@@ -94,7 +110,9 @@ enum VlcbOpCode {
    *
    * Sent to request change of track power state to “off”.
    *
-   * Short name: RTOF
+   * @remark Short name: RTOF
+   *
+   * @remark request
    */
   VLCB_OPC_DCC_TRACK_POWER_OFF = 8,
 
@@ -103,7 +121,9 @@ enum VlcbOpCode {
    *
    * Sent to request change of track power state to “on”.
    *
-   * Short name: RTON
+   * @remark Short name: RTON
+   *
+   * @remark request
    */
   VLCB_OPC_DCC_TRACK_POWER_ON = 9,
 
@@ -113,7 +133,9 @@ enum VlcbOpCode {
    * Sent to request an emergency stop to all trains.
    * Does not affect accessory control.
    *
-   * Short name: RESTP
+   * @remark Short name: RESTP
+   *
+   * @remark request
    */
   VLCB_OPC_DCC_EMERGENCY_STOP = 10,
 
@@ -124,7 +146,9 @@ enum VlcbOpCode {
    * #VLCB_OPC_DCC_COMMAND_STATION_STATUS for the response from the command
    * station.
    *
-   * Short name: RSTAT
+   * @remark Short name: RSTAT
+   *
+   * @remark request
    */
   VLCB_OPC_DCC_QUERY_COMMAND_STATION_STATUS = 12,
 
@@ -135,7 +159,9 @@ enum VlcbOpCode {
    * Can be used by management software to obtain list of nodes on the
    * network
    *
-   * Short name: QNN
+   * @remark Short name: QNN
+   *
+   * @remark request
    */
   VLCB_OPC_QUERY_MODULE_INFO = 13,
 
@@ -145,7 +171,9 @@ enum VlcbOpCode {
    * Sent to a node while in Setup mode to read its parameter set.
    * Used when initially configuring a node.
    *
-   * Short name: RQNP
+   * @remark Short name: RQNP
+   *
+   * @remark request
    */
   VLCB_OPC_QUERY_MODULE_PARAMETERS = 16,
 
@@ -159,7 +187,8 @@ enum VlcbOpCode {
    * Note: if there are two modules one in setup mode and the other in learn
    * mode, both will respond to the query.
    *
-   * Short name: RQMN
+   * @remark Short name: RQMN
+   * @remark request
    */
   VLCB_OPC_QUERY_MODULE_NAME = 17,
 
@@ -169,7 +198,9 @@ enum VlcbOpCode {
    * Sent by a CAB to the Command Station. The engine with that Session number
    * is removed from the active engine list.
    *
-   * Short name: KLOC
+   * @remark Short name: KLOC
+   *
+   * @remark request
    *
    * On session not found: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
@@ -183,7 +214,9 @@ enum VlcbOpCode {
    * used to determine if the command station session is valid and to obtain
    * information about the status of the locomotive.
    *
-   * short name: qloc
+   * @remark Short name: QLOC
+   *
+   * @remark request
    *
    * on `session not found`: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
@@ -198,7 +231,9 @@ enum VlcbOpCode {
    * The interval between keep alive messages must be less than the session
    * timeout implemented by the command station.
    *
-   * Sort name: DKEEP
+   * @remark Short name: DKEEP
+   *
+   * @remark notification
    */
   VLCB_OPC_DCC_SESSION_KEEP_ALIVE = 35,
 
@@ -208,7 +243,9 @@ enum VlcbOpCode {
    * Freeform status byte for debugging during CBUS module development. Not used
    * during normal operation.
    *
-   * Short name: DBG1
+   * @remark Short name: DBG1
+   *
+   * @remark notification
    */
   VLCB_OPC_DEBUG_MSG1 = 48,
 
@@ -218,7 +255,9 @@ enum VlcbOpCode {
    * Reserved to allow the 0 additional bytes range to be extended by a further
    * 256 opcodes.
    *
-   * Short name: EXTC
+   * @remark Short name: EXTC
+   *
+   * @remark extended opcode
    */
   VLCB_OPC_EXT_OPCODE0 = 63,
 
@@ -229,7 +268,8 @@ enum VlcbOpCode {
    * change of the controlled decoder address. Thsi is exactly equivalent to
    * #VLCB_OPC_DCC_QUERY_LOCO_SESSION with all flag bits set to zero.
    *
-   * Short name: RLOC
+   * @remark Short name: RLOC
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_DCC_LOCO_REPORT
    * On `decoder address being already assigned`: target responds with
@@ -247,7 +287,8 @@ enum VlcbOpCode {
    * otherwise responds with #VLCB_OPC_DCC_COMMAND_STATION_ERROR and code
    * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
    *
-   * Short name: QCON
+   * @remark Short name: QCON
+   * @remark request
    *
    * On `session not found`: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
@@ -262,7 +303,8 @@ enum VlcbOpCode {
    * in response to a #VLCB_OPC_REQUEST_NEW_NODE_NUMBER message. The target node
    * must be in `setup` mode.
    *
-   * Short name: SNN
+   * @remark Short name: SNN
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_NODE_NUMBER_ACK
    */
@@ -271,7 +313,8 @@ enum VlcbOpCode {
   /**
    * @brief Allocate loco to activity.
    *
-   * Short name: ALOC
+   * @remark Short name: ALOC
+   * @remark request
    *
    * On `session not found`: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
@@ -282,7 +325,8 @@ enum VlcbOpCode {
   /**
    * @brief Set CAB session mode.
    *
-   * Short name: STMOD
+   * @remark Short name: STMOD
+   * @remark request
    *
    * On `session not found`: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
@@ -297,7 +341,8 @@ enum VlcbOpCode {
    * If a consist with that ID does not exist yet, new consist will be
    * created with the specified ID.
    *
-   * Short name: PCON
+   * @remark Short name: PCON
+   * @remark request
    *
    * On `session not found`: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT
@@ -307,7 +352,8 @@ enum VlcbOpCode {
   /**
    * @brief Removes a loco from a consist.
    *
-   * Short name: KCON
+   * @remark Short name: KCON
+   * @remark request
    *
    * On `session not found`: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
@@ -320,7 +366,8 @@ enum VlcbOpCode {
    *
    * Sent by a CAB or equivalent to request an engine speed/direction change.
    *
-   * Short name: DSPD
+   * @remark Short name: DSPD
+   * @remark request
    *
    * On `session not found`: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
@@ -333,7 +380,8 @@ enum VlcbOpCode {
    *
    * Sent by a cab to notify the command station of a change in engine flags.
    *
-   * Short name: DFLG
+   * @remark Short name: DFLG
+   * @remark request
    *
    * On `session not found`: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
@@ -348,7 +396,8 @@ enum VlcbOpCode {
    * This provides an alternative method to #VLCB_OPC_DCC_SET_LOCO_FUNCTIONS for
    * controlling loco functions.
    *
-   * Short name: DFNON
+   * @remark Short name: DFNON
+   * @remark request
    *
    * On `session not found`: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
@@ -363,7 +412,8 @@ enum VlcbOpCode {
    * This provides an alternative method to #VLCB_OPC_DCC_SET_LOCO_FUNCTIONS for
    * controlling loco functions.
    *
-   * Short name: DFNOF
+   * @remark Short name: DFNOF
+   * @remark request
    *
    * On `session not found`: target responds with
    * #VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT code
@@ -379,7 +429,8 @@ enum VlcbOpCode {
    *
    * Response to #VLCB_OPC_DCC_READ_CV to indicate no data.
    *
-   * Short name: SSTAT
+   * @remark Short name: SSTAT
+   * @remark response
    */
   VLCB_OPC_DCC_SERVICE_MODE_STATUS = 76,
 
@@ -388,7 +439,8 @@ enum VlcbOpCode {
    *
    * Reset a module back e to manufacturer settings.
    *
-   * Short name: NNRSM
+   * @remark Short name: NNRSM
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_GENERIC_RESPONSE code
    * #VLCB_GENERIC_RESPONSE_STAT_OK
@@ -406,7 +458,8 @@ enum VlcbOpCode {
    * it returns to previous state and reclaims it old node number with
    * #VLCB_OPC_NODE_NUMBER_ACK
    *
-   * Short name: RQNN
+   * @remark Short name: RQNN
+   * @remark request
    */
   VLCB_OPC_REQUEST_NEW_NODE_NUMBER = 80,
 
@@ -417,7 +470,8 @@ enum VlcbOpCode {
    *
    * The module will do this upon moving from normal mode to setup mode.
    *
-   * Short name: NNREL
+   * @remark Short name: NNREL
+   * @remark notification
    */
   VLCB_OPC_NODE_NUMBER_RELEASED = 81,
 
@@ -427,7 +481,8 @@ enum VlcbOpCode {
    * This message is sent in response to #VLCB_OPC_SET_NODE_NUMBER.
    * A node signals that it will now use the provided node number.
    *
-   * Short name: NNACK
+   * @remark Short name: NNACK
+   * @remark response
    */
   VLCB_OPC_NODE_NUMBER_ACK = 82,
 
@@ -436,7 +491,8 @@ enum VlcbOpCode {
    *
    * Sent by a configuration tool to put a specific node into learn mode.
    *
-   * Short name: NNLRN
+   * @remark Short name: NNLRN
+   * @remark request
    *
    * @deprecated replaced by #VLCB_OPC_CHANGE_MODULE_MODE
    *
@@ -451,7 +507,8 @@ enum VlcbOpCode {
    * Sent by a configuration tool to take the module out of learn mode and
    * revert to normal operation.
    *
-   * Short name: NNULN
+   * @remark Short name: NNULN
+   * @remark request
    *
    * @deprecated replaced by #VLCB_OPC_CHANGE_MODULE_MODE
    *
@@ -467,7 +524,8 @@ enum VlcbOpCode {
    * Must be in learn mode first to safeguard against accidental erasure of all
    * events
    *
-   * Short name: NNCLR
+   * @remark Short name: NNCLR
+   * @remark request
    *
    * On `success`: tearget responds with #VLCB_OPC_WRITE_ACK
    * On `module not in learn mode`: target responds with #VLCB_OPC_COMMAND_ERROR
@@ -485,7 +543,8 @@ enum VlcbOpCode {
    * Sent by a configuration tool to read the number of available event slots in
    * a node.
    *
-   * Short name: NNEVN
+   * @remark Short name: NNEVN
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_AVAILABLE_EVENT_SLOTS
    */
@@ -497,7 +556,8 @@ enum VlcbOpCode {
    * There must be no hidden events.
    * Sent by a configuration tool to read all the stored events in a node.
    *
-   * Short name: NERD
+   * @remark Short name: NERD
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_LEARNED_EVENT_RESPONSE
    */
@@ -509,6 +569,7 @@ enum VlcbOpCode {
    * Sent by a configuration tool to read the number of stored events in a node.
    *
    * Short name RQEVN
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_LEARNED_EVENT_COUNT
    */
@@ -522,7 +583,8 @@ enum VlcbOpCode {
    * variables, events or event variables has completed. This allows for
    * teaching nodes where the processing time may be slow.
    *
-   * Short name: WRACK
+   * @remark Short name: WRACK
+   * @remark response
    *
    * @deprecated replaced by #VLCB_OPC_GENERIC_RESPONSE
    * @@warning When feature `EXPERIMENTAL_CBUS_DEPRECATION_DROP` is enabled,
@@ -535,7 +597,8 @@ enum VlcbOpCode {
    *
    * Sent by one node to read the data event from another node.(eg: RFID data).
    *
-   * Short name: RQDAT
+   * @remark Short name: RQDAT
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_NODE_ACCESSORY_DATA
    */
@@ -546,6 +609,9 @@ enum VlcbOpCode {
    *
    * To request a ‘data set’ from a device using the short event method where DN
    * is the device number.
+   *
+   * @remark Short name: RQDDS
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_DEVICE_DATA_SHORT_MODE
    */
@@ -558,7 +624,8 @@ enum VlcbOpCode {
    * in Normal mode the command must contain current node number of the target.
    * Sent by a configuration tool to prepare for loading a new program.
    *
-   * Short name: BOOTM
+   * @remark Short name: BOOTM
+   * @remark request
    *
    * @deprecated replaced by #VLCB_OPC_CHANGE_MODULE_MODE
    * @warning When feature `EXPERIMENTAL_CBUS_DEPRECATION_DROP` is enabled, this
@@ -573,7 +640,8 @@ enum VlcbOpCode {
    * This message will force a self-enumeration cycle for the specified node.
    * A new CAN ID will be allocated if needed.
    *
-   * Short name: ENUM
+   * @remark Short name: ENUM
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_NODE_NUMBER_ACK
    * On `enumeration failure`: target responds with #VLCB_OPC_COMMAND_ERROR code
@@ -591,7 +659,8 @@ enum VlcbOpCode {
    *
    * Reset a module’s microprocessor.
    *
-   * Short name: NNRST
+   * @remark Short name: NNRST
+   * @remark request
    */
   VLCB_OPC_RESTART_NODE = 94,
 
@@ -601,14 +670,16 @@ enum VlcbOpCode {
    * Reserved to allow the 1 additional bytes range to be extended by a further
    * 256 opcodes.
    *
-   * Short name: EXTC1
+   * @remark Short name: EXTC1
+   * @remark extended opcode
    */
   VLCB_OPC_EXT_OPCODE1 = 95,
 
   /**
    * @brief Set Engine functions.
    *
-   * Short name: DFUN
+   * @remark Short name: DFUN
+   * @remark request
    *
    * On `session not found`: target responds with
    * #VLCB_OPC_DCC_COMMAND_STATION_ERROR code
@@ -619,7 +690,8 @@ enum VlcbOpCode {
   /**
    * @brief Get engine session.
    *
-   * Short name: GLOC
+   * @remark Short name: GLOC
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_DCC_LOCO_REPORT
    * On `loco address taken and mode is not steal/share`: target responds with
@@ -639,7 +711,8 @@ enum VlcbOpCode {
    *
    * @see VlcbDccError for possible error code values
    *
-   * Short name: ERR
+   * @remark Short name: ERR
+   * @remark response
    */
   VLCB_OPC_DCC_COMMAND_STATION_ERROR = 99,
 
@@ -650,7 +723,8 @@ enum VlcbOpCode {
    *
    * @see VlcbCommandError for possible error code values
    *
-   * Short name: CMDERR
+   * @remark Short name: CMDERR
+   * @remark response
    *
    * @deprecated replaced by #VLCB_OPC_GENERIC_RESPONSE
    * @warning  feature `EXPERIMENTAL_CBUS_DEPRECATION_DROP` is enabled, this
@@ -667,7 +741,8 @@ enum VlcbOpCode {
    *
    * Sent as a response to #VLCB_OPC_QUERY_AVAILABLE_EVENT_SLOTS
    *
-   * Short name: EVNLF
+   * @remark Short name: EVNLF
+   * @remark response
    */
   VLCB_OPC_AVAILABLE_EVENT_SLOTS = 112,
 
@@ -679,7 +754,8 @@ enum VlcbOpCode {
    * If NV# is of value 0, then the target will respond with
    * #VLCB_OPC_NODE_VARIABLE_VALUE for each of it's stored node variable.
    *
-   * Short name: NVRD
+   * @remark Short name: NVRD
+   * @remark request
    *
    * On `success`: target responds with one or seies of
    * #VLCB_OPC_NODE_VARIABLE_VALUE messages, depending on the NV# requested On
@@ -694,7 +770,8 @@ enum VlcbOpCode {
    *
    * EN# is the index for the stored event requested.
    *
-   * Short name: NENRD
+   * @remark Short name: NENRD
+   * @remark request
    *
    * On `success`: target responds with #VLCB_OPC_LEARNED_EVENT_RESPONSE
    * On `invalid EN# index`: target responds with #VLCB_OPC_COMMAND_ERROR code
@@ -709,7 +786,8 @@ enum VlcbOpCode {
    * If request contains Para# of value 0, target returns a response with number
    * of node parameters available
    *
-   * Short name: RQNPN
+   * @remark Short name: RQNPN
+   * @remark request
    *
    * on `success`: target responds with #VLCB_OPC_NODE_PARAMETER_VALUE. For
    * requests with Para# of value 0, target shall respond with
@@ -725,7 +803,8 @@ enum VlcbOpCode {
    *
    * Response to #VLCB_OPC_QUERY_LEARNED_EVENT_COUNT
    *
-   * Short name: NUMEV
+   * @remark Short name: NUMEV
+   * @remark response
    */
   VLCB_OPC_LEARNED_EVENT_COUNT = 116,
 
@@ -736,7 +815,8 @@ enum VlcbOpCode {
    * (99 decimal). This OPC must be used with care as duplicate CAN IDs are not
    * allowed.
    *
-   * Short name: CANID
+   * @remark Short name: CANID
+   * @remark request
    *
    * @deprecated Replaced with self-enumeration
    * @warning Modules implemented by this SDK will ignore the command, unless it
@@ -749,7 +829,8 @@ enum VlcbOpCode {
    *
    * Request to change the operational mode of the module.
    *
-   * Short name: MODE
+   * @remark Short name: MODE
+   * @remark request
    *
    * on `success`: target responds with #VLCB_OPC_GENERIC_RESPONSE code
    * #VLCB_GENERIC_RESPONSE_STAT_OK
@@ -772,7 +853,8 @@ enum VlcbOpCode {
    * If the service index is not zero the module responds with
    * #VLCB_OPC_EXTENDED_SERVICE_DISCOVERY_RESPONSE
    *
-   * Short name: RQSD
+   * @remark Short name: RQSD
+   * @remark request
    */
   VLCB_OPC_QUERY_SERVICE_DISCOVERY = 120,
 
@@ -782,7 +864,8 @@ enum VlcbOpCode {
    * Reserved to allow the 2 additional bytes range to be extended by a
    * further 256 opcodes.
    *
-   * Short name: EXTC2
+   * @remark Short name: EXTC2
+   * @remark extended opcode
    */
   VLCB_OPC_EXT_OPCODE2 = 127,
 
@@ -793,7 +876,8 @@ enum VlcbOpCode {
    * track. The packet is sent <REP> times and is not refreshed on a regular
    * basis. Note: a 3 byte DCC packet is the minimum allowed.
    *
-   * Short name: RDCC3
+   * @remark Short name: RDCC3
+   * @remark request
    */
   VLCB_OPC_DCC_SEND_RAW_PACKET3 = 128,
 
@@ -803,7 +887,8 @@ enum VlcbOpCode {
    * Sent to the command station to write a DCC CV byte in OPS mode to a
    * specific loco (on the main).
    *
-   * Short name: WCVO
+   * @remark Short name: WCVO
+   * @remark request
    */
   VLCB_OPC_DCC_WRITE_CV_BYTE_IN_OPS_MODE = 130,
 
@@ -816,7 +901,8 @@ enum VlcbOpCode {
    * RailCom is used). D is the bit value, either 0 or 1 and BBB is the bit
    * position in the CV byte. 000 to 111 for bits 0 to 7.
    *
-   * Short name: WCVB
+   * @remark Short name: WCVB
+   * @remark request
    */
   VLCB_OPC_DC_WRITE_CV_BIT_IN_OPS_MODE = 131,
 
@@ -825,7 +911,8 @@ enum VlcbOpCode {
    * This command is used exclusively with service mode.
    * Sent by the cab to the command station in order to read a CV value.
    *
-   * Short name: QCVS
+   * @remark Short name: QCVS
+   * @remark request
    */
   VLCB_OPC_DCC_READ_CV = 132,
 
@@ -835,7 +922,8 @@ enum VlcbOpCode {
    * This command is used exclusively with service mode.
    * Sent by the command station to report a read CV in response to QCVS.
    *
-   * Short name: PCVS
+   * @remark Short name: PCVS
+   * @remark response
    */
   VLCB_OPC_DCC_CV_VALUE = 133,
 
@@ -846,7 +934,8 @@ enum VlcbOpCode {
    * If the requested diagnostic data is zero then a response for all diagnostic
    * data is returned.
    *
-   * Short name: RDGN
+   * @remark Short name: RDGN
+   * @remark request
    */
   VLCB_OPC_QUERY_DIAGNOSTIC_DATA = 135,
 
@@ -855,7 +944,8 @@ enum VlcbOpCode {
    * Sets a NV value and additionally responds with the new value.nvset
    * The new value may not be the value which was requested to be written.
    *
-   * Short name: NVSETRD
+   * @remark Short name: NVSETRD
+   * @remark request
    */
   VLCB_OPC_SET_NODE_VARIABLE = 142,
 
@@ -866,7 +956,8 @@ enum VlcbOpCode {
    * event). An event is sent by a module when it detects a change of state.
    * Modules may consume the event and perform actions.
    *
-   * Short name: ACON
+   * @remark Short name: ACON
+   * @remark notification
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_ON = 144,
 
@@ -877,7 +968,8 @@ enum VlcbOpCode {
    * event). An event is sent by a module when it detects a change of state.
    * Modules may consume the event and perform actions.
    *
-   * Short name: ACOF
+   * @remark Short name: ACOF
+   * @remark notification
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_OFF = 145,
 
@@ -889,7 +981,8 @@ enum VlcbOpCode {
    * when it is required to know the ‘state’ of the producer without producing
    * an ON or OFF event.
    *
-   * Short name: AREQ
+   * @remark Short name: AREQ
+   * @remark request
    */
   VLCB_OPC_QUERY_LONG_EVENT_ACCESSORY_STATE = 146,
 
@@ -899,7 +992,8 @@ enum VlcbOpCode {
    * Indicates an ‘ON’ response. A response is a reply to a status request
    * (AREQ) without producing an ON or OFF event.
    *
-   * Short name: ARON
+   * @remark Short name: ARON
+   * @remark response
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_ON = 147,
 
@@ -909,7 +1003,8 @@ enum VlcbOpCode {
    * Indicates an ‘OFF’ response. A response is a reply to a status request
    * (AREQ) without producing an ON or OFF event.
    *
-   * Short name: AROF
+   * @remark Short name: AROF
+   * @remark response
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_OFF = 148,
 
@@ -918,7 +1013,8 @@ enum VlcbOpCode {
    *
    * Sent by a configuration tool to remove an event from a node.
    *
-   * Short name: EVULN
+   * @remark Short name: EVULN
+   * @remark request
    */
   VLCB_OPC_FORGET_LEARNED_EVENT = 149,
 
@@ -928,7 +1024,8 @@ enum VlcbOpCode {
    * Sent by a configuration tool to set a node variable. NV# is the NV index
    * number.
    *
-   * Short name: NVSET
+   * @remark Short name: NVSET
+   * @remark request
    */
   VLCB_OPC_LEGACY_SET_NODE_VARIABLE = 150,
 
@@ -937,7 +1034,8 @@ enum VlcbOpCode {
    *
    * Sent by node in response to request NVRD or NVSETRD.
    *
-   * Short name: NVANS
+   * @remark Short name: NVANS
+   * @remark response
    */
   VLCB_OPC_NODE_VARIABLE_VALUE = 151,
 
@@ -950,7 +1048,8 @@ enum VlcbOpCode {
    * the NN normally indicates the source of the event.
    *
    *
-   * Short name: ASON
+   * @remark Short name: ASON
+   * @remark notification
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_ON = 152,
 
@@ -962,7 +1061,8 @@ enum VlcbOpCode {
    * consume the event and perform actions. The NN is not used to match events,
    * the NN normally indicates the source of the event.
    *
-   * Short name: ASOF
+   * @remark Short name: ASOF
+   * @remark notification
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_OFF = 153,
 
@@ -974,7 +1074,8 @@ enum VlcbOpCode {
    * is required to know the ‘state’ of the producer without producing an ON or
    * OFF event.
    *
-   * Short name: ASRQ
+   * @remark Short name: ASRQ
+   * @remark request
    */
   VLCB_OPC_QUERY_SHORT_EVENT_ACCESSORY_STATE = 154,
 
@@ -986,7 +1087,8 @@ enum VlcbOpCode {
    * Parameter index is the parameter number and matches that in the RQNPN
    * request.
    *
-   * Short name: PARAN
+   * @remark Short name: PARAN
+   * @remark response
    */
   VLCB_OPC_NODE_PARAMETER_VALUE = 155,
 
@@ -995,7 +1097,8 @@ enum VlcbOpCode {
    *
    * This request differs from B2 (REQEV) as it doesn’t need to be in learn
    *
-   * Short name: REVAL
+   * @remark Short name: REVAL
+   * @remark response
    */
   VLCB_OPC_QUERY_EVENT_VARIABLE = 156,
 
@@ -1005,7 +1108,8 @@ enum VlcbOpCode {
    * Indicates an ‘ON’ response. A response is a reply to a status request
    * (ASRQ) without producing an ON or OFF event.
    *
-   * Short name: ARSON
+   * @remark Short name: ARSON
+   * @remark notification
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_ON = 157,
 
@@ -1015,7 +1119,8 @@ enum VlcbOpCode {
    * Indicates an ‘OFF’ response. A response is a reply to a status request
    * (ASRQ) without producing an ON or OFF event.
    *
-   * Short name: ARSOF
+   * @remark Short name: ARSOF
+   * @remark notification
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_OFF = 158,
 
@@ -1024,7 +1129,8 @@ enum VlcbOpCode {
    * Reserved to allow the 3 additional bytes range to be extended by a further
    * 256 opcodes.
    *
-   * Short name: EXTC3
+   * @remark Short name: EXTC3
+   * @remark extended opcode
    */
   VLCB_OPC_EXT_OPCODE3 = 159,
 
@@ -1034,7 +1140,8 @@ enum VlcbOpCode {
    * track. The packet is sent <REP> times and is not refreshed on a regular
    * basis.
    *
-   * Short name: RDCC4
+   * @remark Short name: RDCC4
+   * @remark request
    */
   VLCB_OPC_DCC_SEND_RAW_PACKET4 = 160,
 
@@ -1042,7 +1149,8 @@ enum VlcbOpCode {
    * Write CV in Service mode.
    * Sent to the command station to write a DCC CV in service mode.
    *
-   * Short name: WCVS
+   * @remark Short name: WCVS
+   * @remark request
    */
   VLCB_OPC_DCC_WRITE_CV_IN_SERVICE_MODE = 162,
 
@@ -1058,7 +1166,8 @@ enum VlcbOpCode {
    * as outlined in MNS Specification Section 8.3. 0x00 Shall always represent
    * “normal“ operation. StatusBits: Reserved for future expansion, set to 0x00
    *
-   * Short name: HEARTB
+   * @remark Short name: HEARTB
+   * @remark notification
    */
   VLCB_OPC_HEARTBEAT = 171,
 
@@ -1068,7 +1177,8 @@ enum VlcbOpCode {
    * The version of a service supported by a module.
    * Sent in response to RQSD with ServiceIndex = 0. A number of SD
    *
-   * Short name: SD
+   * @remark Short name: SD
+   * @remark response
    */
   VLCB_OPC_SERVICE_DISCOVERY_RESPONSE = 172,
 
@@ -1080,7 +1190,8 @@ enum VlcbOpCode {
    * ready for further configuration. The CMDERR codes are supported and in
    * addition service specific
    *
-   * Short name: GRSP
+   * @remark Short name: GRSP
+   * @remark response
    */
   VLCB_OPC_GENERIC_RESPONSE = 175,
 
@@ -1093,7 +1204,8 @@ enum VlcbOpCode {
    * the additional data is dependent upon the application and must be agreed
    * between the producer and consumer of the event.
    *
-   * Short name: ACON1
+   * @remark Short name: ACON1
+   * @remark notification
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_ON1 = 176,
 
@@ -1106,7 +1218,8 @@ enum VlcbOpCode {
    * the additional data is dependent upon the application and must be agreed
    * between the producer and consumer of the event.
    *
-   * Short name: ACOF1
+   * @remark Short name: ACOF1
+   * @remark notification
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_OFF1 = 177,
 
@@ -1118,7 +1231,8 @@ enum VlcbOpCode {
    * Reading EV#0 shall first return the number of EVs followed by a series of
    * EVANS with the value for each EV.
    *
-   * Short name: REQEV
+   * @remark Short name: REQEV
+   * @remark request
    */
   VLCB_OPC_QUERY_EVENT_VARIABLE_BY_IDEX = 178,
 
@@ -1128,7 +1242,8 @@ enum VlcbOpCode {
    * Indicates an ‘ON’ response with one additional data byte. A response is a
    * reply to a status request (AREQ) without producing an ON or OFF
    *
-   * Short name: ARON1
+   * @remark Short name: ARON1
+   * @remark response
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_ON1 = 179,
 
@@ -1137,7 +1252,8 @@ enum VlcbOpCode {
    * Indicates an ‘OFF’ response with one additional data byte. A response is a
    * reply to a status request (AREQ) without producing an ON or OFF
    *
-   * Short name: AROF1
+   * @remark Short name: AROF1
+   * @remark response
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_OFF1 = 180,
 
@@ -1146,7 +1262,8 @@ enum VlcbOpCode {
    *
    * This is the response to the request to read an EV - REVAL.
    *
-   * Short name: NEVAL
+   * @remark Short name: NEVAL
+   * @remark response
    */
   VLCB_OPC_EVENT_VARIABLE_VALUE = 181,
 
@@ -1155,7 +1272,8 @@ enum VlcbOpCode {
    *
    * Sent in response to a QNN request.
    *
-   * Short name: PNN
+   * @remark Short name: PNN
+   * @request response
    */
   VLCB_OPC_MODULE_INFO = 182,
 
@@ -1169,7 +1287,8 @@ enum VlcbOpCode {
    * The meaning of the additional data is dependent upon the application and
    * must be agreed between the producer and consumer of the event.
    *
-   * Short name: ASON1
+   * @remark Short name: ASON1
+   * @remark notification
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_ON1 = 184,
 
@@ -1183,7 +1302,8 @@ enum VlcbOpCode {
    * The meaning of the additional data is dependent upon the application and
    * must be agreed between the producer and consumer of the event.
    *
-   * Short name: ASOF1
+   * @remark Short name: ASOF1
+   * @remark notification
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_OFF1 = 185,
 
@@ -1192,7 +1312,8 @@ enum VlcbOpCode {
    * Indicates an ‘ON’ response with one added data byte. A response is a reply
    * to a status request (ASRQ)without producing an ON or OFF
    *
-   * Short name: ARSON1
+   * @remark Short name: ARSON1
+   * @remark response
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_ON1 = 189,
 
@@ -1202,7 +1323,8 @@ enum VlcbOpCode {
    * to a status request (ASRQ) without producing an ON or OFF event. A response
    * event is a reply to a status request (ASRQ)without
    *
-   * Short name: ARSOF1
+   * @remark Short name: ARSOF1
+   * @remark response
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_OFF1 = 190,
 
@@ -1211,7 +1333,8 @@ enum VlcbOpCode {
    * Reserved to allow the 4 additional bytes range to be extended by a further
    * 256 opcodes.
    *
-   * Short name: EXTC4
+   * @remark Short name: EXTC4
+   * @remark extended opcode
    */
   VLCB_OPC_EXT_OPCODE4 = 191,
 
@@ -1221,7 +1344,8 @@ enum VlcbOpCode {
    * track. The packet is sent <REP> times and is not refreshed on a regular
    * basis.
    *
-   * Short name: RDCC5
+   * @remark Short name: RDCC5
+   * @remark request
    */
   VLCB_OPC_DCC_SEND_RAW_PACKET5 = 192,
 
@@ -1232,7 +1356,8 @@ enum VlcbOpCode {
    * loco (on the main). Used by computer based ops mode programmer that does
    * not have a valid throttle handle.
    *
-   * Short name: WCVOA
+   * @remark Short name: WCVOA
+   * @remark request
    */
   VLCB_OPC_DCC_WRITE_CV_BYTE_IN_OPS_MODE_BY_ADDRESS = 193,
 
@@ -1265,7 +1390,8 @@ enum VlcbOpCode {
    * caution, preliminary caution or proceed. For UK semaphore signalling, where
    * there are multiple arms for
    *
-   * Short name: CABDAT
+   * @remark Short name: CABDAT
+   * @remark request
    */
   VLCB_OPC_DCC_SEND_DATA_TO_CAB = 194,
 
@@ -1274,7 +1400,8 @@ enum VlcbOpCode {
    *
    * Diagnostic data value from a module. Sent in response to RDGN.
    *
-   * Short name: DGN
+   * @remark Short name: DGN
+   * @remark response
    */
   VLCB_OPC_DIAGNOSTIC_DATA = 199,
 
@@ -1283,7 +1410,8 @@ enum VlcbOpCode {
    *
    * Used to implement a fast clock for the layout.
    *
-   * Short name: FCLK
+   * @remark Short name: FCLK
+   * @remark notification
    */
   VLCB_OPC_FAST_CLOCK = 207,
 
@@ -1296,7 +1424,8 @@ enum VlcbOpCode {
    * meaning of the additional data is dependent upon the application and must
    * be agreed between the producer and consumer of the event.
    *
-   * Short name: ACON2
+   * @remark Short name: ACON2
+   * @remark notification
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_ON2 = 208,
 
@@ -1309,7 +1438,8 @@ enum VlcbOpCode {
    * meaning of the additional data is dependent upon the application and must
    * be agreed between the producer and consumer of the event.
    *
-   * Short name ACOF2
+   * @remark Short name: ACOF2
+   * @remark notification
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_OFF2 = 209,
 
@@ -1320,7 +1450,8 @@ enum VlcbOpCode {
    * variable. Also teaches it the associated event. This command is repeated
    * for each EV required.
    *
-   * Short name: EVLRN
+   * @remark Short name: EVLRN
+   * @remark request
    */
   VLCB_OPC_TEACH_EVENT = 210,
 
@@ -1330,7 +1461,8 @@ enum VlcbOpCode {
    * A node response to a request from a configuration tool for the EVs
    * associated with an event (REQEV). For multiple EVs, there will be one
    *
-   * Short name: EVANS
+   * @remark Short name: EVANS
+   * @remark response
    */
   VLCB_OPC_EVENT_VARIABLE_VALUE_IN_LEARN_MODE = 211,
 
@@ -1340,7 +1472,8 @@ enum VlcbOpCode {
    * Indicates an ‘ON’ response event with two added data bytes. A response is a
    * reply to a status request (AREQ) without producing an
    *
-   * Short name: ARON2
+   * @remark Short name: ARON2
+   * @remark response
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_ON2 = 212,
 
@@ -1350,7 +1483,8 @@ enum VlcbOpCode {
    * Indicates an ‘OFF’ response event with two added data bytes. A response is
    * a reply to a status request (AREQ) without producing an
    *
-   * Short name: AROF2
+   * @remark Short name: AROF2
+   * @remark response
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_OFF2 = 213,
 
@@ -1363,7 +1497,8 @@ enum VlcbOpCode {
    * The meaning of the additional data is dependent upon the application and
    * must be agreed between the producer and consumer of the event.
    *
-   * Short name: ASON2
+   * @remark Short name: ASON2
+   * @remark notification
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_ON2 = 216,
 
@@ -1376,7 +1511,8 @@ enum VlcbOpCode {
    * The meaning of the additional data is dependent upon the application and
    * must be agreed between the producer and consumer of the event.
    *
-   * Short name: ASOF2
+   * @remark Short name: ASOF2
+   * @remark notification
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_OFF2 = 217,
 
@@ -1386,7 +1522,8 @@ enum VlcbOpCode {
    * Indicates an ‘ON’ response event with two added data bytes. A response is a
    * reply to a status request (ASRQ)without producing an ON
    *
-   * Short name: ARSON2
+   * @remark Short name: ARSON2
+   * @remark response
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_ON2 = 221,
 
@@ -1396,7 +1533,8 @@ enum VlcbOpCode {
    * Indicates an ‘OFF’ response event with two added data bytes. A response is
    * a reply to a status request (ASRQ) without producing an
    *
-   * Short name: ARSOF2
+   * @remark Short name: ARSOF2
+   * @remark response
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_OFF2 = 222,
 
@@ -1406,7 +1544,8 @@ enum VlcbOpCode {
    * Reserved to allow the 5 additional bytes range to be extended by a further
    * 256 opcodes.
    *
-   * Short name: EXTC5
+   * @remark Short name: EXTC5
+   * @remark extended opcode
    */
   VLCB_OPC_EXT_OPCODE5 = 223,
 
@@ -1417,7 +1556,8 @@ enum VlcbOpCode {
    * track. The packet is sent <REP> times and is not refreshed on a regular
    * basis.
    *
-   * Short name: RDCC6
+   * @remark Short name: RDCC6
+   * @remark request
    */
   VLCB_OPC_DCC_SEND_RAW_PACKET6 = 224,
 
@@ -1427,7 +1567,8 @@ enum VlcbOpCode {
    * A report of an engine entry sent by the command station. Sent in response
    * to QLOC or as an acknowledgement of acquiring an engine
    *
-   * Short name: PLOC
+   * @remark Short name: PLOC
+   * @remark response
    */
   VLCB_OPC_DCC_LOCO_REPORT = 225,
 
@@ -1436,7 +1577,8 @@ enum VlcbOpCode {
    *
    * Returns the type name for the module in response to RQMN. Any
    *
-   * Short name: NAME
+   * @remark Short name: NAME
+   * @remark response
    */
   VLCB_OPC_MODULE_NAME = 226,
 
@@ -1445,7 +1587,8 @@ enum VlcbOpCode {
    *
    * Sent by the command station in response to RSTAT.
    *
-   * Short name: STAT
+   * @remark Short name: STAT
+   * @remark response
    */
   VLCB_OPC_DCC_COMMAND_STATION_STATUS = 227,
 
@@ -1455,7 +1598,8 @@ enum VlcbOpCode {
    * Sent by a module to acknowledge the consumption of an event. Used for
    * diagnostic purposes.
    *
-   * Short name: ENACK
+   * @remark Short name: ENACK
+   * @remark notification
    */
   VLCB_OPC_EVENT_ACK = 230,
 
@@ -1466,7 +1610,8 @@ enum VlcbOpCode {
    * supplied is service specific. Sent in response to RQSD with ServiceIndex is
    * not zero. A single ESD
    *
-   * Short name: ESD
+   * @remark Short name: ESD
+   * @remark response
    */
   VLCB_OPC_EXTENDED_SERVICE_DISCOVERY_RESPONSE = 231,
 
@@ -1490,7 +1635,8 @@ enum VlcbOpCode {
    * merely contain the StreamID and SequenceNum and 5 bytes of message data It
    * is recommended that continuation frames are throttled at 1 over 20ms.
    *
-   * Short name: DTXC
+   * @remark Short name: DTXC
+   * @remark stream
    */
   VLCB_OPC_STREAM_PACKET = 233,
 
@@ -1499,7 +1645,8 @@ enum VlcbOpCode {
    *
    * Returns the first 7 parameters for the module in response to RQNP.
    *
-   * Short name: PARAMS
+   * @remark Short name: PARAMS
+   * @remark response
    */
   VLCB_OPC_NODE_PARAMETERS_REPORT = 239,
 
@@ -1512,7 +1659,8 @@ enum VlcbOpCode {
    * meaning of the additional data is dependent upon the application and must
    * be agreed between the producer and consumer of the event.
    *
-   * Short name: ACON3
+   * @remark Short name: ACON3
+   * @remark notification
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_ON3 = 240,
 
@@ -1525,7 +1673,8 @@ enum VlcbOpCode {
    * meaning of the additional data is dependent upon the application and must
    * be agreed between the producer and consumer of the event.
    *
-   * Short name: ACOF3
+   * @remark Short name: ACOF3
+   * @remark notification
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_OFF3 = 241,
 
@@ -1534,7 +1683,8 @@ enum VlcbOpCode {
    *
    * This is a response to either NERD or NENRD.
    *
-   * Short name: ENRSP
+   * @remark Short name: ENRSP
+   * @remark response
    */
   VLCB_OPC_LEARNED_EVENT_RESPONSE = 242,
 
@@ -1544,7 +1694,8 @@ enum VlcbOpCode {
    * Indicates an ‘ON’ response event with three added data bytes. A response is
    * a reply to a status request (AREQ) without producing an
    *
-   * Short name: ARON3
+   * @remark Short name: ARON3
+   * @remark response
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_ON3 = 243,
 
@@ -1554,7 +1705,8 @@ enum VlcbOpCode {
    * Indicates an ‘OFF’ response event with three added data bytes. A response
    * is a reply to a status request (AREQ) without producing an
    *
-   * Short name: AROF3
+   * @remark Short name: AROF3
+   * @remark response
    */
   VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_OFF3 = 244,
 
@@ -1566,7 +1718,8 @@ enum VlcbOpCode {
    * variables (EVs). This command is repeated for each EV required. Parameter
    * EN# is ignored and this request is similar to EVLRN.
    *
-   * Short name: EVLRNI
+   * @remark Short name: EVLRNI
+   * @remark request
    */
   VLCB_OPC_TEACH_EVENT_BY_INDEX = 245,
 
@@ -1579,7 +1732,8 @@ enum VlcbOpCode {
    * be one data event per node. The meaning of the event is therefore dependent
    * upon the type and use of the module.
    *
-   * Short name: ACDAT
+   * @remark Short name: ACDAT
+   * @remark notification
    */
   VLCB_OPC_DATA_EVENT_ACCESSORY = 246,
 
@@ -1589,7 +1743,8 @@ enum VlcbOpCode {
    * Indicates a node data response. A response event is a reply to a status
    * request (RQDAT) without producing a new data event.
    *
-   * Short name: ARDAT
+   * @remark Short name: ARDAT
+   * @remark response
    */
   VLCB_OPC_NODE_ACCESSORY_DATA = 247,
 
@@ -1603,7 +1758,8 @@ enum VlcbOpCode {
    * event. The meaning of the additional data is dependent upon the application
    * and must be agreed between the producer and consumer of the event.
    *
-   * Short name: ASON3
+   * @remark Short name: ASON3
+   * @remark notification
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_ON3 = 248,
 
@@ -1617,7 +1773,8 @@ enum VlcbOpCode {
    * event. The meaning of the additional data is dependent upon the application
    * and must be agreed between the producer and consumer of the event.
    *
-   * Short name: ASOF3
+   * @remark Short name: ASOF3
+   * @remark notification
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_OFF3 = 249,
 
@@ -1626,7 +1783,8 @@ enum VlcbOpCode {
    *
    * Function is the same as ACDAT but uses device addressing so it can
    *
-   * Short name: DDES
+   * @remark Short name: DDES
+   * @remark notification
    */
   VLCB_OPC_DEVICE_DATA_EVENT_SHORT_MODE = 250,
 
@@ -1635,7 +1793,8 @@ enum VlcbOpCode {
    *
    * The response to a RQDDS request for data from a device.
    *
-   * Short name: DDRS
+   * @remark Short name: DDRS
+   * @remark response
    */
   VLCB_OPC_DEVICE_DATA_SHORT_MODE = 251,
 
@@ -1645,7 +1804,8 @@ enum VlcbOpCode {
    * Used to write data to a device such as a RFID tag. data1 ~ data5 is data to
    * be written to the device. RC522 devices should have data1 set to 0
    *
-   * Short name: DDWS
+   * @remark Short name: DDWS
+   * @remark request
    */
   VLCB_OPC_WRITE_DATA = 252,
 
@@ -1655,7 +1815,8 @@ enum VlcbOpCode {
    * Indicates an ‘ON’ response event with three added data bytes.A response is
    * a reply to a status request (ASRQ)without producing an ON
    *
-   * Short name: ARSON3
+   * @remark Short name: ARSON3
+   * @remark response
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_ON3 = 253,
 
@@ -1665,7 +1826,8 @@ enum VlcbOpCode {
    * Indicates an ‘OFF’ response event with three added data bytes.A response is
    * a reply to a status request (ASRQ) without producing an
    *
-   * Short name: ARSOF3
+   * @remark Short name: ARSOF3
+   * @remark response
    */
   VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_OFF3 = 254,
 
@@ -1675,7 +1837,8 @@ enum VlcbOpCode {
    * Reserved to allow the 6 additional bytes range to be extended by a further
    * 256 opcodes.
    *
-   * Short name: EXTC6
+   * @remark Short name: EXTC6
+   * @remark extended opcode
    */
   VLCB_OPC_EXT_OPCODE6 = 255,
 };
