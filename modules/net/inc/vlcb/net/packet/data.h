@@ -102,7 +102,6 @@ typedef struct {
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SET_THROTTLE_MODE
- * TODO: custom serialization - look at docs
  */
 typedef struct {
   VlcbDccSessionNr session;
@@ -138,11 +137,9 @@ typedef struct {
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SET_LOCO_THROTTLE
- * TODO: custom serialization
  */
 typedef struct {
   VlcbDccSessionNr session;
-  /* 7 bit wide */
   uint8_t speed;
   VlcbDccLocoDirection direction;
 } VlcbNetDataDccSetLocoThrottle;
@@ -152,12 +149,11 @@ typedef struct {
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SET_LOCO_FLAGS
- * TODO: custom serialization
  */
 typedef struct {
   VlcbDccSessionNr session;
   VlcbDccThrottleSpeedMode speedMode;
-  bool lighsOn;
+  bool lightsOn;
   VlcbDccLocoDirection direction;
   VlcbDccLocoState state;
 } VlcbNetDataDccSetLocoFlags;
@@ -792,7 +788,6 @@ typedef struct {
   VlcbNodeNumber sourceNodeNumber;
   uint8_t sequenceNr;
   uint8_t status;
-  // uint8_t statusBits; TODO: Reserved set to 0
 } VlcbNetDataHeartbeat;
 
 /**
@@ -1013,7 +1008,7 @@ typedef struct {
   uint8_t hours;
   VlcbTimeWeekDay weekDay;
   uint8_t dayOfMonth;
-  VlcbTimeMonth month; // TODO: custom serialization
+  VlcbTimeMonth month;
   // 0 means freeze
   uint8_t dividerFactor;
   int8_t temperature;
