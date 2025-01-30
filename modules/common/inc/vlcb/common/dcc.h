@@ -88,6 +88,15 @@ enum VlcbDccServiceModeStatus {
 };
 
 /**
+ * @brief DCC loco direction
+ */
+typedef uint8_t VlcbDccLocoDirection;
+enum VlcbDccLocoDirection {
+  VLCB_DCC_LOCO_DIRECTION_FORWARD = 0,
+  VLCB_DCC_LOCO_DIRECTION_REVERSE = 1,
+};
+
+/**
  * @brief DCC throttle/loco speed modes
  */
 typedef uint8_t VlcbDccThrottleSpeedMode;
