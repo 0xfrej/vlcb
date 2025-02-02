@@ -10,84 +10,84 @@
 #include <stdint.h>
 
 /**
- * VlcbNetDataDccReleaseSession
+ * VlcbNetMsgDccReleaseSession
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_RELEASE_SESSION
  */
 typedef struct {
   VlcbDccSessionNr session;
-} VlcbNetDataDccReleaseSession;
+} VlcbNetMsgDccReleaseSession;
 
 /**
- * VlcbNetDataDccQueryLocoStatus
+ * VlcbNetMsgDccQueryLocoStatus
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_QUERY_LOCO_STATUS
  */
 typedef struct {
   VlcbDccSessionNr session;
-} VlcbNetDataDccQueryLocoStatus;
+} VlcbNetMsgDccQueryLocoStatus;
 
 /**
- * VlcbNetDataDccSessionKeepAlive
+ * VlcbNetMsgDccSessionKeepAlive
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SESSION_KEEP_ALIVE
  */
 typedef struct {
   VlcbDccSessionNr session;
-} VlcbNetDataDccSessionKeepAlive;
+} VlcbNetMsgDccSessionKeepAlive;
 
 /**
- * VlcbNetDataDebugMsg1
+ * VlcbNetMsgDebugMsg1
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_DEBUG_MSG1
  */
 typedef struct {
   uint8_t status;
-} VlcbNetDataDebugMsg1;
+} VlcbNetMsgDebugMsg1;
 
 /**
- * VlcbNetDataExtOpcode0
+ * VlcbNetMsgExtOpcode0
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_EXT_OPCODE0
  */
 typedef struct {
   uint8_t opcodeExtension;
-} VlcbNetDataExtOpcode0;
+} VlcbNetMsgExtOpcode0;
 
 /**
- * VlcbNetDataDccRequestNewSession
+ * VlcbNetMsgDccRequestNewSession
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_REQUEST_NEW_SESSION
  */
 typedef struct {
   VlcbDccDecoderAddr decoderAddr;
-} VlcbNetDataDccRequestNewSession;
+} VlcbNetMsgDccRequestNewSession;
 
 /**
- * VlcbNetDataDccQueryConsist
+ * VlcbNetMsgDccQueryConsist
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_DCC_QUERY_CONSIST
  */
 typedef struct {
   VlcbDccConsistId consist;
   uint8_t index;
-} VlcbNetDataDccQueryConsist;
+} VlcbNetMsgDccQueryConsist;
 
 /**
- * VlcbNetDataSetNodeNumber
+ * VlcbNetMsgSetNodeNumber
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_SET_NODE_NUMBER
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataSetNodeNumber;
+} VlcbNetMsgSetNodeNumber;
 
 /**
- * VlcbNetDataDccAllocateLocoToActivity
+ * VlcbNetMsgDccAllocateLocoToActivity
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_ALLOCATE_LOCO_TO_ACTIVITY
@@ -95,10 +95,10 @@ typedef struct {
 typedef struct {
   VlcbDccSessionNr session;
   uint8_t allocationCode;
-} VlcbNetDataDccAllocateLocoToActivity;
+} VlcbNetMsgDccAllocateLocoToActivity;
 
 /**
- * VlcbNetDataDccSetThrottleMode
+ * VlcbNetMsgDccSetThrottleMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SET_THROTTLE_MODE
@@ -108,10 +108,10 @@ typedef struct {
   VlcbDccThrottleSpeedMode throttleMode;
   bool inServiceMode;
   bool inSoundControlMode;
-} VlcbNetDataDccSetThrottleMode;
+} VlcbNetMsgDccSetThrottleMode;
 
 /**
- * VlcbNetDataDccConsistAddLoco
+ * VlcbNetMsgDccConsistAddLoco
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_CONSIST_ADD_LOCO
@@ -119,10 +119,10 @@ typedef struct {
 typedef struct {
   VlcbDccSessionNr session;
   VlcbDccConsistId consist;
-} VlcbNetDataDccConsistAddLoco;
+} VlcbNetMsgDccConsistAddLoco;
 
 /**
- * VlcbNetDataDccConsistRemoveLoco
+ * VlcbNetMsgDccConsistRemoveLoco
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_CONSIST_REMOVE_LOCO
@@ -130,10 +130,10 @@ typedef struct {
 typedef struct {
   VlcbDccSessionNr session;
   VlcbDccConsistId consist;
-} VlcbNetDataDccConsistRemoveLoco;
+} VlcbNetMsgDccConsistRemoveLoco;
 
 /**
- * VlcbNetDataDccSetLocoThrottle
+ * VlcbNetMsgDccSetLocoThrottle
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SET_LOCO_THROTTLE
@@ -142,10 +142,10 @@ typedef struct {
   VlcbDccSessionNr session;
   uint8_t speed;
   VlcbDccLocoDirection direction;
-} VlcbNetDataDccSetLocoThrottle;
+} VlcbNetMsgDccSetLocoThrottle;
 
 /**
- * VlcbNetDataDccSetLocoFlags
+ * VlcbNetMsgDccSetLocoFlags
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SET_LOCO_FLAGS
@@ -156,10 +156,10 @@ typedef struct {
   bool lightsOn;
   VlcbDccLocoDirection direction;
   VlcbDccLocoState state;
-} VlcbNetDataDccSetLocoFlags;
+} VlcbNetMsgDccSetLocoFlags;
 
 /**
- * VlcbNetDataDccLocoFunctionOn
+ * VlcbNetMsgDccLocoFunctionOn
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_LOCO_FUNCTION_ON
@@ -167,10 +167,10 @@ typedef struct {
 typedef struct {
   VlcbDccSessionNr session;
   uint8_t functionNr;
-} VlcbNetDataDccLocoFunctionOn;
+} VlcbNetMsgDccLocoFunctionOn;
 
 /**
- * VlcbNetDataDccLocoFunctionOff
+ * VlcbNetMsgDccLocoFunctionOff
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_LOCO_FUNCTION_OFF
@@ -178,10 +178,10 @@ typedef struct {
 typedef struct {
   VlcbDccSessionNr session;
   uint8_t functionNr;
-} VlcbNetDataDccLocoFunctionOff;
+} VlcbNetMsgDccLocoFunctionOff;
 
 /**
- * VlcbNetDataDccServiceModeStatus
+ * VlcbNetMsgDccServiceModeStatus
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SERVICE_MODE_STATUS
@@ -190,177 +190,177 @@ typedef struct {
   VlcbDccSessionNr session;
   /* @remark possible status values are unknown at the moment*/
   uint8_t status;
-} VlcbNetDataDccServiceModeStatus;
+} VlcbNetMsgDccServiceModeStatus;
 
 /**
- * VlcbNetDataResetModuleToFactory
+ * VlcbNetMsgResetModuleToFactory
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_RESET_MODULE_TO_FACTORY
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataResetModuleToFactory;
+} VlcbNetMsgResetModuleToFactory;
 
 /**
- * VlcbNetDataRequestNewNodeNumber
+ * VlcbNetMsgRequestNewNodeNumber
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_REQUEST_NEW_NODE_NUMBER
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataRequestNewNodeNumber;
+} VlcbNetMsgRequestNewNodeNumber;
 
 /**
- * VlcbNetDataNodeNumberReleased
+ * VlcbNetMsgNodeNumberReleased
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_NODE_NUMBER_RELEASED
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataNodeNumberReleased;
+} VlcbNetMsgNodeNumberReleased;
 
 /**
- * VlcbNetDataNodeNumberAck
+ * VlcbNetMsgNodeNumberAck
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_NODE_NUMBER_ACK
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataNodeNumberAck;
+} VlcbNetMsgNodeNumberAck;
 
 /**
- * VlcbNetDataPutNodeIntoLearnMode
+ * VlcbNetMsgPutNodeIntoLearnMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_PUT_NODE_INTO_LEARN_MODE
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataPutNodeIntoLearnMode;
+} VlcbNetMsgPutNodeIntoLearnMode;
 
 /**
- * VlcbNetDataReleaseNodeFromLearnMode
+ * VlcbNetMsgReleaseNodeFromLearnMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_RELEASE_NODE_FROM_LEARN_MODE
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataReleaseNodeFromLearnMode;
+} VlcbNetMsgReleaseNodeFromLearnMode;
 
 /**
- * VlcbNetDataForgetAllLearnedEvents
+ * VlcbNetMsgForgetAllLearnedEvents
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_FORGET_ALL_LEARNED_EVENTS
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataForgetAllLearnedEvents;
+} VlcbNetMsgForgetAllLearnedEvents;
 
 /**
- * VlcbNetDataQueryAvailableEventSlots
+ * VlcbNetMsgQueryAvailableEventSlots
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_AVAILABLE_EVENT_SLOTS
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataQueryAvailableEventSlots;
+} VlcbNetMsgQueryAvailableEventSlots;
 
 /**
- * VlcbNetDataQueryAllLearnedEvents
+ * VlcbNetMsgQueryAllLearnedEvents
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_ALL_LEARNED_EVENTS
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataQueryAllLearnedEvents;
+} VlcbNetMsgQueryAllLearnedEvents;
 
 /**
- * VlcbNetDataQueryLearnedEventCount
+ * VlcbNetMsgQueryLearnedEventCount
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_LEARNED_EVENT_COUNT
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataQueryLearnedEventCount;
+} VlcbNetMsgQueryLearnedEventCount;
 
 /**
- * VlcbNetDataWriteAck
+ * VlcbNetMsgWriteAck
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_WRITE_ACK
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataWriteAck;
+} VlcbNetMsgWriteAck;
 
 /**
- * VlcbNetDataQueryNodeAccessoryData
+ * VlcbNetMsgQueryNodeAccessoryData
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_NODE_ACCESSORY_DATA
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataQueryNodeAccessoryData;
+} VlcbNetMsgQueryNodeAccessoryData;
 
 /**
- * VlcbNetDataQueryDeviceDataShortMode
+ * VlcbNetMsgQueryDeviceDataShortMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_DEVICE_DATA_SHORT_MODE
  */
 typedef struct {
   VlcbNodeNumber dataNumber;
-} VlcbNetDataQueryDeviceDataShortMode;
+} VlcbNetMsgQueryDeviceDataShortMode;
 
 /**
- * VlcbNetDataRebootIntoBootloader
+ * VlcbNetMsgRebootIntoBootloader
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_REBOOT_INTO_BOOTLOADER
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataRebootIntoBootloader;
+} VlcbNetMsgRebootIntoBootloader;
 
 /**
- * VlcbNetDataForceCanEnumeration
+ * VlcbNetMsgForceCanEnumeration
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_FORCE_CAN_ENUMERATION
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataForceCanEnumeration;
+} VlcbNetMsgForceCanEnumeration;
 
 /**
- * VlcbNetDataRestartNode
+ * VlcbNetMsgRestartNode
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_RESTART_NODE
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-} VlcbNetDataRestartNode;
+} VlcbNetMsgRestartNode;
 
 /**
- * VlcbNetDataExtOpcode1
+ * VlcbNetMsgExtOpcode1
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_EXT_OPCODE1
  */
 typedef struct {
   uint8_t opcodeExtension;
   uint8_t data[1];
-} VlcbNetDataExtOpcode1;
+} VlcbNetMsgExtOpcode1;
 
 /**
- * VlcbNetDataDccSetLocoFunctions
+ * VlcbNetMsgDccSetLocoFunctions
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SET_LOCO_FUNCTIONS
@@ -369,10 +369,10 @@ typedef struct {
   VlcbDccSessionNr session;
   VlcbDccLocoFunctionRange range;
   uint8_t functionStates;
-} VlcbNetDataDccSetLocoFunctions;
+} VlcbNetMsgDccSetLocoFunctions;
 
 /**
- * VlcbNetDataDccQueryLocoSession
+ * VlcbNetMsgDccQueryLocoSession
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_QUERY_LOCO_SESSION
@@ -380,10 +380,10 @@ typedef struct {
 typedef struct {
   VlcbDccDecoderAddr decoderAddr;
   VlcbDccSessionQueryMode mode;
-} VlcbNetDataDccQueryLocoSession;
+} VlcbNetMsgDccQueryLocoSession;
 
 /**
- * VlcbNetDataDccCommandStationError
+ * VlcbNetMsgDccCommandStationError
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_COMMAND_STATION_ERROR
@@ -391,20 +391,20 @@ typedef struct {
 typedef struct {
   VlcbDccDecoderAddr decoderAddr;
   uint8_t errorCode;
-} VlcbNetDataDccCommandStationError;
+} VlcbNetMsgDccCommandStationError;
 
 /**
- * VlcbNetDataCommandError
+ * VlcbNetMsgCommandError
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_COMMAND_ERROR
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t errorCode;
-} VlcbNetDataCommandError;
+} VlcbNetMsgCommandError;
 
 /**
- * VlcbNetDataAvailableEventSlots
+ * VlcbNetMsgAvailableEventSlots
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_AVAILABLE_EVENT_SLOTS
@@ -412,10 +412,10 @@ typedef struct {
 typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t availableSlots;
-} VlcbNetDataAvailableEventSlots;
+} VlcbNetMsgAvailableEventSlots;
 
 /**
- * VlcbNetDataQueryNodeVariable
+ * VlcbNetMsgQueryNodeVariable
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_NODE_VARIABLE
@@ -423,10 +423,10 @@ typedef struct {
 typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t nodeVariableIndex;
-} VlcbNetDataQueryNodeVariable;
+} VlcbNetMsgQueryNodeVariable;
 
 /**
- * VlcbNetDataQueryLearnedEventByIndex
+ * VlcbNetMsgQueryLearnedEventByIndex
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_LEARNED_EVENT_BY_INDEX
@@ -434,10 +434,10 @@ typedef struct {
 typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t eventIndex;
-} VlcbNetDataQueryLearnedEventByIndex;
+} VlcbNetMsgQueryLearnedEventByIndex;
 
 /**
- * VlcbNetDataQueryNodeParameterByIndex
+ * VlcbNetMsgQueryNodeParameterByIndex
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_NODE_PARAMETER_BY_INDEX
@@ -445,10 +445,10 @@ typedef struct {
 typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t parameterIndex;
-} VlcbNetDataQueryNodeParameterByIndex;
+} VlcbNetMsgQueryNodeParameterByIndex;
 
 /**
- * VlcbNetDataLearnedEventCount
+ * VlcbNetMsgLearnedEventCount
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LEARNED_EVENT_COUNT
@@ -456,37 +456,37 @@ typedef struct {
 typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t learnedEventCount;
-} VlcbNetDataLearnedEventCount;
+} VlcbNetMsgLearnedEventCount;
 
 /**
- * VlcbNetDataSetNodeCanId
+ * VlcbNetMsgSetNodeCanId
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_SET_NODE_CAN_ID
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
   VlcbCanId canId;
-} VlcbNetDataSetNodeCanId;
+} VlcbNetMsgSetNodeCanId;
 
-typedef uint8_t VlcbNetDataModuleMode;
-enum VlcbNetDataModuleMode {
+typedef uint8_t VlcbNetMsgModuleMode;
+enum VlcbNetMsgModuleMode {
   VLCB_NET_DATA_MODULE_MODE_SETUP = 0,
   VLCB_NET_DATA_MODULE_MODE_NORMAL = 1,
 };
 
 /**
- * VlcbNetDataChangeModuleMode
+ * VlcbNetMsgChangeModuleMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_CHANGE_MODULE_MODE
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-  VlcbNetDataModuleMode mode;
-} VlcbNetDataChangeModuleMode;
+  VlcbNetMsgModuleMode mode;
+} VlcbNetMsgChangeModuleMode;
 
 /**
- * VlcbNetDataQueryServiceDiscovery
+ * VlcbNetMsgQueryServiceDiscovery
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_SERVICE_DISCOVERY
@@ -494,20 +494,20 @@ typedef struct {
 typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t serviceIndex;
-} VlcbNetDataQueryServiceDiscovery;
+} VlcbNetMsgQueryServiceDiscovery;
 
 /**
- * VlcbNetDataExtOpcode2
+ * VlcbNetMsgExtOpcode2
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_EXT_OPCODE2
  */
 typedef struct {
   uint8_t opcodeExtension;
   uint8_t data[2];
-} VlcbNetDataExtOpcode2;
+} VlcbNetMsgExtOpcode2;
 
 /**
- * VlcbNetDataDccSendRawPacket3
+ * VlcbNetMsgDccSendRawPacket3
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SEND_RAW_PACKET3
@@ -515,10 +515,10 @@ typedef struct {
 typedef struct {
   uint8_t repeatTimes;
   uint8_t data[3];
-} VlcbNetDataDccSendRawPacket3;
+} VlcbNetMsgDccSendRawPacket3;
 
 /**
- * VlcbNetDataDccWriteCvByteInOpsMode
+ * VlcbNetMsgDccWriteCvByteInOpsMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_WRITE_CV_BYTE_IN_OPS_MODE
@@ -527,10 +527,10 @@ typedef struct {
   VlcbDccSessionNr session;
   uint16_t CV;
   uint8_t value;
-} VlcbNetDataDccWriteCvByteInOpsMode;
+} VlcbNetMsgDccWriteCvByteInOpsMode;
 
 /**
- * VlcbNetDataDcWriteCvBitInOpsMode
+ * VlcbNetMsgDcWriteCvBitInOpsMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DC_WRITE_CV_BIT_IN_OPS_MODE
@@ -539,10 +539,10 @@ typedef struct {
   VlcbDccSessionNr session;
   uint16_t CV;
   uint8_t value;
-} VlcbNetDataDcWriteCvBitInOpsMode;
+} VlcbNetMsgDcWriteCvBitInOpsMode;
 
 /**
- * VlcbNetDataDccReadCv
+ * VlcbNetMsgDccReadCv
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_DCC_READ_CV
  */
@@ -551,10 +551,10 @@ typedef struct {
   uint16_t CV;
   /* @remark possible values unknown */
   uint8_t mode;
-} VlcbNetDataDccReadCv;
+} VlcbNetMsgDccReadCv;
 
 /**
- * VlcbNetDataDccCvValue
+ * VlcbNetMsgDccCvValue
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_DCC_CV_VALUE
  */
@@ -562,10 +562,10 @@ typedef struct {
   VlcbDccSessionNr session;
   uint16_t CV;
   uint8_t value;
-} VlcbNetDataDccCvValue;
+} VlcbNetMsgDccCvValue;
 
 /**
- * VlcbNetDataQueryDiagnosticData
+ * VlcbNetMsgQueryDiagnosticData
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_DIAGNOSTIC_DATA
@@ -574,10 +574,10 @@ typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t serviceIndex;
   uint8_t diagnosticCode;
-} VlcbNetDataQueryDiagnosticData;
+} VlcbNetMsgQueryDiagnosticData;
 
 /**
- * VlcbNetDataSetNodeVariable
+ * VlcbNetMsgSetNodeVariable
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_SET_NODE_VARIABLE
  */
@@ -585,70 +585,70 @@ typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t nodeVariableIndex;
   uint8_t value;
-} VlcbNetDataSetNodeVariable;
+} VlcbNetMsgSetNodeVariable;
 
 /**
- * VlcbNetDataLongEventAccessoryOn
+ * VlcbNetMsgLongEventAccessoryOn
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_ON
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataLongEventAccessoryOn;
+} VlcbNetMsgLongEventAccessoryOn;
 
 /**
- * VlcbNetDataLongEventAccessoryOff
+ * VlcbNetMsgLongEventAccessoryOff
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_OFF
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataLongEventAccessoryOff;
+} VlcbNetMsgLongEventAccessoryOff;
 
 /**
- * VlcbNetDataQueryLongEventAccessoryState
+ * VlcbNetMsgQueryLongEventAccessoryState
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_LONG_EVENT_ACCESSORY_STATE
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataQueryLongEventAccessoryState;
+} VlcbNetMsgQueryLongEventAccessoryState;
 
 /**
- * VlcbNetDataLongEventAccessoryStateOn
+ * VlcbNetMsgLongEventAccessoryStateOn
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_ON
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataLongEventAccessoryStateOn;
+} VlcbNetMsgLongEventAccessoryStateOn;
 
 /**
- * VlcbNetDataLongEventAccessoryStateOff
+ * VlcbNetMsgLongEventAccessoryStateOff
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_OFF
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataLongEventAccessoryStateOff;
+} VlcbNetMsgLongEventAccessoryStateOff;
 
 /**
- * VlcbNetDataForgetLearnedEvent
+ * VlcbNetMsgForgetLearnedEvent
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_FORGET_LEARNED_EVENT
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataForgetLearnedEvent;
+} VlcbNetMsgForgetLearnedEvent;
 
 /**
- * VlcbNetDataLegacySetNodeVariable
+ * VlcbNetMsgLegacySetNodeVariable
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LEGACY_SET_NODE_VARIABLE
@@ -657,10 +657,10 @@ typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t nodeVariableIndex;
   uint8_t value;
-} VlcbNetDataLegacySetNodeVariable;
+} VlcbNetMsgLegacySetNodeVariable;
 
 /**
- * VlcbNetDataNodeVariableValue
+ * VlcbNetMsgNodeVariableValue
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_NODE_VARIABLE_VALUE
@@ -669,40 +669,40 @@ typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t nodeVariableIndex;
   uint8_t value;
-} VlcbNetDataNodeVariableValue;
+} VlcbNetMsgNodeVariableValue;
 
 /**
- * VlcbNetDataShortEventAccessoryOn
+ * VlcbNetMsgShortEventAccessoryOn
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_ON
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataShortEventAccessoryOn;
+} VlcbNetMsgShortEventAccessoryOn;
 
 /**
- * VlcbNetDataShortEventAccessoryOff
+ * VlcbNetMsgShortEventAccessoryOff
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_OFF
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataShortEventAccessoryOff;
+} VlcbNetMsgShortEventAccessoryOff;
 
 /**
- * VlcbNetDataQueryShortEventAccessoryState
+ * VlcbNetMsgQueryShortEventAccessoryState
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_SHORT_EVENT_ACCESSORY_STATE
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataQueryShortEventAccessoryState;
+} VlcbNetMsgQueryShortEventAccessoryState;
 
 /**
- * VlcbNetDataNodeParameterValue
+ * VlcbNetMsgNodeParameterValue
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_NODE_PARAMETER_VALUE
@@ -711,10 +711,10 @@ typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t parameterIndex;
   uint8_t value;
-} VlcbNetDataNodeParameterValue;
+} VlcbNetMsgNodeParameterValue;
 
 /**
- * VlcbNetDataQueryEventVariable
+ * VlcbNetMsgQueryEventVariable
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_EVENT_VARIABLE
@@ -723,40 +723,40 @@ typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t eventIndex;
   uint8_t value;
-} VlcbNetDataQueryEventVariable;
+} VlcbNetMsgQueryEventVariable;
 
 /**
- * VlcbNetDataShortEventAccessoryStateOn
+ * VlcbNetMsgShortEventAccessoryStateOn
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_ON
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataShortEventAccessoryStateOn;
+} VlcbNetMsgShortEventAccessoryStateOn;
 
 /**
- * VlcbNetDataShortEventAccessoryStateOff
+ * VlcbNetMsgShortEventAccessoryStateOff
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_OFF
  */
 typedef struct {
   VlcbEvent event;
-} VlcbNetDataShortEventAccessoryStateOff;
+} VlcbNetMsgShortEventAccessoryStateOff;
 
 /**
- * VlcbNetDataExtOpcode3
+ * VlcbNetMsgExtOpcode3
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_EXT_OPCODE3
  */
 typedef struct {
   uint8_t opcodeExtension;
   uint8_t data[3];
-} VlcbNetDataExtOpcode3;
+} VlcbNetMsgExtOpcode3;
 
 /**
- * VlcbNetDataDccSendRawPacket4
+ * VlcbNetMsgDccSendRawPacket4
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SEND_RAW_PACKET4
@@ -764,10 +764,10 @@ typedef struct {
 typedef struct {
   uint8_t repeatTimes;
   uint8_t data[4];
-} VlcbNetDataDccSendRawPacket4;
+} VlcbNetMsgDccSendRawPacket4;
 
 /**
- * VlcbNetDataDccWriteCvInServiceMode
+ * VlcbNetMsgDccWriteCvInServiceMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_WRITE_CV_IN_SERVICE_MODE
@@ -777,10 +777,10 @@ typedef struct {
   uint16_t CV;
   uint8_t mode; // TODO: this probably has some enum
   uint8_t value;
-} VlcbNetDataDccWriteCvInServiceMode;
+} VlcbNetMsgDccWriteCvInServiceMode;
 
 /**
- * VlcbNetDataHeartbeat
+ * VlcbNetMsgHeartbeat
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_HEARTBEAT
  */
@@ -788,10 +788,10 @@ typedef struct {
   VlcbNodeNumber sourceNodeNumber;
   uint8_t sequenceNr;
   uint8_t status;
-} VlcbNetDataHeartbeat;
+} VlcbNetMsgHeartbeat;
 
 /**
- * VlcbNetDataServiceDiscoveryResponse
+ * VlcbNetMsgServiceDiscoveryResponse
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SERVICE_DISCOVERY_RESPONSE
@@ -801,10 +801,10 @@ typedef struct {
   uint8_t serviceIndex;
   VlcbServiceType serviceType;
   uint8_t version;
-} VlcbNetDataServiceDiscoveryResponse;
+} VlcbNetMsgServiceDiscoveryResponse;
 
 /**
- * VlcbNetDataGenericResponse
+ * VlcbNetMsgGenericResponse
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_GENERIC_RESPONSE
  */
@@ -813,10 +813,10 @@ typedef struct {
   VlcbOpCode opcode;
   VlcbServiceType serviceType;
   uint8_t result;
-} VlcbNetDataGenericResponse;
+} VlcbNetMsgGenericResponse;
 
 /**
- * VlcbNetDataLongEventAccessoryOn1
+ * VlcbNetMsgLongEventAccessoryOn1
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_ON1
@@ -824,10 +824,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[1];
-} VlcbNetDataLongEventAccessoryOn1;
+} VlcbNetMsgLongEventAccessoryOn1;
 
 /**
- * VlcbNetDataLongEventAccessoryOff1
+ * VlcbNetMsgLongEventAccessoryOff1
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_OFF1
@@ -835,10 +835,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[1];
-} VlcbNetDataLongEventAccessoryOff1;
+} VlcbNetMsgLongEventAccessoryOff1;
 
 /**
- * VlcbNetDataQueryEventVariableByIdex
+ * VlcbNetMsgQueryEventVariableByIdex
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_QUERY_EVENT_VARIABLE_BY_IDEX
@@ -846,10 +846,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventVariableIndex;
-} VlcbNetDataQueryEventVariableByIdex;
+} VlcbNetMsgQueryEventVariableByIdex;
 
 /**
- * VlcbNetDataLongEventAccessoryStateOn1
+ * VlcbNetMsgLongEventAccessoryStateOn1
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_ON1
@@ -857,10 +857,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[1];
-} VlcbNetDataLongEventAccessoryStateOn1;
+} VlcbNetMsgLongEventAccessoryStateOn1;
 
 /**
- * VlcbNetDataLongEventAccessoryStateOff1
+ * VlcbNetMsgLongEventAccessoryStateOff1
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_OFF1
@@ -868,10 +868,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[1];
-} VlcbNetDataLongEventAccessoryStateOff1;
+} VlcbNetMsgLongEventAccessoryStateOff1;
 
 /**
- * VlcbNetDataEventVariableValue
+ * VlcbNetMsgEventVariableValue
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_EVENT_VARIABLE_VALUE
@@ -881,10 +881,10 @@ typedef struct {
   uint8_t eventIndex;
   uint8_t eventVariableIndex;
   uint8_t eventVariableValue;
-} VlcbNetDataEventVariableValue;
+} VlcbNetMsgEventVariableValue;
 
 /**
- * VlcbNetDataModuleInfo
+ * VlcbNetMsgModuleInfo
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_MODULE_INFO
  */
@@ -893,10 +893,10 @@ typedef struct {
   VlcbManufacturer manufacturer;
   uint8_t moduleId;
   VlcbModuleFlags flags;
-} VlcbNetDataModuleInfo;
+} VlcbNetMsgModuleInfo;
 
 /**
- * VlcbNetDataShortEventAccessoryOn1
+ * VlcbNetMsgShortEventAccessoryOn1
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_ON1
@@ -904,10 +904,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[1];
-} VlcbNetDataShortEventAccessoryOn1;
+} VlcbNetMsgShortEventAccessoryOn1;
 
 /**
- * VlcbNetDataShortEventAccessoryOff1
+ * VlcbNetMsgShortEventAccessoryOff1
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_OFF1
@@ -915,10 +915,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[1];
-} VlcbNetDataShortEventAccessoryOff1;
+} VlcbNetMsgShortEventAccessoryOff1;
 
 /**
- * VlcbNetDataShortEventAccessoryStateOn1
+ * VlcbNetMsgShortEventAccessoryStateOn1
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_ON1
@@ -926,10 +926,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[1];
-} VlcbNetDataShortEventAccessoryStateOn1;
+} VlcbNetMsgShortEventAccessoryStateOn1;
 
 /**
- * VlcbNetDataShortEventAccessoryStateOff1
+ * VlcbNetMsgShortEventAccessoryStateOff1
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_OFF1
@@ -937,20 +937,20 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[1];
-} VlcbNetDataShortEventAccessoryStateOff1;
+} VlcbNetMsgShortEventAccessoryStateOff1;
 
 /**
- * VlcbNetDataExtOpcode4
+ * VlcbNetMsgExtOpcode4
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_EXT_OPCODE4
  */
 typedef struct {
   uint8_t opcodeExtension;
   uint8_t data[4];
-} VlcbNetDataExtOpcode4;
+} VlcbNetMsgExtOpcode4;
 
 /**
- * VlcbNetDataDccSendRawPacket5
+ * VlcbNetMsgDccSendRawPacket5
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SEND_RAW_PACKET5
@@ -958,10 +958,10 @@ typedef struct {
 typedef struct {
   uint8_t repeatTimes;
   uint8_t data[5];
-} VlcbNetDataDccSendRawPacket5;
+} VlcbNetMsgDccSendRawPacket5;
 
 /**
- * VlcbNetDataDccWriteCvByteInOpsModeByAddress
+ * VlcbNetMsgDccWriteCvByteInOpsModeByAddress
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_WRITE_CV_BYTE_IN_OPS_MODE_BY_ADDRESS
@@ -971,10 +971,10 @@ typedef struct {
   uint16_t CV;
   uint16_t mode; // TODO: this probably has some enum
   uint8_t value;
-} VlcbNetDataDccWriteCvByteInOpsModeByAddress;
+} VlcbNetMsgDccWriteCvByteInOpsModeByAddress;
 
 /**
- * VlcbNetDataDccSendDataToCab
+ * VlcbNetMsgDccSendDataToCab
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SEND_DATA_TO_CAB
@@ -983,10 +983,10 @@ typedef struct {
   VlcbDccDecoderAddr decoderAddr;
   uint8_t dataCode;
   uint8_t data[3];
-} VlcbNetDataDccSendDataToCab;
+} VlcbNetMsgDccSendDataToCab;
 
 /**
- * VlcbNetDataDiagnosticData
+ * VlcbNetMsgDiagnosticData
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_DIAGNOSTIC_DATA
  */
@@ -995,11 +995,10 @@ typedef struct {
   uint8_t serviceIndex;
   uint8_t diagnosticCode;
   uint8_t diagnosticValue;
-} VlcbNetDataDiagnosticData;
+} VlcbNetMsgDiagnosticData;
 
-#define VLCB_TIME_DIVIDER_FREEZE 0
 /**
- * VlcbNetDataFastClock
+ * VlcbNetMsgFastClock
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_FAST_CLOCK
  */
@@ -1012,10 +1011,10 @@ typedef struct {
   // 0 means freeze
   uint8_t dividerFactor;
   int8_t temperature;
-} VlcbNetDataFastClock;
+} VlcbNetMsgFastClock;
 
 /**
- * VlcbNetDataLongEventAccessoryOn2
+ * VlcbNetMsgLongEventAccessoryOn2
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_ON2
@@ -1023,10 +1022,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[2];
-} VlcbNetDataLongEventAccessoryOn2;
+} VlcbNetMsgLongEventAccessoryOn2;
 
 /**
- * VlcbNetDataLongEventAccessoryOff2
+ * VlcbNetMsgLongEventAccessoryOff2
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_OFF2
@@ -1034,10 +1033,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[2];
-} VlcbNetDataLongEventAccessoryOff2;
+} VlcbNetMsgLongEventAccessoryOff2;
 
 /**
- * VlcbNetDataTeachEvent
+ * VlcbNetMsgTeachEvent
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_TEACH_EVENT
  */
@@ -1045,10 +1044,10 @@ typedef struct {
   VlcbEvent event;
   uint8_t eventVariableIndex;
   uint8_t eventVariableValue;
-} VlcbNetDataTeachEvent;
+} VlcbNetMsgTeachEvent;
 
 /**
- * VlcbNetDataEventVariableValueInLearnMode
+ * VlcbNetMsgEventVariableValueInLearnMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_EVENT_VARIABLE_VALUE_IN_LEARN_MODE
@@ -1057,10 +1056,10 @@ typedef struct {
   VlcbEvent event;
   uint8_t eventVariableIndex;
   uint8_t eventVariableValue;
-} VlcbNetDataEventVariableValueInLearnMode;
+} VlcbNetMsgEventVariableValueInLearnMode;
 
 /**
- * VlcbNetDataLongEventAccessoryStateOn2
+ * VlcbNetMsgLongEventAccessoryStateOn2
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_ON2
@@ -1068,10 +1067,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[2];
-} VlcbNetDataLongEventAccessoryStateOn2;
+} VlcbNetMsgLongEventAccessoryStateOn2;
 
 /**
- * VlcbNetDataLongEventAccessoryStateOff2
+ * VlcbNetMsgLongEventAccessoryStateOff2
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_OFF2
@@ -1079,10 +1078,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[2];
-} VlcbNetDataLongEventAccessoryStateOff2;
+} VlcbNetMsgLongEventAccessoryStateOff2;
 
 /**
- * VlcbNetDataShortEventAccessoryOn2
+ * VlcbNetMsgShortEventAccessoryOn2
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_ON2
@@ -1090,10 +1089,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[2];
-} VlcbNetDataShortEventAccessoryOn2;
+} VlcbNetMsgShortEventAccessoryOn2;
 
 /**
- * VlcbNetDataShortEventAccessoryOff2
+ * VlcbNetMsgShortEventAccessoryOff2
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_OFF2
@@ -1101,10 +1100,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[2];
-} VlcbNetDataShortEventAccessoryOff2;
+} VlcbNetMsgShortEventAccessoryOff2;
 
 /**
- * VlcbNetDataShortEventAccessoryStateOn2
+ * VlcbNetMsgShortEventAccessoryStateOn2
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_ON2
@@ -1112,10 +1111,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[2];
-} VlcbNetDataShortEventAccessoryStateOn2;
+} VlcbNetMsgShortEventAccessoryStateOn2;
 
 /**
- * VlcbNetDataShortEventAccessoryStateOff2
+ * VlcbNetMsgShortEventAccessoryStateOff2
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_OFF2
@@ -1123,20 +1122,20 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t eventData[2];
-} VlcbNetDataShortEventAccessoryStateOff2;
+} VlcbNetMsgShortEventAccessoryStateOff2;
 
 /**
- * VlcbNetDataExtOpcode5
+ * VlcbNetMsgExtOpcode5
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_EXT_OPCODE5
  */
 typedef struct {
   uint8_t opcodeExtension;
   uint8_t data[5];
-} VlcbNetDataExtOpcode5;
+} VlcbNetMsgExtOpcode5;
 
 /**
- * VlcbNetDataDccSendRawPacket6
+ * VlcbNetMsgDccSendRawPacket6
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_SEND_RAW_PACKET6
@@ -1144,10 +1143,10 @@ typedef struct {
 typedef struct {
   uint8_t repeatTimes;
   uint8_t data[6];
-} VlcbNetDataDccSendRawPacket6;
+} VlcbNetMsgDccSendRawPacket6;
 
 /**
- * VlcbNetDataDccLocoReport
+ * VlcbNetMsgDccLocoReport
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_DCC_LOCO_REPORT
  */
@@ -1161,19 +1160,19 @@ typedef struct {
     uint8_t F5_F8;
     uint8_t F9_F12;
   } functionStates;
-} VlcbNetDataDccLocoReport;
+} VlcbNetMsgDccLocoReport;
 
 /**
- * VlcbNetDataModuleName
+ * VlcbNetMsgModuleName
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_MODULE_NAME
  */
 typedef struct {
   char moduleName[7];
-} VlcbNetDataModuleName;
+} VlcbNetMsgModuleName;
 
 /**
- * VlcbNetDataDccCommandStationStatus
+ * VlcbNetMsgDccCommandStationStatus
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DCC_COMMAND_STATION_STATUS
@@ -1190,10 +1189,10 @@ typedef struct {
     bool dccInServiceMode;
   } flags;
   VlcbModuleVersion moduleVersion;
-} VlcbNetDataDccCommandStationStatus;
+} VlcbNetMsgDccCommandStationStatus;
 
 /**
- * VlcbNetDataEventAck
+ * VlcbNetMsgEventAck
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_EVENT_ACK
  */
@@ -1201,10 +1200,10 @@ typedef struct {
   VlcbNodeNumber nodeNumber;
   VlcbOpCode acknowledgedOpcode;
   VlcbEvent event;
-} VlcbNetDataEventAck;
+} VlcbNetMsgEventAck;
 
 /**
- * VlcbNetDataExtendedServiceDiscoveryResponse
+ * VlcbNetMsgExtendedServiceDiscoveryResponse
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_EXTENDED_SERVICE_DISCOVERY_RESPONSE
@@ -1214,10 +1213,10 @@ typedef struct {
   uint8_t serviceIndex;
   VlcbServiceType serviceType;
   uint8_t serviceData[3]; // TODO: Union of structs?
-} VlcbNetDataExtendedServiceDiscoveryResponse;
+} VlcbNetMsgExtendedServiceDiscoveryResponse;
 
 /**
- * VlcbNetDataStreamPacket
+ * VlcbNetMsgStreamPacket
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_STREAM_PACKET
  */
@@ -1234,20 +1233,20 @@ typedef struct {
       uint8_t data[5];
     } dataPacket;
   } data;
-} VlcbNetDataStreamPacket;
+} VlcbNetMsgStreamPacket;
 
 /**
- * VlcbNetDataNodeParametersReport
+ * VlcbNetMsgNodeParametersReport
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_NODE_PARAMETERS_REPORT
  */
 typedef struct {
   uint8_t params[7];
-} VlcbNetDataNodeParametersReport;
+} VlcbNetMsgNodeParametersReport;
 
 /**
- * VlcbNetDataLongEventAccessoryOn3
+ * VlcbNetMsgLongEventAccessoryOn3
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_ON3
@@ -1255,10 +1254,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t data[3];
-} VlcbNetDataLongEventAccessoryOn3;
+} VlcbNetMsgLongEventAccessoryOn3;
 
 /**
- * VlcbNetDataLongEventAccessoryOff3
+ * VlcbNetMsgLongEventAccessoryOff3
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_OFF3
@@ -1266,10 +1265,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t data[3];
-} VlcbNetDataLongEventAccessoryOff3;
+} VlcbNetMsgLongEventAccessoryOff3;
 
 /**
- * VlcbNetDataLearnedEventResponse
+ * VlcbNetMsgLearnedEventResponse
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LEARNED_EVENT_RESPONSE
@@ -1278,10 +1277,10 @@ typedef struct {
   VlcbNodeNumber nodeNumber;
   VlcbEvent event;
   uint8_t eventIndex;
-} VlcbNetDataLearnedEventResponse;
+} VlcbNetMsgLearnedEventResponse;
 
 /**
- * VlcbNetDataLongEventAccessoryStateOn3
+ * VlcbNetMsgLongEventAccessoryStateOn3
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_ON3
@@ -1289,10 +1288,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t data[3];
-} VlcbNetDataLongEventAccessoryStateOn3;
+} VlcbNetMsgLongEventAccessoryStateOn3;
 
 /**
- * VlcbNetDataLongEventAccessoryStateOff3
+ * VlcbNetMsgLongEventAccessoryStateOff3
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_LONG_EVENT_ACCESSORY_STATE_OFF3
@@ -1300,10 +1299,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t data[3];
-} VlcbNetDataLongEventAccessoryStateOff3;
+} VlcbNetMsgLongEventAccessoryStateOff3;
 
 /**
- * VlcbNetDataTeachEventByIndex
+ * VlcbNetMsgTeachEventByIndex
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_TEACH_EVENT_BY_INDEX
@@ -1313,10 +1312,10 @@ typedef struct {
   uint8_t eventIndex;
   uint8_t eventVariableIndex;
   uint8_t eventVariableValue;
-} VlcbNetDataTeachEventByIndex;
+} VlcbNetMsgTeachEventByIndex;
 
 /**
- * VlcbNetDataDataEventAccessory
+ * VlcbNetMsgDataEventAccessory
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DATA_EVENT_ACCESSORY
@@ -1324,10 +1323,10 @@ typedef struct {
 typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t data[5];
-} VlcbNetDataDataEventAccessory;
+} VlcbNetMsgDataEventAccessory;
 
 /**
- * VlcbNetDataNodeAccessoryData
+ * VlcbNetMsgNodeAccessoryData
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_NODE_ACCESSORY_DATA
@@ -1335,10 +1334,10 @@ typedef struct {
 typedef struct {
   VlcbNodeNumber nodeNumber;
   uint8_t data[5];
-} VlcbNetDataNodeAccessoryData;
+} VlcbNetMsgNodeAccessoryData;
 
 /**
- * VlcbNetDataShortEventAccessoryOn3
+ * VlcbNetMsgShortEventAccessoryOn3
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_ON3
@@ -1346,10 +1345,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t data[3];
-} VlcbNetDataShortEventAccessoryOn3;
+} VlcbNetMsgShortEventAccessoryOn3;
 
 /**
- * VlcbNetDataShortEventAccessoryOff3
+ * VlcbNetMsgShortEventAccessoryOff3
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_OFF3
@@ -1357,10 +1356,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t data[3];
-} VlcbNetDataShortEventAccessoryOff3;
+} VlcbNetMsgShortEventAccessoryOff3;
 
 /**
- * VlcbNetDataDeviceDataEventShortMode
+ * VlcbNetMsgDeviceDataEventShortMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DEVICE_DATA_EVENT_SHORT_MODE
@@ -1368,10 +1367,10 @@ typedef struct {
 typedef struct {
   uint16_t devideNumber;
   uint8_t data[5];
-} VlcbNetDataDeviceDataEventShortMode;
+} VlcbNetMsgDeviceDataEventShortMode;
 
 /**
- * VlcbNetDataDeviceDataShortMode
+ * VlcbNetMsgDeviceDataShortMode
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_DEVICE_DATA_SHORT_MODE
@@ -1379,20 +1378,20 @@ typedef struct {
 typedef struct {
   uint16_t devideNumber;
   uint8_t data[5];
-} VlcbNetDataDeviceDataShortMode;
+} VlcbNetMsgDeviceDataShortMode;
 
 /**
- * VlcbNetDataWriteData
+ * VlcbNetMsgWriteData
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_WRITE_DATA
  */
 typedef struct {
   uint16_t devideNumber;
   uint8_t data[5];
-} VlcbNetDataWriteData;
+} VlcbNetMsgWriteData;
 
 /**
- * VlcbNetDataShortEventAccessoryStateOn3
+ * VlcbNetMsgShortEventAccessoryStateOn3
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_ON3
@@ -1400,10 +1399,10 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t data[3];
-} VlcbNetDataShortEventAccessoryStateOn3;
+} VlcbNetMsgShortEventAccessoryStateOn3;
 
 /**
- * VlcbNetDataShortEventAccessoryStateOff3
+ * VlcbNetMsgShortEventAccessoryStateOff3
  *
  * Message data structure for opcode @see VlcbOpCode
  * #VLCB_OPC_SHORT_EVENT_ACCESSORY_STATE_OFF3
@@ -1411,14 +1410,14 @@ typedef struct {
 typedef struct {
   VlcbEvent event;
   uint8_t data[3];
-} VlcbNetDataShortEventAccessoryStateOff3;
+} VlcbNetMsgShortEventAccessoryStateOff3;
 
 /**
- * VlcbNetDataExtOpcode6
+ * VlcbNetMsgExtOpcode6
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_EXT_OPCODE6
  */
 typedef struct {
   uint8_t opcodeExtension;
   uint8_t data[6];
-} VlcbNetDataExtOpcode6;
+} VlcbNetMsgExtOpcode6;

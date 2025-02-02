@@ -22,5 +22,5 @@ func NameFromOpcode(opc opcode.Opcode) string {
 	// 	opcNamePartsTransformed = append(opcNamePartsTransformed, "Response")
 	// }
 
-	return "VlcbNetData" + strings.Join(opcNamePartsTransformed, "")
+	return "VlcbNetMsg" + strings.Join(opcNamePartsTransformed, "")
 }
