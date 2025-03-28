@@ -16,26 +16,7 @@
  */
 typedef uint8_t VlcbNetPayload[VLCB_NET_PKT_MAX_PAYLOAD];
 
-/**
- * VLCB sub-protocol
- *
- * VLCB doesn't define any "sub-protocol", but this library
- * uses this as a helper for separating traffic for easier
- * handling.
- */
-typedef enum {
-  VLCB_NET_PROTO_DATAGRAM,
-  VLCB_NET_PROTO_STREAM,
-} VlcbNetProtocol;
-
-VlcbNetProtocol vlcb_net_pkt_DetectProtocol(VlcbOpCode opc);
-
-// TODO: get rid of this - it's useless - this whole file and everything in it -
-// we should assume everything is datagram as it's the lowest "protocol" or
-// remove datagram packet and protocol from this one (that might make more
-// sense)
 typedef struct {
-  VlcbNetProtocol proto;
   VlcbOpCode opc;
   uint8_t payloadLen;
   VlcbNetPayload payload;
@@ -65,8 +46,7 @@ typedef enum {
 
 vlcb_error vlcb_net_pkt_ConstructErrToStr(VlcbNetPacketConstructErr err);
 
-void vlcb_net_pkt_NewUnchecked(VlcbNetProtocol proto, VlcbOpCode opc,
-                               uint8_t payload_len,
+void vlcb_net_pkt_NewUnchecked(VlcbOpCode opc, uint8_t payload_len,
                                const VlcbNetPayload *const payload,
                                VlcbNetPacket *const packet);
 VlcbNetPacketConstructErr vlcb_net_pkt_New(VlcbOpCode opc, uint8_t payload_len,

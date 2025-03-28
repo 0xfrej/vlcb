@@ -45,7 +45,6 @@ vlcb_net_sock_packet_token_Refuse(VlcbNetSocketPacketToken tok) {
 
 _INTERFACE_DECLARE(
     IVlcbNetSocket,
-    _INTERFACE_METHOD_DECLARE(bool, SupportsProtocol, VlcbNetProtocol protocol);
     _INTERFACE_METHOD_DECLARE(VlcbNetSocketProcessErr, ProcessPacket,
                               _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
                               const VlcbNetPacket *const packet);

@@ -1,14 +1,14 @@
 #include "vlcb/net/message/data.h"
-#include "vlcb/net/packet/datagram.h"
+#include "vlcb/net/packet/vlcb.h"
 
 /**
  * @brief Net message VlcbNetMsgDccQueryLocoStatus serializer
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccQueryLocoStatus_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccQueryLocoStatus_Serialize(
     VlcbNetMsgDccQueryLocoStatus msg);
 
 /**
@@ -19,7 +19,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccQueryLocoStatus_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccQueryLocoStatus_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccQueryLocoStatus *const msg);
 
 /**
@@ -35,9 +35,9 @@ int vlcb_net_msg_VlcbNetMsgDccQueryLocoStatus_New(VlcbDccSessionNr session);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSessionKeepAlive_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccSessionKeepAlive_Serialize(
     VlcbNetMsgDccSessionKeepAlive msg);
 
 /**
@@ -48,7 +48,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSessionKeepAlive_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccSessionKeepAlive_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccSessionKeepAlive *const msg);
 
 /**
@@ -64,9 +64,9 @@ int vlcb_net_msg_VlcbNetMsgDccSessionKeepAlive_New(VlcbDccSessionNr session);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgDebugMsg1_Serialize(VlcbNetMsgDebugMsg1 msg);
 
 /**
@@ -77,7 +77,7 @@ vlcb_net_msg_VlcbNetMsgDebugMsg1_Serialize(VlcbNetMsgDebugMsg1 msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDebugMsg1_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgDebugMsg1 *const msg);
+    const VlcbNetPacket datagramPacket, VlcbNetMsgDebugMsg1 *const msg);
 
 /**
  * @brief Construct new instance of VlcbNetMsgDebugMsg1 message
@@ -92,9 +92,9 @@ int vlcb_net_msg_VlcbNetMsgDebugMsg1_New(uint8_t status);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgExtOpcode0_Serialize(VlcbNetMsgExtOpcode0 msg);
 
 /**
@@ -105,7 +105,7 @@ vlcb_net_msg_VlcbNetMsgExtOpcode0_Serialize(VlcbNetMsgExtOpcode0 msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode0_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgExtOpcode0 *const msg);
 
 /**
@@ -121,9 +121,9 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode0_New(uint8_t opcodeExtension);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccRequestNewSession_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccRequestNewSession_Serialize(
     VlcbNetMsgDccRequestNewSession msg);
 
 /**
@@ -134,7 +134,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccRequestNewSession_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccRequestNewSession_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccRequestNewSession *const msg);
 
 /**
@@ -151,9 +151,9 @@ int vlcb_net_msg_VlcbNetMsgDccRequestNewSession_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgDccQueryConsist_Serialize(VlcbNetMsgDccQueryConsist msg);
 
 /**
@@ -164,7 +164,7 @@ vlcb_net_msg_VlcbNetMsgDccQueryConsist_Serialize(VlcbNetMsgDccQueryConsist msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccQueryConsist_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccQueryConsist *const msg);
 
 /**
@@ -181,9 +181,9 @@ int vlcb_net_msg_VlcbNetMsgDccQueryConsist_New(VlcbDccConsistId consist,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgSetNodeNumber_Serialize(VlcbNetMsgSetNodeNumber msg);
 
 /**
@@ -194,7 +194,7 @@ vlcb_net_msg_VlcbNetMsgSetNodeNumber_Serialize(VlcbNetMsgSetNodeNumber msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgSetNodeNumber_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgSetNodeNumber *const msg);
 
 /**
@@ -210,9 +210,9 @@ int vlcb_net_msg_VlcbNetMsgSetNodeNumber_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgDccAllocateLocoToActivity_Serialize(
     VlcbNetMsgDccAllocateLocoToActivity msg);
 
@@ -224,7 +224,7 @@ vlcb_net_msg_VlcbNetMsgDccAllocateLocoToActivity_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccAllocateLocoToActivity_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccAllocateLocoToActivity *const msg);
 
 /**
@@ -241,9 +241,9 @@ int vlcb_net_msg_VlcbNetMsgDccAllocateLocoToActivity_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSetThrottleMode_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccSetThrottleMode_Serialize(
     VlcbNetMsgDccSetThrottleMode msg);
 
 /**
@@ -254,7 +254,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSetThrottleMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccSetThrottleMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccSetThrottleMode *const msg);
 
 /**
@@ -272,9 +272,9 @@ int vlcb_net_msg_VlcbNetMsgDccSetThrottleMode_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccConsistAddLoco_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccConsistAddLoco_Serialize(
     VlcbNetMsgDccConsistAddLoco msg);
 
 /**
@@ -285,7 +285,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccConsistAddLoco_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccConsistAddLoco_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccConsistAddLoco *const msg);
 
 /**
@@ -302,9 +302,9 @@ int vlcb_net_msg_VlcbNetMsgDccConsistAddLoco_New(VlcbDccSessionNr session,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccConsistRemoveLoco_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccConsistRemoveLoco_Serialize(
     VlcbNetMsgDccConsistRemoveLoco msg);
 
 /**
@@ -315,7 +315,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccConsistRemoveLoco_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccConsistRemoveLoco_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccConsistRemoveLoco *const msg);
 
 /**
@@ -332,9 +332,9 @@ int vlcb_net_msg_VlcbNetMsgDccConsistRemoveLoco_New(VlcbDccSessionNr session,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSetLocoThrottle_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccSetLocoThrottle_Serialize(
     VlcbNetMsgDccSetLocoThrottle msg);
 
 /**
@@ -345,7 +345,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSetLocoThrottle_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccSetLocoThrottle_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccSetLocoThrottle *const msg);
 
 /**
@@ -362,9 +362,9 @@ int vlcb_net_msg_VlcbNetMsgDccSetLocoThrottle_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgDccSetLocoFlags_Serialize(VlcbNetMsgDccSetLocoFlags msg);
 
 /**
@@ -375,7 +375,7 @@ vlcb_net_msg_VlcbNetMsgDccSetLocoFlags_Serialize(VlcbNetMsgDccSetLocoFlags msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccSetLocoFlags_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccSetLocoFlags *const msg);
 
 /**
@@ -393,9 +393,9 @@ int vlcb_net_msg_VlcbNetMsgDccSetLocoFlags_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccLocoFunctionOn_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccLocoFunctionOn_Serialize(
     VlcbNetMsgDccLocoFunctionOn msg);
 
 /**
@@ -406,7 +406,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccLocoFunctionOn_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccLocoFunctionOn_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccLocoFunctionOn *const msg);
 
 /**
@@ -423,9 +423,9 @@ int vlcb_net_msg_VlcbNetMsgDccLocoFunctionOn_New(VlcbDccSessionNr session,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccLocoFunctionOff_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccLocoFunctionOff_Serialize(
     VlcbNetMsgDccLocoFunctionOff msg);
 
 /**
@@ -436,7 +436,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccLocoFunctionOff_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccLocoFunctionOff_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccLocoFunctionOff *const msg);
 
 /**
@@ -453,9 +453,9 @@ int vlcb_net_msg_VlcbNetMsgDccLocoFunctionOff_New(VlcbDccSessionNr session,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccServiceModeStatus_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccServiceModeStatus_Serialize(
     VlcbNetMsgDccServiceModeStatus msg);
 
 /**
@@ -466,7 +466,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccServiceModeStatus_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccServiceModeStatus_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccServiceModeStatus *const msg);
 
 /**
@@ -483,9 +483,9 @@ int vlcb_net_msg_VlcbNetMsgDccServiceModeStatus_New(VlcbDccSessionNr session,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgResetModuleToFactory_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgResetModuleToFactory_Serialize(
     VlcbNetMsgResetModuleToFactory msg);
 
 /**
@@ -496,7 +496,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgResetModuleToFactory_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgResetModuleToFactory_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgResetModuleToFactory *const msg);
 
 /**
@@ -512,9 +512,9 @@ int vlcb_net_msg_VlcbNetMsgResetModuleToFactory_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgRequestNewNodeNumber_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgRequestNewNodeNumber_Serialize(
     VlcbNetMsgRequestNewNodeNumber msg);
 
 /**
@@ -525,7 +525,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgRequestNewNodeNumber_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgRequestNewNodeNumber_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgRequestNewNodeNumber *const msg);
 
 /**
@@ -541,9 +541,9 @@ int vlcb_net_msg_VlcbNetMsgRequestNewNodeNumber_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgNodeNumberReleased_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgNodeNumberReleased_Serialize(
     VlcbNetMsgNodeNumberReleased msg);
 
 /**
@@ -554,7 +554,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgNodeNumberReleased_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgNodeNumberReleased_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgNodeNumberReleased *const msg);
 
 /**
@@ -570,9 +570,9 @@ int vlcb_net_msg_VlcbNetMsgNodeNumberReleased_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgNodeNumberAck_Serialize(VlcbNetMsgNodeNumberAck msg);
 
 /**
@@ -583,7 +583,7 @@ vlcb_net_msg_VlcbNetMsgNodeNumberAck_Serialize(VlcbNetMsgNodeNumberAck msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgNodeNumberAck_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgNodeNumberAck *const msg);
 
 /**
@@ -599,9 +599,9 @@ int vlcb_net_msg_VlcbNetMsgNodeNumberAck_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgPutNodeIntoLearnMode_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgPutNodeIntoLearnMode_Serialize(
     VlcbNetMsgPutNodeIntoLearnMode msg);
 
 /**
@@ -612,7 +612,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgPutNodeIntoLearnMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgPutNodeIntoLearnMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgPutNodeIntoLearnMode *const msg);
 
 /**
@@ -628,9 +628,9 @@ int vlcb_net_msg_VlcbNetMsgPutNodeIntoLearnMode_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgReleaseNodeFromLearnMode_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgReleaseNodeFromLearnMode_Serialize(
     VlcbNetMsgReleaseNodeFromLearnMode msg);
 
 /**
@@ -641,7 +641,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgReleaseNodeFromLearnMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgReleaseNodeFromLearnMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgReleaseNodeFromLearnMode *const msg);
 
 /**
@@ -658,9 +658,9 @@ int vlcb_net_msg_VlcbNetMsgReleaseNodeFromLearnMode_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgForgetAllLearnedEvents_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgForgetAllLearnedEvents_Serialize(
     VlcbNetMsgForgetAllLearnedEvents msg);
 
 /**
@@ -671,7 +671,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgForgetAllLearnedEvents_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgForgetAllLearnedEvents_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgForgetAllLearnedEvents *const msg);
 
 /**
@@ -688,9 +688,9 @@ int vlcb_net_msg_VlcbNetMsgForgetAllLearnedEvents_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryAvailableEventSlots_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryAvailableEventSlots_Serialize(
     VlcbNetMsgQueryAvailableEventSlots msg);
 
 /**
@@ -701,7 +701,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryAvailableEventSlots_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryAvailableEventSlots_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryAvailableEventSlots *const msg);
 
 /**
@@ -718,9 +718,9 @@ int vlcb_net_msg_VlcbNetMsgQueryAvailableEventSlots_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryAllLearnedEvents_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryAllLearnedEvents_Serialize(
     VlcbNetMsgQueryAllLearnedEvents msg);
 
 /**
@@ -731,7 +731,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryAllLearnedEvents_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryAllLearnedEvents_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryAllLearnedEvents *const msg);
 
 /**
@@ -747,9 +747,9 @@ int vlcb_net_msg_VlcbNetMsgQueryAllLearnedEvents_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryLearnedEventCount_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryLearnedEventCount_Serialize(
     VlcbNetMsgQueryLearnedEventCount msg);
 
 /**
@@ -760,7 +760,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryLearnedEventCount_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryLearnedEventCount_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryLearnedEventCount *const msg);
 
 /**
@@ -777,9 +777,9 @@ int vlcb_net_msg_VlcbNetMsgQueryLearnedEventCount_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgWriteAck_Serialize(VlcbNetMsgWriteAck msg);
 
 /**
@@ -790,7 +790,7 @@ vlcb_net_msg_VlcbNetMsgWriteAck_Serialize(VlcbNetMsgWriteAck msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgWriteAck_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgWriteAck *const msg);
+    const VlcbNetPacket datagramPacket, VlcbNetMsgWriteAck *const msg);
 
 /**
  * @brief Construct new instance of VlcbNetMsgWriteAck message
@@ -805,9 +805,9 @@ int vlcb_net_msg_VlcbNetMsgWriteAck_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryNodeAccessoryData_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryNodeAccessoryData_Serialize(
     VlcbNetMsgQueryNodeAccessoryData msg);
 
 /**
@@ -818,7 +818,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryNodeAccessoryData_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryNodeAccessoryData_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryNodeAccessoryData *const msg);
 
 /**
@@ -835,9 +835,9 @@ int vlcb_net_msg_VlcbNetMsgQueryNodeAccessoryData_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryDeviceDataShortMode_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryDeviceDataShortMode_Serialize(
     VlcbNetMsgQueryDeviceDataShortMode msg);
 
 /**
@@ -848,7 +848,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryDeviceDataShortMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryDeviceDataShortMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryDeviceDataShortMode *const msg);
 
 /**
@@ -865,9 +865,9 @@ int vlcb_net_msg_VlcbNetMsgQueryDeviceDataShortMode_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgRebootIntoBootloader_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgRebootIntoBootloader_Serialize(
     VlcbNetMsgRebootIntoBootloader msg);
 
 /**
@@ -878,7 +878,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgRebootIntoBootloader_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgRebootIntoBootloader_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgRebootIntoBootloader *const msg);
 
 /**
@@ -894,9 +894,9 @@ int vlcb_net_msg_VlcbNetMsgRebootIntoBootloader_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgForceCanEnumeration_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgForceCanEnumeration_Serialize(
     VlcbNetMsgForceCanEnumeration msg);
 
 /**
@@ -907,7 +907,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgForceCanEnumeration_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgForceCanEnumeration_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgForceCanEnumeration *const msg);
 
 /**
@@ -923,9 +923,9 @@ int vlcb_net_msg_VlcbNetMsgForceCanEnumeration_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgRestartNode_Serialize(VlcbNetMsgRestartNode msg);
 
 /**
@@ -936,7 +936,7 @@ vlcb_net_msg_VlcbNetMsgRestartNode_Serialize(VlcbNetMsgRestartNode msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgRestartNode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgRestartNode *const msg);
 
 /**
@@ -952,9 +952,9 @@ int vlcb_net_msg_VlcbNetMsgRestartNode_New(VlcbNodeNumber nodeNumber);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgExtOpcode1_Serialize(VlcbNetMsgExtOpcode1 msg);
 
 /**
@@ -965,7 +965,7 @@ vlcb_net_msg_VlcbNetMsgExtOpcode1_Serialize(VlcbNetMsgExtOpcode1 msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode1_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgExtOpcode1 *const msg);
 
 /**
@@ -982,9 +982,9 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode1_New(uint8_t opcodeExtension,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSetLocoFunctions_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccSetLocoFunctions_Serialize(
     VlcbNetMsgDccSetLocoFunctions msg);
 
 /**
@@ -995,7 +995,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSetLocoFunctions_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccSetLocoFunctions_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccSetLocoFunctions *const msg);
 
 /**
@@ -1013,9 +1013,9 @@ int vlcb_net_msg_VlcbNetMsgDccSetLocoFunctions_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccQueryLocoSession_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccQueryLocoSession_Serialize(
     VlcbNetMsgDccQueryLocoSession msg);
 
 /**
@@ -1026,7 +1026,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccQueryLocoSession_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccQueryLocoSession_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccQueryLocoSession *const msg);
 
 /**
@@ -1043,9 +1043,9 @@ int vlcb_net_msg_VlcbNetMsgDccQueryLocoSession_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccCommandStationError_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccCommandStationError_Serialize(
     VlcbNetMsgDccCommandStationError msg);
 
 /**
@@ -1056,7 +1056,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccCommandStationError_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccCommandStationError_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccCommandStationError *const msg);
 
 /**
@@ -1073,9 +1073,9 @@ int vlcb_net_msg_VlcbNetMsgDccCommandStationError_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgCommandError_Serialize(VlcbNetMsgCommandError msg);
 
 /**
@@ -1086,7 +1086,7 @@ vlcb_net_msg_VlcbNetMsgCommandError_Serialize(VlcbNetMsgCommandError msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgCommandError_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgCommandError *const msg);
 
 /**
@@ -1103,9 +1103,9 @@ int vlcb_net_msg_VlcbNetMsgCommandError_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgAvailableEventSlots_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgAvailableEventSlots_Serialize(
     VlcbNetMsgAvailableEventSlots msg);
 
 /**
@@ -1116,7 +1116,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgAvailableEventSlots_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgAvailableEventSlots_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgAvailableEventSlots *const msg);
 
 /**
@@ -1133,9 +1133,9 @@ int vlcb_net_msg_VlcbNetMsgAvailableEventSlots_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryNodeVariable_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryNodeVariable_Serialize(
     VlcbNetMsgQueryNodeVariable msg);
 
 /**
@@ -1146,7 +1146,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryNodeVariable_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryNodeVariable_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryNodeVariable *const msg);
 
 /**
@@ -1163,9 +1163,9 @@ int vlcb_net_msg_VlcbNetMsgQueryNodeVariable_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryLearnedEventByIndex_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryLearnedEventByIndex_Serialize(
     VlcbNetMsgQueryLearnedEventByIndex msg);
 
 /**
@@ -1176,7 +1176,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryLearnedEventByIndex_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryLearnedEventByIndex_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryLearnedEventByIndex *const msg);
 
 /**
@@ -1193,9 +1193,9 @@ int vlcb_net_msg_VlcbNetMsgQueryLearnedEventByIndex_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgQueryNodeParameterByIndex_Serialize(
     VlcbNetMsgQueryNodeParameterByIndex msg);
 
@@ -1207,7 +1207,7 @@ vlcb_net_msg_VlcbNetMsgQueryNodeParameterByIndex_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryNodeParameterByIndex_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryNodeParameterByIndex *const msg);
 
 /**
@@ -1224,9 +1224,9 @@ int vlcb_net_msg_VlcbNetMsgQueryNodeParameterByIndex_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLearnedEventCount_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLearnedEventCount_Serialize(
     VlcbNetMsgLearnedEventCount msg);
 
 /**
@@ -1237,7 +1237,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLearnedEventCount_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLearnedEventCount_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLearnedEventCount *const msg);
 
 /**
@@ -1254,9 +1254,9 @@ int vlcb_net_msg_VlcbNetMsgLearnedEventCount_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgSetNodeCanId_Serialize(VlcbNetMsgSetNodeCanId msg);
 
 /**
@@ -1267,7 +1267,7 @@ vlcb_net_msg_VlcbNetMsgSetNodeCanId_Serialize(VlcbNetMsgSetNodeCanId msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgSetNodeCanId_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgSetNodeCanId *const msg);
 
 /**
@@ -1284,9 +1284,9 @@ int vlcb_net_msg_VlcbNetMsgSetNodeCanId_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgChangeModuleMode_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgChangeModuleMode_Serialize(
     VlcbNetMsgChangeModuleMode msg);
 
 /**
@@ -1297,7 +1297,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgChangeModuleMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgChangeModuleMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgChangeModuleMode *const msg);
 
 /**
@@ -1314,9 +1314,9 @@ int vlcb_net_msg_VlcbNetMsgChangeModuleMode_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryServiceDiscovery_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryServiceDiscovery_Serialize(
     VlcbNetMsgQueryServiceDiscovery msg);
 
 /**
@@ -1327,7 +1327,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryServiceDiscovery_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryServiceDiscovery_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryServiceDiscovery *const msg);
 
 /**
@@ -1344,9 +1344,9 @@ int vlcb_net_msg_VlcbNetMsgQueryServiceDiscovery_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgExtOpcode2_Serialize(VlcbNetMsgExtOpcode2 msg);
 
 /**
@@ -1357,7 +1357,7 @@ vlcb_net_msg_VlcbNetMsgExtOpcode2_Serialize(VlcbNetMsgExtOpcode2 msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode2_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgExtOpcode2 *const msg);
 
 /**
@@ -1374,9 +1374,9 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode2_New(uint8_t opcodeExtension,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSendRawPacket3_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccSendRawPacket3_Serialize(
     VlcbNetMsgDccSendRawPacket3 msg);
 
 /**
@@ -1387,7 +1387,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSendRawPacket3_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccSendRawPacket3_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccSendRawPacket3 *const msg);
 
 /**
@@ -1404,9 +1404,9 @@ int vlcb_net_msg_VlcbNetMsgDccSendRawPacket3_New(uint8_t repeatTimes,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsMode_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsMode_Serialize(
     VlcbNetMsgDccWriteCvByteInOpsMode msg);
 
 /**
@@ -1417,7 +1417,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccWriteCvByteInOpsMode *const msg);
 
 /**
@@ -1435,9 +1435,9 @@ int vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsMode_New(VlcbDccSessionNr session,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDcWriteCvBitInOpsMode_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDcWriteCvBitInOpsMode_Serialize(
     VlcbNetMsgDcWriteCvBitInOpsMode msg);
 
 /**
@@ -1448,7 +1448,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDcWriteCvBitInOpsMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDcWriteCvBitInOpsMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDcWriteCvBitInOpsMode *const msg);
 
 /**
@@ -1466,9 +1466,9 @@ int vlcb_net_msg_VlcbNetMsgDcWriteCvBitInOpsMode_New(VlcbDccSessionNr session,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgDccReadCv_Serialize(VlcbNetMsgDccReadCv msg);
 
 /**
@@ -1479,7 +1479,7 @@ vlcb_net_msg_VlcbNetMsgDccReadCv_Serialize(VlcbNetMsgDccReadCv msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccReadCv_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgDccReadCv *const msg);
+    const VlcbNetPacket datagramPacket, VlcbNetMsgDccReadCv *const msg);
 
 /**
  * @brief Construct new instance of VlcbNetMsgDccReadCv message
@@ -1495,9 +1495,9 @@ int vlcb_net_msg_VlcbNetMsgDccReadCv_New(VlcbDccSessionNr session, uint16_t CV,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgDccCvValue_Serialize(VlcbNetMsgDccCvValue msg);
 
 /**
@@ -1508,7 +1508,7 @@ vlcb_net_msg_VlcbNetMsgDccCvValue_Serialize(VlcbNetMsgDccCvValue msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccCvValue_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccCvValue *const msg);
 
 /**
@@ -1525,9 +1525,9 @@ int vlcb_net_msg_VlcbNetMsgDccCvValue_New(VlcbDccSessionNr session, uint16_t CV,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryDiagnosticData_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryDiagnosticData_Serialize(
     VlcbNetMsgQueryDiagnosticData msg);
 
 /**
@@ -1538,7 +1538,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryDiagnosticData_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryDiagnosticData_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryDiagnosticData *const msg);
 
 /**
@@ -1556,9 +1556,9 @@ int vlcb_net_msg_VlcbNetMsgQueryDiagnosticData_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgSetNodeVariable_Serialize(VlcbNetMsgSetNodeVariable msg);
 
 /**
@@ -1569,7 +1569,7 @@ vlcb_net_msg_VlcbNetMsgSetNodeVariable_Serialize(VlcbNetMsgSetNodeVariable msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgSetNodeVariable_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgSetNodeVariable *const msg);
 
 /**
@@ -1587,9 +1587,9 @@ int vlcb_net_msg_VlcbNetMsgSetNodeVariable_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn_Serialize(
     VlcbNetMsgLongEventAccessoryOn msg);
 
 /**
@@ -1600,7 +1600,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryOn *const msg);
 
 /**
@@ -1616,9 +1616,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff_Serialize(
     VlcbNetMsgLongEventAccessoryOff msg);
 
 /**
@@ -1629,7 +1629,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryOff *const msg);
 
 /**
@@ -1645,9 +1645,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgQueryLongEventAccessoryState_Serialize(
     VlcbNetMsgQueryLongEventAccessoryState msg);
 
@@ -1659,7 +1659,7 @@ vlcb_net_msg_VlcbNetMsgQueryLongEventAccessoryState_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryLongEventAccessoryState_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryLongEventAccessoryState *const msg);
 
 /**
@@ -1676,9 +1676,9 @@ int vlcb_net_msg_VlcbNetMsgQueryLongEventAccessoryState_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn_Serialize(
     VlcbNetMsgLongEventAccessoryStateOn msg);
 
@@ -1690,7 +1690,7 @@ vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryStateOn *const msg);
 
 /**
@@ -1706,9 +1706,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff_Serialize(
     VlcbNetMsgLongEventAccessoryStateOff msg);
 
@@ -1720,7 +1720,7 @@ vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryStateOff *const msg);
 
 /**
@@ -1736,9 +1736,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgForgetLearnedEvent_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgForgetLearnedEvent_Serialize(
     VlcbNetMsgForgetLearnedEvent msg);
 
 /**
@@ -1749,7 +1749,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgForgetLearnedEvent_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgForgetLearnedEvent_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgForgetLearnedEvent *const msg);
 
 /**
@@ -1765,9 +1765,9 @@ int vlcb_net_msg_VlcbNetMsgForgetLearnedEvent_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLegacySetNodeVariable_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLegacySetNodeVariable_Serialize(
     VlcbNetMsgLegacySetNodeVariable msg);
 
 /**
@@ -1778,7 +1778,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLegacySetNodeVariable_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLegacySetNodeVariable_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLegacySetNodeVariable *const msg);
 
 /**
@@ -1796,9 +1796,9 @@ int vlcb_net_msg_VlcbNetMsgLegacySetNodeVariable_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgNodeVariableValue_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgNodeVariableValue_Serialize(
     VlcbNetMsgNodeVariableValue msg);
 
 /**
@@ -1809,7 +1809,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgNodeVariableValue_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgNodeVariableValue_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgNodeVariableValue *const msg);
 
 /**
@@ -1827,9 +1827,9 @@ int vlcb_net_msg_VlcbNetMsgNodeVariableValue_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn_Serialize(
     VlcbNetMsgShortEventAccessoryOn msg);
 
 /**
@@ -1840,7 +1840,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryOn *const msg);
 
 /**
@@ -1856,9 +1856,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff_Serialize(
     VlcbNetMsgShortEventAccessoryOff msg);
 
 /**
@@ -1869,7 +1869,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryOff *const msg);
 
 /**
@@ -1885,9 +1885,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgQueryShortEventAccessoryState_Serialize(
     VlcbNetMsgQueryShortEventAccessoryState msg);
 
@@ -1899,7 +1899,7 @@ vlcb_net_msg_VlcbNetMsgQueryShortEventAccessoryState_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryShortEventAccessoryState_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryShortEventAccessoryState *const msg);
 
 /**
@@ -1916,9 +1916,9 @@ int vlcb_net_msg_VlcbNetMsgQueryShortEventAccessoryState_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgNodeParameterValue_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgNodeParameterValue_Serialize(
     VlcbNetMsgNodeParameterValue msg);
 
 /**
@@ -1929,7 +1929,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgNodeParameterValue_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgNodeParameterValue_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgNodeParameterValue *const msg);
 
 /**
@@ -1947,9 +1947,9 @@ int vlcb_net_msg_VlcbNetMsgNodeParameterValue_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryEventVariable_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryEventVariable_Serialize(
     VlcbNetMsgQueryEventVariable msg);
 
 /**
@@ -1960,7 +1960,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryEventVariable_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryEventVariable_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryEventVariable *const msg);
 
 /**
@@ -1978,9 +1978,9 @@ int vlcb_net_msg_VlcbNetMsgQueryEventVariable_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn_Serialize(
     VlcbNetMsgShortEventAccessoryStateOn msg);
 
@@ -1992,7 +1992,7 @@ vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryStateOn *const msg);
 
 /**
@@ -2008,9 +2008,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff_Serialize(
     VlcbNetMsgShortEventAccessoryStateOff msg);
 
@@ -2022,7 +2022,7 @@ vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryStateOff *const msg);
 
 /**
@@ -2039,9 +2039,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff_New(VlcbEvent event);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgExtOpcode3_Serialize(VlcbNetMsgExtOpcode3 msg);
 
 /**
@@ -2052,7 +2052,7 @@ vlcb_net_msg_VlcbNetMsgExtOpcode3_Serialize(VlcbNetMsgExtOpcode3 msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode3_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgExtOpcode3 *const msg);
 
 /**
@@ -2069,9 +2069,9 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode3_New(uint8_t opcodeExtension,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSendRawPacket4_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccSendRawPacket4_Serialize(
     VlcbNetMsgDccSendRawPacket4 msg);
 
 /**
@@ -2082,7 +2082,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSendRawPacket4_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccSendRawPacket4_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccSendRawPacket4 *const msg);
 
 /**
@@ -2099,9 +2099,9 @@ int vlcb_net_msg_VlcbNetMsgDccSendRawPacket4_New(uint8_t repeatTimes,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccWriteCvInServiceMode_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccWriteCvInServiceMode_Serialize(
     VlcbNetMsgDccWriteCvInServiceMode msg);
 
 /**
@@ -2112,7 +2112,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccWriteCvInServiceMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccWriteCvInServiceMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccWriteCvInServiceMode *const msg);
 
 /**
@@ -2131,9 +2131,9 @@ int vlcb_net_msg_VlcbNetMsgDccWriteCvInServiceMode_New(VlcbDccSessionNr session,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgHeartbeat_Serialize(VlcbNetMsgHeartbeat msg);
 
 /**
@@ -2144,7 +2144,7 @@ vlcb_net_msg_VlcbNetMsgHeartbeat_Serialize(VlcbNetMsgHeartbeat msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgHeartbeat_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgHeartbeat *const msg);
+    const VlcbNetPacket datagramPacket, VlcbNetMsgHeartbeat *const msg);
 
 /**
  * @brief Construct new instance of VlcbNetMsgHeartbeat message
@@ -2160,9 +2160,9 @@ int vlcb_net_msg_VlcbNetMsgHeartbeat_New(VlcbNodeNumber sourceNodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgServiceDiscoveryResponse_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgServiceDiscoveryResponse_Serialize(
     VlcbNetMsgServiceDiscoveryResponse msg);
 
 /**
@@ -2173,7 +2173,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgServiceDiscoveryResponse_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgServiceDiscoveryResponse_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgServiceDiscoveryResponse *const msg);
 
 /**
@@ -2191,9 +2191,9 @@ int vlcb_net_msg_VlcbNetMsgServiceDiscoveryResponse_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgGenericResponse_Serialize(VlcbNetMsgGenericResponse msg);
 
 /**
@@ -2204,7 +2204,7 @@ vlcb_net_msg_VlcbNetMsgGenericResponse_Serialize(VlcbNetMsgGenericResponse msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgGenericResponse_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgGenericResponse *const msg);
 
 /**
@@ -2223,9 +2223,9 @@ int vlcb_net_msg_VlcbNetMsgGenericResponse_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn1_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn1_Serialize(
     VlcbNetMsgLongEventAccessoryOn1 msg);
 
 /**
@@ -2236,7 +2236,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn1_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn1_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryOn1 *const msg);
 
 /**
@@ -2253,9 +2253,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn1_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff1_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff1_Serialize(
     VlcbNetMsgLongEventAccessoryOff1 msg);
 
 /**
@@ -2266,7 +2266,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff1_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff1_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryOff1 *const msg);
 
 /**
@@ -2283,9 +2283,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff1_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryEventVariableByIdex_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgQueryEventVariableByIdex_Serialize(
     VlcbNetMsgQueryEventVariableByIdex msg);
 
 /**
@@ -2296,7 +2296,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgQueryEventVariableByIdex_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgQueryEventVariableByIdex_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgQueryEventVariableByIdex *const msg);
 
 /**
@@ -2313,9 +2313,9 @@ int vlcb_net_msg_VlcbNetMsgQueryEventVariableByIdex_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn1_Serialize(
     VlcbNetMsgLongEventAccessoryStateOn1 msg);
 
@@ -2327,7 +2327,7 @@ vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn1_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn1_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryStateOn1 *const msg);
 
 /**
@@ -2344,9 +2344,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn1_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff1_Serialize(
     VlcbNetMsgLongEventAccessoryStateOff1 msg);
 
@@ -2358,7 +2358,7 @@ vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff1_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff1_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryStateOff1 *const msg);
 
 /**
@@ -2376,9 +2376,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff1_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgEventVariableValue_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgEventVariableValue_Serialize(
     VlcbNetMsgEventVariableValue msg);
 
 /**
@@ -2389,7 +2389,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgEventVariableValue_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgEventVariableValue_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgEventVariableValue *const msg);
 
 /**
@@ -2408,9 +2408,9 @@ int vlcb_net_msg_VlcbNetMsgEventVariableValue_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgModuleInfo_Serialize(VlcbNetMsgModuleInfo msg);
 
 /**
@@ -2421,7 +2421,7 @@ vlcb_net_msg_VlcbNetMsgModuleInfo_Serialize(VlcbNetMsgModuleInfo msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgModuleInfo_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgModuleInfo *const msg);
 
 /**
@@ -2440,9 +2440,9 @@ int vlcb_net_msg_VlcbNetMsgModuleInfo_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn1_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn1_Serialize(
     VlcbNetMsgShortEventAccessoryOn1 msg);
 
 /**
@@ -2453,7 +2453,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn1_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn1_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryOn1 *const msg);
 
 /**
@@ -2470,9 +2470,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn1_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff1_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff1_Serialize(
     VlcbNetMsgShortEventAccessoryOff1 msg);
 
 /**
@@ -2483,7 +2483,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff1_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff1_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryOff1 *const msg);
 
 /**
@@ -2500,9 +2500,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff1_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn1_Serialize(
     VlcbNetMsgShortEventAccessoryStateOn1 msg);
 
@@ -2514,7 +2514,7 @@ vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn1_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn1_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryStateOn1 *const msg);
 
 /**
@@ -2532,9 +2532,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn1_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff1_Serialize(
     VlcbNetMsgShortEventAccessoryStateOff1 msg);
 
@@ -2546,7 +2546,7 @@ vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff1_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff1_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryStateOff1 *const msg);
 
 /**
@@ -2564,9 +2564,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff1_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgExtOpcode4_Serialize(VlcbNetMsgExtOpcode4 msg);
 
 /**
@@ -2577,7 +2577,7 @@ vlcb_net_msg_VlcbNetMsgExtOpcode4_Serialize(VlcbNetMsgExtOpcode4 msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode4_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgExtOpcode4 *const msg);
 
 /**
@@ -2594,9 +2594,9 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode4_New(uint8_t opcodeExtension,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSendRawPacket5_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccSendRawPacket5_Serialize(
     VlcbNetMsgDccSendRawPacket5 msg);
 
 /**
@@ -2607,7 +2607,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSendRawPacket5_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccSendRawPacket5_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccSendRawPacket5 *const msg);
 
 /**
@@ -2624,9 +2624,9 @@ int vlcb_net_msg_VlcbNetMsgDccSendRawPacket5_New(uint8_t repeatTimes,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsModeByAddress_Serialize(
     VlcbNetMsgDccWriteCvByteInOpsModeByAddress msg);
 
@@ -2638,7 +2638,7 @@ vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsModeByAddress_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsModeByAddress_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccWriteCvByteInOpsModeByAddress *const msg);
 
 /**
@@ -2656,9 +2656,9 @@ int vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsModeByAddress_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSendDataToCab_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccSendDataToCab_Serialize(
     VlcbNetMsgDccSendDataToCab msg);
 
 /**
@@ -2669,7 +2669,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSendDataToCab_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccSendDataToCab_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccSendDataToCab *const msg);
 
 /**
@@ -2687,9 +2687,9 @@ int vlcb_net_msg_VlcbNetMsgDccSendDataToCab_New(VlcbDccDecoderAddr decoderAddr,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgDiagnosticData_Serialize(VlcbNetMsgDiagnosticData msg);
 
 /**
@@ -2700,7 +2700,7 @@ vlcb_net_msg_VlcbNetMsgDiagnosticData_Serialize(VlcbNetMsgDiagnosticData msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDiagnosticData_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDiagnosticData *const msg);
 
 /**
@@ -2719,9 +2719,9 @@ int vlcb_net_msg_VlcbNetMsgDiagnosticData_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgFastClock_Serialize(VlcbNetMsgFastClock msg);
 
 /**
@@ -2732,7 +2732,7 @@ vlcb_net_msg_VlcbNetMsgFastClock_Serialize(VlcbNetMsgFastClock msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgFastClock_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgFastClock *const msg);
+    const VlcbNetPacket datagramPacket, VlcbNetMsgFastClock *const msg);
 
 /**
  * @brief Construct new instance of VlcbNetMsgFastClock message
@@ -2749,9 +2749,9 @@ int vlcb_net_msg_VlcbNetMsgFastClock_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn2_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn2_Serialize(
     VlcbNetMsgLongEventAccessoryOn2 msg);
 
 /**
@@ -2762,7 +2762,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn2_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn2_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryOn2 *const msg);
 
 /**
@@ -2779,9 +2779,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn2_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff2_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff2_Serialize(
     VlcbNetMsgLongEventAccessoryOff2 msg);
 
 /**
@@ -2792,7 +2792,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff2_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff2_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryOff2 *const msg);
 
 /**
@@ -2809,9 +2809,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff2_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgTeachEvent_Serialize(VlcbNetMsgTeachEvent msg);
 
 /**
@@ -2822,7 +2822,7 @@ vlcb_net_msg_VlcbNetMsgTeachEvent_Serialize(VlcbNetMsgTeachEvent msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgTeachEvent_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgTeachEvent *const msg);
 
 /**
@@ -2840,9 +2840,9 @@ int vlcb_net_msg_VlcbNetMsgTeachEvent_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgEventVariableValueInLearnMode_Serialize(
     VlcbNetMsgEventVariableValueInLearnMode msg);
 
@@ -2854,7 +2854,7 @@ vlcb_net_msg_VlcbNetMsgEventVariableValueInLearnMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgEventVariableValueInLearnMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgEventVariableValueInLearnMode *const msg);
 
 /**
@@ -2872,9 +2872,9 @@ int vlcb_net_msg_VlcbNetMsgEventVariableValueInLearnMode_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn2_Serialize(
     VlcbNetMsgLongEventAccessoryStateOn2 msg);
 
@@ -2886,7 +2886,7 @@ vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn2_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn2_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryStateOn2 *const msg);
 
 /**
@@ -2903,9 +2903,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn2_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff2_Serialize(
     VlcbNetMsgLongEventAccessoryStateOff2 msg);
 
@@ -2917,7 +2917,7 @@ vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff2_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff2_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryStateOff2 *const msg);
 
 /**
@@ -2935,9 +2935,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff2_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn2_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn2_Serialize(
     VlcbNetMsgShortEventAccessoryOn2 msg);
 
 /**
@@ -2948,7 +2948,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn2_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn2_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryOn2 *const msg);
 
 /**
@@ -2965,9 +2965,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn2_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff2_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff2_Serialize(
     VlcbNetMsgShortEventAccessoryOff2 msg);
 
 /**
@@ -2978,7 +2978,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff2_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff2_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryOff2 *const msg);
 
 /**
@@ -2995,9 +2995,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff2_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn2_Serialize(
     VlcbNetMsgShortEventAccessoryStateOn2 msg);
 
@@ -3009,7 +3009,7 @@ vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn2_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn2_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryStateOn2 *const msg);
 
 /**
@@ -3027,9 +3027,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn2_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff2_Serialize(
     VlcbNetMsgShortEventAccessoryStateOff2 msg);
 
@@ -3041,7 +3041,7 @@ vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff2_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff2_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryStateOff2 *const msg);
 
 /**
@@ -3059,9 +3059,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff2_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgExtOpcode5_Serialize(VlcbNetMsgExtOpcode5 msg);
 
 /**
@@ -3072,7 +3072,7 @@ vlcb_net_msg_VlcbNetMsgExtOpcode5_Serialize(VlcbNetMsgExtOpcode5 msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode5_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgExtOpcode5 *const msg);
 
 /**
@@ -3089,9 +3089,9 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode5_New(uint8_t opcodeExtension,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSendRawPacket6_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccSendRawPacket6_Serialize(
     VlcbNetMsgDccSendRawPacket6 msg);
 
 /**
@@ -3102,7 +3102,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccSendRawPacket6_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccSendRawPacket6_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccSendRawPacket6 *const msg);
 
 /**
@@ -3119,9 +3119,9 @@ int vlcb_net_msg_VlcbNetMsgDccSendRawPacket6_New(uint8_t repeatTimes,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgDccLocoReport_Serialize(VlcbNetMsgDccLocoReport msg);
 
 /**
@@ -3132,7 +3132,7 @@ vlcb_net_msg_VlcbNetMsgDccLocoReport_Serialize(VlcbNetMsgDccLocoReport msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccLocoReport_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccLocoReport *const msg);
 
 /**
@@ -3150,9 +3150,9 @@ int vlcb_net_msg_VlcbNetMsgDccLocoReport_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgModuleName_Serialize(VlcbNetMsgModuleName msg);
 
 /**
@@ -3163,7 +3163,7 @@ vlcb_net_msg_VlcbNetMsgModuleName_Serialize(VlcbNetMsgModuleName msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgModuleName_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgModuleName *const msg);
 
 /**
@@ -3179,9 +3179,9 @@ int vlcb_net_msg_VlcbNetMsgModuleName_New(char moduleName[7]);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccCommandStationStatus_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDccCommandStationStatus_Serialize(
     VlcbNetMsgDccCommandStationStatus msg);
 
 /**
@@ -3192,7 +3192,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDccCommandStationStatus_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDccCommandStationStatus_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDccCommandStationStatus *const msg);
 
 /**
@@ -3211,9 +3211,9 @@ int vlcb_net_msg_VlcbNetMsgDccCommandStationStatus_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgEventAck_Serialize(VlcbNetMsgEventAck msg);
 
 /**
@@ -3224,7 +3224,7 @@ vlcb_net_msg_VlcbNetMsgEventAck_Serialize(VlcbNetMsgEventAck msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgEventAck_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgEventAck *const msg);
+    const VlcbNetPacket datagramPacket, VlcbNetMsgEventAck *const msg);
 
 /**
  * @brief Construct new instance of VlcbNetMsgEventAck message
@@ -3241,9 +3241,9 @@ int vlcb_net_msg_VlcbNetMsgEventAck_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgExtendedServiceDiscoveryResponse_Serialize(
     VlcbNetMsgExtendedServiceDiscoveryResponse msg);
 
@@ -3255,7 +3255,7 @@ vlcb_net_msg_VlcbNetMsgExtendedServiceDiscoveryResponse_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgExtendedServiceDiscoveryResponse_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgExtendedServiceDiscoveryResponse *const msg);
 
 /**
@@ -3274,9 +3274,9 @@ int vlcb_net_msg_VlcbNetMsgExtendedServiceDiscoveryResponse_New(
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgStreamPacket_Serialize(VlcbNetMsgStreamPacket msg);
 
 /**
@@ -3287,7 +3287,7 @@ vlcb_net_msg_VlcbNetMsgStreamPacket_Serialize(VlcbNetMsgStreamPacket msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgStreamPacket_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgStreamPacket *const msg);
 
 /**
@@ -3305,9 +3305,9 @@ int vlcb_net_msg_VlcbNetMsgStreamPacket_New(uint8_t streamId,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgNodeParametersReport_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgNodeParametersReport_Serialize(
     VlcbNetMsgNodeParametersReport msg);
 
 /**
@@ -3318,7 +3318,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgNodeParametersReport_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgNodeParametersReport_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgNodeParametersReport *const msg);
 
 /**
@@ -3334,9 +3334,9 @@ int vlcb_net_msg_VlcbNetMsgNodeParametersReport_New(uint8_t params[7]);
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn3_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn3_Serialize(
     VlcbNetMsgLongEventAccessoryOn3 msg);
 
 /**
@@ -3347,7 +3347,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn3_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn3_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryOn3 *const msg);
 
 /**
@@ -3364,9 +3364,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn3_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff3_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff3_Serialize(
     VlcbNetMsgLongEventAccessoryOff3 msg);
 
 /**
@@ -3377,7 +3377,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff3_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff3_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryOff3 *const msg);
 
 /**
@@ -3394,9 +3394,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff3_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLearnedEventResponse_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgLearnedEventResponse_Serialize(
     VlcbNetMsgLearnedEventResponse msg);
 
 /**
@@ -3407,7 +3407,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgLearnedEventResponse_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLearnedEventResponse_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLearnedEventResponse *const msg);
 
 /**
@@ -3425,9 +3425,9 @@ int vlcb_net_msg_VlcbNetMsgLearnedEventResponse_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn3_Serialize(
     VlcbNetMsgLongEventAccessoryStateOn3 msg);
 
@@ -3439,7 +3439,7 @@ vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn3_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn3_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryStateOn3 *const msg);
 
 /**
@@ -3456,9 +3456,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn3_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff3_Serialize(
     VlcbNetMsgLongEventAccessoryStateOff3 msg);
 
@@ -3470,7 +3470,7 @@ vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff3_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff3_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgLongEventAccessoryStateOff3 *const msg);
 
 /**
@@ -3488,9 +3488,9 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff3_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgTeachEventByIndex_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgTeachEventByIndex_Serialize(
     VlcbNetMsgTeachEventByIndex msg);
 
 /**
@@ -3501,7 +3501,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgTeachEventByIndex_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgTeachEventByIndex_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgTeachEventByIndex *const msg);
 
 /**
@@ -3520,9 +3520,9 @@ int vlcb_net_msg_VlcbNetMsgTeachEventByIndex_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDataEventAccessory_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDataEventAccessory_Serialize(
     VlcbNetMsgDataEventAccessory msg);
 
 /**
@@ -3533,7 +3533,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDataEventAccessory_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDataEventAccessory_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDataEventAccessory *const msg);
 
 /**
@@ -3550,9 +3550,9 @@ int vlcb_net_msg_VlcbNetMsgDataEventAccessory_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgNodeAccessoryData_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgNodeAccessoryData_Serialize(
     VlcbNetMsgNodeAccessoryData msg);
 
 /**
@@ -3563,7 +3563,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgNodeAccessoryData_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgNodeAccessoryData_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgNodeAccessoryData *const msg);
 
 /**
@@ -3580,9 +3580,9 @@ int vlcb_net_msg_VlcbNetMsgNodeAccessoryData_New(VlcbNodeNumber nodeNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn3_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn3_Serialize(
     VlcbNetMsgShortEventAccessoryOn3 msg);
 
 /**
@@ -3593,7 +3593,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn3_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn3_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryOn3 *const msg);
 
 /**
@@ -3610,9 +3610,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn3_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff3_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff3_Serialize(
     VlcbNetMsgShortEventAccessoryOff3 msg);
 
 /**
@@ -3623,7 +3623,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff3_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff3_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryOff3 *const msg);
 
 /**
@@ -3640,9 +3640,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff3_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDeviceDataEventShortMode_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDeviceDataEventShortMode_Serialize(
     VlcbNetMsgDeviceDataEventShortMode msg);
 
 /**
@@ -3653,7 +3653,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDeviceDataEventShortMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDeviceDataEventShortMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDeviceDataEventShortMode *const msg);
 
 /**
@@ -3670,9 +3670,9 @@ int vlcb_net_msg_VlcbNetMsgDeviceDataEventShortMode_New(uint16_t devideNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDeviceDataShortMode_Serialize(
+VlcbNetPacket vlcb_net_msg_VlcbNetMsgDeviceDataShortMode_Serialize(
     VlcbNetMsgDeviceDataShortMode msg);
 
 /**
@@ -3683,7 +3683,7 @@ VlcbNetPacketDatagram vlcb_net_msg_VlcbNetMsgDeviceDataShortMode_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgDeviceDataShortMode_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgDeviceDataShortMode *const msg);
 
 /**
@@ -3700,9 +3700,9 @@ int vlcb_net_msg_VlcbNetMsgDeviceDataShortMode_New(uint16_t devideNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgWriteData_Serialize(VlcbNetMsgWriteData msg);
 
 /**
@@ -3713,7 +3713,7 @@ vlcb_net_msg_VlcbNetMsgWriteData_Serialize(VlcbNetMsgWriteData msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgWriteData_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgWriteData *const msg);
+    const VlcbNetPacket datagramPacket, VlcbNetMsgWriteData *const msg);
 
 /**
  * @brief Construct new instance of VlcbNetMsgWriteData message
@@ -3729,9 +3729,9 @@ int vlcb_net_msg_VlcbNetMsgWriteData_New(uint16_t devideNumber,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn3_Serialize(
     VlcbNetMsgShortEventAccessoryStateOn3 msg);
 
@@ -3743,7 +3743,7 @@ vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn3_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn3_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryStateOn3 *const msg);
 
 /**
@@ -3761,9 +3761,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn3_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff3_Serialize(
     VlcbNetMsgShortEventAccessoryStateOff3 msg);
 
@@ -3775,7 +3775,7 @@ vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff3_Serialize(
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff3_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgShortEventAccessoryStateOff3 *const msg);
 
 /**
@@ -3793,9 +3793,9 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff3_New(VlcbEvent event,
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram
+VlcbNetPacket
 vlcb_net_msg_VlcbNetMsgExtOpcode6_Serialize(VlcbNetMsgExtOpcode6 msg);
 
 /**
@@ -3806,7 +3806,7 @@ vlcb_net_msg_VlcbNetMsgExtOpcode6_Serialize(VlcbNetMsgExtOpcode6 msg);
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode6_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket,
+    const VlcbNetPacket datagramPacket,
     VlcbNetMsgExtOpcode6 *const msg);
 
 /**

@@ -114,7 +114,7 @@ func (c *GenerateSerializerFunctionDeclarations) Run() error {
 	var rendered strings.Builder
 
 	rendered.WriteString(`#include "vlcb/net/message/data.h"
-#include "vlcb/net/packet/datagram.h"
+#include "vlcb/net/packet/vlcb.h"
 `)
 
 	for _, m := range messages {

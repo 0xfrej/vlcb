@@ -3,9 +3,9 @@
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
- * @return VlcbNetPacketDatagram serialized message into a datagram packet
+ * @return VlcbNetPacket serialized message into a datagram packet
  */
-VlcbNetPacketDatagram vlcb_net_msg_{{.Message.Name}}_Serialize({{.Message.Type}} msg);
+VlcbNetPacket vlcb_net_msg_{{.Message.Name}}_Serialize({{.Message.Type}} msg);
 
 /**
  * @brief Net message {{.Message.Name}} deserializer
@@ -15,7 +15,7 @@ VlcbNetPacketDatagram vlcb_net_msg_{{.Message.Name}}_Serialize({{.Message.Type}}
  * @retval -1 invalid data packet
  */
 int vlcb_net_msg_{{.Message.Name}}_Deserialize(
-    const VlcbNetPacketDatagram datagramPacket, {{.Message.Type}} *const msg);
+    const VlcbNetPacket datagramPacket, {{.Message.Type}} *const msg);
 
 /**
  * @brief Construct new instance of {{.Message.Name}} message

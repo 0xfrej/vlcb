@@ -5,31 +5,25 @@
 #include <stddef.h>
 
 #include "vlcb/net/addr.h"
-#include "vlcb/net/packet/datagram.h"
 #include "vlcb/net/packet/vlcb.h"
 #include "vlcb/net/socket.h"
 #include "vlcb/net/storage/packet_buf.h"
 #include "vlcb/platform/interface.h"
 
-bool SupportsProtocol(VlcbNetProtocol proto) {
-  return proto == VLCB_NET_PROTO_DATAGRAM;
-}
-
 VlcbNetSocketProcessErr ProcessPacket(const VlcbNetSocketDatagram *const self,
                                       const VlcbNetPacket *const packet) {
-  assert(self != NULL && packet != NULL &&
-         packet->proto == VLCB_NET_PROTO_DATAGRAM && self->rxBuf != NULL);
+  assert(self != NULL && packet != NULL && self->rxBuf != NULL);
 
   if (false == vlcb_net_IsWireEndpointValid(self->endpoint)) {
     return VLCB_NET_SOCK_PROC_ERR_OK;
   }
 
-  VlcbNetPacketDatagram dgramPacket;
-  VlcbNetPacketDatagramConstructErr err = vlcb_net_pkt_dgram_New(
+  VlcbNetPacket dgramPacket;
+  VlcbNetPacketConstructErr err = vlcb_net_pkt_New(
       packet->opc, packet->payloadLen, &packet->payload, &dgramPacket);
-  if (err != VLCB_DGRAM_PKT_CONSTRUCT_ERR_OK) {
+  if (err != VLCB_NET_PKT_CONSTRUCT_ERR_OK) {
     switch (err) {
-    case VLCB_DGRAM_PKT_CONSTRUCT_ERR_PAYLOAD_TOO_LARGE:
+    case VLCB_NET_PKT_CONSTRUCT_ERR_PAYLOAD_TOO_LARGE:
       return VLCB_NET_SOCK_PROC_ERR_PAYLOAD_TOO_LARGE;
     default:
       return VLCB_NET_SOCK_PROC_ERR_UNKNOWN;
@@ -52,15 +46,14 @@ VlcbNetSocketDispatchErr DispatchPacket(const VlcbNetSocketDatagram *const self,
     return VLCB_NET_SOCK_DISP_ERR_OK;
   }
 
-  VlcbNetPacketDatagram dgramPacket;
+  VlcbNetPacket dgramPacket;
   int res = vlcb_net_packetbuf_PopDeferred(self->txBuf, &tok->_t, &dgramPacket);
   if (res == -1 || res == -2) {
     return VLCB_NET_SOCK_DISP_ERR_WOULD_BLOCK;
   }
 
-  vlcb_net_pkt_NewUnchecked(VLCB_NET_PROTO_DATAGRAM, dgramPacket.opc,
-                            dgramPacket.payloadLen, &dgramPacket.payload,
-                            &tok->packet);
+  vlcb_net_pkt_NewUnchecked(dgramPacket.opc, dgramPacket.payloadLen,
+                            &dgramPacket.payload, &tok->packet);
 
   return VLCB_NET_SOCK_DISP_ERR_OK;
 }
@@ -74,8 +67,6 @@ WireEndpoint(const VlcbNetSocketDatagram *const self) {
 
 _INTERFACE_VTABLE_DEFINE(
     IVlcbNetSocket,
-    _INTERFACE_VTABLE_METHOD(SupportsProtocol, SupportsProtocol, bool,
-                             VlcbNetProtocol),
     _INTERFACE_VTABLE_METHOD(ProcessPacket, ProcessPacket,
                              VlcbNetSocketProcessErr,
                              _INTERFACE_SELF_PTR_MUT(IVlcbNetSocket),
@@ -99,7 +90,7 @@ vlcb_net_sock_dgram_New(VlcbPacketBuf *const rxBuf, VlcbPacketBuf *const txBuf,
 
 VlcbNetSocketDgramSendErr
 vlcb_net_sock_dgram_Send(VlcbNetSocketDatagram *const sock,
-                         const VlcbNetPacketDatagram *const packet) {
+                         const VlcbNetPacket *const packet) {
   assert(sock != NULL && packet != NULL && sock->txBuf != NULL);
 
   int res = vlcb_net_packetbuf_Push(sock->txBuf, packet);
@@ -111,7 +102,7 @@ vlcb_net_sock_dgram_Send(VlcbNetSocketDatagram *const sock,
 
 VlcbNetSocketDgramRecvErr
 vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock,
-                         VlcbNetPacketDatagram *const packet) {
+                         VlcbNetPacket *const packet) {
   assert(sock != NULL && packet != NULL && sock->rxBuf != NULL);
   int res = vlcb_net_packetbuf_Pop(sock->rxBuf, packet);
   if (res == -1 || res == -2) {

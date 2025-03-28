@@ -1,9 +1,8 @@
 #pragma once
 
-#include "../packet/datagram.h"
-#include "../socket.h"
-#include "../storage/packet_buf.h"
 #include "vlcb/net/addr.h"
+#include "vlcb/net/socket.h"
+#include "vlcb/net/storage/packet_buf.h"
 #include "vlcb/platform/interface.h"
 #include <stdint.h>
 
@@ -40,10 +39,10 @@ vlcb_error vlcb_net_sock_dgram_SendErrToStr(VlcbNetSocketDgramSendErr err);
 
 VlcbNetSocketDgramSendErr
 vlcb_net_sock_dgram_Send(VlcbNetSocketDatagram *const sock,
-                         const VlcbNetPacketDatagram *const packet);
+                         const VlcbNetPacket *const packet);
 VlcbNetSocketDgramRecvErr
 vlcb_net_sock_dgram_Recv(VlcbNetSocketDatagram *const sock,
-                         VlcbNetPacketDatagram *const packet);
+                         VlcbNetPacket *const packet);
 
 static inline IVlcbNetSocket *const
 vlcb_net_sock_dgram_Upcast(VlcbNetSocketDatagram *const sock) {

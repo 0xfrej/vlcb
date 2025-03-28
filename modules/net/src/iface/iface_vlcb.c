@@ -7,14 +7,9 @@
 #include "vlcb/platform/log.h"
 
 void ProcessVlcbPacket(VlcbNetIface *const iface, VlcbNetPacket *const packet) {
-  VlcbNetProtocol proto = vlcb_net_pkt_DetectProtocol(packet->opc);
-
   VlcbNetSocketListIter iter = vlcb_net_sock_list_GetIterator(iface->sockets);
   while (vlcb_net_sock_list_iter_HasNext(&iter)) {
     VlcbNetSocketHandle sock = vlcb_net_sock_list_iter_Next(&iter);
-    if (!_INTERFACE_PTR_STATIC_CALL(sock, SupportsProtocol, proto)) {
-      continue;
-    }
 
     VlcbNetSocketProcessErr err =
         _INTERFACE_PTR_CALL(sock, ProcessPacket, packet);

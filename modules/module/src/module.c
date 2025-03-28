@@ -8,7 +8,7 @@
 #include "vlcb/module.h"
 #include "vlcb/module/param.h"
 #include "vlcb/module/state.h"
-#include "vlcb/net/packet/datagram.h"
+#include "vlcb/net/packet/vlcb.h"
 #include "vlcb/net/packet/datagram/module.h"
 #include "vlcb/net/socket/datagram.h"
 #include "vlcb/platform/interface.h"
@@ -28,8 +28,8 @@ static inline void HandleHeartbeat(VlcbModule *const self, const vlcb_clock now)
       (self->lastHeartbeat == 0 ||
        vlcb_platform_time_DiffInMs(self->lastHeartbeat, now) >=
            VLCB_MODULE_HEARTBEAT_MS)) {
-    VlcbNetPacketDatagram packet;
-    vlcb_net_pkt_dgram_module_Heartbeat_Serialize(
+    VlcbNetPacket packet;
+    vlcb_net_pkt_module_Heartbeat_Serialize(
         &packet, (VlcbNetDgramHeartbeat){
                      .nodeNumber = self->config.nodeNumber,
                      .sequence = self->heartbeatSequence,
@@ -55,9 +55,9 @@ static inline void HandleHeartbeat(VlcbModule *const self, const vlcb_clock now)
 static inline void HandleQueryNodeParameters(VlcbModule *const self) {
   // RQNP, targets only modules in Setup mode
   if (self->sm.state == VLCB_MODULE_STATE_SETUP) {
-    VlcbNetPacketDatagram response;
+    VlcbNetPacket response;
     const VlcbModuleParams *const params = self->params;
-    vlcb_net_pkt_dgram_module_NodeParams_Serialize(
+    vlcb_net_pkt_module_NodeParams_Serialize(
         &response,
         (VlcbNetDgramNodeParams){
             .manuId = ModuleParamGetByte(params,
@@ -89,14 +89,14 @@ static inline void HandleQueryNodeParameters(VlcbModule *const self) {
 
 static inline void
 HandleQueryNodeParameterByIndex(VlcbModule *const self,
-                                const VlcbNetPacketDatagram *const packet) {
+                                const VlcbNetPacket *const packet) {
   // RQNPN, index 0 should return number of available params, followed by each
   // param as a separate packet
 }
 
 static inline void
 HandleSetNodeNumber(VlcbModule *const self,
-                    const VlcbNetPacketDatagram *const packet) {
+                    const VlcbNetPacket *const packet) {
   // SNN - set only in response to RQNN by the setup tool, only to node in setup
   // mode
   if (self->sm.state == VLCB_MODULE_STATE_SETUP) {
@@ -123,7 +123,7 @@ static inline void HandleQueryModuleName(VlcbModule *const self) {
       (self->sm.state == VLCB_MODULE_STATE_NORMAL &&
       ModuleParamGetByte(self->params, VLCB_MODULE_PARAM_FLAGS) &
            VLCB_MODULE_FLAG_LEARN_MODE)) {
-    VlcbNetPacketDatagram response;
+    VlcbNetPacket response;
 
     // 11 - request for node module name, excluding "CAN" prefix
     // sent during module transition, so no node number check
@@ -148,21 +148,21 @@ static inline void HandleQueryModuleName(VlcbModule *const self) {
 
 static inline void
 HandleRebootRequest(VlcbModule *const self,
-                    const VlcbNetPacketDatagram *const packet) {
+                    const VlcbNetPacket *const packet) {
   if (packet->opc == VLCB_OPC_RESTART_ALL_NODES) {
     self->restart();
     return;
   }
 
   VlcbNetDgramRestartNode request =
-      vlcb_net_pkt_dgram_module_RestartNode_Deserialize(packet);
+      vlcb_net_pkt_module_RestartNode_Deserialize(packet);
   if (self->config.nodeNumber == request.nodeNumber) {
     self->restart();
   }
 }
 
 static inline void HandleMnsMessages(VlcbModule *const self,
-                                     const VlcbNetPacketDatagram *const packet,
+                                     const VlcbNetPacket *const packet,
                                      vlcb_clock now) {
   switch (packet->opc) {
   case VLCB_OPC_QUERY_MODULE_PARAMETERS:
@@ -247,7 +247,7 @@ void vlcb_module_Init(VlcbModule *const module, const vlcb_clock now) {
 void vlcb_module_Poll(VlcbModule *const module, const vlcb_clock now) {
   assert(module != NULL && module->iface != NULL);
 
-  VlcbNetPacketDatagram packet;
+  VlcbNetPacket packet;
 
   while (1) {
     const VlcbNetSocketDgramRecvErr err =
