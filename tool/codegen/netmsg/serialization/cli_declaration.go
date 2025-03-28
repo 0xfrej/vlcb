@@ -3,6 +3,7 @@ package serialization
 import (
 	_ "embed"
 	"errors"
+	// "errors"
 	"os"
 	"strings"
 	"text/template"
@@ -13,26 +14,33 @@ import (
 	tree_sitter_c "github.com/tree-sitter/tree-sitter-c/bindings/go"
 )
 
-//go:embed template/declaration.h
+//go:embed template/declaration.h.tmpl
 var declarationTemplate string
 
 const OPC_FILE_PATH = "../../../modules/common/inc/vlcb/common/opcode.h"
-const MESSAGE_FILE_PATH = "../../../modules/net/inc/vlcb/net/packet/data.h"
+const MESSAGE_FILE_PATH = "../../../modules/net/inc/vlcb/net/message/data.h"
+const SERIALIZATION_FILE_PATH = "../../../modules/net/inc/vlcb/net/message/serialization.h"
 
 type TemplateData struct {
 	Serialize struct {
 		Brief string
 	}
-	Deserialie struct {
+	Deserialize struct {
 		Brief string
 	}
 	New struct {
 		Brief string
 	}
 	Message struct {
-		Name string
-		Type string
+		Name   string
+		Type   string
+		Fields []Field
 	}
+}
+
+type Field struct {
+	Name string
+	Type string
 }
 
 type GenerateSerializerFunctionDeclarations struct {
@@ -44,16 +52,16 @@ func (c *GenerateSerializerFunctionDeclarations) Run() error {
 		return err
 	}
 
-	if _, err := os.Stat(MESSAGE_FILE_PATH); err == nil {
-		return errors.New("generated message file already exists")
+	if _, err := os.Stat(SERIALIZATION_FILE_PATH); err == nil {
+		return errors.New("generated serialization file already exists")
 	}
 
 	parser := tree_sitter.NewParser()
 	defer parser.Close()
 	parser.SetLanguage(tree_sitter.NewLanguage(tree_sitter_c.Language()))
 
-	var sourceCodeBuf []byte
-	var tree *tree_sitter.Tree
+	var opcSourceCodeBuf []byte
+	var opcTree *tree_sitter.Tree
 	{
 		if file, err := os.Open(OPC_FILE_PATH); err == nil {
 			defer file.Close()
@@ -61,40 +69,62 @@ func (c *GenerateSerializerFunctionDeclarations) Run() error {
 			if err != nil {
 				return err
 			}
-			sourceCodeBuf = make([]byte, fileinfo.Size())
-			if _, err := file.Read(sourceCodeBuf); err != nil {
+			opcSourceCodeBuf = make([]byte, fileinfo.Size())
+			if _, err := file.Read(opcSourceCodeBuf); err != nil {
 				return err
 			}
 		} else {
 			return err
 		}
 
-		tree = parser.Parse(sourceCodeBuf, nil)
+		opcTree = parser.Parse(opcSourceCodeBuf, nil)
 	}
 
-	tmpl, err := template.New("message").Parse(declarationTemplate)
+	var msgSourceCodeBuf []byte
+	var msgTree *tree_sitter.Tree
+	{
+		if file, err := os.Open(MESSAGE_FILE_PATH); err == nil {
+			defer file.Close()
+			fileinfo, err := file.Stat()
+			if err != nil {
+				return err
+			}
+			msgSourceCodeBuf = make([]byte, fileinfo.Size())
+			if _, err := file.Read(msgSourceCodeBuf); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+
+		msgTree = parser.Parse(msgSourceCodeBuf, nil)
+	}
+
+	tmpl, err := template.New("declaration").Parse(declarationTemplate)
 	if err != nil {
 		return err
 	}
 
-	opcodeNode := opcode.FindOpcodeEnum(tree, sourceCodeBuf)
-	opcodes := opcode.ExtractOpcodes(opcodeNode, sourceCodeBuf)
+	opcodeNode := opcode.FindOpcodeEnum(opcTree, opcSourceCodeBuf)
+	opcodes := opcode.ExtractOpcodes(opcodeNode, opcSourceCodeBuf)
 
-	opcodes = arrays.Filter(opcodes, func(o opcode.Opcode) bool { return o.DataLen > 0 })
+	opcodes = arrays.Filter(opcodes, func(o opcode.Opcode) bool { return o.DataLen < 1 })
 
-	messages := make([]TemplateData, len(opcodes))
-	for i, o := range opcodes {
-		messages[i] = getMessageForOpcode(o)
-	}
+	messages := opcode.FindOpcodeMessages(msgTree, msgSourceCodeBuf)
 
 	var rendered strings.Builder
 
+	rendered.WriteString(`#include "vlcb/net/message/data.h"
+#include "vlcb/net/packet/datagram.h"
+`)
+
 	for _, m := range messages {
-		tmpl.Execute(&rendered, m)
+		data := getTmplData(m)
+		tmpl.Execute(&rendered, data)
 		rendered.WriteRune('\n')
 	}
 
-	if file, err := os.Create(MESSAGE_FILE_PATH); err == nil {
+	if file, err := os.Create(SERIALIZATION_FILE_PATH); err == nil {
 		defer file.Close()
 		_, err = file.WriteString(rendered.String())
 		if err != nil {
@@ -105,4 +135,23 @@ func (c *GenerateSerializerFunctionDeclarations) Run() error {
 	}
 
 	return nil
+}
+
+func getTmplData(m opcode.Message) TemplateData {
+	var d TemplateData
+
+	d.Message.Name = m.TypeName
+	d.Message.Type = m.TypeName
+	d.Serialize.Brief = m.TypeName
+	d.Deserialize.Brief = m.TypeName
+
+	var fields []Field
+	for _, v := range m.Fields {
+		fields = append(fields, Field{
+			Name: v.Name,
+			Type: v.Type,
+		})
+	}
+	d.Message.Fields = fields
+	return d
 }

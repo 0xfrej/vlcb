@@ -1,5 +1,7 @@
 # Codegen - Net message and serialization generator
 
+Various network codegen helpers used for one-shot jobs. They are bare minimum only to speed up work
+
 Generates message types and serialization for them from opcode enum. This is not fully automated and requires some
 manual work.
 

@@ -14,6 +14,7 @@ var (
 	TS_QUERY_FUNCTION_DEFINITION TSQuery = "function_definition.scm"
 	TS_QUERY_OPCODES_ENUM        TSQuery = "opcodes_enum.scm"
 	TS_QUERY_OPCODES             TSQuery = "opcodes.scm"
+	TS_QUERY_STRUCT_W_FIELDS     TSQuery = "struct_w_fields.scm"
 )
 
 //go:embed query/*

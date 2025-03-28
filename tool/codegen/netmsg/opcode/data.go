@@ -15,3 +15,11 @@ func ExtractDataLenFromRawOpcode(v uint8) uint8 {
 func ExtractValueFromRawOpcode(v uint8) uint8 {
 	return v & 0x1F
 }
+
+type Message struct {
+	TypeName string
+	Fields   []struct {
+		Name string
+		Type string
+	}
+}

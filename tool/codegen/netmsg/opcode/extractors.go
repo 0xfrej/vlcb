@@ -59,3 +59,56 @@ func ExtractOpcodes(opcodeNode tree_sitter.Node, sourceCodeBuf []byte) []Opcode 
 
 	return opcodes
 }
+
+func FindOpcodeMessages(tree *tree_sitter.Tree, sourceCodeBuf []byte) []Message {
+	query, err := ts.OpenQuery(ts.TS_QUERY_STRUCT_W_FIELDS, tree.Language())
+	if err != nil {
+		panic(err)
+	}
+	defer query.Close()
+
+	cursor := tree_sitter.NewQueryCursor()
+	defer cursor.Close()
+
+	matches := cursor.Matches(query, tree.RootNode(), sourceCodeBuf)
+	messageMatches := matches.Next()
+	if messageMatches == nil {
+		panic("no message structures were found!")
+	}
+
+	var messages []Message
+
+	typeIndex := ts.GetCaptureIndex(query, "struct.type")
+	fieldsIndex := ts.GetCaptureIndex(query, "struct.fields")
+
+	for match := matches.Next(); match != nil; match = matches.Next() {
+		message := Message{}
+		message.TypeName = string(match.Captures[typeIndex].Node.Utf8Text(sourceCodeBuf))
+		fieldsNode := match.Captures[fieldsIndex].Node
+		nodeCursor := fieldsNode.Walk()
+		children := fieldsNode.Children(nodeCursor)
+		nodeCursor.Close()
+		message.Fields = make([]struct {
+			Name string
+			Type string
+		}, 0)
+		for _, child := range children {
+			if child.Kind() == "field_declaration" {
+				name := child.ChildByFieldName("declarator")
+				typeName := child.ChildByFieldName("type")
+
+				field := struct {
+					Name string
+					Type string
+				}{
+					Name: string(name.Utf8Text(sourceCodeBuf)),
+					Type: string(typeName.Utf8Text(sourceCodeBuf)),
+				}
+				message.Fields = append(message.Fields, field)
+			}
+		}
+		messages = append(messages, message)
+	}
+
+	return messages
+}
