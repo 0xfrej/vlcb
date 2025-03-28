@@ -27,8 +27,8 @@ typedef struct {
   bool hasStarted;
   VlcbPlatformLedEffectType type;
   VlcbPlatformLedEffectData data;
-  vlcb_milis currentCycleStartedAt;
-  vlcb_milis startedAt;
+  vlcb_clock currentCycleStartedAt;
+  vlcb_clock startedAt;
   uint32_t duration;
 } VlcbPlatformLedEffect;
 

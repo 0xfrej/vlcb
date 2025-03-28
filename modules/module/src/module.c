@@ -1,7 +1,7 @@
 #include "./module.h"
 
 #include <assert.h>
-#include <time.h>
+#include "vlcb/platform/time.h"
 
 #include "param.h"
 #include "state_machine.h"
@@ -19,7 +19,7 @@
 #define VLCB_MODULE_HEARTBEAT_MS 5000
 #endif /* ifndef VLCB_MODULE_HEARTBEAT_MS */
 
-static inline void HandleHeartbeat(VlcbModule *const self, const clock_t now) {
+static inline void HandleHeartbeat(VlcbModule *const self, const vlcb_clock now) {
   // send heartbeat if module is in normal mode, heartbeat is enabled and
   // heartbeat timeout passed (or if it's the first heartbeat) heartbeatSequence
   // increments, until it overflows, which is expected
@@ -103,7 +103,7 @@ HandleSetNodeNumber(VlcbModule *const self,
   }
 }
 
-static inline void AbortSetup(VlcbModule *const self, clock_t now) {
+static inline void AbortSetup(VlcbModule *const self, vlcb_clock now) {
   // Abort setup mode, if another mode entered setup (MNS Spec 3.2.1)
   if (self->sm.state == VLCB_MODULE_STATE_SETUP) {
     state_Dispatch(self, (ModuleStateEvent){.sig = MSE_ABORT_SETUP}, now);
@@ -163,7 +163,7 @@ HandleRebootRequest(VlcbModule *const self,
 
 static inline void HandleMnsMessages(VlcbModule *const self,
                                      const VlcbNetPacketDatagram *const packet,
-                                     clock_t now) {
+                                     vlcb_clock now) {
   switch (packet->opc) {
   case VLCB_OPC_QUERY_MODULE_PARAMETERS:
     HandleQueryNodeParameters(self);
@@ -237,14 +237,14 @@ VlcbModule vlcb_module_New(const char *const name, VlcbNetIface *const iface,
                       .restart = restartHandler};
 }
 
-void vlcb_module_Init(VlcbModule *const module, const clock_t now) {
+void vlcb_module_Init(VlcbModule *const module, const vlcb_clock now) {
   assert(module != NULL);
   // todo: load config from persistent storage
   state_Dispatch(module, (ModuleStateEvent){.sig = MSE_INIT}, now);
   _INTERFACE_CALL(module->ui, Poll, now);
 }
 
-void vlcb_module_Poll(VlcbModule *const module, const clock_t now) {
+void vlcb_module_Poll(VlcbModule *const module, const vlcb_clock now) {
   assert(module != NULL && module->iface != NULL);
 
   VlcbNetPacketDatagram packet;

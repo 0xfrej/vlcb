@@ -52,7 +52,7 @@ inline void CanSvcEventConsume(VlcbNetWireEndpointHandle endpoint,
 }
 
 inline void CanSvcProcess(VlcbNetIface *const iface,
-                          VlcbNetWireEndpointHandle endpoint, clock_t now) {
+                          VlcbNetWireEndpointHandle endpoint, vlcb_clock now) {
   VlcbNetAdptPkt pkt;
   VlcbNetAdptErr err;
   switch (endpoint->meta.can.state) {

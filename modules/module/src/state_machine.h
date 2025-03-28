@@ -2,7 +2,7 @@
 
 #include "vlcb/common/node.h"
 #include "vlcb/module.h"
-#include <time.h>
+#include "vlcb/platform/time.h"
 
 typedef enum {
   MSE_INIT,
@@ -31,4 +31,4 @@ typedef struct {
 } ModuleStateEvent;
 
 void state_Dispatch(VlcbModule *const self, const ModuleStateEvent e,
-                    clock_t now);
+                    vlcb_clock now);

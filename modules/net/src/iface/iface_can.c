@@ -12,7 +12,7 @@
 #include "vlcb/platform/log.h"
 
 void ProcessCanPacket(VlcbNetIface *const iface, VlcbNetAdptPkt *pkt,
-                      vlcb_milis now) {
+                      vlcb_clock now) {
   VlcbNetSocketListIter iter = vlcb_net_sock_list_GetIterator(iface->sockets);
   while (vlcb_net_sock_list_iter_HasNext(&iter)) {
     VlcbNetSocketHandle sock = vlcb_net_sock_list_iter_Next(&iter);

@@ -30,6 +30,10 @@ typedef enum {
 
 VlcbNetProtocol vlcb_net_pkt_DetectProtocol(VlcbOpCode opc);
 
+// TODO: get rid of this - it's useless - this whole file and everything in it -
+// we should assume everything is datagram as it's the lowest "protocol" or
+// remove datagram packet and protocol from this one (that might make more
+// sense)
 typedef struct {
   VlcbNetProtocol proto;
   VlcbOpCode opc;

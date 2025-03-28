@@ -19,7 +19,7 @@ VlcbNetIface vlcb_net_iface_New(IVlcbNetAdpt *const adpt,
   return iface;
 }
 
-bool IngressPackets(VlcbNetIface *const iface, clock_t now) {
+bool IngressPackets(VlcbNetIface *const iface, vlcb_clock now) {
   bool processed_any = false;
 
   IVlcbNetAdpt *adpt = iface->adpt;
@@ -52,7 +52,7 @@ bool IngressPackets(VlcbNetIface *const iface, clock_t now) {
   return processed_any;
 }
 
-bool EgressPackets(VlcbNetIface *const iface, clock_t now) {
+bool EgressPackets(VlcbNetIface *const iface, vlcb_clock now) {
   bool emitted_any = false;
 
   const VlcbNetAdptCaps caps = _INTERFACE_PTR_CALL(iface->adpt, Caps);
@@ -91,7 +91,7 @@ bool EgressPackets(VlcbNetIface *const iface, clock_t now) {
 }
 
 VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface,
-                                           clock_t now) {
+                                           vlcb_clock now) {
   assert(iface != NULL && iface->adpt != NULL /* iface, sockets need to be valid pointers and device needs to be initialized */);
 
   bool readiness_may_have_changed = false;

@@ -10,4 +10,4 @@ _INTERFACE_DECLARE(
                               const VlcbModuleState state);
     _INTERFACE_METHOD_DECLARE(void, Poll,
                               _INTERFACE_SELF_PTR_MUT(IVlcbModuleUi),
-                              const clock_t now););
+                              const vlcb_clock now););

@@ -20,7 +20,7 @@ typedef struct {
 } VlcbNetIfacePollResult;
 
 VlcbNetIfacePollResult vlcb_net_iface_Poll(VlcbNetIface *const iface,
-                                           clock_t now);
+                                           vlcb_clock now);
 VlcbNetMedium vlcb_net_iface_Medium(const VlcbNetIface *const iface);
 bool vlcb_net_iface_BindSock(VlcbNetIface *const iface,
                              VlcbNetSocketHandle sock);

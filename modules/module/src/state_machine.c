@@ -92,13 +92,13 @@ static bool HandleTransitionToNormal(VlcbModule *const self) {
 }
 
 static inline bool CheckForSetupTimeout(VlcbModule *const self,
-                                        const clock_t now) {
+                                        const vlcb_clock now) {
   return vlcb_platform_time_DiffInMs(self->sm.data.setup.startedAt, now) >=
          VLCB_MODULE_STATE_CHANGE_TIMEOUT_MS;
 }
 
 void state_Dispatch(VlcbModule *const self, const ModuleStateEvent e,
-                    const clock_t now) {
+                    const vlcb_clock now) {
   if (e.sig == MSE_INIT) {
     // reset state, node and hw address when invalid state was resolved from
     // config
