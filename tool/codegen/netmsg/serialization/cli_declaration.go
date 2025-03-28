@@ -2,7 +2,6 @@ package serialization
 
 import (
 	_ "embed"
-	"errors"
 	// "errors"
 	"os"
 	"strings"
@@ -52,9 +51,9 @@ func (c *GenerateSerializerFunctionDeclarations) Run() error {
 		return err
 	}
 
-	if _, err := os.Stat(SERIALIZATION_FILE_PATH); err == nil {
-		return errors.New("generated serialization file already exists")
-	}
+	// if _, err := os.Stat(SERIALIZATION_FILE_PATH); err == nil {
+	// 	return errors.New("generated serialization file already exists")
+	// }
 
 	parser := tree_sitter.NewParser()
 	defer parser.Close()

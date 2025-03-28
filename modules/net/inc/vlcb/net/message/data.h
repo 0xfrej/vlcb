@@ -1145,6 +1145,12 @@ typedef struct {
   uint8_t data[6];
 } VlcbNetMsgDccSendRawPacket6;
 
+typedef struct {
+  uint8_t F0_F4;
+  uint8_t F5_F8;
+  uint8_t F9_F12;
+} VlcbNetMsgDccLocoReportFunctionStates;
+
 /**
  * VlcbNetMsgDccLocoReport
  *
@@ -1155,11 +1161,7 @@ typedef struct {
   VlcbDccDecoderAddr decoderAddr;
   uint8_t
       speed_dir; // TODO: this needs rework...i didn't find anything in docs yet
-  struct {
-    uint8_t F0_F4;
-    uint8_t F5_F8;
-    uint8_t F9_F12;
-  } functionStates;
+  VlcbNetMsgDccLocoReportFunctionStates functionStates;
 } VlcbNetMsgDccLocoReport;
 
 /**
@@ -1171,6 +1173,17 @@ typedef struct {
   char moduleName[7];
 } VlcbNetMsgModuleName;
 
+typedef struct {
+  // TODO: should these be actual flags or struct of bools for easier
+  // readability?
+  bool busIsHalted;
+  bool resetFinished;
+  bool dccTrackError;
+  bool dccTrackIsOn;
+  bool dccEmergencyStop;
+  bool dccInServiceMode;
+} VlcbNetMsgDccCommandStationStatusErrorFlags;
+
 /**
  * VlcbNetMsgDccCommandStationStatus
  *
@@ -1179,15 +1192,7 @@ typedef struct {
  */
 typedef struct {
   VlcbNodeNumber nodeNumber;
-  struct {
-    bool selfTestHwError;
-    bool busIsHalted;
-    bool resetFinished;
-    bool dccTrackError;
-    bool dccTrackIsOn;
-    bool dccEmergencyStop;
-    bool dccInServiceMode;
-  } flags;
+  VlcbNetMsgDccCommandStationStatusErrorFlags flags;
   VlcbModuleVersion moduleVersion;
 } VlcbNetMsgDccCommandStationStatus;
 
@@ -1215,24 +1220,32 @@ typedef struct {
   uint8_t serviceData[3]; // TODO: Union of structs?
 } VlcbNetMsgExtendedServiceDiscoveryResponse;
 
+typedef struct {
+  uint16_t messageLen;
+  uint16_t checksum;
+  uint8_t flags;
+} VlcbNetMsgStreamPacketPayloadInit;
+
+typedef struct {
+  uint8_t data[5];
+} VlcbNetMsgStreamPacketPayloadChunk;
+
+typedef union {
+  VlcbNetMsgStreamPacketPayloadInit streamInit;
+  VlcbNetMsgStreamPacketPayloadChunk dataChunk;
+} VlcbNetMsgStreamPacketPayload;
+
 /**
  * VlcbNetMsgStreamPacket
  *
  * Message data structure for opcode @see VlcbOpCode #VLCB_OPC_STREAM_PACKET
+ * TODO: union needs an indication of what type this packet is for reliable
+ * detection
  */
 typedef struct {
   uint8_t streamId;
   uint8_t sequenceNr;
-  union {
-    struct {
-      uint16_t messageLen;
-      uint16_t checksum;
-      uint8_t flags;
-    } fistPacket;
-    struct {
-      uint8_t data[5];
-    } dataPacket;
-  } data;
+  VlcbNetMsgStreamPacketPayload data;
 } VlcbNetMsgStreamPacket;
 
 /**

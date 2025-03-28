@@ -23,10 +23,10 @@ int vlcb_net_msg_VlcbNetMsgDccQueryLocoStatus_Deserialize(
     VlcbNetMsgDccQueryLocoStatus *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccQueryLocoStatus message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccQueryLocoStatus_New(VlcbDccSessionNr session);
 
@@ -52,10 +52,10 @@ int vlcb_net_msg_VlcbNetMsgDccSessionKeepAlive_Deserialize(
     VlcbNetMsgDccSessionKeepAlive *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccSessionKeepAlive message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccSessionKeepAlive_New(VlcbDccSessionNr session);
 
@@ -80,10 +80,10 @@ int vlcb_net_msg_VlcbNetMsgDebugMsg1_Deserialize(
     const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgDebugMsg1 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDebugMsg1 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDebugMsg1_New(uint8_t status);
 
@@ -109,10 +109,10 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode0_Deserialize(
     VlcbNetMsgExtOpcode0 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgExtOpcode0 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode0_New(uint8_t opcodeExtension);
 
@@ -138,10 +138,10 @@ int vlcb_net_msg_VlcbNetMsgDccRequestNewSession_Deserialize(
     VlcbNetMsgDccRequestNewSession *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccRequestNewSession message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccRequestNewSession_New(
     VlcbDccDecoderAddr decoderAddr);
@@ -168,10 +168,10 @@ int vlcb_net_msg_VlcbNetMsgDccQueryConsist_Deserialize(
     VlcbNetMsgDccQueryConsist *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccQueryConsist message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccQueryConsist_New(VlcbDccConsistId consist,
                                                uint8_t index);
@@ -198,10 +198,10 @@ int vlcb_net_msg_VlcbNetMsgSetNodeNumber_Deserialize(
     VlcbNetMsgSetNodeNumber *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgSetNodeNumber message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgSetNodeNumber_New(VlcbNodeNumber nodeNumber);
 
@@ -228,10 +228,10 @@ int vlcb_net_msg_VlcbNetMsgDccAllocateLocoToActivity_Deserialize(
     VlcbNetMsgDccAllocateLocoToActivity *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccAllocateLocoToActivity message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccAllocateLocoToActivity_New(
     VlcbDccSessionNr session, uint8_t allocationCode);
@@ -258,10 +258,10 @@ int vlcb_net_msg_VlcbNetMsgDccSetThrottleMode_Deserialize(
     VlcbNetMsgDccSetThrottleMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccSetThrottleMode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccSetThrottleMode_New(
     VlcbDccSessionNr session, VlcbDccThrottleSpeedMode throttleMode,
@@ -289,10 +289,10 @@ int vlcb_net_msg_VlcbNetMsgDccConsistAddLoco_Deserialize(
     VlcbNetMsgDccConsistAddLoco *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccConsistAddLoco message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccConsistAddLoco_New(VlcbDccSessionNr session,
                                                  VlcbDccConsistId consist);
@@ -319,10 +319,10 @@ int vlcb_net_msg_VlcbNetMsgDccConsistRemoveLoco_Deserialize(
     VlcbNetMsgDccConsistRemoveLoco *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccConsistRemoveLoco message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccConsistRemoveLoco_New(VlcbDccSessionNr session,
                                                     VlcbDccConsistId consist);
@@ -349,10 +349,10 @@ int vlcb_net_msg_VlcbNetMsgDccSetLocoThrottle_Deserialize(
     VlcbNetMsgDccSetLocoThrottle *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccSetLocoThrottle message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccSetLocoThrottle_New(
     VlcbDccSessionNr session, uint8_t speed, VlcbDccLocoDirection direction);
@@ -379,10 +379,10 @@ int vlcb_net_msg_VlcbNetMsgDccSetLocoFlags_Deserialize(
     VlcbNetMsgDccSetLocoFlags *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccSetLocoFlags message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccSetLocoFlags_New(
     VlcbDccSessionNr session, VlcbDccThrottleSpeedMode speedMode, bool lightsOn,
@@ -410,10 +410,10 @@ int vlcb_net_msg_VlcbNetMsgDccLocoFunctionOn_Deserialize(
     VlcbNetMsgDccLocoFunctionOn *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccLocoFunctionOn message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccLocoFunctionOn_New(VlcbDccSessionNr session,
                                                  uint8_t functionNr);
@@ -440,10 +440,10 @@ int vlcb_net_msg_VlcbNetMsgDccLocoFunctionOff_Deserialize(
     VlcbNetMsgDccLocoFunctionOff *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccLocoFunctionOff message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccLocoFunctionOff_New(VlcbDccSessionNr session,
                                                   uint8_t functionNr);
@@ -470,10 +470,10 @@ int vlcb_net_msg_VlcbNetMsgDccServiceModeStatus_Deserialize(
     VlcbNetMsgDccServiceModeStatus *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccServiceModeStatus message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccServiceModeStatus_New(VlcbDccSessionNr session,
                                                     uint8_t status);
@@ -500,10 +500,10 @@ int vlcb_net_msg_VlcbNetMsgResetModuleToFactory_Deserialize(
     VlcbNetMsgResetModuleToFactory *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgResetModuleToFactory message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgResetModuleToFactory_New(VlcbNodeNumber nodeNumber);
 
@@ -529,10 +529,10 @@ int vlcb_net_msg_VlcbNetMsgRequestNewNodeNumber_Deserialize(
     VlcbNetMsgRequestNewNodeNumber *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgRequestNewNodeNumber message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgRequestNewNodeNumber_New(VlcbNodeNumber nodeNumber);
 
@@ -558,10 +558,10 @@ int vlcb_net_msg_VlcbNetMsgNodeNumberReleased_Deserialize(
     VlcbNetMsgNodeNumberReleased *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgNodeNumberReleased message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgNodeNumberReleased_New(VlcbNodeNumber nodeNumber);
 
@@ -587,10 +587,10 @@ int vlcb_net_msg_VlcbNetMsgNodeNumberAck_Deserialize(
     VlcbNetMsgNodeNumberAck *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgNodeNumberAck message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgNodeNumberAck_New(VlcbNodeNumber nodeNumber);
 
@@ -616,10 +616,10 @@ int vlcb_net_msg_VlcbNetMsgPutNodeIntoLearnMode_Deserialize(
     VlcbNetMsgPutNodeIntoLearnMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgPutNodeIntoLearnMode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgPutNodeIntoLearnMode_New(VlcbNodeNumber nodeNumber);
 
@@ -645,10 +645,10 @@ int vlcb_net_msg_VlcbNetMsgReleaseNodeFromLearnMode_Deserialize(
     VlcbNetMsgReleaseNodeFromLearnMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgReleaseNodeFromLearnMode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgReleaseNodeFromLearnMode_New(
     VlcbNodeNumber nodeNumber);
@@ -675,10 +675,10 @@ int vlcb_net_msg_VlcbNetMsgForgetAllLearnedEvents_Deserialize(
     VlcbNetMsgForgetAllLearnedEvents *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgForgetAllLearnedEvents message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgForgetAllLearnedEvents_New(
     VlcbNodeNumber nodeNumber);
@@ -705,10 +705,10 @@ int vlcb_net_msg_VlcbNetMsgQueryAvailableEventSlots_Deserialize(
     VlcbNetMsgQueryAvailableEventSlots *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryAvailableEventSlots message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryAvailableEventSlots_New(
     VlcbNodeNumber nodeNumber);
@@ -735,10 +735,10 @@ int vlcb_net_msg_VlcbNetMsgQueryAllLearnedEvents_Deserialize(
     VlcbNetMsgQueryAllLearnedEvents *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryAllLearnedEvents message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryAllLearnedEvents_New(VlcbNodeNumber nodeNumber);
 
@@ -764,10 +764,10 @@ int vlcb_net_msg_VlcbNetMsgQueryLearnedEventCount_Deserialize(
     VlcbNetMsgQueryLearnedEventCount *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryLearnedEventCount message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryLearnedEventCount_New(
     VlcbNodeNumber nodeNumber);
@@ -793,10 +793,10 @@ int vlcb_net_msg_VlcbNetMsgWriteAck_Deserialize(
     const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgWriteAck *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgWriteAck message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgWriteAck_New(VlcbNodeNumber nodeNumber);
 
@@ -822,10 +822,10 @@ int vlcb_net_msg_VlcbNetMsgQueryNodeAccessoryData_Deserialize(
     VlcbNetMsgQueryNodeAccessoryData *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryNodeAccessoryData message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryNodeAccessoryData_New(
     VlcbNodeNumber nodeNumber);
@@ -852,10 +852,10 @@ int vlcb_net_msg_VlcbNetMsgQueryDeviceDataShortMode_Deserialize(
     VlcbNetMsgQueryDeviceDataShortMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryDeviceDataShortMode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryDeviceDataShortMode_New(
     VlcbNodeNumber dataNumber);
@@ -882,10 +882,10 @@ int vlcb_net_msg_VlcbNetMsgRebootIntoBootloader_Deserialize(
     VlcbNetMsgRebootIntoBootloader *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgRebootIntoBootloader message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgRebootIntoBootloader_New(VlcbNodeNumber nodeNumber);
 
@@ -911,10 +911,10 @@ int vlcb_net_msg_VlcbNetMsgForceCanEnumeration_Deserialize(
     VlcbNetMsgForceCanEnumeration *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgForceCanEnumeration message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgForceCanEnumeration_New(VlcbNodeNumber nodeNumber);
 
@@ -940,10 +940,10 @@ int vlcb_net_msg_VlcbNetMsgRestartNode_Deserialize(
     VlcbNetMsgRestartNode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgRestartNode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgRestartNode_New(VlcbNodeNumber nodeNumber);
 
@@ -969,10 +969,10 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode1_Deserialize(
     VlcbNetMsgExtOpcode1 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgExtOpcode1 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode1_New(uint8_t opcodeExtension,
                                           uint8_t data[1]);
@@ -999,10 +999,10 @@ int vlcb_net_msg_VlcbNetMsgDccSetLocoFunctions_Deserialize(
     VlcbNetMsgDccSetLocoFunctions *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccSetLocoFunctions message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccSetLocoFunctions_New(
     VlcbDccSessionNr session, VlcbDccLocoFunctionRange range,
@@ -1030,10 +1030,10 @@ int vlcb_net_msg_VlcbNetMsgDccQueryLocoSession_Deserialize(
     VlcbNetMsgDccQueryLocoSession *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccQueryLocoSession message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccQueryLocoSession_New(
     VlcbDccDecoderAddr decoderAddr, VlcbDccSessionQueryMode mode);
@@ -1060,10 +1060,10 @@ int vlcb_net_msg_VlcbNetMsgDccCommandStationError_Deserialize(
     VlcbNetMsgDccCommandStationError *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccCommandStationError message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccCommandStationError_New(
     VlcbDccDecoderAddr decoderAddr, uint8_t errorCode);
@@ -1090,10 +1090,10 @@ int vlcb_net_msg_VlcbNetMsgCommandError_Deserialize(
     VlcbNetMsgCommandError *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgCommandError message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgCommandError_New(VlcbNodeNumber nodeNumber,
                                             uint8_t errorCode);
@@ -1120,10 +1120,10 @@ int vlcb_net_msg_VlcbNetMsgAvailableEventSlots_Deserialize(
     VlcbNetMsgAvailableEventSlots *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgAvailableEventSlots message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgAvailableEventSlots_New(VlcbNodeNumber nodeNumber,
                                                    uint8_t availableSlots);
@@ -1150,10 +1150,10 @@ int vlcb_net_msg_VlcbNetMsgQueryNodeVariable_Deserialize(
     VlcbNetMsgQueryNodeVariable *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryNodeVariable message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryNodeVariable_New(VlcbNodeNumber nodeNumber,
                                                  uint8_t nodeVariableIndex);
@@ -1180,10 +1180,10 @@ int vlcb_net_msg_VlcbNetMsgQueryLearnedEventByIndex_Deserialize(
     VlcbNetMsgQueryLearnedEventByIndex *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryLearnedEventByIndex message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryLearnedEventByIndex_New(
     VlcbNodeNumber nodeNumber, uint8_t eventIndex);
@@ -1211,10 +1211,10 @@ int vlcb_net_msg_VlcbNetMsgQueryNodeParameterByIndex_Deserialize(
     VlcbNetMsgQueryNodeParameterByIndex *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryNodeParameterByIndex message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryNodeParameterByIndex_New(
     VlcbNodeNumber nodeNumber, uint8_t parameterIndex);
@@ -1241,10 +1241,10 @@ int vlcb_net_msg_VlcbNetMsgLearnedEventCount_Deserialize(
     VlcbNetMsgLearnedEventCount *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLearnedEventCount message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLearnedEventCount_New(VlcbNodeNumber nodeNumber,
                                                  uint8_t learnedEventCount);
@@ -1271,10 +1271,10 @@ int vlcb_net_msg_VlcbNetMsgSetNodeCanId_Deserialize(
     VlcbNetMsgSetNodeCanId *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgSetNodeCanId message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgSetNodeCanId_New(VlcbNodeNumber nodeNumber,
                                             VlcbCanId canId);
@@ -1301,10 +1301,10 @@ int vlcb_net_msg_VlcbNetMsgChangeModuleMode_Deserialize(
     VlcbNetMsgChangeModuleMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgChangeModuleMode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgChangeModuleMode_New(VlcbNodeNumber nodeNumber,
                                                 VlcbNetMsgModuleMode mode);
@@ -1331,10 +1331,10 @@ int vlcb_net_msg_VlcbNetMsgQueryServiceDiscovery_Deserialize(
     VlcbNetMsgQueryServiceDiscovery *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryServiceDiscovery message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryServiceDiscovery_New(VlcbNodeNumber nodeNumber,
                                                      uint8_t serviceIndex);
@@ -1361,10 +1361,10 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode2_Deserialize(
     VlcbNetMsgExtOpcode2 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgExtOpcode2 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode2_New(uint8_t opcodeExtension,
                                           uint8_t data[2]);
@@ -1391,10 +1391,10 @@ int vlcb_net_msg_VlcbNetMsgDccSendRawPacket3_Deserialize(
     VlcbNetMsgDccSendRawPacket3 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccSendRawPacket3 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccSendRawPacket3_New(uint8_t repeatTimes,
                                                  uint8_t data[3]);
@@ -1421,10 +1421,10 @@ int vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsMode_Deserialize(
     VlcbNetMsgDccWriteCvByteInOpsMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccWriteCvByteInOpsMode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsMode_New(VlcbDccSessionNr session,
                                                        uint16_t CV,
@@ -1452,10 +1452,10 @@ int vlcb_net_msg_VlcbNetMsgDcWriteCvBitInOpsMode_Deserialize(
     VlcbNetMsgDcWriteCvBitInOpsMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDcWriteCvBitInOpsMode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDcWriteCvBitInOpsMode_New(VlcbDccSessionNr session,
                                                      uint16_t CV,
@@ -1482,10 +1482,10 @@ int vlcb_net_msg_VlcbNetMsgDccReadCv_Deserialize(
     const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgDccReadCv *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccReadCv message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccReadCv_New(VlcbDccSessionNr session, uint16_t CV,
                                          uint8_t mode);
@@ -1512,10 +1512,10 @@ int vlcb_net_msg_VlcbNetMsgDccCvValue_Deserialize(
     VlcbNetMsgDccCvValue *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccCvValue message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccCvValue_New(VlcbDccSessionNr session, uint16_t CV,
                                           uint8_t value);
@@ -1542,10 +1542,10 @@ int vlcb_net_msg_VlcbNetMsgQueryDiagnosticData_Deserialize(
     VlcbNetMsgQueryDiagnosticData *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryDiagnosticData message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryDiagnosticData_New(VlcbNodeNumber nodeNumber,
                                                    uint8_t serviceIndex,
@@ -1573,10 +1573,10 @@ int vlcb_net_msg_VlcbNetMsgSetNodeVariable_Deserialize(
     VlcbNetMsgSetNodeVariable *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgSetNodeVariable message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgSetNodeVariable_New(VlcbNodeNumber nodeNumber,
                                                uint8_t nodeVariableIndex,
@@ -1604,10 +1604,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn_Deserialize(
     VlcbNetMsgLongEventAccessoryOn *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryOn message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn_New(VlcbEvent event);
 
@@ -1633,10 +1633,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff_Deserialize(
     VlcbNetMsgLongEventAccessoryOff *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryOff message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff_New(VlcbEvent event);
 
@@ -1663,10 +1663,11 @@ int vlcb_net_msg_VlcbNetMsgQueryLongEventAccessoryState_Deserialize(
     VlcbNetMsgQueryLongEventAccessoryState *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryLongEventAccessoryState
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryLongEventAccessoryState_New(VlcbEvent event);
 
@@ -1693,10 +1694,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn_Deserialize(
     VlcbNetMsgLongEventAccessoryStateOn *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryStateOn message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn_New(VlcbEvent event);
 
@@ -1723,10 +1724,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff_Deserialize(
     VlcbNetMsgLongEventAccessoryStateOff *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryStateOff message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff_New(VlcbEvent event);
 
@@ -1752,10 +1753,10 @@ int vlcb_net_msg_VlcbNetMsgForgetLearnedEvent_Deserialize(
     VlcbNetMsgForgetLearnedEvent *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgForgetLearnedEvent message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgForgetLearnedEvent_New(VlcbEvent event);
 
@@ -1781,10 +1782,10 @@ int vlcb_net_msg_VlcbNetMsgLegacySetNodeVariable_Deserialize(
     VlcbNetMsgLegacySetNodeVariable *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLegacySetNodeVariable message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLegacySetNodeVariable_New(VlcbNodeNumber nodeNumber,
                                                      uint8_t nodeVariableIndex,
@@ -1812,10 +1813,10 @@ int vlcb_net_msg_VlcbNetMsgNodeVariableValue_Deserialize(
     VlcbNetMsgNodeVariableValue *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgNodeVariableValue message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgNodeVariableValue_New(VlcbNodeNumber nodeNumber,
                                                  uint8_t nodeVariableIndex,
@@ -1843,10 +1844,10 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn_Deserialize(
     VlcbNetMsgShortEventAccessoryOn *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryOn message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn_New(VlcbEvent event);
 
@@ -1872,10 +1873,10 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff_Deserialize(
     VlcbNetMsgShortEventAccessoryOff *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryOff message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff_New(VlcbEvent event);
 
@@ -1902,10 +1903,11 @@ int vlcb_net_msg_VlcbNetMsgQueryShortEventAccessoryState_Deserialize(
     VlcbNetMsgQueryShortEventAccessoryState *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryShortEventAccessoryState
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryShortEventAccessoryState_New(VlcbEvent event);
 
@@ -1931,10 +1933,10 @@ int vlcb_net_msg_VlcbNetMsgNodeParameterValue_Deserialize(
     VlcbNetMsgNodeParameterValue *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgNodeParameterValue message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgNodeParameterValue_New(VlcbNodeNumber nodeNumber,
                                                   uint8_t parameterIndex,
@@ -1962,10 +1964,10 @@ int vlcb_net_msg_VlcbNetMsgQueryEventVariable_Deserialize(
     VlcbNetMsgQueryEventVariable *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryEventVariable message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryEventVariable_New(VlcbNodeNumber nodeNumber,
                                                   uint8_t eventIndex,
@@ -1994,10 +1996,10 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn_Deserialize(
     VlcbNetMsgShortEventAccessoryStateOn *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryStateOn message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn_New(VlcbEvent event);
 
@@ -2024,10 +2026,11 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff_Deserialize(
     VlcbNetMsgShortEventAccessoryStateOff *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryStateOff
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff_New(VlcbEvent event);
 
@@ -2053,10 +2056,10 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode3_Deserialize(
     VlcbNetMsgExtOpcode3 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgExtOpcode3 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode3_New(uint8_t opcodeExtension,
                                           uint8_t data[3]);
@@ -2083,10 +2086,10 @@ int vlcb_net_msg_VlcbNetMsgDccSendRawPacket4_Deserialize(
     VlcbNetMsgDccSendRawPacket4 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccSendRawPacket4 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccSendRawPacket4_New(uint8_t repeatTimes,
                                                  uint8_t data[4]);
@@ -2113,10 +2116,10 @@ int vlcb_net_msg_VlcbNetMsgDccWriteCvInServiceMode_Deserialize(
     VlcbNetMsgDccWriteCvInServiceMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccWriteCvInServiceMode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccWriteCvInServiceMode_New(VlcbDccSessionNr session,
                                                        uint16_t CV,
@@ -2144,10 +2147,10 @@ int vlcb_net_msg_VlcbNetMsgHeartbeat_Deserialize(
     const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgHeartbeat *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgHeartbeat message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgHeartbeat_New(VlcbNodeNumber sourceNodeNumber,
                                          uint8_t sequenceNr, uint8_t status);
@@ -2174,10 +2177,10 @@ int vlcb_net_msg_VlcbNetMsgServiceDiscoveryResponse_Deserialize(
     VlcbNetMsgServiceDiscoveryResponse *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgServiceDiscoveryResponse message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgServiceDiscoveryResponse_New(
     VlcbNodeNumber nodeNumber, uint8_t serviceIndex,
@@ -2205,10 +2208,10 @@ int vlcb_net_msg_VlcbNetMsgGenericResponse_Deserialize(
     VlcbNetMsgGenericResponse *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgGenericResponse message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgGenericResponse_New(VlcbNodeNumber nodeNumber,
                                                VlcbOpCode opcode,
@@ -2237,10 +2240,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn1_Deserialize(
     VlcbNetMsgLongEventAccessoryOn1 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryOn1 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn1_New(VlcbEvent event,
                                                      uint8_t eventData[1]);
@@ -2267,10 +2270,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff1_Deserialize(
     VlcbNetMsgLongEventAccessoryOff1 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryOff1 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff1_New(VlcbEvent event,
                                                       uint8_t eventData[1]);
@@ -2297,10 +2300,10 @@ int vlcb_net_msg_VlcbNetMsgQueryEventVariableByIdex_Deserialize(
     VlcbNetMsgQueryEventVariableByIdex *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgQueryEventVariableByIdex message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgQueryEventVariableByIdex_New(
     VlcbEvent event, uint8_t eventVariableIndex);
@@ -2328,10 +2331,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn1_Deserialize(
     VlcbNetMsgLongEventAccessoryStateOn1 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryStateOn1 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn1_New(VlcbEvent event,
                                                           uint8_t eventData[1]);
@@ -2359,10 +2362,11 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff1_Deserialize(
     VlcbNetMsgLongEventAccessoryStateOff1 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryStateOff1
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff1_New(
     VlcbEvent event, uint8_t eventData[1]);
@@ -2389,10 +2393,10 @@ int vlcb_net_msg_VlcbNetMsgEventVariableValue_Deserialize(
     VlcbNetMsgEventVariableValue *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgEventVariableValue message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgEventVariableValue_New(VlcbNodeNumber nodeNumber,
                                                   uint8_t eventIndex,
@@ -2421,10 +2425,10 @@ int vlcb_net_msg_VlcbNetMsgModuleInfo_Deserialize(
     VlcbNetMsgModuleInfo *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgModuleInfo message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgModuleInfo_New(VlcbNodeNumber nodeNumber,
                                           VlcbManufacturer manufacturer,
@@ -2453,10 +2457,10 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn1_Deserialize(
     VlcbNetMsgShortEventAccessoryOn1 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryOn1 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn1_New(VlcbEvent event,
                                                       uint8_t eventData[1]);
@@ -2483,10 +2487,10 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff1_Deserialize(
     VlcbNetMsgShortEventAccessoryOff1 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryOff1 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff1_New(VlcbEvent event,
                                                        uint8_t eventData[1]);
@@ -2514,10 +2518,11 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn1_Deserialize(
     VlcbNetMsgShortEventAccessoryStateOn1 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryStateOn1
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn1_New(
     VlcbEvent event, uint8_t eventData[1]);
@@ -2545,10 +2550,11 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff1_Deserialize(
     VlcbNetMsgShortEventAccessoryStateOff1 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryStateOff1
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff1_New(
     VlcbEvent event, uint8_t eventData[1]);
@@ -2575,10 +2581,10 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode4_Deserialize(
     VlcbNetMsgExtOpcode4 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgExtOpcode4 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode4_New(uint8_t opcodeExtension,
                                           uint8_t data[4]);
@@ -2605,10 +2611,10 @@ int vlcb_net_msg_VlcbNetMsgDccSendRawPacket5_Deserialize(
     VlcbNetMsgDccSendRawPacket5 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccSendRawPacket5 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccSendRawPacket5_New(uint8_t repeatTimes,
                                                  uint8_t data[5]);
@@ -2636,10 +2642,11 @@ int vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsModeByAddress_Deserialize(
     VlcbNetMsgDccWriteCvByteInOpsModeByAddress *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccWriteCvByteInOpsModeByAddress
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccWriteCvByteInOpsModeByAddress_New(
     VlcbDccDecoderAddr decoderAddr, uint16_t CV, uint16_t mode, uint8_t value);
@@ -2666,10 +2673,10 @@ int vlcb_net_msg_VlcbNetMsgDccSendDataToCab_Deserialize(
     VlcbNetMsgDccSendDataToCab *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccSendDataToCab message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccSendDataToCab_New(VlcbDccDecoderAddr decoderAddr,
                                                 uint8_t dataCode,
@@ -2697,10 +2704,10 @@ int vlcb_net_msg_VlcbNetMsgDiagnosticData_Deserialize(
     VlcbNetMsgDiagnosticData *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDiagnosticData message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDiagnosticData_New(VlcbNodeNumber nodeNumber,
                                               uint8_t serviceIndex,
@@ -2728,10 +2735,10 @@ int vlcb_net_msg_VlcbNetMsgFastClock_Deserialize(
     const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgFastClock *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgFastClock message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgFastClock_New(
     uint8_t minutes, uint8_t hours, VlcbTimeWeekDay weekDay, uint8_t dayOfMonth,
@@ -2759,10 +2766,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn2_Deserialize(
     VlcbNetMsgLongEventAccessoryOn2 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryOn2 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn2_New(VlcbEvent event,
                                                      uint8_t eventData[2]);
@@ -2789,10 +2796,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff2_Deserialize(
     VlcbNetMsgLongEventAccessoryOff2 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryOff2 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff2_New(VlcbEvent event,
                                                       uint8_t eventData[2]);
@@ -2819,10 +2826,10 @@ int vlcb_net_msg_VlcbNetMsgTeachEvent_Deserialize(
     VlcbNetMsgTeachEvent *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgTeachEvent message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgTeachEvent_New(VlcbEvent event,
                                           uint8_t eventVariableIndex,
@@ -2851,10 +2858,11 @@ int vlcb_net_msg_VlcbNetMsgEventVariableValueInLearnMode_Deserialize(
     VlcbNetMsgEventVariableValueInLearnMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgEventVariableValueInLearnMode
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgEventVariableValueInLearnMode_New(
     VlcbEvent event, uint8_t eventVariableIndex, uint8_t eventVariableValue);
@@ -2882,10 +2890,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn2_Deserialize(
     VlcbNetMsgLongEventAccessoryStateOn2 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryStateOn2 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn2_New(VlcbEvent event,
                                                           uint8_t eventData[2]);
@@ -2913,10 +2921,11 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff2_Deserialize(
     VlcbNetMsgLongEventAccessoryStateOff2 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryStateOff2
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff2_New(
     VlcbEvent event, uint8_t eventData[2]);
@@ -2943,10 +2952,10 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn2_Deserialize(
     VlcbNetMsgShortEventAccessoryOn2 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryOn2 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn2_New(VlcbEvent event,
                                                       uint8_t eventData[2]);
@@ -2973,10 +2982,10 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff2_Deserialize(
     VlcbNetMsgShortEventAccessoryOff2 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryOff2 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff2_New(VlcbEvent event,
                                                        uint8_t eventData[2]);
@@ -3004,10 +3013,11 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn2_Deserialize(
     VlcbNetMsgShortEventAccessoryStateOn2 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryStateOn2
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn2_New(
     VlcbEvent event, uint8_t eventData[2]);
@@ -3035,10 +3045,11 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff2_Deserialize(
     VlcbNetMsgShortEventAccessoryStateOff2 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryStateOff2
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff2_New(
     VlcbEvent event, uint8_t eventData[2]);
@@ -3065,10 +3076,10 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode5_Deserialize(
     VlcbNetMsgExtOpcode5 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgExtOpcode5 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode5_New(uint8_t opcodeExtension,
                                           uint8_t data[5]);
@@ -3095,10 +3106,10 @@ int vlcb_net_msg_VlcbNetMsgDccSendRawPacket6_Deserialize(
     VlcbNetMsgDccSendRawPacket6 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccSendRawPacket6 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccSendRawPacket6_New(uint8_t repeatTimes,
                                                  uint8_t data[6]);
@@ -3125,18 +3136,14 @@ int vlcb_net_msg_VlcbNetMsgDccLocoReport_Deserialize(
     VlcbNetMsgDccLocoReport *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccLocoReport message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccLocoReport_New(
     VlcbDccSessionNr session, VlcbDccDecoderAddr decoderAddr, uint8_t speed_dir,
-    struct {
-      uint8_t F0_F4;
-      uint8_t F5_F8;
-      uint8_t F9_F12;
-    } functionStates);
+    VlcbNetMsgDccLocoReportFunctionStates functionStates);
 
 /**
  * @brief Net message VlcbNetMsgModuleName serializer
@@ -3160,10 +3167,10 @@ int vlcb_net_msg_VlcbNetMsgModuleName_Deserialize(
     VlcbNetMsgModuleName *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgModuleName message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgModuleName_New(char moduleName[7]);
 
@@ -3189,22 +3196,14 @@ int vlcb_net_msg_VlcbNetMsgDccCommandStationStatus_Deserialize(
     VlcbNetMsgDccCommandStationStatus *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDccCommandStationStatus message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDccCommandStationStatus_New(
     VlcbNodeNumber nodeNumber,
-    struct {
-      bool selfTestHwError;
-      bool busIsHalted;
-      bool resetFinished;
-      bool dccTrackError;
-      bool dccTrackIsOn;
-      bool dccEmergencyStop;
-      bool dccInServiceMode;
-    } flags,
+    VlcbNetMsgDccCommandStationStatusErrorFlags flags,
     VlcbModuleVersion moduleVersion);
 
 /**
@@ -3228,10 +3227,10 @@ int vlcb_net_msg_VlcbNetMsgEventAck_Deserialize(
     const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgEventAck *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgEventAck message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgEventAck_New(VlcbNodeNumber nodeNumber,
                                         VlcbOpCode acknowledgedOpcode,
@@ -3260,10 +3259,11 @@ int vlcb_net_msg_VlcbNetMsgExtendedServiceDiscoveryResponse_Deserialize(
     VlcbNetMsgExtendedServiceDiscoveryResponse *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgExtendedServiceDiscoveryResponse
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgExtendedServiceDiscoveryResponse_New(
     VlcbNodeNumber nodeNumber, uint8_t serviceIndex,
@@ -3291,22 +3291,14 @@ int vlcb_net_msg_VlcbNetMsgStreamPacket_Deserialize(
     VlcbNetMsgStreamPacket *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgStreamPacket message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
-int vlcb_net_msg_VlcbNetMsgStreamPacket_New(
-    uint8_t streamId, uint8_t sequenceNr, union {
-      struct {
-        uint16_t messageLen;
-        uint16_t checksum;
-        uint8_t flags;
-      } fistPacket;
-      struct {
-        uint8_t data[5];
-      } dataPacket;
-    } data);
+int vlcb_net_msg_VlcbNetMsgStreamPacket_New(uint8_t streamId,
+                                            uint8_t sequenceNr,
+                                            VlcbNetMsgStreamPacketPayload data);
 
 /**
  * @brief Net message VlcbNetMsgNodeParametersReport serializer
@@ -3330,10 +3322,10 @@ int vlcb_net_msg_VlcbNetMsgNodeParametersReport_Deserialize(
     VlcbNetMsgNodeParametersReport *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgNodeParametersReport message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgNodeParametersReport_New(uint8_t params[7]);
 
@@ -3359,10 +3351,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn3_Deserialize(
     VlcbNetMsgLongEventAccessoryOn3 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryOn3 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOn3_New(VlcbEvent event,
                                                      uint8_t data[3]);
@@ -3389,10 +3381,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff3_Deserialize(
     VlcbNetMsgLongEventAccessoryOff3 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryOff3 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryOff3_New(VlcbEvent event,
                                                       uint8_t data[3]);
@@ -3419,10 +3411,10 @@ int vlcb_net_msg_VlcbNetMsgLearnedEventResponse_Deserialize(
     VlcbNetMsgLearnedEventResponse *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLearnedEventResponse message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLearnedEventResponse_New(VlcbNodeNumber nodeNumber,
                                                     VlcbEvent event,
@@ -3451,10 +3443,10 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn3_Deserialize(
     VlcbNetMsgLongEventAccessoryStateOn3 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryStateOn3 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOn3_New(VlcbEvent event,
                                                           uint8_t data[3]);
@@ -3482,10 +3474,11 @@ int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff3_Deserialize(
     VlcbNetMsgLongEventAccessoryStateOff3 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgLongEventAccessoryStateOff3
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgLongEventAccessoryStateOff3_New(VlcbEvent event,
                                                            uint8_t data[3]);
@@ -3512,10 +3505,10 @@ int vlcb_net_msg_VlcbNetMsgTeachEventByIndex_Deserialize(
     VlcbNetMsgTeachEventByIndex *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgTeachEventByIndex message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgTeachEventByIndex_New(VlcbEvent event,
                                                  uint8_t eventIndex,
@@ -3544,10 +3537,10 @@ int vlcb_net_msg_VlcbNetMsgDataEventAccessory_Deserialize(
     VlcbNetMsgDataEventAccessory *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDataEventAccessory message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDataEventAccessory_New(VlcbNodeNumber nodeNumber,
                                                   uint8_t data[5]);
@@ -3574,10 +3567,10 @@ int vlcb_net_msg_VlcbNetMsgNodeAccessoryData_Deserialize(
     VlcbNetMsgNodeAccessoryData *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgNodeAccessoryData message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgNodeAccessoryData_New(VlcbNodeNumber nodeNumber,
                                                  uint8_t data[5]);
@@ -3604,10 +3597,10 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn3_Deserialize(
     VlcbNetMsgShortEventAccessoryOn3 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryOn3 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOn3_New(VlcbEvent event,
                                                       uint8_t data[3]);
@@ -3634,10 +3627,10 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff3_Deserialize(
     VlcbNetMsgShortEventAccessoryOff3 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryOff3 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryOff3_New(VlcbEvent event,
                                                        uint8_t data[3]);
@@ -3664,10 +3657,10 @@ int vlcb_net_msg_VlcbNetMsgDeviceDataEventShortMode_Deserialize(
     VlcbNetMsgDeviceDataEventShortMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDeviceDataEventShortMode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDeviceDataEventShortMode_New(uint16_t devideNumber,
                                                         uint8_t data[5]);
@@ -3694,10 +3687,10 @@ int vlcb_net_msg_VlcbNetMsgDeviceDataShortMode_Deserialize(
     VlcbNetMsgDeviceDataShortMode *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgDeviceDataShortMode message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgDeviceDataShortMode_New(uint16_t devideNumber,
                                                    uint8_t data[5]);
@@ -3723,10 +3716,10 @@ int vlcb_net_msg_VlcbNetMsgWriteData_Deserialize(
     const VlcbNetPacketDatagram datagramPacket, VlcbNetMsgWriteData *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgWriteData message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgWriteData_New(uint16_t devideNumber,
                                          uint8_t data[5]);
@@ -3754,10 +3747,11 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn3_Deserialize(
     VlcbNetMsgShortEventAccessoryStateOn3 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryStateOn3
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOn3_New(VlcbEvent event,
                                                            uint8_t data[3]);
@@ -3785,10 +3779,11 @@ int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff3_Deserialize(
     VlcbNetMsgShortEventAccessoryStateOff3 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgShortEventAccessoryStateOff3
+ * message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgShortEventAccessoryStateOff3_New(VlcbEvent event,
                                                             uint8_t data[3]);
@@ -3815,10 +3810,10 @@ int vlcb_net_msg_VlcbNetMsgExtOpcode6_Deserialize(
     VlcbNetMsgExtOpcode6 *const msg);
 
 /**
- * @brief Construct new instance of  message
+ * @brief Construct new instance of VlcbNetMsgExtOpcode6 message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_VlcbNetMsgExtOpcode6_New(uint8_t opcodeExtension,
                                           uint8_t data[6]);

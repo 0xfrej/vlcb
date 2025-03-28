@@ -1,5 +1,5 @@
 /**
- * @brief Net message {{.Serialize.Brief}} serializer
+ * @brief Net message {{.Message.Name}} serializer
  *
  * Serialization assumes the packet is properly constructed and does no further
  * checks!
@@ -8,7 +8,7 @@
 VlcbNetPacketDatagram vlcb_net_msg_{{.Message.Name}}_Serialize({{.Message.Type}} msg);
 
 /**
- * @brief Net message {{.Deserialize.Brief}} deserializer
+ * @brief Net message {{.Message.Name}} deserializer
  *
  * @return Whether the deserialization was successful
  * @retval 0 successful deserialization
@@ -18,10 +18,10 @@ int vlcb_net_msg_{{.Message.Name}}_Deserialize(
     const VlcbNetPacketDatagram datagramPacket, {{.Message.Type}} *const msg);
 
 /**
- * @brief Construct new instance of {{.New.Brief}} message
+ * @brief Construct new instance of {{.Message.Name}} message
+ *
  * @return Whether the construction was successful
  * @retval 0 successful packet construction
- *
  */
 int vlcb_net_msg_{{.Message.Name}}_New({{- range $index, $arg := .Message.Fields -}}
 {{if $index}}, {{end}}{{.Type}} {{.Name}}
