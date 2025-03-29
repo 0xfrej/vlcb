@@ -19,16 +19,18 @@ typedef union {
   VlcbCanId can;
 } VlcbNetWireAddr;
 
-// TODO: refactor from anonym types - non C99
+typedef struct {
+  vlcb_clock lastTimestamp;
+  VlcbNetWireCanState state;
+  uint8_t occupiedIdCache[16];
+} VlcbNetWireEndpointMetaCan;
+
+typedef union {
+  VlcbNetWireEndpointMetaCan can;
+} VlcbNetWireEndpointMeta;
 
 typedef struct {
-  union {
-    struct {
-      vlcb_clock lastTimestamp;
-      VlcbNetWireCanState state;
-      uint8_t occupiedIdCache[16];
-    } can;
-  } meta;
+  VlcbNetWireEndpointMeta meta;
   VlcbNetWireAddr addr;
 } VlcbNetWireEndpoint;
 
