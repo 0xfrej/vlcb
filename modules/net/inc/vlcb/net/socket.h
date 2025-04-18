@@ -4,8 +4,8 @@
 #include <stddef.h>
 
 #include "packet/vlcb.h"
-#include "vlcb/net/addr.h"
 #include "vlcb/net/storage/packet_buf.h"
+#include "vlcb/net/wire.h"
 #include "vlcb/platform/interface.h"
 
 typedef enum {
@@ -23,6 +23,7 @@ typedef enum {
   VLCB_NET_SOCK_DISP_ERR_OK = 0,
 
   VLCB_NET_SOCK_DISP_ERR_WOULD_BLOCK,
+  VLCB_NET_SOCK_DISP_ERR_ENDPOINT_NOT_READY,
 
   VLCB_NET_SOCK_DISP_ERR_COUNT,
 } VlcbNetSocketDispatchErr;

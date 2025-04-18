@@ -5,7 +5,7 @@
 #include "iface_can_svc.c"
 #include "iface_vlcb.h"
 #include "vlcb/net/adapter.h"
-#include "vlcb/net/addr.h"
+#include "vlcb/net/wire.h"
 #include "vlcb/net/iface.h"
 #include "vlcb/net/packet/vlcb.h"
 #include "vlcb/net/socket.h"
@@ -25,7 +25,7 @@ void ProcessCanPacket(VlcbNetIface *const iface, VlcbNetAdptPkt *pkt,
     CanSvcProcess(iface, endpoint, now);
   }
 
-  if (pkt->meta.can.is_rtr) {
+  if (pkt->meta.can.isRtr) {
     return;
   }
 
@@ -63,7 +63,7 @@ VlcbNetAdptErr DispatchCanPacket(VlcbNetIface *const iface,
   VlcbNetAdptPkt adpt_pkt;
 
   adpt_pkt.medium = VLCB_MEDIUM_CAN;
-  adpt_pkt.meta.can.is_rtr = false;
+  adpt_pkt.meta.can.isRtr = false;
   adpt_pkt.payloadLen = 1 + packet->payloadLen;
 
   if (packet->payloadLen) {

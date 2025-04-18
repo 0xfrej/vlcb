@@ -66,6 +66,10 @@ bool EgressPackets(VlcbNetIface *const iface, vlcb_clock now) {
       VlcbNetSocketDispatchErr err =
           _INTERFACE_PTR_CALL(sock, DispatchPacket, &packetTok);
       if (err != VLCB_NET_SOCK_DISP_ERR_OK) {
+        if (err == VLCB_NET_SOCK_DISP_ERR_ENDPOINT_NOT_READY) {
+          // TODO: start can init
+          continue;
+        }
         if (err == VLCB_NET_SOCK_DISP_ERR_WOULD_BLOCK) {
           continue;
         }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vlcb/net/addr.h"
+#include "vlcb/net/wire.h"
 #include "vlcb/net/socket.h"
 #include "vlcb/net/storage/packet_buf.h"
 #include "vlcb/platform/interface.h"

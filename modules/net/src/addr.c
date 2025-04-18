@@ -1,4 +1,4 @@
-#include "vlcb/net/addr.h"
+#include "vlcb/net/wire.h"
 
 #include <assert.h>
 #include <stdbool.h>

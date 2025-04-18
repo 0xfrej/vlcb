@@ -9,6 +9,7 @@ typedef struct VlcbNetIface VlcbNetIface;
 
 struct VlcbNetIface {
   IVlcbNetAdpt *const adpt;
+  uint8_t canIdAliasOccupationCache[16];
   VlcbNetSocketList *const sockets;
 };
 

@@ -8,7 +8,7 @@
  * VLCB network device packet metadata for CAN adapter
  */
 typedef struct {
-  bool is_rtr;
+  bool isRtr;
   VlcbCanPriority prio;
 } VlcbNetAdptCanPktMeta;
 

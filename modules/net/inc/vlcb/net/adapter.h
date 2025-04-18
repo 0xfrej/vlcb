@@ -11,7 +11,7 @@
 typedef uint8_t VlcbNetAdptPayload[VLCB_NET_ADPT_MAX_PAYLOAD];
 
 #include "adapter/can/packet.h"
-#include "vlcb/net/addr.h"
+#include "vlcb/net/wire.h"
 
 typedef union {
   VlcbNetAdptCanPktMeta can;
@@ -25,6 +25,8 @@ typedef union {
  * the raw CAN packets since they can contain RTR frames.
  */
 typedef struct {
+  // TODO: remove this as we can assume this being always right (adapter is
+  // bound to interface)
   VlcbNetMedium medium;
   VlcbNetWireAddr srcAddr;
   VlcbNetAdptPktMeta meta;

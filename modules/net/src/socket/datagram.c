@@ -4,17 +4,17 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#include "vlcb/net/addr.h"
 #include "vlcb/net/packet/vlcb.h"
 #include "vlcb/net/socket.h"
 #include "vlcb/net/storage/packet_buf.h"
+#include "vlcb/net/wire.h"
 #include "vlcb/platform/interface.h"
 
 VlcbNetSocketProcessErr ProcessPacket(const VlcbNetSocketDatagram *const self,
                                       const VlcbNetPacket *const packet) {
   assert(self != NULL && packet != NULL && self->rxBuf != NULL);
 
-  if (false == vlcb_net_IsWireEndpointValid(self->endpoint)) {
+  if (false == vlcb_net_IsWireEndpointReady(self->endpoint)) {
     return VLCB_NET_SOCK_PROC_ERR_OK;
   }
 
@@ -42,8 +42,8 @@ VlcbNetSocketDispatchErr DispatchPacket(const VlcbNetSocketDatagram *const self,
                                         VlcbNetSocketPacketToken *const tok) {
   assert(self != NULL && tok != NULL && self->txBuf != NULL);
 
-  if (false == vlcb_net_IsWireEndpointValid(self->endpoint)) {
-    return VLCB_NET_SOCK_DISP_ERR_OK;
+  if (false == vlcb_net_IsWireEndpointReady(self->endpoint)) {
+    return VLCB_NET_SOCK_DISP_ERR_ENDPOINT_NOT_READY;
   }
 
   VlcbNetPacket dgramPacket;
