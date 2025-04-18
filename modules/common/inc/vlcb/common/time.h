@@ -1,7 +1,6 @@
 #include <stdint.h>
 
-typedef uint8_t VlcbTimeWeekDay;
-enum VlcbTimeWeekDay {
+typedef enum {
   VLCB_TIME_WEEK_DAY_SUN = 1,
   VLCB_TIME_WEEK_DAY_MON = 2,
   VLCB_TIME_WEEK_DAY_TUE = 3,
@@ -9,10 +8,9 @@ enum VlcbTimeWeekDay {
   VLCB_TIME_WEEK_DAY_THU = 5,
   VLCB_TIME_WEEK_DAY_FRI = 6,
   VLCB_TIME_WEEK_DAY_SAT = 7,
-};
+} VlcbTimeWeekDay;
 
-typedef uint8_t VlcbTimeMonth;
-enum VlcbTimeMonth {
+typedef enum {
   VLCB_TIME_MONTH_JAN = 1,
   VLCB_TIME_MONTH_FEB = 2,
   VLCB_TIME_MONTH_MAR = 3,
@@ -25,4 +23,4 @@ enum VlcbTimeMonth {
   VLCB_TIME_MONTH_OCT = 10,
   VLCB_TIME_MONTH_NOV = 11,
   VLCB_TIME_MONTH_DEC = 12,
-};
+} VlcbTimeMonth;

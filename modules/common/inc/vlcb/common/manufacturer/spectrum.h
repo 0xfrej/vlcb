@@ -5,8 +5,7 @@
 /**
  * Spectrum Engineering Animated Modeller module types
  */
-typedef uint8_t VlcbSpectrumModuleType;
-enum VlcbSpectrumModuleType {
+typedef enum {
   /**
    * Animation controller (firmware derived from cancmd)
    */
@@ -16,4 +15,4 @@ enum VlcbSpectrumModuleType {
    * Dual cab based on cancab
    */
   VLCB_SPECTRUM_MODULE_DUALCAB = 2,
-};
+} VlcbSpectrumModuleType;

@@ -5,8 +5,7 @@
 /**
  * MERG Module types
  */
-typedef uint8_t VlcbMergModuleType;
-enum VlcbMergModuleType {
+typedef enum {
   /**
    * default for SLiM nodes
    */
@@ -457,4 +456,4 @@ enum VlcbMergModuleType {
    * USB interface
    */
   VLCB_MERG_MODULE_CANUSB = 253,
-};
+} VlcbMergModuleType;

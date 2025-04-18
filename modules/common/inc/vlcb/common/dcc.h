@@ -28,43 +28,39 @@ typedef uint8_t VlcbDccConsistId;
 /**
  * @brief Locomotive state.
  */
-typedef uint8_t VlcbDccLocoState;
-enum VlcbDccLocoState {
+typedef enum {
   VLCB_DCC_LOCO_STATE_ACTIVE = 0, /**< The locomotive is active. */
   VLCB_DCC_LOCO_STATE_CONSISTED =
       1, /**< The locomotive is part of a consist. */
   VLCB_DCC_LOCO_STATE_CONSIST_MASTER =
       2, /**< The locomotive is the master in a consist. */
   VLCB_DCC_LOCO_STATE_INACTIVE = 4, /**< The locomotive is inactive. */
-};
+} VlcbDccLocoState;
 
 /**
  * @brief Locomotive decoder function selection range.
  */
-typedef uint8_t VlcbDccLocoFunctionRange;
-enum VlcbDccLocoFunctionRange {
+typedef enum {
   VLCB_DCC_LOCO_FUNC_RANGE_F0_F4 = 1,   /**< Select function 0 to 4. */
   VLCB_DCC_LOCO_FUNC_RANGE_F5_F8 = 2,   /**< Select function 5 to 8. */
   VLCB_DCC_LOCO_FUNC_RANGE_F9_F12 = 3,  /**< Select function 9 to 12 */
   VLCB_DCC_LOCO_FUNC_RANGE_F13_F20 = 4, /**< Select function 13 to 20 */
   VLCB_DCC_LOCO_FUNC_RANGE_F21_F28 = 5, /**< Select function 21 to 28 */
-};
+} VlcbDccLocoFunctionRange;
 
 /**
  * @brief Session query mode
  */
-typedef uint8_t VlcbDccSessionQueryMode;
-enum VlcbDccSessionQueryMode {
+typedef enum {
   VLCB_DCC_SESSION_QUERY_MODE_DEFAULT = 0x00, /**< Default mode */
   VLCB_DCC_SESSION_QUERY_MODE_STEAL = 0x01,   /**< TODO: add docs */
   VLCB_DCC_SESSION_QUERY_MODE_SHARE = 0x02,   /**< TODO: add docs */
-};
+} VlcbDccSessionQueryMode;
 
 /**
  * @brief Error codes returned from DCC gateway
  */
-typedef uint8_t VlcbDccError;
-enum VlcbDccError {
+typedef enum {
   VLCB_DCC_ERR_LOCO_STACK_IS_FULL = 1, /**< TODO: add docs */
   VLCB_DCC_ERR_LOCO_ADDRESS_IS_TAKEN = 2,
   VLCB_DCC_ERR_SESSION_IS_NOT_PRESENT = 3,
@@ -73,34 +69,31 @@ enum VlcbDccError {
   VLCB_DCC_ERR_RX_BUFFER_OVERFLOW = 6,
   VLCB_DCC_ERR_INVALID_REQUEST = 7,
   VLCB_DCC_ERR_SESSION_WAS_CANCELLED = 8,
-};
+} VlcbDccError;
 
 /**
  * @brief DCC service mode status
  */
-typedef uint8_t VlcbDccServiceModeStatus;
-enum VlcbDccServiceModeStatus {
+typedef enum {
   VLCB_DCC_SVC_MODE_STAT_NO_ACK = 1, /**< TODO: Add docs */
   VLCB_DCC_SVC_MODE_STAT_OVLD = 2,
   VLCB_DCC_SVC_MODE_STAT_WRITE_ACK = 3,
   VLCB_DCC_SVC_MODE_STAT_BUSY = 4,
   VLCB_DCC_SVC_MODE_STAT_CV_ERROR = 5,
-};
+} VlcbDccServiceModeStatus;
 
 /**
  * @brief DCC loco direction
  */
-typedef uint8_t VlcbDccLocoDirection;
-enum VlcbDccLocoDirection {
+typedef enum {
   VLCB_DCC_LOCO_DIRECTION_FORWARD = 0,
   VLCB_DCC_LOCO_DIRECTION_REVERSE = 1,
-};
+} VlcbDccLocoDirection;
 
 /**
  * @brief DCC throttle/loco speed modes
  */
-typedef uint8_t VlcbDccThrottleSpeedMode;
-enum VlcbDccThrottleSpeedMode {
+typedef enum {
   /**
    * 128-step speed mode
    */
@@ -120,4 +113,4 @@ enum VlcbDccThrottleSpeedMode {
    * 28-step speed mode
    */
   VLCB_DCC_THROTTLE_MODE_STEP28 = 3,
-};
+} VlcbDccThrottleSpeedMode;

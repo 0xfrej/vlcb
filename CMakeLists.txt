@@ -10,6 +10,7 @@ project(
 include(GNUInstallDirs)
 
 set_property(GLOBAL PROPERTY C_STANDARD 99)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ## do not enable testing when this project is used as external project
 #if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)

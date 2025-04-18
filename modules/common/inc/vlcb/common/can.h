@@ -45,8 +45,7 @@ bool vlcb_defs_IsCanIdValid(VlcbCanId id);
  * Added value to CAN frame ID to prioritize transmission
  * of some messages on the bus.
  */
-typedef uint8_t VlcbCanPriority;
-enum VlcbCanPriority {
+typedef enum {
   VLCB_CAN_PRIO_SELF_ENUM =
       0x0, /**< Priority used for @ref VlcbCanId resolution */
   VLCB_CAN_PRIO_HIGH = 0x4,
@@ -54,7 +53,7 @@ enum VlcbCanPriority {
   VLCB_CAN_PRIO_NORMAL = 0x6,
   VLCB_CAN_PRIO_LOW = 0x7,
   VLCB_CAN_PRIO_LOWEST = 0xF,
-};
+} VlcbCanPriority;
 
 #define VLCB_CAN_PRIO_DEFAULT VLCB_CAN_PRIO_NORMAL
 

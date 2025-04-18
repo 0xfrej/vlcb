@@ -1,8 +1,8 @@
 #pragma once
 
-#include "vlcb/net/wire.h"
 #include "vlcb/net/socket.h"
 #include "vlcb/net/storage/packet_buf.h"
+#include "vlcb/net/wire.h"
 #include "vlcb/platform/interface.h"
 #include <stdint.h>
 
@@ -50,12 +50,11 @@ vlcb_net_sock_dgram_Upcast(VlcbNetSocketDatagram *const sock) {
   return (IVlcbNetSocket *)sock;
 }
 
-typedef uint8_t VlcbNetSockDgramFlushMode;
-enum VlcbNetSockDgramFlushMode {
+typedef enum {
   VLCB_NET_SOCK_DGRAM_FLUSH_BOTH,
   VLCB_NET_SOCK_DGRAM_FLUSH_TX,
   VLCB_NET_SOCK_DGRAM_FLUSH_RX,
-};
+} VlcbNetSockDgramFlushMode;
 
 void vlcb_net_sock_dgram_Flush(VlcbNetSocketDatagram *const sock,
                                const VlcbNetSockDgramFlushMode mode);

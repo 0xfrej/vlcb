@@ -5,8 +5,7 @@
 /**
  * @brief VLCB opcodes
  */
-typedef uint8_t VlcbOpCode;
-enum VlcbOpCode {
+typedef enum {
   /**
    * @brief General Acknowledgement.
    *
@@ -1841,4 +1840,4 @@ enum VlcbOpCode {
    * @remark extended opcode
    */
   VLCB_OPC_EXT_OPCODE6 = 255,
-};
+} VlcbOpCode;

@@ -7,8 +7,7 @@
  *
  * Here are definitions for all known MERG registered manufacturers.
  */
-typedef uint8_t VlcbManufacturer;
-enum VlcbManufacturer {
+typedef enum {
 
   /**
    * Develoment mode manufacturer
@@ -54,4 +53,4 @@ enum VlcbManufacturer {
    * http://rmeuk.com  (Railway Modelling Experts Limited)
    */
   VLCB_MANU_RME = 248,
-};
+} VlcbManufacturer;

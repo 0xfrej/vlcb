@@ -5,8 +5,7 @@
 /**
  * Sprog Module types
  */
-typedef uint8_t VlcbSprogModuleType;
-enum VlcbSprogModuleType {
+typedef enum {
   /**
    * Pi-SPROG 3 programmer/command station
    */
@@ -51,5 +50,4 @@ enum VlcbSprogModuleType {
    * 8-channel (4-pairs) Solenoid I/O module
    */
   VLCB_SPROG_MODULE_CANSOLIO = 101,
-};
-
+} VlcbSprogModuleType;

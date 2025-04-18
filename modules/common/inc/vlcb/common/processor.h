@@ -5,34 +5,31 @@
 /**
  * @brief Processor manufacturer codes
  */
-typedef uint8_t VlcbProcessorManufacturer;
-enum VlcbProcessorManufacturer {
+typedef enum {
   VLCB_PM_MICROCHIP =
       1, /**< Microchip PIC @see VlcbMicrochipProcessor for possible values */
   VLCB_PM_ATMEL = 2, /**< At the moment there is no value enum */
   VLCB_PM_ARM =
       3, /**< ARM type codes @see VlcbArmProcessor for possible values */
-};
+} VlcbProcessorManufacturer;
 
 /**
  * @brief ARM Processor type codes
  *
  * Used by FCU to identify correct bootloader compatibility
  */
-typedef uint8_t VlcbArmProcessor;
-enum VlcbArmProcessor {
+typedef enum {
   VLCB_PM_ARM_ARM1176JZFS = 1,
   VLCB_PM_ARM_CORTEXA7 = 2,
   VLCB_PM_ARM_CORTEXA53 = 3,
-};
+} VlcbArmProcessor;
 
 /**
  * @brief Microchip Processor type codes
  *
  * Used by FCU to identify correct bootloader compatibility
  */
-typedef uint8_t VlcbMicrochipProcessor;
-enum VlcbMicrochipProcessor {
+typedef enum {
   VLCB_PM_MICROCHIP_P18F2480 = 1,
   VLCB_PM_MICROCHIP_P18F4480 = 2,
   VLCB_PM_MICROCHIP_P18F2580 = 3,
@@ -66,4 +63,4 @@ enum VlcbMicrochipProcessor {
   VLCB_PM_MICROCHIP_P32MX775F256 = 36,
   VLCB_PM_MICROCHIP_P32MX775F512 = 37,
   VLCB_PM_MICROCHIP_P32MX795F512 = 38,
-};
+} VlcbMicrochipProcessor;

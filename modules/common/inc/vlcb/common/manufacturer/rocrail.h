@@ -5,8 +5,7 @@
 /**
  * Rocrail Module types
  */
-typedef uint8_t VlcbRocRailModuleType;
-enum VlcbRocRailModuleType {
+typedef enum {
   /**
    * RS232 PC interface
    */
@@ -46,4 +45,4 @@ enum VlcbRocRailModuleType {
    * CAN<->Ethernet interface
    */
   VLCB_ROCRAIL_MODULE_CANGC1E = 11,
-};
+} VlcbRocRailModuleType;

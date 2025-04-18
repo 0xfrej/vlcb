@@ -49,8 +49,7 @@ typedef uint8_t VlcbServiceVersion;
 /**
  * @brief Error codes for #VLCB_OPC_COMMAND_ERROR
  */
-typedef uint8_t VlcbCommandError;
-enum VlcbCommandError {
+typedef enum {
   /**
    * Invalid command
    */
@@ -120,15 +119,14 @@ enum VlcbCommandError {
    * learn mode)
    */
   VLCB_CMDERR_ANOTHER_MODULE_IS_IN_LEARN_MODE = 13,
-};
+} VlcbCommandError;
 
 /**
  * @brief Module flags
  *
  * These flags are stored within the module parameter
  */
-typedef uint8_t VlcbModuleFlags;
-enum VlcbModuleFlags {
+typedef enum {
   /**
    * Module is a consumer of events
    */
@@ -169,7 +167,7 @@ enum VlcbModuleFlags {
    * Module is VLCB compatible
    */
   VLCB_MODULE_FLAG_VLCB = 0x40,
-};
+} VlcbModuleFlags;
 
 /**
  * @brief Module parameter indices
@@ -177,8 +175,7 @@ enum VlcbModuleFlags {
  * These parameters are used for identifiying and correctly configuring modules
  * using the configuraiton tools.
  */
-typedef uint8_t VlcbModuleParam;
-enum VlcbModuleParam {
+typedef enum {
   /**
    * Number of parameters
    */
@@ -254,13 +251,12 @@ enum VlcbModuleParam {
    * Beta revision (numeric), or 0 for release builds
    */
   VLCB_MODULE_PARAM_BETA_VERSION = 20,
-};
+} VlcbModuleParam;
 
 /**
  * @brief Generic response codes
  */
-typedef uint8_t VlcbGenericResponseStatus;
-enum VlcbGenericResponseStatus {
+typedef enum {
   /**
    * Success
    */
@@ -355,15 +351,14 @@ enum VlcbGenericResponseStatus {
    * Invalid Mode
    */
   VLCB_GENERIC_RESPONSE_STAT_INVALID_MODE = 250,
-};
+} VlcbGenericResponseStatus;
 
 /**
  * @brief Parameters to the MODE op-code
  *
  * Exclusive modes
  */
-typedef uint8_t VlcbModuleMode;
-enum VlcbModuleMode {
+typedef enum {
   /**
    * Uninitialized / factory settings
    */
@@ -413,13 +408,12 @@ enum VlcbModuleMode {
    * PIC Boot loader mode
    */
   VLCB_MODULE_MODE_BOOTLOADER = 14,
-};
+} VlcbModuleMode;
 
 /**
  * @brief Module service types
  */
-typedef uint8_t VlcbServiceType;
-enum VlcbServiceType {
+typedef enum {
 
   /**
    * @brief Internal service.
@@ -491,4 +485,4 @@ enum VlcbServiceType {
    * Streaming (Long Messages) service.
    */
   VLCB_SVC_TYPE_STREAMING = 17,
-};
+} VlcbServiceType;
