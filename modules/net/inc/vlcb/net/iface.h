@@ -7,9 +7,16 @@
 
 typedef struct VlcbNetIface VlcbNetIface;
 
+typedef struct {
+  bool endpointIsEnumerating;
+  uint8_t canIdAliasOccupationCache[16];
+} VlcbNetIfaceMediumMetaCan;
+typedef union {
+  VlcbNetIfaceMediumMetaCan can;
+} VlcbNetIfaceMediumMeta;
+
 struct VlcbNetIface {
   IVlcbNetAdpt *const adpt;
-  uint8_t canIdAliasOccupationCache[16];
   VlcbNetSocketList *const sockets;
 };
 

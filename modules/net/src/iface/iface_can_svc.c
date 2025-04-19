@@ -1,16 +1,18 @@
+#include <stdint.h>
+#include <string.h>
 #include "vlcb/common/can.h"
 #include "vlcb/net/adapter.h"
 #include "vlcb/net/iface.h"
+#include "vlcb/net/socket.h"
 #include "vlcb/net/wire.h"
 #include "vlcb/net/wire/can.h"
 #include "vlcb/platform/interface.h"
 #include "vlcb/platform/time.h"
-#include <stdint.h>
 
-static inline VlcbCanId ResolveFreeId(const uint8_t (*const idCache)[16]) {
+static inline VlcbCanId ResolveFreeId(VlcbNetIfaceMediumMetaCan* canMeta) {
   for (uint8_t i = 0; i < 16; i++) {
     for (uint8_t j = 0; j < 8 && (i * 8 + j) < 128; j++) {
-      if (!(*idCache[i] & ((uint8_t)(1 << j)))) {
+      if (!(canMeta->canIdAliasOccupationCache[i] & ((uint8_t)(1 << j)))) {
         return i * 8 + j;
       } // TODO: fix these two fnctions
     }
@@ -18,7 +20,25 @@ static inline VlcbCanId ResolveFreeId(const uint8_t (*const idCache)[16]) {
   return VLCB_CAN_ID_EMPTY;
 }
 
-static inline void MarkUsedId(uint8_t (*const idCache)[16], VlcbCanId id) {}
+static inline void MarkUsedId(VlcbNetIfaceMediumMetaCan *canMeta, VlcbCanId id) {}
+
+static inline void RefreshCache(VlcbNetIfaceMediumMetaCan *canMeta, VlcbNetIface* iface)
+{
+  memset(&canMeta->canIdAliasOccupationCache, 0, sizeof(canMeta->canIdAliasOccupationCache));
+
+  // hydrate cache with endpoint aliases registered on this interface as they
+  // have no other way of communicating the enumeration
+  VlcbNetSocketListIter iter = vlcb_net_sock_list_GetIterator(iface->sockets);
+  while (vlcb_net_sock_list_iter_HasNext(&iter)) {
+    VlcbNetSocketHandle sock = vlcb_net_sock_list_iter_Next(&iter);
+    VlcbNetWireEndpointHandle endpoint = sock->WireEndpoint(sock);
+
+    if (endpoint->addr.can != VLCB_CAN_ID_EMPTY) {
+      MarkUsedId(canMeta, endpoint->addr.can);
+    }
+  }
+}
+
 
 static inline void SM_CollisionDetected(VlcbNetWireEndpointHandle endpoint,
                                         VlcbNetWireCanStateMachine *sm) {
@@ -63,7 +83,6 @@ inline void CanSvcPoll(VlcbNetIface *iface,
 // TODO:
 // how to make sure cache can work with ids assumed by endpoints registered on
 // this interface ? clean that cache when the endpoint gets removed ? we should
-// make sockets own endpoints to avoid sharing them it only complicates shit
 // make the state allow only one enumeration at a time
 //  this allows us to write code that will allow better support of multiple
 //  sockets and prohibits flooding network with requests when this lib is used

@@ -16,16 +16,19 @@ typedef union {
   VlcbNetWireCanStateMachine can;
 } VlcbNetWireEndpointMeta;
 
+// TODO: this is not really an endpoint, how to fix?
+//  i think not every socket should automatically mean a new canid but it might
+//  make our life easier
+//
 typedef struct {
-  VlcbNetMedium medium;
   VlcbNetWireAddr addr;
   VlcbNetWireEndpointMeta meta;
 } VlcbNetWireEndpoint;
 
 typedef VlcbNetWireEndpoint *const VlcbNetWireEndpointHandle;
 
-bool vlcb_net_IsWireEndpointReady(VlcbNetWireEndpointHandle endpoint);
+// bool vlcb_net_IsWireEndpointReady(VlcbNetWireEndpointHandle endpoint);
 
-bool vlcb_net_IsWireAddrValid(VlcbNetMedium medium, VlcbNetWireAddr addr);
+// bool vlcb_net_IsWireAddrValid(VlcbNetMedium medium, VlcbNetWireAddr addr);
 
 VlcbNetWireAddr vlcb_net_NewCanWireAddr(VlcbCanId id);

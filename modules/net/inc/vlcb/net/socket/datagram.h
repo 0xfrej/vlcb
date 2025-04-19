@@ -16,12 +16,12 @@ typedef struct {
   _INTERFACE_IMPLEMENT(IVlcbNetSocket);
   VlcbPacketBuf *const rxBuf;
   VlcbPacketBuf *const txBuf;
-  VlcbNetWireEndpointHandle endpoint;
+  VlcbNetWireEndpoint endpoint;
 } VlcbNetSocketDatagram;
 
-VlcbNetSocketDatagram
-vlcb_net_sock_dgram_New(VlcbPacketBuf *const rxBuf, VlcbPacketBuf *const txBuf,
-                        VlcbNetWireEndpointHandle endpoint);
+VlcbNetSocketDatagram vlcb_net_sock_dgram_New(VlcbPacketBuf *const rxBuf,
+                                              VlcbPacketBuf *const txBuf,
+                                              VlcbNetWireEndpoint endpoint);
 
 typedef enum {
   VLCB_NET_SOCK_DGRAM_SEND_ERR_OK = 0,
